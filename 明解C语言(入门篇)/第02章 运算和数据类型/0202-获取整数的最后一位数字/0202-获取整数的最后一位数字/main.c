@@ -8,8 +8,15 @@
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+int main(void) {
+    
+    int no;
+    
+    printf("请输入一个整数：");
+    scanf("%d", &no);
+    
+    // 输出整数no的最后一位数字(因为是十进制整数，因此通过模上10，就可以获取整数的最后一位数字)
+    printf("整数%d的最后一位数字是：%d\n", no, no % 10);
+    
     return 0;
 }
