@@ -1,6 +1,6 @@
 //
 //  main.c
-//  0708-余数的判断
+//  0308-余数的判断
 //
 //  Created by Enrica on 2018/3/27.
 //  Copyright © 2018年 Enrica. All rights reserved.
