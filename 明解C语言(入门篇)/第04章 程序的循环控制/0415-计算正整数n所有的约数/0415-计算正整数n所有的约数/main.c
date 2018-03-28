@@ -1,6 +1,6 @@
 //
 //  main.c
-//  0425-约数的枚举
+//  0415-计算正整数n所有的约数
 //
 //  Created by Enrica on 2018/3/28.
 //  Copyright © 2018年 Enrica. All rights reserved.
