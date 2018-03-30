@@ -20,7 +20,7 @@
  *  - 参数n: 用来设置数组v的长度
  *  - 返回值: 数组中最大的元素值
  */
-int maxOf(int v[], int n) {  // 在函数的定义当中，形参数组v的长度是没有指定的，因此，它可以是任意长度
+int max_of(int v[], int n) {  // 在函数的定义当中，形参数组v的长度是没有指定的，因此，它可以是任意长度
     
     // 假设数组v的第0个元素是最大值
     int max = v[0];
@@ -45,7 +45,7 @@ int main(void) {
     int math[NUMBER];
     
     // 分别存储英语或者数学的最高分
-    int maxOfEnglish, maxOfMath;
+    int max_of_english, max_of_math;
     
     printf("请输入%d名学生的分数。\n", NUMBER);
     for (int i = 0; i < NUMBER; i++) {
@@ -60,12 +60,12 @@ int main(void) {
     }
     
     // 分别计算英语成绩和数学成绩的最高分
-    maxOfEnglish = maxOf(english, NUMBER);  // 将数组english及其长度NUMBER传递过去
-    maxOfMath = maxOf(math, NUMBER);
+    max_of_english = max_of(english, NUMBER);  // 将数组english及其长度NUMBER传递过去
+    max_of_math = max_of(math, NUMBER);
     
     // 分别显示英语成绩和数学成绩的最高分
-    printf("英语最高分: %d\n", maxOfEnglish);
-    printf("数学最高分: %d\n", maxOfMath);
+    printf("英语最高分: %d\n", max_of_english);
+    printf("数学最高分: %d\n", max_of_math);
     
     return 0;
 }
