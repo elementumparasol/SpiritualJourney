@@ -1,6 +1,6 @@
 //
 //  main.c
-//  0506-字符串数组
+//  0906-字符串数组
 //
 //  Created by Enrica on 2018/4/3.
 //  Copyright © 2018年 Enrica. All rights reserved.

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C584EE9F20728BA5008E9C31 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C584EE9E20728BA5008E9C31 /* main.c */; };
+		C584EEB220728FF0008E9C31 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C584EEB120728FF0008E9C31 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C584EE9920728BA5008E9C31 /* CopyFiles */ = {
+		C584EEAC20728FF0008E9C31 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C584EE9B20728BA5008E9C31 /* 0506-字符串数组 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0506-字符串数组"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C584EE9E20728BA5008E9C31 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C584EEAE20728FF0008E9C31 /* 0906-字符串数组 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0906-字符串数组"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C584EEB120728FF0008E9C31 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C584EE9820728BA5008E9C31 /* Frameworks */ = {
+		C584EEAB20728FF0008E9C31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C584EE9220728BA5008E9C31 = {
+		C584EEA520728FF0008E9C31 = {
 			isa = PBXGroup;
 			children = (
-				C584EE9D20728BA5008E9C31 /* 0506-字符串数组 */,
-				C584EE9C20728BA5008E9C31 /* Products */,
+				C584EEB020728FF0008E9C31 /* 0906-字符串数组 */,
+				C584EEAF20728FF0008E9C31 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C584EE9C20728BA5008E9C31 /* Products */ = {
+		C584EEAF20728FF0008E9C31 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C584EE9B20728BA5008E9C31 /* 0506-字符串数组 */,
+				C584EEAE20728FF0008E9C31 /* 0906-字符串数组 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C584EE9D20728BA5008E9C31 /* 0506-字符串数组 */ = {
+		C584EEB020728FF0008E9C31 /* 0906-字符串数组 */ = {
 			isa = PBXGroup;
 			children = (
-				C584EE9E20728BA5008E9C31 /* main.c */,
+				C584EEB120728FF0008E9C31 /* main.c */,
 			);
-			path = "0506-字符串数组";
+			path = "0906-字符串数组";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C584EE9A20728BA5008E9C31 /* 0506-字符串数组 */ = {
+		C584EEAD20728FF0008E9C31 /* 0906-字符串数组 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C584EEA220728BA5008E9C31 /* Build configuration list for PBXNativeTarget "0506-字符串数组" */;
+			buildConfigurationList = C584EEB520728FF0008E9C31 /* Build configuration list for PBXNativeTarget "0906-字符串数组" */;
 			buildPhases = (
-				C584EE9720728BA5008E9C31 /* Sources */,
-				C584EE9820728BA5008E9C31 /* Frameworks */,
-				C584EE9920728BA5008E9C31 /* CopyFiles */,
+				C584EEAA20728FF0008E9C31 /* Sources */,
+				C584EEAB20728FF0008E9C31 /* Frameworks */,
+				C584EEAC20728FF0008E9C31 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "0506-字符串数组";
-			productName = "0506-字符串数组";
-			productReference = C584EE9B20728BA5008E9C31 /* 0506-字符串数组 */;
+			name = "0906-字符串数组";
+			productName = "0906-字符串数组";
+			productReference = C584EEAE20728FF0008E9C31 /* 0906-字符串数组 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C584EE9320728BA5008E9C31 /* Project object */ = {
+		C584EEA620728FF0008E9C31 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Enrica;
 				TargetAttributes = {
-					C584EE9A20728BA5008E9C31 = {
+					C584EEAD20728FF0008E9C31 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
 			};
-			buildConfigurationList = C584EE9620728BA5008E9C31 /* Build configuration list for PBXProject "0506-字符串数组" */;
+			buildConfigurationList = C584EEA920728FF0008E9C31 /* Build configuration list for PBXProject "0906-字符串数组" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C584EE9220728BA5008E9C31;
-			productRefGroup = C584EE9C20728BA5008E9C31 /* Products */;
+			mainGroup = C584EEA520728FF0008E9C31;
+			productRefGroup = C584EEAF20728FF0008E9C31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C584EE9A20728BA5008E9C31 /* 0506-字符串数组 */,
+				C584EEAD20728FF0008E9C31 /* 0906-字符串数组 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C584EE9720728BA5008E9C31 /* Sources */ = {
+		C584EEAA20728FF0008E9C31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C584EE9F20728BA5008E9C31 /* main.c in Sources */,
+				C584EEB220728FF0008E9C31 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C584EEA020728BA5008E9C31 /* Debug */ = {
+		C584EEB320728FF0008E9C31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -183,7 +183,7 @@
 			};
 			name = Debug;
 		};
-		C584EEA120728BA5008E9C31 /* Release */ = {
+		C584EEB420728FF0008E9C31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 			};
 			name = Release;
 		};
-		C584EEA320728BA5008E9C31 /* Debug */ = {
+		C584EEB620728FF0008E9C31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -243,7 +243,7 @@
 			};
 			name = Debug;
 		};
-		C584EEA420728BA5008E9C31 /* Release */ = {
+		C584EEB720728FF0008E9C31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -255,25 +255,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C584EE9620728BA5008E9C31 /* Build configuration list for PBXProject "0506-字符串数组" */ = {
+		C584EEA920728FF0008E9C31 /* Build configuration list for PBXProject "0906-字符串数组" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C584EEA020728BA5008E9C31 /* Debug */,
-				C584EEA120728BA5008E9C31 /* Release */,
+				C584EEB320728FF0008E9C31 /* Debug */,
+				C584EEB420728FF0008E9C31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C584EEA220728BA5008E9C31 /* Build configuration list for PBXNativeTarget "0506-字符串数组" */ = {
+		C584EEB520728FF0008E9C31 /* Build configuration list for PBXNativeTarget "0906-字符串数组" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C584EEA320728BA5008E9C31 /* Debug */,
-				C584EEA420728BA5008E9C31 /* Release */,
+				C584EEB620728FF0008E9C31 /* Debug */,
+				C584EEB720728FF0008E9C31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C584EE9320728BA5008E9C31 /* Project object */;
+	rootObject = C584EEA620728FF0008E9C31 /* Project object */;
 }
