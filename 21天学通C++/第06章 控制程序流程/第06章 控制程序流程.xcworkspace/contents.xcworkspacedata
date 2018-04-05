@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:0610-&#x4f7f;&#x7528;for&#x5faa;&#x73af;&#x6765;&#x586b;&#x5145;&#x548c;&#x663e;&#x793a;&#x9759;&#x6001;&#x6570;&#x7ec4;/0610-&#x4f7f;&#x7528;for&#x5faa;&#x73af;&#x6765;&#x586b;&#x5145;&#x548c;&#x663e;&#x793a;&#x9759;&#x6001;&#x6570;&#x7ec4;.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:0609-do-while&#x5faa;&#x73af;/0609-do-while&#x5faa;&#x73af;.xcodeproj">
    </FileRef>
    <FileRef
