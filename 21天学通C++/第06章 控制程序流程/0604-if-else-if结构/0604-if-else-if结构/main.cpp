@@ -48,7 +48,7 @@ int main(void) {
     }
     
     else if (dayInput == Thursday) {
-        cout << "星期三是以木星(Jupiter)命名的." << endl;
+        cout << "星期四是以木星(Jupiter)命名的." << endl;
     }
     
     else if (dayInput == Friday) {
