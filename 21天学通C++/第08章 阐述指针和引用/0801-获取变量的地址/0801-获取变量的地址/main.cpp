@@ -19,8 +19,8 @@ int main(void) {
     const double pi = 3.14159265;
     
     // 通过引用运算符(&)获取变量的地址
-    cout << "整型变量age在内存中的地址是: 0x" << &age << endl;
-    cout << "double类型的变量pi在内存中的地址是: 0x" << &pi << endl;
+    cout << "整型变量age在内存中的地址是: " << &age << endl;
+    cout << "double类型的变量pi在内存中的地址是: " << &pi << endl;
     
     return 0;
 }
