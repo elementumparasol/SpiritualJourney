@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  0910-内联函数
+//  0710-内联函数
 //
 //  Created by Enrica on 2018/4/6.
 //  Copyright © 2018年 Enrica. All rights reserved.

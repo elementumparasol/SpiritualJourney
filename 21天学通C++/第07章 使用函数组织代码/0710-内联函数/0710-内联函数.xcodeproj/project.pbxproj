@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C52BEA472077B24C004B87A2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C52BEA462077B24C004B87A2 /* main.cpp */; };
+		C52BEA5A2077B500004B87A2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C52BEA592077B500004B87A2 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C52BEA412077B24C004B87A2 /* CopyFiles */ = {
+		C52BEA542077B500004B87A2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C52BEA432077B24C004B87A2 /* 0910-内联函数 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0910-内联函数"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C52BEA462077B24C004B87A2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C52BEA562077B500004B87A2 /* 0710-内联函数 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0710-内联函数"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C52BEA592077B500004B87A2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C52BEA402077B24C004B87A2 /* Frameworks */ = {
+		C52BEA532077B500004B87A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C52BEA3A2077B24C004B87A2 = {
+		C52BEA4D2077B500004B87A2 = {
 			isa = PBXGroup;
 			children = (
-				C52BEA452077B24C004B87A2 /* 0910-内联函数 */,
-				C52BEA442077B24C004B87A2 /* Products */,
+				C52BEA582077B500004B87A2 /* 0710-内联函数 */,
+				C52BEA572077B500004B87A2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C52BEA442077B24C004B87A2 /* Products */ = {
+		C52BEA572077B500004B87A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C52BEA432077B24C004B87A2 /* 0910-内联函数 */,
+				C52BEA562077B500004B87A2 /* 0710-内联函数 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C52BEA452077B24C004B87A2 /* 0910-内联函数 */ = {
+		C52BEA582077B500004B87A2 /* 0710-内联函数 */ = {
 			isa = PBXGroup;
 			children = (
-				C52BEA462077B24C004B87A2 /* main.cpp */,
+				C52BEA592077B500004B87A2 /* main.cpp */,
 			);
-			path = "0910-内联函数";
+			path = "0710-内联函数";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C52BEA422077B24C004B87A2 /* 0910-内联函数 */ = {
+		C52BEA552077B500004B87A2 /* 0710-内联函数 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C52BEA4A2077B24C004B87A2 /* Build configuration list for PBXNativeTarget "0910-内联函数" */;
+			buildConfigurationList = C52BEA5D2077B500004B87A2 /* Build configuration list for PBXNativeTarget "0710-内联函数" */;
 			buildPhases = (
-				C52BEA3F2077B24C004B87A2 /* Sources */,
-				C52BEA402077B24C004B87A2 /* Frameworks */,
-				C52BEA412077B24C004B87A2 /* CopyFiles */,
+				C52BEA522077B500004B87A2 /* Sources */,
+				C52BEA532077B500004B87A2 /* Frameworks */,
+				C52BEA542077B500004B87A2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "0910-内联函数";
-			productName = "0910-内联函数";
-			productReference = C52BEA432077B24C004B87A2 /* 0910-内联函数 */;
+			name = "0710-内联函数";
+			productName = "0710-内联函数";
+			productReference = C52BEA562077B500004B87A2 /* 0710-内联函数 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C52BEA3B2077B24C004B87A2 /* Project object */ = {
+		C52BEA4E2077B500004B87A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Enrica;
 				TargetAttributes = {
-					C52BEA422077B24C004B87A2 = {
+					C52BEA552077B500004B87A2 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
 			};
-			buildConfigurationList = C52BEA3E2077B24C004B87A2 /* Build configuration list for PBXProject "0910-内联函数" */;
+			buildConfigurationList = C52BEA512077B500004B87A2 /* Build configuration list for PBXProject "0710-内联函数" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C52BEA3A2077B24C004B87A2;
-			productRefGroup = C52BEA442077B24C004B87A2 /* Products */;
+			mainGroup = C52BEA4D2077B500004B87A2;
+			productRefGroup = C52BEA572077B500004B87A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C52BEA422077B24C004B87A2 /* 0910-内联函数 */,
+				C52BEA552077B500004B87A2 /* 0710-内联函数 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C52BEA3F2077B24C004B87A2 /* Sources */ = {
+		C52BEA522077B500004B87A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C52BEA472077B24C004B87A2 /* main.cpp in Sources */,
+				C52BEA5A2077B500004B87A2 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C52BEA482077B24C004B87A2 /* Debug */ = {
+		C52BEA5B2077B500004B87A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -183,7 +183,7 @@
 			};
 			name = Debug;
 		};
-		C52BEA492077B24C004B87A2 /* Release */ = {
+		C52BEA5C2077B500004B87A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 			};
 			name = Release;
 		};
-		C52BEA4B2077B24C004B87A2 /* Debug */ = {
+		C52BEA5E2077B500004B87A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -243,7 +243,7 @@
 			};
 			name = Debug;
 		};
-		C52BEA4C2077B24C004B87A2 /* Release */ = {
+		C52BEA5F2077B500004B87A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -255,25 +255,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C52BEA3E2077B24C004B87A2 /* Build configuration list for PBXProject "0910-内联函数" */ = {
+		C52BEA512077B500004B87A2 /* Build configuration list for PBXProject "0710-内联函数" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C52BEA482077B24C004B87A2 /* Debug */,
-				C52BEA492077B24C004B87A2 /* Release */,
+				C52BEA5B2077B500004B87A2 /* Debug */,
+				C52BEA5C2077B500004B87A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C52BEA4A2077B24C004B87A2 /* Build configuration list for PBXNativeTarget "0910-内联函数" */ = {
+		C52BEA5D2077B500004B87A2 /* Build configuration list for PBXNativeTarget "0710-内联函数" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C52BEA4B2077B24C004B87A2 /* Debug */,
-				C52BEA4C2077B24C004B87A2 /* Release */,
+				C52BEA5E2077B500004B87A2 /* Debug */,
+				C52BEA5F2077B500004B87A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C52BEA3B2077B24C004B87A2 /* Project object */;
+	rootObject = C52BEA4E2077B500004B87A2 /* Project object */;
 }
