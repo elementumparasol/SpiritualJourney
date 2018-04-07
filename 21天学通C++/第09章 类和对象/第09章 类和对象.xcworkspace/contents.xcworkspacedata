@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:0902-private&#x548c;public/0902-private&#x548c;public.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:0901-C++&#x4e2d;&#x7c7b;&#x7684;&#x7b80;&#x4ecb;/0901-C++&#x4e2d;&#x7c7b;&#x7684;&#x7b80;&#x4ecb;.xcodeproj">
    </FileRef>
 </Workspace>
