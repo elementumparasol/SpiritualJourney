@@ -7,42 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-/**
- * 类的声明
- */
-@interface Person: NSObject {
-    
-    // 年龄
-    int _age;  // 成员属性最好是以下划线作为开头
-}
-
-// set方法
-- (void)setAge: (int)age;
-
-// get方法
-- (int)age;
-
-@end
-
-/**
- * 类的实现
- */
-@implementation Person
-
-// set方法的实现
-- (void)setAge:(int)age {
-    
-    _age = age;
-}
-
-// get方法的实现
-- (int)age {
-    
-    return _age;
-}
-
-@end
+#import "Person.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
