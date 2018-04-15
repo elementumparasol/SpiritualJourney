@@ -14,9 +14,9 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"count = %d", [NSString numberOfIntegersInString:@"owueorsoiu232ijsld2"]);
         
-        NSString *str = [NSString stringWithFormat:@"823hjwe2i4usd344"];
-        int count = [str numberOfIntegersInString:str];
-        NSLog(@"count = %d", count);
+//        NSString *str = [NSString stringWithFormat:@"823hjwe2i4usd344"];
+//        int count = [str numberOfIntegersInString:str];
+//        NSLog(@"count = %d", count);
     }
     return 0;
 }
