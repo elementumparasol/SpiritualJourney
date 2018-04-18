@@ -20,6 +20,20 @@ int main(int argc, const char * argv[]) {
         
         // 调用block
         myBlock();
+        
+        // 定义一个接收两个int参数，并且返回int结果的block
+        int (^sum)(int, int) = ^(int a, int b){
+            return a + b;
+        };
+        
+        // 调用block
+        NSLog(@"sum = %i", sum(2, 3));
+        
+        NSString *(^name)(NSString *) = ^(NSString *str) {
+            return str;
+        };
+        
+        NSLog(@"name = %@", name(@"James"));
     }
     return 0;
 }
