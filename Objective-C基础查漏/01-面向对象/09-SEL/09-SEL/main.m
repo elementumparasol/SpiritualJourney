@@ -16,6 +16,9 @@ int main(int argc, const char * argv[]) {
         
         // 通过performSelector来调用方法
         [p performSelector:@selector(print)];
+        
+        // withObject:后面传递的参数就是传递给printName:的参数
+        [p performSelector:@selector(printName:) withObject:@"James"];
     }
     return 0;
 }

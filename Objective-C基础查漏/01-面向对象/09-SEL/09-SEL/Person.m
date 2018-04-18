@@ -14,4 +14,9 @@
     NSLog(@"调用了print方法");
 }
 
+- (void)printName:(NSString *)name {
+    
+    NSLog(@"He's name is %@", name);
+}
+
 @end

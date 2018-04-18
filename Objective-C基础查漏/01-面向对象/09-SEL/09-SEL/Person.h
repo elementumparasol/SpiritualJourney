@@ -12,4 +12,6 @@
 
 - (void)print;
 
+- (void)printName: (NSString *)name;
+
 @end
