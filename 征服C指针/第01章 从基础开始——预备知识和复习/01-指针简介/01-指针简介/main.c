@@ -10,6 +10,7 @@
 
 int main(int argc, const char * argv[]) {
     
+    // 定义两个int类型的变量
     int hoge = 5;
     int piyo = 10;
     
@@ -17,9 +18,9 @@ int main(int argc, const char * argv[]) {
     int *hoge_p;
     
     // 打印每个变量的地址
-    printf("hoge的地址: %p\n", &hoge);
-    printf("piyo的地址: %p\n", &piyo);
-    printf("hoge_p的地址: %p\n", &hoge_p);
+    printf("hoge的地址: %p\n", &hoge);  // 获取int类型变量hoge的地址
+    printf("piyo的地址: %p\n", &piyo);  // 获取int类型变量piyo的地址
+    printf("hoge_p的地址: %p\n", &hoge_p);  // 获取int类型的指针变量hoge_p的地址
     
     // 将整形变量hoge的地址赋值给指针变量hope_p
     // 或者说，让指针变量hoge_p指向整型变量hoge
