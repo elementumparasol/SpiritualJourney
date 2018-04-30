@@ -24,3 +24,16 @@ let hoursWorked = 10
 
 // 不同类型的变量在进行运算之前，必须先统一类型
 let totalCost = hourlyRate * Double(hoursWorked)
+
+
+
+/** 3、Swift中的字符串 */
+
+// Character和String类型
+let characterA: Character = "a"  // 在Swift中，不管是字符类型还是字符串类型，都必须使用双引号
+
+let characterDog: Character = "🐶"  // emoji表情算做单个字符
+
+let stringDog: String = "Dog"
+
+let stringCat = "Cat"  // 不必显示的指明变量的类型，编译器会根据初始化结果来对变量类型进行类型推断
