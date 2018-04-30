@@ -40,4 +40,35 @@ let order = "dog" < "cat"  // 判断字符串"dog"出现的顺序是否比字符
 
 
 
+/** 3、if语句 */
 
+// 单纯的if结构
+if 2 > 1 {  // Swift中if判断条件不需要加小括号，当然，加了小括号也不会出错
+    print("整数2比1大")
+}
+
+// if-else结构
+let animal = "Fox"
+if animal == "Cat" || animal == "Dog" {
+    print("Animal is a house pet.")
+} else {
+    print("Animal is not a house pet.")
+}
+
+// if-else if结构
+let hourOfDay = 12
+let timeOfDay: String
+if hourOfDay < 6 {
+    timeOfDay = "Early Morning"
+} else if hourOfDay < 12 {
+    timeOfDay = "Morning"
+} else if hourOfDay < 17 {
+    timeOfDay = "Afternoon"
+} else if hourOfDay < 20 {
+    timeOfDay = "Evening"
+} else if hourOfDay < 24 {
+    timeOfDay = "Late Evening"
+} else {
+    timeOfDay = "Invalid Hour."
+}
+print(timeOfDay)
