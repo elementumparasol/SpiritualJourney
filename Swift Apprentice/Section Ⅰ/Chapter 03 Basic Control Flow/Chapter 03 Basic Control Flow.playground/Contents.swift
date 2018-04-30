@@ -28,3 +28,16 @@ print(oneIsLessThanTwo)
 
 let and = true && true
 let or = true || true
+
+
+
+/** 2、字符串的比较 */
+
+let dog = "dog"
+let dogEqualsToCat = dog == "cat"  // 结果为false，因为字符串"dog"不等于字符串"cat"
+
+let order = "dog" < "cat"  // 判断字符串"dog"出现的顺序是否比字符串"cat"出现的顺序低
+
+
+
+
