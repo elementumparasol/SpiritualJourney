@@ -37,3 +37,16 @@ let characterDog: Character = "🐶"  // emoji表情算做单个字符
 let stringDog: String = "Dog"
 
 let stringCat = "Cat"  // 不必显示的指明变量的类型，编译器会根据初始化结果来对变量类型进行类型推断
+
+
+
+/** 4、字符串的连接 */
+
+var message = "Hello, " + "my name is "
+let name = "enrica"
+message += name  // 字符串变量可以直接使用加号运算符进行连接
+print(message)
+
+let exclamationMark: Character = "!"
+message += String(exclamationMark)
+print(message)
