@@ -117,3 +117,36 @@ print("min = \(min)")
 
 max = a > b ? a : b
 print("max = \(max)")
+
+
+
+
+/** 6、while循环 */
+
+// 常用的while循环
+var sum = 1
+while sum < 1000 {
+    sum = sum + (sum + 1)
+    print(sum)
+}
+
+
+// repeat-while循环
+sum = 1
+repeat {
+    sum = sum + (sum + 1)
+    print("sum = \(sum)")
+} while sum < 1  // 不管条件是否成立，至少执行一次
+
+
+// break语句
+sum = 1
+while true {
+    sum = sum + (sum + 1)
+    print("sum = \(sum)")
+    
+    // 使用break终结死循环
+    if sum > 1000 {
+        break
+    }
+}
