@@ -18,4 +18,9 @@ integer = Int(decimal)  // 先将变量decimal强转成Int类型，然后赋值�
 
 
 
+/** 2、不同类型的变量进行混合运算 */
+let hourlyRate = 19.5
+let hoursWorked = 10
 
+// 不同类型的变量在进行运算之前，必须先统一类型
+let totalCost = hourlyRate * Double(hoursWorked)
