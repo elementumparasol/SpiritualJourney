@@ -63,3 +63,17 @@ let a = 12
 let b = 40
 let c = Float(a) / Float(b)
 print("\(a) / \(b) = \(c)")
+
+
+
+/** 6、多行字符串 */
+
+// 可以通过连续三个双引号的方式来实现多行格式化的字符串
+let tangPoetry = """
+    白衣依山尽，
+    黄河入海流。
+    欲穷千里目，
+    更上一层楼。
+"""
+print(tangPoetry)
+
