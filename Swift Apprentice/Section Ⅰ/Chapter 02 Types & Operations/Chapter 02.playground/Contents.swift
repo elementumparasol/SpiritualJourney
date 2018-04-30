@@ -50,3 +50,16 @@ print(message)
 let exclamationMark: Character = "!"
 message += String(exclamationMark)
 print(message)
+
+
+
+/** 5、字符串插值运算 */
+
+// 可以使用字符串插值的方式来打印需要的字符串
+message = "my name is \(name)" + "!"
+print(message)
+
+let a = 12
+let b = 40
+let c = Float(a) / Float(b)
+print("\(a) / \(b) = \(c)")
