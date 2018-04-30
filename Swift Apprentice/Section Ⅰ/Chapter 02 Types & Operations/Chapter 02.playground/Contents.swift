@@ -77,3 +77,24 @@ let tangPoetry = """
 """
 print(tangPoetry)
 
+
+
+
+/** 7、元组 */
+
+// 数轴上的一个点
+let point: (Float, Float) = (1.2, 3)  // 数轴第一象限中的某个点
+print(point.0)  // 取出元组中的第一个元素
+print(point.1)  // 取出元组中的第二个元素
+
+let aPoint = (x: -2, y: 1.4)  // 数轴上第二象限中的某个点，使用类型推断和成员命名
+print(aPoint.x)  // 按照元组中成员命名的方式取出对应的元素
+print(aPoint.y)
+
+// 使用元组来保存一个人的姓名、年龄和身高等信息
+let aPerson = (name: "Jim", age: 20, height: 1.78)
+print(aPerson.name)
+print(aPerson.age)
+print(aPerson.height)
+
+
