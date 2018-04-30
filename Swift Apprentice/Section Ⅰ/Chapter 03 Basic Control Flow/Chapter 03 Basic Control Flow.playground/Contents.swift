@@ -72,3 +72,48 @@ if hourOfDay < 6 {
     timeOfDay = "Invalid Hour."
 }
 print(timeOfDay)
+
+
+
+/** 4、短路运算 */
+
+let name = "Mat"
+if 1 > 2 && name == "Mat" {  // 因为第一个条件1 > 2是错误的，所以在&&连接的运算符中，name == "Mat"不会参与运算
+    print("这里永远都不会执行.")
+}
+
+if 1 < 2 || name == "James" {  // 同理，因为1 < 2成立，所以在||连接的运算符中，后面的name = "James"也没有必要参与运算
+    print("这个语句会被执行。")
+}
+
+// 所谓的短路运算，就是指在有多个连续组合的表达式中，如果有第一个表达式就能判定整个表达式的结果，那么后面的表达式就不必参与运算
+
+
+
+
+/** 5、三元运算符(条件运算符) */
+let a = 5
+let b = 10
+
+var min: Int
+if a < b {
+    min = a
+} else {
+    min = b
+}
+print("min = \(min)")
+
+var max: Int
+if a > b {
+    max = a
+} else {
+    max = b
+}
+print("max = \(max)")
+
+// 使用三元运算符对上面的代码进行改写
+min = a < b ? a : b
+print("min = \(min)")
+
+max = a > b ? a : b
+print("max = \(max)")
