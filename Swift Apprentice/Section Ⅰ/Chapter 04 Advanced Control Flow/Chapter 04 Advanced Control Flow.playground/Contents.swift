@@ -78,3 +78,25 @@ rowLabel: for row in 0..<8 {
         print("在for循环中使用label标签: \(sum)")
     }
 }
+
+
+
+/** 4、switch语句 */
+
+// 常规switch
+let num = 10
+switch num {
+case 0:  // Swift中的case语句不需要写break语句，它默认是不穿透的
+    print("整数0")
+default:
+    print("非零整数")
+}
+
+// 字符串儿switch
+let string = "Dog"
+switch string {
+case "Cat", "Dog", "Cow":  // Swift中的switch语句不再仅限于整数值，并且一个case还可以对应多个
+    print("家养牲畜")
+default:
+    print("野生动物")
+}
