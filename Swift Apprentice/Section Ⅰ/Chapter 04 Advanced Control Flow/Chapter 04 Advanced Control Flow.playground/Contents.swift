@@ -41,3 +41,40 @@ for i in 0...count where i % 2 == 1 {  // 使用关键字where对i的取值进�
     sum = sum + i
     print("sum = \(sum)")
 }
+
+
+
+/** 3、continue和label标签 */
+
+// 使用continue
+sum = 0
+for row in 0..<8 {
+    if row % 2 == 0 {
+        continue
+    }
+    
+    for column in 0..<8 {
+        sum += row * column
+        
+        print("在for循环中使用continue: \(sum)")
+    }
+}
+
+// 使用label标签
+sum = 0
+
+// 定义一个rowLabel
+rowLabel: for row in 0..<8 {
+    
+    // 定义一个columnLabel标签
+    columnLabel: for column in 0..<8 {
+        if row == column {
+            
+            // 跳过rowLabel，继续执行下一个循环
+            continue rowLabel
+        }
+        
+        sum += row * column
+        print("在for循环中使用label标签: \(sum)")
+    }
+}
