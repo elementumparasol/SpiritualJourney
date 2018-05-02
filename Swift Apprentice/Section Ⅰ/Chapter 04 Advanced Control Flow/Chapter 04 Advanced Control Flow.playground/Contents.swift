@@ -100,3 +100,73 @@ case "Cat", "Dog", "Cow":  // Swift中的switch语句不再仅限于整数值，
 default:
     print("野生动物")
 }
+
+
+
+/** 5、高级switch语句 */
+
+// 一次匹配多个数值
+let hourOfDay = 12
+let timeOfDay: String
+switch hourOfDay {
+case 0, 1, 2, 3, 4, 5:
+    print("凌晨时分")
+case 6, 7, 8, 9, 10, 11:
+    print("上午时分")
+case 12, 13, 14, 15, 16, 17:
+    print("下午时分")
+case 18, 19, 20, 21:
+    print("晚上")
+case 22, 23, 24:
+    print("深夜时分")
+default:
+    print("错误的数值")
+}
+
+// 范围匹配
+switch hourOfDay {
+case 0...5:
+    print("凌晨时分")
+case 6...11:
+    print("上午时分")
+case 12...17:
+    print("下午时分")
+case 18...21:
+    print("晚上")
+case 22...24:
+    print("深夜时分")
+default:
+    print("错误的数值")
+}
+
+// 使用where关键字进行过滤
+switch hourOfDay {
+case let x where x % 2 == 0:
+    print("偶数小时")
+default:
+    print("奇数小时")
+}
+
+// 因为x并没有用到，所以可以将其省略
+switch hourOfDay {
+case _ where hourOfDay % 2 == 0:
+    print("偶数小时")
+default:
+    print("奇数小时")
+}
+
+// 局部匹配(Partial matching)
+let coordinates = (x: 15, y: 20, z: 33)
+switch coordinates {
+case (0, 0, 0):
+    print("在坐标原点")
+case (_, 0, 0):
+    print("在x轴上")
+case (0, _, 0):
+    print("在y轴上")
+case (0, 0, _):
+    print("在z轴上")
+default:
+    print("在坐标轴的其它位置")
+}
+
