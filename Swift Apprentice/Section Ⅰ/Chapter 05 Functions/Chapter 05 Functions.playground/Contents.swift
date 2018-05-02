@@ -31,3 +31,30 @@ func printSumOf(_ num1: Int, _ num2: Int = 1) {
 printSumOf(20)
 printSumOf(20, 50)
 
+
+
+/** 2、带有返回值的函数 */
+
+// 返回一个字符串
+func returnString() -> String {
+    return "Hello, Swift!"
+}
+let greet = returnString()
+
+// 返回一个元组
+func returnStudentInformation(name: String, age: Int, height: Double) -> (String, Int, Double) {
+    return (name, age, height)
+}
+let student = returnStudentInformation(name: "Jim", age: 20, height: 1.71)
+print(student.0)
+print(student.1)
+print(student.2)
+
+// 为了阅读方便，可以给返回的元组值添加说明标签
+func returnSudentInfo(_ name: String, _ age: Int, _ height: Double) -> (name: String, age: Int, height: Double) {
+    return (name, age, height)
+}
+let stu = returnSudentInfo("James", 25, 1.91)
+print(stu.name)
+print(stu.age)
+print(stu.height)
