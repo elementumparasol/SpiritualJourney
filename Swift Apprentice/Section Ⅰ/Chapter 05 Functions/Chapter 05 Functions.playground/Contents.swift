@@ -58,3 +58,43 @@ let stu = returnSudentInfo("James", 25, 1.91)
 print(stu.name)
 print(stu.age)
 print(stu.height)
+
+
+
+/** 3、函数重载 */
+
+// 函数名称相同，但是参数和返回值不同，就可以构成函数重载
+// 函数重载的三个表现方面：①参数个数不同；②参数类型不同
+// ③函数的返回值不同
+func overloadingFunc(a: Int, b: Int) {
+    print("第一个函数")
+}
+
+func overloadingFunc(a: String, b: String) {
+    print("第二个函数")
+}
+
+func overloadingFunc(_ a: Int, _ b: Int) {
+    print("第三个函数")
+}
+
+func overloadingFunc(a: Float) {
+    print("第四个函数")
+}
+
+func overloadingFunc(a: Int, b: String) -> String {
+    return "Hello, Swift"
+}
+
+func returnFunc() -> String {
+    return "Hello, Swift"
+}
+
+func returnFunc() -> Int {
+    return 0
+}
+
+// 需要注意的是，如果是返回值不同的构造函数，在调用的时候
+// 需要特别指定类型，否则会编译器很可能会不知道要调用那个
+let aFunc: String = returnFunc()  // 明确指明是调用String类型的函数
+let bFunc: Int = returnFunc()  // 明确指明是调用Int类型的函数
