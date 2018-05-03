@@ -98,3 +98,28 @@ func returnFunc() -> Int {
 // 需要特别指定类型，否则会编译器很可能会不知道要调用那个
 let aFunc: String = returnFunc()  // 明确指明是调用String类型的函数
 let bFunc: Int = returnFunc()  // 明确指明是调用Int类型的函数
+
+
+
+/** 4、将函数作为变量 */
+
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+var funcVariable = add  // 将函数赋值给(Int, Int) -> Int类型的变量funcVariable
+funcVariable(20, 30)  // 直接使用变量funcVariable
+
+func subtract(_ a: Int, _ b: Int) -> Int {
+    return a - b
+}
+
+funcVariable = subtract  // 将函数赋值给变量funcVariable
+funcVariable(100, 30)  // 直接使用变量funcVariable
+
+// 除了可以将函数赋值给变量，将其作为变量使用之外，还可以将函数作为另一个函数的参数来传递
+func funcAsPara(_ aFunc: @escaping (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    let result = aFunc(a, b)
+    print("result = \(result)")
+}
+funcAsPara(subtract, 100, 20)
