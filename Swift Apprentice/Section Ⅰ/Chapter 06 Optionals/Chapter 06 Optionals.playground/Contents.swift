@@ -23,3 +23,14 @@ if let name = name {
 } else {
     print("变量name没有值")
 }
+
+// 还可以一次绑定多个值
+var age: Int?
+var height: Float?
+age = 20
+height = 1.78
+if let age = age, let height = height {
+    print("age = \(age), height = \(height)")
+} else {
+    print("There is no value.")
+}
