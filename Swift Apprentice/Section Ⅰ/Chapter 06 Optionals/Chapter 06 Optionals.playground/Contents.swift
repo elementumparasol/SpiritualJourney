@@ -34,3 +34,12 @@ if let age = age, let height = height {
 } else {
     print("There is no value.")
 }
+
+// 在值绑定的同时，对其进行某种筛选
+if let age = age, let height = height, height >= 1.82 {
+    
+    // 只有当年龄有值、身高有值并且身高不低于1.82时，才会执行这里面的代码
+    print("age = \(age), height = \(height)")
+} else {
+    print("年龄没有值，或者身高没有值，或者虽然身高有值，但是它小于1.82。")
+}
