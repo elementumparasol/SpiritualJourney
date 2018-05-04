@@ -123,3 +123,13 @@ func funcAsPara(_ aFunc: @escaping (Int, Int) -> Int, _ a: Int, _ b: Int) {
     print("result = \(result)")
 }
 funcAsPara(subtract, 100, 20)
+
+
+
+
+/** 5、Never */
+func noReturn() -> Never {  // Never类型表示函数有返回值，但是在正常情况下，这个返回值永远都不会返回
+    while true {
+        
+    }
+}
