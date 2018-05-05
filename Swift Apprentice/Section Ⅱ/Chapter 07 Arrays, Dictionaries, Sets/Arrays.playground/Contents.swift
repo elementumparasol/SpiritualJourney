@@ -51,3 +51,18 @@ if let minElement = shuKingdom.min() {
 if let maxElement = shuKingdom.max() {
     print("maxElement = \(maxElement)")
 }
+
+// 使用数组的下标(使用下标时，要注意不能越界)
+let firstName = shuKingdom[0]
+let thirdName = shuKingdom[2]
+
+// 使用数组切片
+let arraySlice = shuKingdom[2...]  // 从下标为2的元素，一直取到数组的最后一位元素，注意，它所得到的结果是一个切片类型ArraySlice<String>
+let fiveTigerlikeGenerals = Array(arraySlice)  // 将数组的切片类型强转成数组类型
+
+// 判断数组中是否包含某个元素
+if shuKingdom.contains("曹操") {
+    print("数组中包含曹操")
+} else {
+    print("曹操不是蜀汉集团的人")
+}
