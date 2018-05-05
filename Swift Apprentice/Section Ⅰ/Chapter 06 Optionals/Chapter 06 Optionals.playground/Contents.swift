@@ -43,3 +43,19 @@ if let age = age, let height = height, height >= 1.82 {
 } else {
     print("年龄没有值，或者身高没有值，或者虽然身高有值，但是它小于1.82。")
 }
+
+
+
+
+/** 2、guard */
+
+func maybeString(_ str: String?) {
+    
+    // 对传递进来的参数值进行校验
+    guard let str = str else {
+        return
+    }
+    
+    print(str)
+}
+maybeString("enrica")
