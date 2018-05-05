@@ -59,3 +59,26 @@ func maybeString(_ str: String?) {
     print(str)
 }
 maybeString("enrica")
+
+/**
+ * guard的补充说明：
+ * guard初次使用比较奇怪，因为只有当let和else之间的表达式为false时，
+ * else后面的block中的代码才会执行，通常情况下，我们会在block中使用
+ * 一个return，用来终端错误的执行，但是有时候也会使用其它句式，这个要
+ * 看具体的业务逻辑。
+ */
+
+
+
+/** 3、空合运算符(Nil Coalescing) */
+
+var aString: String?
+aString = "LeBron James"
+let usrName = aString ?? "No name"
+print("usrName = \(usrName)")
+
+
+/**
+ * 使用空合运算符的注意点: 运算符??左边的变量必须是可选类型
+ * 使用空合运算符的好处是: 可以极大的简化代码，它可以理解为if-let可选绑定的简化版
+ */
