@@ -22,3 +22,32 @@ let allZeros = Array(repeating: 0, count: 5)  // 创建一个拥有5各元素，
 
 // 4、数组的泛型语法
 let intArrays: Array<Int> = [1, 2, 3, 4, 5]  // 这是一种很弱智、很啰嗦的写法，仅仅是作为一个知识点来介绍，并不推荐使用
+
+
+
+
+/** 2、访问数组中的元素 */
+
+var shuKingdom = ["刘备", "诸葛亮", "关羽", "张飞", "赵云", "马超", "黄忠"]
+
+// 使用数组的属性和相关方法
+print(shuKingdom.isEmpty)  // false
+
+if shuKingdom.count < 3 {
+    print("蜀中无大将")
+} else {
+    print("蜀汉人杰地灵")
+}
+
+if let firstElement = shuKingdom.first {
+    print("firstElement = \(firstElement)")
+}
+if let lastElement = shuKingdom.last {
+    print("lastElement = \(lastElement)")
+}
+if let minElement = shuKingdom.min() {
+    print("minElement = \(minElement)")
+}
+if let maxElement = shuKingdom.max() {
+    print("maxElement = \(maxElement)")
+}
