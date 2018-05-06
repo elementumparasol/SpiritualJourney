@@ -106,3 +106,22 @@ print(shuKingdom)
 // 给数组中的元素排序
 shuKingdom.sort()
 print(shuKingdom)
+
+
+
+
+/** 4、遍历数组 */
+
+// 使用for-in遍历
+for item in shuKingdom {
+    print(item)
+}
+
+for (idx, item) in shuKingdom.enumerated() {
+    print("\(idx): \(item)")
+}
+
+// 使用forEach遍历
+shuKingdom.forEach { (item) in
+    print(item)
+}
