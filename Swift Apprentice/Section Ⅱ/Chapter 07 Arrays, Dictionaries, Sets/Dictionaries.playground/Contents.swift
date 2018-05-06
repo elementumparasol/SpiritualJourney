@@ -65,3 +65,28 @@ nameOfCavs["George Hill"] = nil
 print(nameOfCavs)
 
 
+
+
+/** 4、遍历字典 */
+
+// 遍历字典中的键值对
+for (key, value) in nameOfCavs {
+    print("\(key): \(value)")
+}
+
+nameOfCavs.forEach { (key, value) in
+    print("\(value)-\(key)")
+}
+
+// 遍历字典中的键
+for name in nameOfCavs.keys {
+    print(name)
+}
+
+// 遍历字典中的值
+for num in nameOfCavs.values {
+    print(num)
+}
+
+
+
