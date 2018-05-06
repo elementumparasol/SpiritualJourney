@@ -36,3 +36,32 @@ if let number = nameOfCavs["LeBron James"] {
 // 使用字典的属性或者方法
 print(nameOfCavs.isEmpty)  // 判断字典是否为空
 print(nameOfCavs.count)  // 计算字典中键值对的个数
+
+
+
+
+/** 3、修改字典 */
+
+// 增加或者修改键值对
+nameOfCavs.updateValue(6, forKey: "LeBron James")  // 如果Key已经存在，则会修改原来的值
+print(nameOfCavs)
+nameOfCavs.updateValue(8, forKey: "Jordan Clarkson")  // 如果Key不存在，那么会新增键值对
+print(nameOfCavs)
+
+// 增加或者修改键值对更简单的方式
+nameOfCavs["LeBron James"] = 23  // 修改已经存在的键值对
+print(nameOfCavs)
+nameOfCavs["Jose Calderon"] = 81  // 新增键值对
+print(nameOfCavs)
+
+// 移除键值对
+nameOfCavs.removeValue(forKey: "Jordan Clarkson")
+print(nameOfCavs)
+nameOfCavs.removeValue(forKey: "Kyrie Irving")  // 从字典中移除一个不存在的键值对，其返回值为nil
+print(nameOfCavs)
+
+// 移除键值对更简单的方式
+nameOfCavs["George Hill"] = nil
+print(nameOfCavs)
+
+
