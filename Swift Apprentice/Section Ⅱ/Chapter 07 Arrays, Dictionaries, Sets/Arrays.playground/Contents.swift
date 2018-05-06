@@ -66,3 +66,43 @@ if shuKingdom.contains("曹操") {
 } else {
     print("曹操不是蜀汉集团的人")
 }
+
+
+
+/** 3、修改数组 */
+
+// 增加数组元素
+shuKingdom.append("姜维")  // 使用内建方法
+print(shuKingdom)
+
+shuKingdom += ["魏延"]  // 同类型的数组可以直接相加
+print(shuKingdom)
+
+// 插入元素
+shuKingdom.insert("马岱", at: 2)  // 注意，插入元素的时候不要越界
+print(shuKingdom)
+
+// 删除元素
+shuKingdom.removeFirst()  // 删除第一个元素
+print(shuKingdom)
+
+shuKingdom.removeLast()  // 删除最后一个元素
+print(shuKingdom)
+
+shuKingdom.remove(at: 2)  // 删除指定位置的元素，同样注意不要越界
+print(shuKingdom)
+
+// 修改指定位置的元素
+shuKingdom[2] = "关平"  // 也需要注意不能越界
+print(shuKingdom)
+
+shuKingdom[1...4] = ["庞统", "法正", "徐庶", "马良"]  // 一次修改多个指定的元素，但是也不能越界
+print(shuKingdom)
+
+// 交换指定索引位置元素的位置
+shuKingdom.swapAt(0, 1)
+print(shuKingdom)
+
+// 给数组中的元素排序
+shuKingdom.sort()
+print(shuKingdom)
