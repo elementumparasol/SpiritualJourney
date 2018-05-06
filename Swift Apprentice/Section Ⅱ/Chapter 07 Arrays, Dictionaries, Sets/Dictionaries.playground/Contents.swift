@@ -22,3 +22,17 @@ names.reserveCapacity(15)  // 分配字典names的存储容量
 // 比较二的创建方式，不推荐使用
 var aDict: Dictionary<String, Int> = [:]  // 创建一个空的字典
 var bDict = Dictionary<Float, String>()  // 创建一个空的字典
+
+
+
+
+/** 2、访问字典中的值 */
+
+// 通过键来访问字典中的值(通过键访问字典中的值，所得的结果是一个可选类型)
+if let number = nameOfCavs["LeBron James"] {
+    print(number)
+}
+
+// 使用字典的属性或者方法
+print(nameOfCavs.isEmpty)  // 判断字典是否为空
+print(nameOfCavs.count)  // 计算字典中键值对的个数
