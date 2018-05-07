@@ -36,3 +36,18 @@ aClosureVariable(3, 5)
 // $1表示闭包的第二个参数...$n表示闭包的第n个参数
 aClosureVariable = { $0 * $1 }
 aClosureVariable(3, 7)
+
+
+
+
+/** 3、闭包作为函数参数 */
+func operations(a: Int, b: Int, opt: (Int, Int) -> Int) -> Int {
+    
+    let result = aClosureVariable(a, b)
+    print(result)
+    return result
+}
+
+operations(a: 2, b: 5, opt: {(a: Int, b: Int) -> Int in a * b })
+operations(a: 50, b: 20, opt: {$0 * $1})
+operations(a: 12, b: 3) {$0 * $1}  // 尾随闭包的形式
