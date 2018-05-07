@@ -19,3 +19,20 @@ aClosureVariable = {(a: Int, b: Int) -> Int in
 
 // 调用闭包
 aClosureVariable(20, 30)
+
+
+
+/** 2、闭包的简便写法 */
+
+// 因为只有一个语句，所以可以省略return
+aClosureVariable = {(a: Int, b: Int) -> Int in a * b }
+aClosureVariable(2, 3)
+
+// 因为编译器可以做类型推断，所以可以省略参数和返回值类型
+aClosureVariable = {(a, b) in a * b }
+aClosureVariable(3, 5)
+
+// 闭包的参数名也可以省略。我们使用$0表示闭包的第一个参数，
+// $1表示闭包的第二个参数...$n表示闭包的第n个参数
+aClosureVariable = { $0 * $1 }
+aClosureVariable(3, 7)
