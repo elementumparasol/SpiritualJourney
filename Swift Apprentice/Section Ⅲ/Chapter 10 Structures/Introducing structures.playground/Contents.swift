@@ -5,7 +5,7 @@ import UIKit
 var str = "Hello, playground"
 
 
-/** 1、*/
+/** 1、结构体的基本介绍 */
 let restaurantLocation = (2, 4)
 let restaurantRange = 2.5
 
@@ -32,3 +32,20 @@ struct Location {
 
 // 使用结构体
 let storeLocation = Location(x: 2, y: 4)
+
+
+
+/** 2、访问结构体的成员 */
+
+struct DeliveryArea {
+    let center: Location
+    var radius: Double
+}
+
+var storeArea = DeliveryArea(center: storeLocation, radius: 4)
+
+print(storeArea.radius)
+print(storeArea.center.x)
+
+storeArea.radius = 250
+
