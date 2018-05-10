@@ -49,3 +49,33 @@ print(storeArea.center.x)
 
 storeArea.radius = 250
 
+
+
+
+/** 3、方法 */
+
+let areas = [
+    DeliveryArea(center: Location(x: 2, y: 4), radius: 2.5),
+    DeliveryArea(center: Location(x: 9, y: 7), radius: 4.5)
+]
+
+
+func isInDeliveryRange(_ location: Location) -> Bool {
+    for area in areas {
+        let distanceToStore = distance(from: (area.center.x, area.center.y),
+                                       to: (location.x, location.y))
+        if distanceToStore < area.radius {
+            return true
+        }
+    }
+    return false
+}
+
+let customerLocation1 = Location(x: 8, y: 1)
+let customerLocation2 = Location(x: 5, y: 5)
+
+print(isInDeliveryRange(customerLocation1)) // false
+print(isInDeliveryRange(customerLocation2)) // true
+
+
+
