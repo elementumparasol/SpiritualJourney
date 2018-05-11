@@ -23,11 +23,15 @@ struct Car {
 struct Contact {
     var fullName: String
     var emailAddress: String
+    
+    // 默认值
+    var type = "Friend"
 }
 
 // 注意，在结构体类型中，如果没有明确定义构造函数，那么系统会根据你提供
 // 的属性自动生成相应的构造函数
-var person = Contact(fullName: "enrica", emailAddress: "enrica@163.com")
+//var person = Contact(fullName: "enrica", emailAddress: "enrica@163.com")
+var person = Contact(fullName: "enrica", emailAddress: "enricashi@163.com", type: "Worker")
 let pName = person.fullName
 let pAddress = person.emailAddress
 print(pName)
@@ -40,3 +44,12 @@ print(james)
 /**
  * 说明：如果你不希望结构体中的属性被修改，可以使用关键字let来修饰它
  */
+
+
+
+
+/** 2、默认值 */
+
+//person.type = "Worker"
+print(person.type)
+
