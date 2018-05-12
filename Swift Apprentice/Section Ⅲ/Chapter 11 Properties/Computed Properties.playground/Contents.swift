@@ -35,3 +35,39 @@ let tvSize = tv.diagonal
 tv.width = tv.height
 let diagonal = tv.diagonal
 
+
+
+/** 2、getter和setter */
+
+struct TV2 {
+    
+    // 存储属性
+    var height: Double
+    var width: Double
+    
+    // 计算属性
+    var diagonal: Int {
+        
+        // getter属性
+        get {
+            let result = (height * height + width * width).squareRoot().rounded()
+            return Int(result)
+        }
+        
+        // setter属性
+        set {
+            let ratioWidth = 16.0
+            let ratioHeight = 9.0
+            
+            let ratioDiagonal = (ratioWidth * ratioWidth + ratioHeight * ratioHeight).squareRoot()
+            height = Double(newValue) * ratioHeight / ratioDiagonal
+            width = height * ratioWidth / ratioHeight
+        }
+    }
+}
+
+var tv2 = TV2(height: 53.93, width: 95.87)
+tv2.diagonal = 70
+let height = tv2.height
+let width = tv2.width
+
