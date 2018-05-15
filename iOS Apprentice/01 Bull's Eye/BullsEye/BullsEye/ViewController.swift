@@ -20,6 +20,26 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    // MARK:- IBAction
+    @IBAction func showAlert() {
+        
+        // 创建Alert控制器
+        let alert = UIAlertController(title: "Hello, World!",
+                                      message: "This is my first app!",
+                                      preferredStyle: .alert)
+        
+        // 创建Action
+        let action = UIAlertAction(title: "Awesome",
+                                   style: .default,
+                                   handler: nil)
+        
+        // 将action添加到alert中
+        alert.addAction(action)
+        
+        // 弹出alert控制器
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
