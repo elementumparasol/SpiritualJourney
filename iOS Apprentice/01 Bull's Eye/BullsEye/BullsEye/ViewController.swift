@@ -29,7 +29,7 @@ class ViewController: UIViewController {
                                       message: "This is my first app!",
                                       preferredStyle: .alert)
         
-        // 创建Action
+        // 创建Action(defalut, cancel和destructive三种)
         let action = UIAlertAction(title: "Awesome",
                                    style: .default,
                                    handler: nil)
