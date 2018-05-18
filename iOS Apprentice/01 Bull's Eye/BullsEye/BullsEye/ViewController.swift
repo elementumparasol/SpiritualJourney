@@ -40,6 +40,10 @@ class ViewController: UIViewController {
         // 弹出alert控制器
         present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func sliderMoved(_ slider: UISlider) {
+        print("----")
+    }
 
 }
 
