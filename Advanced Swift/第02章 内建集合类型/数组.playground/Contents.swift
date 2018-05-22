@@ -29,4 +29,17 @@ print(y)  // [1, 3, 5, 7]
 
 
 
+/** 2、Foundation中的数组 */
 
+let a = NSMutableArray(array: [1, 3, 5, 7])
+let b: NSArray = a  // 数组b是用let修饰的
+a.insert(9, at: a.count)  // 修改数组a中的内容
+b  // 但是最后数组b还是被修改了。为什么？主要是Foundation中的数组是对象，因此是引用类型
+
+
+let c = NSMutableArray(array: [2, 4, 6, 8])
+
+// 手动复制
+let d = c.copy() as! NSArray
+c.insert(10, at: c.count)  // [2, 4, 6, 8, 10]
+d  // [2, 4, 6, 8]
