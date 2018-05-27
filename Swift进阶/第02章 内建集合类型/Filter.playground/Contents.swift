@@ -17,3 +17,18 @@ result
 
 let mixedResult = (1..<10).map { $0 * $0 }.filter { $0 % 2 == 0 }
 mixedResult
+
+
+
+/** 3、filter */
+
+extension Array {
+    
+    func filter(_ isIncluded: (Element) -> Bool) -> [Element] {
+        var result: [Element] = []
+        for x in self where isIncluded(x) {
+            result.append(x)
+        }
+        return result
+    }
+}
