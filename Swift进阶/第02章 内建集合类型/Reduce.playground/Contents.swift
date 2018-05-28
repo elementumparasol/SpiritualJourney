@@ -25,3 +25,40 @@ num
 // 运算符也是函数，所以我们也可以把上⾯的例⼦写成这样
 let num2 = fibs.reduce(0, +)  // let num = fibs.reduce(0, { $0 + $1 })
 num2
+
+
+
+/** 3、Reduce的实现 */
+
+extension Array {
+    
+    func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) -> Result) -> Result {
+        var result = initialResult
+        for x in self {
+            result = nextPartialResult(result, x)
+        }
+        return result
+    }
+}
+
+
+extension Array {
+    
+    func map2<T>(_ transform: (Element) -> T) -> [T] {
+        return reduce([]) {
+            $0 + [transform($1)]
+        }
+    }
+}
+
+
+extension Array {
+    
+    func filter2(_ isIncluded: (Element) -> Bool) -> [Element] {
+        return reduce([]) {
+            isIncluded($1) ? $0 + [$1] : $0
+        }
+    }
+}
+
+
