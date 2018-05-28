@@ -62,3 +62,11 @@ extension Array {
 }
 
 
+
+/** 4、forEach函数的使用 */
+
+[1, 2, 3, 4].forEach { print($0) }
+
+// forEach函数也可以用来替代for循环进行遍历。但是，有一点需要注意！
+// 当需要在for循环中使用return语句时，就不能用forEach代替。实际上
+// for循环所应用的场合比较多一些，forEach循环一般要慎用
