@@ -32,3 +32,20 @@ extension Array {
         return result
     }
 }
+
+
+/** 4、contains函数的应用 */
+
+extension Sequence {
+    
+    public func all(matching predicate: (Element) -> Bool) -> Bool {
+        
+        // 对于⼀个条件，如果没有元素不满⾜它的话，那意味着所有元素都满⾜它
+        return !contains { !predicate($0) }
+    }
+}
+
+let evenNums = nums.filter { $0 % 2 == 0 }
+evenNums  // [2, 4, 6, 8, 10]
+let evenResult = evenNums.all { $0 % 2 == 0 }
+evenResult  // true
