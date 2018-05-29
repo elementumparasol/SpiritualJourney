@@ -37,3 +37,16 @@ userSettings["Do Not Disturb"] = .bool(true)
 let oldName = userSettings .updateValue(.text("Jane's iPhone"), forKey: "Name")
 userSettings["Name"]
 oldName
+
+
+
+/** 3、字典中常用的方法 */
+
+var settings = defaultSettings
+let overriddenSettings: [String:Setting] = ["Name": .text("Jane's iPhone")]
+
+// merge(_:uniquingKeysWith:)，它接受两个参数，第⼀个是要进⾏合并
+// 的键值对，第⼆个是定义如何合并相同键的两个值的函数。我们可以使⽤这个
+// ⽅法将⼀个字典合并 ⾄另⼀个字典中去
+settings.merge(overriddenSettings, uniquingKeysWith: { $1 })
+settings
