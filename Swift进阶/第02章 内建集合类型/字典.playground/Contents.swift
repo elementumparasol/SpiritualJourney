@@ -21,3 +21,19 @@ let defaultSettings: [String: Setting] = [
 
 // 注意，字典通过键进行查找的结果是一个可选值
 let name = defaultSettings["Name"]
+
+
+
+/** 2、字典的可变性 */
+
+// 使用let定义的字典是不可变的；使用var定义的字典是可变的
+var userSettings = defaultSettings
+
+// 直接通过键对字典进行修改
+userSettings["Name"] = .text("Jared's iPhone")
+userSettings["Do Not Disturb"] = .bool(true)
+
+// 使用字典的方法对字典中的值进行修改
+let oldName = userSettings .updateValue(.text("Jane's iPhone"), forKey: "Name")
+userSettings["Name"]
+oldName
