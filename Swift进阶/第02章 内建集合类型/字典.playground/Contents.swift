@@ -50,3 +50,16 @@ let overriddenSettings: [String:Setting] = ["Name": .text("Jane's iPhone")]
 // ⽅法将⼀个字典合并 ⾄另⼀个字典中去
 settings.merge(overriddenSettings, uniquingKeysWith: { $1 })
 settings
+
+
+
+extension Sequence where Element: Hashable {
+    
+    var frequencies: [Element:Int] {
+        let frequencyPairs = self.map { ($0, 1) }
+        return Dictionary(frequencyPairs, uniquingKeysWith: +)
+    }
+}
+
+let frequencies = "hello".frequencies
+frequencies.filter { $0.value > 1 } 
