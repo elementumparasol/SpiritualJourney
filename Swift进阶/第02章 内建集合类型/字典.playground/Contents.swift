@@ -47,12 +47,12 @@ let overriddenSettings: [String:Setting] = ["Name": .text("Jane's iPhone")]
 
 // merge(_:uniquingKeysWith:)，它接受两个参数，第⼀个是要进⾏合并
 // 的键值对，第⼆个是定义如何合并相同键的两个值的函数。我们可以使⽤这个
-// ⽅法将⼀个字典合并 ⾄另⼀个字典中去
+// ⽅法将⼀个字典合并⾄另⼀个字典中去
 settings.merge(overriddenSettings, uniquingKeysWith: { $1 })
-settings
+settings  // ["Name": {text "Jane's iPhone"}, "Airplane Mode": {bool false}]
 
 
-
+/** 4、*/
 extension Sequence where Element: Hashable {
     
     var frequencies: [Element:Int] {
@@ -62,4 +62,14 @@ extension Sequence where Element: Hashable {
 }
 
 let frequencies = "hello".frequencies
-frequencies.filter { $0.value > 1 } 
+frequencies.filter { $0.value > 1 }
+
+let settingsAsStrings = settings.mapValues { setting -> String in
+    switch setting {
+        case .text(let text): return text
+        case .int(let number): return String(number)
+        case .bool(let value): return String(value)
+    }
+}
+
+settingsAsStrings  // ["Name": "Jane's iPhone", "Airplane Mode": "false"]
