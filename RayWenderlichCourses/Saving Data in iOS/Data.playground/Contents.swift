@@ -26,3 +26,21 @@ let saveMysteryBytes = Array(saveMysteryData)
 // 判断这些数据前后是否相等
 saveMysteryBytes == mysteryBytes
 saveMysteryData == mysteryData
+
+
+// 将数据写入到txt文件中
+try mysteryData.write(to: mysteryDataURL.appendingPathExtension("txt"))
+
+
+/** String */
+
+
+// 创建string
+let string = String(data: saveMysteryData, encoding: .utf8)!
+
+// 创建stringURL
+let stringURL = FileManager.documentDirectoryURL.appendingPathComponent("string").appendingPathExtension("text")
+
+// 将数据写入stringURL
+try string.write(to: stringURL, atomically: true, encoding: .utf8)
+try String(contentsOf: stringURL)
