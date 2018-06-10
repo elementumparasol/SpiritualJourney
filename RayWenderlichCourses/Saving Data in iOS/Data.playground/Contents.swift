@@ -1,6 +1,8 @@
 import Foundation
 
 
+/** 1、Data */
+
 let mysteryBytes: [UInt8] = [
     240,          159,          152,          184,
     240,          159,          152,          185,
@@ -32,7 +34,7 @@ saveMysteryData == mysteryData
 try mysteryData.write(to: mysteryDataURL.appendingPathExtension("txt"))
 
 
-/** String */
+/** 2、String */
 
 
 // 创建string
