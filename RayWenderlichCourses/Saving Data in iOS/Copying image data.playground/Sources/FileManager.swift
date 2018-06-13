@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 public extension FileManager {
     
@@ -23,5 +23,9 @@ public extension FileManager {
                 try data.write(to: documentSubdirectoryURL.appendingPathComponent(pngURL.lastPathComponent), options: .atomic)
             }
         }
+    }
+    
+    static func getPNGFromDocumentDirectory(subdirectoryName: String, imageName: String) -> UIImage? {
+        return UIImage(contentsOfFile: FileManager.documentDirectoryURL.appendingPathComponent(subdirectoryName).appendingPathComponent(imageName).appendingPathExtension("png").path)
     }
 }
