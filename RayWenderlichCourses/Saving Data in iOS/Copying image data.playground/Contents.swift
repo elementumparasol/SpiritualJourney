@@ -4,12 +4,8 @@ let spaceSceneURL = Bundle.main.urls(forResourcesWithExtension: "png", subdirect
 spaceSceneURL.lastPathComponent
 
 
-
-
 try FileManager.copyPNGSubdirectoriesToDocumentsDirectory(subdirectoryNames: "Scenes", "Stickers")
 FileManager.documentDirectoryURL
-
-
 
 
 FileManager.getPNGFromDocumentDirectory(subdirectoryName: "Stickers", imageName: "frog")
