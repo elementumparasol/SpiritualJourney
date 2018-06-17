@@ -12,6 +12,7 @@
 		C56DAAD920D6ADA60042FDB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56DAAD720D6ADA60042FDB1 /* Main.storyboard */; };
 		C56DAADB20D6ADA90042FDB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56DAADA20D6ADA90042FDB1 /* Assets.xcassets */; };
 		C56DAADE20D6ADA90042FDB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56DAADC20D6ADA90042FDB1 /* LaunchScreen.storyboard */; };
+		C56DAAE620D6B21B0042FDB1 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56DAAE520D6B21B0042FDB1 /* ScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C56DAADA20D6ADA90042FDB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56DAADD20D6ADA90042FDB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56DAADF20D6ADA90042FDB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C56DAAE520D6B21B0042FDB1 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				C56DAAD320D6ADA60042FDB1 /* AppDelegate.swift */,
 				C56DAAD520D6ADA60042FDB1 /* ViewController.swift */,
+				C56DAAE520D6B21B0042FDB1 /* ScrollView.swift */,
 				C56DAAD720D6ADA60042FDB1 /* Main.storyboard */,
 				C56DAADA20D6ADA90042FDB1 /* Assets.xcassets */,
 				C56DAADC20D6ADA90042FDB1 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				C56DAAD620D6ADA60042FDB1 /* ViewController.swift in Sources */,
 				C56DAAD420D6ADA60042FDB1 /* AppDelegate.swift in Sources */,
+				C56DAAE620D6B21B0042FDB1 /* ScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
