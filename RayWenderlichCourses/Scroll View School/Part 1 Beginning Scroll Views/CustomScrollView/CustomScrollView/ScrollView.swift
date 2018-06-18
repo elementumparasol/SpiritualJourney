@@ -29,8 +29,12 @@ class ScrollView: UIView {
         // 获取手势所在的坐标系
         let translation = gestureRecognizer.translation(in: self)
         
-        // 更改坐标
-        self.bounds.origin.y = self.bounds.origin.y - translation.y
+        // 添加动画
+        UIView.animate(withDuration: 0.2) {
+            
+            // 更改坐标
+            self.bounds.origin.y = self.bounds.origin.y - translation.y
+        }
         
         // 重新设置手势的坐标
         gestureRecognizer.setTranslation(CGPoint.zero, in: self)
