@@ -15,8 +15,17 @@ class ViewController: UIViewController {
     /// scrollView控件
     @IBOutlet weak var scrollView: UIScrollView!
     
+    /// imageView控件
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 获取imageView中图片的size
+        guard let imageSize = imageView.image?.size else { return }
+        
+        // 设置scrollView的contentSize
+        scrollView.contentSize = imageSize
         
         // 去掉编译器自动调整的安全区域(如果不设置这个属性，则顶部和底部都会有一个空白)
         scrollView.contentInsetAdjustmentBehavior = .never
