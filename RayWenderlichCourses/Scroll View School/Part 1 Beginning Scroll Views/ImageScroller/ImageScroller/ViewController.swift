@@ -27,8 +27,11 @@ class ViewController: UIViewController {
         // 设置scrollView的contentSize
         scrollView.contentSize = imageSize
         
-        // 去掉编译器自动调整的安全区域(如果不设置这个属性，则顶部和底部都会有一个空白)
-        scrollView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            
+            // 去掉编译器自动调整的安全区域(如果不设置这个属性，则顶部和底部都会有一个空白)
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
         
         // 去掉滚动到边缘之后的弹簧效果
         scrollView.bounces = false
@@ -37,15 +40,30 @@ class ViewController: UIViewController {
         // 设置代理
         scrollView.delegate = self
         
-        scrollView.minimumZoomScale = 0.1
-        scrollView.maximumZoomScale = 3.0
-        scrollView.zoomScale = 1.0
+        
+        setZoomForSize(scrollView.bounds.size)
+    }
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        print("-------------")
+        
+        setZoomForSize(scrollView.bounds.size)
     }
 
-    /**
-     * scrollView的contentSize已经在storyboard中用KVC的方式设置过了
-     * 在scrollView中，如果不设置contentSize，那么它就无法实现滚动
-     */
+    func setZoomForSize(_ scrollViewSize: CGSize) {
+        
+        let imageSize = imageView.bounds.size
+        let widthScale = scrollViewSize.width / imageSize.width
+        let heightScale = scrollViewSize.height / imageSize.height
+        let minScale = min(widthScale, heightScale)
+        
+        scrollView.minimumZoomScale = minScale
+        scrollView.maximumZoomScale = 3.0
+        scrollView.zoomScale = minScale
+    }
 }
 
 // MARK: - UIScrollViewDelegate
