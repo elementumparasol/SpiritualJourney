@@ -32,6 +32,14 @@ class ViewController: UIViewController {
         
         // 去掉滚动到边缘之后的弹簧效果
         scrollView.bounces = false
+        
+        
+        // 设置代理
+        scrollView.delegate = self
+        
+        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 3.0
+        scrollView.zoomScale = 1.0
     }
 
     /**
@@ -40,3 +48,11 @@ class ViewController: UIViewController {
      */
 }
 
+// MARK: - UIScrollViewDelegate
+extension ViewController: UIScrollViewDelegate {
+    
+    //
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+}
