@@ -41,17 +41,22 @@ class ViewController: UIViewController {
         // 设置代理
         scrollView.delegate = self
 
-
+        // 设置图片的缩放功能
         setZoomForSize(scrollView.bounds.size)
+        
+        // 将图片设置到中间的位置
+        recenterImage()
     }
     
-    
+    // 检测到屏幕旋转时会调用这个方法
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         setZoomForSize(scrollView.bounds.size)
+        recenterImage()
     }
 
+    // 计算图片的缩放比例
     func setZoomForSize(_ scrollViewSize: CGSize) {
 
         let imageSize = imageView.bounds.size
@@ -61,6 +66,25 @@ class ViewController: UIViewController {
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = 3.0
         scrollView.zoomScale = minScale
+    }
+    
+    // 将图片设置到屏幕中间的位置
+    func recenterImage() {
+        
+        // 获取scrollView的size
+        let scrollViewSize = scrollView.bounds.size
+        
+        // 获取图片的size
+        let imageSize = imageView.frame.size
+        
+        // 计算水平方向上的空白
+        let horizontalSpace = imageSize.width < scrollViewSize.width ? (scrollViewSize.width - imageSize.width) / 2.0 : 0
+        
+        // 计算垂直方向上的空白
+        let verticalSpace = imageSize.height < scrollViewSize.height ? (scrollViewSize.height - imageSize.height) / 2.0 : 0
+        
+        // 重新设置scrollView的contentInset
+        scrollView.contentInset = UIEdgeInsets(top: verticalSpace, left: horizontalSpace, bottom: verticalSpace, right: horizontalSpace)
     }
 }
 
