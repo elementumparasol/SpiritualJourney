@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ScrollViewAutoLayout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4uC-iA-dRl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yts-gt-YGM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhj-cG-zcX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="兰博基尼.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Lw0-L6-VRx">
+                                        <rect key="frame" x="8" y="28" width="359" height="149"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="359" id="DNH-Cr-v9j"/>
+                                            <constraint firstAttribute="height" constant="149" id="zoO-gD-s1b"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lamborghini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lih-dw-z3o">
+                                        <rect key="frame" x="140" y="197" width="95" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoT-BR-5ZE">
+                                        <rect key="frame" x="8" y="226" width="359" height="128"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="RPY-rH-gga"/>
+                                            <constraint firstAttribute="width" constant="359" id="gZP-Co-DgE"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qI-KZ-Dkn">
+                                        <rect key="frame" x="8" y="362" width="359" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="DW5-hB-Nvf"/>
+                                            <constraint firstAttribute="width" constant="359" id="i3K-vX-SLj"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7L-dB-jf9">
+                                        <rect key="frame" x="8" y="498" width="359" height="128"/>
+                                        <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="359" id="HA0-Gc-zpb"/>
+                                            <constraint firstAttribute="height" constant="128" id="P6V-th-rDZ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYW-HZ-q8O">
+                                        <rect key="frame" x="8" y="640" width="359" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="359" id="Cf8-Fz-MUn"/>
+                                            <constraint firstAttribute="height" constant="128" id="IdS-Zd-Zti"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4P-UY-UwA">
+                                        <rect key="frame" x="8" y="786" width="359" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="050-gK-9zY"/>
+                                            <constraint firstAttribute="width" constant="359" id="zYX-qh-75m"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Z4P-UY-UwA" secondAttribute="trailing" constant="8" id="3cC-oL-5pN"/>
+                                    <constraint firstItem="Z4P-UY-UwA" firstAttribute="top" secondItem="xYW-HZ-q8O" secondAttribute="bottom" constant="18" id="6TI-a8-3lz"/>
+                                    <constraint firstItem="xYW-HZ-q8O" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="AZO-ii-DtP"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lih-dw-z3o" secondAttribute="trailing" symbolic="YES" id="Cv4-7X-tub"/>
+                                    <constraint firstAttribute="trailing" secondItem="6qI-KZ-Dkn" secondAttribute="trailing" constant="8" id="FDV-qO-naQ"/>
+                                    <constraint firstItem="yoT-BR-5ZE" firstAttribute="top" secondItem="Lih-dw-z3o" secondAttribute="bottom" constant="8" id="G0H-GN-BVx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lw0-L6-VRx" secondAttribute="trailing" constant="8" id="Iop-N7-YuK"/>
+                                    <constraint firstAttribute="trailing" secondItem="xYW-HZ-q8O" secondAttribute="trailing" constant="8" id="Kjw-7A-Noo"/>
+                                    <constraint firstItem="Lih-dw-z3o" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="140" id="Oh5-dK-XFr"/>
+                                    <constraint firstItem="yoT-BR-5ZE" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="VSn-Ik-Gxv"/>
+                                    <constraint firstItem="Lw0-L6-VRx" firstAttribute="top" secondItem="Qhj-cG-zcX" secondAttribute="top" constant="28" id="Xf7-Uc-2Zv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z4P-UY-UwA" secondAttribute="bottom" id="cp4-Nb-bqC"/>
+                                    <constraint firstAttribute="trailing" secondItem="yoT-BR-5ZE" secondAttribute="trailing" constant="8" id="d3v-7M-yfD"/>
+                                    <constraint firstItem="6qI-KZ-Dkn" firstAttribute="top" secondItem="yoT-BR-5ZE" secondAttribute="bottom" constant="8" id="kLt-4c-6vg"/>
+                                    <constraint firstItem="I7L-dB-jf9" firstAttribute="top" secondItem="6qI-KZ-Dkn" secondAttribute="bottom" constant="8" id="kix-js-4pT"/>
+                                    <constraint firstItem="xYW-HZ-q8O" firstAttribute="top" secondItem="I7L-dB-jf9" secondAttribute="bottom" constant="14" id="lL3-eW-t0K"/>
+                                    <constraint firstItem="Lih-dw-z3o" firstAttribute="top" secondItem="Lw0-L6-VRx" secondAttribute="bottom" constant="20" id="nz3-BY-UHY"/>
+                                    <constraint firstItem="Z4P-UY-UwA" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="odd-Um-UKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="I7L-dB-jf9" secondAttribute="trailing" constant="8" id="q9U-qi-Pio"/>
+                                    <constraint firstItem="6qI-KZ-Dkn" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="skE-YO-yIU"/>
+                                    <constraint firstItem="I7L-dB-jf9" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="w9e-VG-osJ"/>
+                                    <constraint firstItem="Lw0-L6-VRx" firstAttribute="leading" secondItem="Qhj-cG-zcX" secondAttribute="leading" constant="8" id="zVa-gn-vXc"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Yts-gt-YGM" firstAttribute="top" secondItem="Qhj-cG-zcX" secondAttribute="bottom" id="AYK-of-pG1"/>
+                            <constraint firstItem="Qhj-cG-zcX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KRo-3a-wEv"/>
+                            <constraint firstAttribute="trailing" secondItem="Qhj-cG-zcX" secondAttribute="trailing" id="V06-g2-6hz"/>
+                            <constraint firstItem="Qhj-cG-zcX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zIv-OB-pPz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="116.49175412293854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="兰博基尼.jpg" width="2880" height="1800"/>
+    </resources>
+</document>
