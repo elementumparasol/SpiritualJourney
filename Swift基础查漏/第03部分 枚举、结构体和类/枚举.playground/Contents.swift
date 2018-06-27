@@ -53,3 +53,52 @@ enum ProgrammingLanguage: String {
 
 let myFavoriteLanguage = ProgrammingLanguage.swift
 print("我最喜欢的编程语言是: \(myFavoriteLanguage.rawValue)")
+
+
+/** 3、方法 */
+
+// 注意，在Swift中，方法是和具体的类型进行关联的函数。也就是说，方法的
+// 本质还是函数，只不过它是一种特殊的函数，因为它不能脱离具体的类型而存在
+
+enum Lightbulb {
+    case on
+    case off
+
+    // 枚举内部的方法(因为这个函数是定义在枚举内部的方法，所以它是跟枚举类型Lightbulb类型相关联的方法)
+    func surfaceTemperature(forAmbientTemperature ambient: Double) -> Double {
+        
+        // 灯泡表面的温度
+        switch self {
+            
+        // 灯泡亮着的时候表面温度
+        case .on:
+            return ambient + 150.0
+            
+        // 灯泡熄灭的时候表面温度
+        case .off:
+            return ambient
+        }
+    }
+    
+    // 切换灯泡。因为枚举是值类型，在Swift中，值类型方法不能对self进行修改。如果
+    // 确实需要修改，那么必须使用关键字mutating对该方法进行标记
+    mutating func toggle() {
+        switch self {
+        case .on:
+            self = .off
+        case .off:
+            self = .on
+        }
+    }
+}
+
+// 打开灯泡
+var bulb = Lightbulb.on
+let ambientTemperature = 77.0
+var bulbTemperature = bulb.surfaceTemperature(forAmbientTemperature: ambientTemperature)
+print("现在这个灯泡表面的温度是: \(bulbTemperature)")
+
+// 关闭灯泡
+bulb.toggle()
+bulbTemperature = bulb.surfaceTemperature(forAmbientTemperature: ambientTemperature)
+print("现在灯泡表面的温度是: \(bulbTemperature)")
