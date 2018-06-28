@@ -102,3 +102,36 @@ print("现在这个灯泡表面的温度是: \(bulbTemperature)")
 bulb.toggle()
 bulbTemperature = bulb.surfaceTemperature(forAmbientTemperature: ambientTemperature)
 print("现在灯泡表面的温度是: \(bulbTemperature)")
+
+
+/** 4、关联值 */
+
+// 一般情况下，枚举的使用场合都非常的简单: 定义一些静态成员值类枚举可能的值或者状态
+// 但是，Swift中的枚举除了这个功能之外，还可以使用带关联值的成员
+
+enum ShapeDimensions {
+    
+    // 正方形的关联值是边长
+    case square(side: Double)
+    
+    // 长方形的关联值是宽度和高度
+    case rectangle(width: Double, height: Double)
+    
+    // 返回正方形或者长方形的面积
+    func area() -> Double {
+        switch self {
+        case let .square(side: s):
+            return s * s
+        case let .rectangle(width: w, height: h):
+            return w * h
+        }
+    }
+}
+
+// 计算正方形的边长(只需要提供边长即可)
+var squareShape = ShapeDimensions.square(side: 10.0)
+print("正方形的面积是: \(squareShape.area())")
+
+// 计算长方形的边长(需要提供宽度和高度)
+var rectangleShape = ShapeDimensions.rectangle(width: 20.0, height: 30.0)
+print("长方形的面积是: \(rectangleShape.area())")
