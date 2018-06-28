@@ -111,6 +111,9 @@ print("现在灯泡表面的温度是: \(bulbTemperature)")
 
 enum ShapeDimensions {
     
+    // 如果只是一个点，就不需要关联值
+    case point
+    
     // 正方形的关联值是边长
     case square(side: Double)
     
@@ -120,6 +123,8 @@ enum ShapeDimensions {
     // 返回正方形或者长方形的面积
     func area() -> Double {
         switch self {
+        case .point:
+            return 0
         case let .square(side: s):
             return s * s
         case let .rectangle(width: w, height: h):
@@ -135,3 +140,24 @@ print("正方形的面积是: \(squareShape.area())")
 // 计算长方形的边长(需要提供宽度和高度)
 var rectangleShape = ShapeDimensions.rectangle(width: 20.0, height: 30.0)
 print("长方形的面积是: \(rectangleShape.area())")
+
+
+/** 5、递归枚举 */
+
+enum FamilyTree {
+    case noKnownParents
+    
+    // 在我们这个程序中，FamilyTree是递归的，因为其成员变量oneKnownParent和
+    // twoKnownParents的关联值ancestors、fatherAncestors和motherAncestors
+    // 的类型还是FamilyTree。又因为Swift的编译器需要知道程序中每种类型的每个实例
+    // 对象需要占用多少存储空间，也就是说，它必须先知道FamilyTree占用多大的内存，
+    // 才能进一步知道FamilyTree占用多大的内存，这个很拗口，但确实是一个必须面对的
+    // 问题。为了应对这种情况，Swift中提供了一个indirect关键字，也就是间接层，这样
+    // 依赖，我们就不再需要判断oneKnownParent需要多少内存，只需要用关键字indirect
+    // 告诉编译器，把这个枚举的数据放到一个指针指向的地方就可以了，这样就可以解决问题
+    indirect case oneKnownParent(name: String, ancestors: FamilyTree)
+    indirect case twoKnownParents(fatherName: String, fatherAncestors: FamilyTree,
+                         motherName: String, motherAncestors: FamilyTree)
+}
+
+let xiaoWang = FamilyTree.twoKnownParents(fatherName: "laoWang", fatherAncestors: .noKnownParents, motherName: "laoMa", motherAncestors: .noKnownParents)
