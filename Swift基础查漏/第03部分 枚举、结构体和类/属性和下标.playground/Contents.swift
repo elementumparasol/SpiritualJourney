@@ -106,3 +106,30 @@ let initialSquareCenter = square.center
 
 square.center = Point(x: 15, y: 15)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+
+
+/** 4、属性观察者(属性监听) */
+
+// 属性监听者可以监听存储属性前后的变化，但是它不能监听常量属性和懒加载属性
+
+class Student {
+    
+    // 属性监听器
+    var name: String = "Tom" {
+        
+        willSet(newNameValue) {
+            print("学生的新名字: \(newNameValue)")
+        }
+        
+        didSet(oldNameValue) {
+            print("学生原来的名字: \(oldNameValue)")
+        }
+    }
+    
+    // 存储属性
+    var age: Int = 0
+}
+
+let s = Student()
+s.age = 10
+s.name = "Jim"
