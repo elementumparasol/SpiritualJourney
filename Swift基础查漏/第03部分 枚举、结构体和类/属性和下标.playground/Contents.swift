@@ -56,3 +56,53 @@ class Employee {
     // 懒加载属性
     lazy var dept: Department = Department()
 }
+
+
+/** 3、计算属性 */
+
+// 计算属性不仅可以用在结构体和类中，也可以用在枚举里面。与存储属性所不同的是，计算属性
+// 并不存储任何数据，它只承担计算功能————也就是说，计算属性只负责从其它属性中读取数据，
+// 然后再进行相应的计算。计算属性提供一个Getter访问器来从其它属性中读取数据，另外再提供
+// 一个可选Setter访问器来对读取的数据进行相应的计算
+
+struct Point {
+    
+    var x = 0.0
+    var y = 0.0
+}
+
+struct Size {
+    
+    var width = 0.0
+    var height = 0.0
+}
+
+struct Rect {
+    
+    // 存储属性
+    var origin = Point()
+    var size = Size()
+    
+    // 计算属性
+    var center: Point {
+        
+        // 从存储属性origin和size中读取数据
+        get {
+            let centerX = origin.x + size.width * 0.5
+            let centerY = origin.y + size.height * 0.5
+            return Point(x: centerX, y: centerY)
+        }
+        
+        // 重新设置存储属性origin的值
+        set {
+            origin.x = newValue.x - size.width * 0.5
+            origin.y = newValue.y - size.height * 0.5
+        }
+    }
+}
+
+var square = Rect(origin: Point(x: 0, y: 0), size: Size(width: 10, height: 10))
+let initialSquareCenter = square.center
+
+square.center = Point(x: 15, y: 15)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
