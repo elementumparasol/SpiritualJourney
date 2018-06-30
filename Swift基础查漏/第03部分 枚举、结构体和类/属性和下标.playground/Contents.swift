@@ -30,3 +30,29 @@ class Person {
         self.height = height
     }
 }
+
+
+/** 2、懒加载属性(延迟属性或者惰性属性) */
+
+// 有时候出于性能方面的考虑，我们并不需要马上给属性赋值，在此情况下，就需要用到懒加载属性了
+// 懒加载属性可以做到在使用时才加载，它能有效减少当前内存和时间的消耗。
+// 懒加载属性可以确保该属性值只在第一次访问的时候才会出现。这种延迟技术可以把属性值的计算延
+// 迟到实例初始化之后。这就意味着链家在属性必须使用var来声明，因为该属性的值在稍后会发生改变
+// 懒加载属性使用关键字lazy进行标记
+
+struct Department {
+    
+    var deptName: String = ""
+    var deptNum: Int = 0
+}
+
+class Employee {
+    
+    var name: String = ""
+    var age: Int = 0
+    var job: String?
+    var salary: Double = 0
+    
+    // 懒加载属性
+    lazy var dept: Department = Department()
+}
