@@ -133,3 +133,50 @@ class Student {
 let s = Student()
 s.age = 10
 s.name = "Jim"
+
+
+/** 5、类型属性(Type Property)或者静态属性 */
+
+// 类型属性又称静态属性，它的值是属于类型本身的，跟对象无关。比如说，
+// 银行利率不管谁去存钱，可能所存的金额不一样，但是银行利率都是一样
+// 的。这里利率就相当于是静态属性。类型属性(Type Property)或者说
+// 静态属性通常是以关键字static开头的属性。
+
+// 特别注意：
+// - 结构体的类型属性或者说静态属性是以关键字static作为开头，并且在结构体中既可以定义静态存储属性，又可以定义静态计算属性
+// - 枚举类型中的类型属性或者说静态属性也是以关键字static作为开头，但是枚举中不可以定义实例存储属性，不过可以定义静态存储属性
+// - 类中的类型属性或者说静态属性通常是以static开头，但是有时候也可以用class作为开头。(1)、类中既可以定义实例属性，也可以定义
+//   静态存储属性，还可以定义静态计算属性；(2)、定义静态计算属性如果使用关键字static修饰，则该属性不能在其子类中被重写；相反，
+//   如果是用关键字class修饰，则该属性可以在其子类中被重写
+// - 记住一点，因为结构体和枚举没有继承功能，因此不涉及子类重写问题，所以它们的类型属性或者说静态属性都是用关键字static来修饰的；
+//   而类是可以被继承的，所以当它的子类不需要重写静态属性时，需要用static来定义该静态属性；当该类的子类需要重写静态属性时，则需要
+//   用class来定义该静态属性
+
+struct Account {
+    
+    // 存储属性
+    var amount: Double = 0  // 存款金额
+    var owner: String = ""  // 储户
+    
+    // 类型属性或者说静态属性(存储属性)
+    static var interestRate: Double = 0.068  // 利率
+    
+    // 类型属性或者说静态属性(计算属性)
+    static var staticProp: Double {
+        return interestRate * 1_000_000
+    }
+    
+    // 实例计算属性
+    var instanceProp: Double {
+        return Account.interestRate * amount
+    }
+}
+
+// 访问静态属性
+print(Account.staticProp)
+
+var myAccount = Account()
+
+// 访问实例属性
+myAccount.amount = 100_000_000
+print(myAccount.instanceProp)
