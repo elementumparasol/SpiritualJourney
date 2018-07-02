@@ -253,3 +253,63 @@ let h3 = Human(skin: .white, hair: .white, eye: .brown)
 
 // 注意，因为类里面不能在extension中添加指定构造函数和自定义构造函数，所以，我们不能像
 // 结构体一样，在类的extension中扩展自定义构造函数。不过，类的扩展中可以添加便利构造函数
+
+
+/** 5、有可选属性的构造函数 */
+class Vehicle {
+    
+    // 存储属性
+    var brand: String?
+    var wheels: Int
+    
+    // 自定义构造函数
+    init(wheels: Int) {
+        
+        // 初始化成员属性
+        self.wheels = wheels
+    }
+    
+    // 构造函数重载
+    init(brand: String?, wheels: Int) {
+        
+        // 初始化成员属性
+        self.brand = brand
+        self.wheels = wheels
+    }
+}
+
+// 因为Vehicle的brand成员属性是可选类型，也就是其初始值可以为空，因此在构造函数中可以不用初始化
+let v1 = Vehicle(wheels: 4)
+v1.brand = "BMW"
+
+let v2 = Vehicle(brand: "Benz", wheels: 4)
+print("v2.brand = \(v2.brand!)")
+
+// 扩充便利构造函数
+extension Vehicle {
+    
+    convenience init() {
+        self.init(wheels: 4)
+    }
+}
+
+let v3 = Vehicle()
+print("v3.wheels = \(v3.wheels)")
+
+
+class Van: Vehicle {
+    
+    var color: UIColor
+    
+    init(brand: String?, wheels: Int, color: UIColor) {
+        
+        // 先初始化自己的属性
+        self.color = color
+        
+        // 再调用父类的指定初始化方法(指定构造函数)初始化父类的属性
+        super.init(brand: brand, wheels: wheels)
+    }
+}
+
+let v = Van(brand: "Volvo", wheels: 4, color: .white)
+print("v.brand = \(v.brand!), v.wheels = \(v.wheels), v.color = \(v.color)")
