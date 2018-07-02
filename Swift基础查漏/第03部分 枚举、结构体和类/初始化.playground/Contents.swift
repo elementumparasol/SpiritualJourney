@@ -323,3 +323,41 @@ class Van: Vehicle {
 
 let v = Van(brand: "Volvo", wheels: 4, color: .white)
 print("v.brand = \(v.brand!), v.wheels = \(v.wheels), v.color = \(v.color)")
+
+
+/** 6、可失败初始化方法 */
+
+// 在实际开发过程中，有时候定义一个可能初始化失败的类型是非常重要的。比如说，在初始化实例
+// 时，收到了无效的参数；再比如说，在初始化的过程中需要依赖外部资源，但是外部资源不可用。
+// 在这些情况下，因为条件不满足，在初始化实例时，需要返回一个nil来告诉外界初始化失败，从
+// 而方便编程人员做进一步的检查
+
+class Boy {
+    
+    // 存储属性
+    var penis: Int
+    
+    // 可失败初始化方法
+    init?(penis: Int) {
+        
+        // 如果鸡鸡的数量不是等于1，那么就说明有问题
+        guard penis == 1 else { return nil }
+        
+        // 初始化成员变量
+        self.penis = penis
+    }
+}
+
+// 鸡鸡的数量是2
+let b = Boy(penis: 2)
+print(b?.penis)  // 结果为nil，说明初始化失败
+
+// 完全没有鸡鸡
+let b2 = Boy(penis: 0)
+print(b2?.penis)  // 结果为nil，说明初始化失败
+
+// 只有一个鸡鸡
+let b3 = Boy(penis: 1)
+print(b3?.penis)  // 结果为1，说明初始化成功
+
+// 可失败的初始化方法最终可能会涉及到解包问题，因此如果没有必要，建议最好是不要定义可失败初始化方法
