@@ -208,3 +208,48 @@ class Pomeranian: Dog {
 }
 
 let pomer = Pomeranian(hairColor: .white, name: "布丁", feet: 4)
+
+
+/** 4、在结构体中同时保留默认初始化方法和自定初始化方法 */
+
+// 我们在前面说过，一旦你为类型(无论是结构体还是类)自定了初始化方法，那么Swift就
+// 不再为你提供默认的初始化方法。但是，对于结构体而言(仅仅是结构体)，如果把自定初
+// 始化方法写在类型的extension中那么，就可以让默认初始化方法、逐一初始化方法和自
+// 定义初始化方法得以共存
+
+// 让结构体的默认初始化方法、逐一初始化方法和自定义初始化方法共存
+struct Human {
+    
+    // 存储属性拥有默认值，但是没有自定义构造函数，此时Swift会自动生成默认构造函数和逐一构造函数
+    var skinColor: UIColor = .yellow
+    var hairColor: UIColor = .black
+    var eyeColor: UIColor = .black
+}
+
+// 将自定义构造函数写在Human的extension中
+extension Human {
+    
+    // 自定义构造函数
+    init(skin skinColor: UIColor, hair hairColor: UIColor, eye eyeColor: UIColor) {
+        
+        // 初始化成员属性
+        self.skinColor = skinColor
+        self.hairColor = hairColor
+        self.eyeColor = eyeColor
+    }
+}
+
+// 使用默认构造函数创建Human实例
+var h1 = Human()
+h1.skinColor = .white
+h1.hairColor = .yellow
+h1.eyeColor = .blue
+
+// 使用逐一构造函数创建Human实例
+let h2 = Human(skinColor: .black, hairColor: .black, eyeColor: .brown)
+
+// 使用自定义的构造函数来创建Human实例
+let h3 = Human(skin: .white, hair: .white, eye: .brown)
+
+// 注意，因为类里面不能在extension中添加指定构造函数和自定义构造函数，所以，我们不能像
+// 结构体一样，在类的extension中扩展自定义构造函数。不过，类的扩展中可以添加便利构造函数
