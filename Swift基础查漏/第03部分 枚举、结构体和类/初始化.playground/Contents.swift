@@ -269,8 +269,8 @@ class Vehicle {
         self.wheels = wheels
     }
     
-    // 构造函数重载
-    init(brand: String?, wheels: Int) {
+    // 类的必须初始化方法
+    required init(brand: String?, wheels: Int) {
         
         // 初始化成员属性
         self.brand = brand
@@ -300,6 +300,16 @@ print("v3.wheels = \(v3.wheels)")
 class Van: Vehicle {
     
     var color: UIColor
+    
+    // 实现父类要求必须实现的初始化方法
+    required init(brand: String?, wheels: Int) {
+        
+        // 先初始化自己的属性
+        self.color = .white
+        
+        // 然后再调用父类的指定初始化方法初始化父类的属性
+        super.init(brand: brand, wheels: wheels)
+    }
     
     init(brand: String?, wheels: Int, color: UIColor) {
         
