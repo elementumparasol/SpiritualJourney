@@ -361,3 +361,36 @@ let b3 = Boy(penis: 1)
 print(b3?.penis)  // 结果为1，说明初始化成功
 
 // 可失败的初始化方法最终可能会涉及到解包问题，因此如果没有必要，建议最好是不要定义可失败初始化方法
+
+
+/** 7、析构函数(或者说反初始化方法) */
+
+// 与构造函数相反的是，实例最后被释放时，需要清除一些资源，这个过程被称之为析构过程。在
+// 析构过程中，Swift会调用一个特殊的方法deinit函数，这个函数被称之为析构函数。析构函数
+// 没有返回值，没有任何的数，也没有函数小括号，所以也不能被重载。析构函数有Swift自动调用
+//
+// 特别注意：析构函数只是用与类，不适用与结构体和枚举类型
+
+class Parrot {
+    
+    // 存储属性
+    var kind: String  // 鹦鹉的种类
+    var color: UIColor  // 鹦鹉的颜色
+    
+    // 构造函数
+    init(kind: String, color: UIColor) {
+        
+        // 初始化成员属性
+        self.kind = kind
+        self.color = color
+    }
+    
+    // 析构函数
+    deinit {
+        print("无需手动调用，一旦调用，即表示有资源被释放了")
+    }
+}
+
+var parrot: Parrot? = Parrot(kind: "凤头鹦鹉", color: .white)
+print("parrot.kind = \(parrot!.kind), parrot.color = \(parrot!.color)")
+parrot = nil  // 触发析构过程
