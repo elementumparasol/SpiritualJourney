@@ -69,3 +69,49 @@ class Student: Person {
         }
     }
 }
+
+
+/** 2、重写实例方法 */
+class Person1 {
+    
+    // 存储属性
+    var name: String
+    var age: Int
+    
+    // 自定义构造函数
+    init(name: String, age: Int) {
+        
+        // 初始化成员属性
+        self.name = name
+        self.age = age
+    }
+    
+    // 自定义实例方法
+    func description() -> String {
+        return "\(name)现在的年龄是: \(age)"
+    }
+}
+
+class Student1: Person1 {
+    
+    // 成员变量
+    var grade: Int
+    
+    // 自定义构造函数
+    init(name: String, age: Int, grade: Int) {
+        
+        // 先初始化自己的成员变量
+        self.grade = grade
+        
+        // 再调用父类的指定构造函数，初始化父类的存储属性
+        super.init(name: name, age: age)
+    }
+    
+    // 重写父类的实例方法
+    override func description() -> String {
+        return "\(name)现在的年龄是: \(age), 所在的年级是: \(grade)"
+    }
+}
+
+let s = Student1(name: "Jimmy", age: 12, grade: 6)
+print(s.description())
