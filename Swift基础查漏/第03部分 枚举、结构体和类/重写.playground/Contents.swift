@@ -115,3 +115,23 @@ class Student1: Person1 {
 
 let s = Student1(name: "Jimmy", age: 12, grade: 6)
 print(s.description())
+
+
+/** 3、final关键字 */
+
+// 可以在类的定义过程中使用final关键字来修饰类、属性、方法和下标。被关键字final修饰的类
+// 不能够被继承，被final关键字修饰的属性、方法和下标不能被重写
+
+final class James {
+    
+    // 存储属性
+    final var name: String = "LeBron James"
+    var age: Int = 34
+    
+    final func description() -> String {
+        return "James已经口头承诺加盟洛杉矶湖人"
+    }
+}
+
+// 像James这个类因为被final修饰，所以就不能够被继承。并且，属性name和
+// 方法description()也因为被关键字final修饰，因此也不能被重写
