@@ -72,3 +72,39 @@ for item in person {
         print("\(item.name)是一名老师")
     }
 }
+
+
+/** 2、使用as、as!和as?进行对象类型转换 */
+
+// 在进行对象类型转换之前，首先必须先明确一点，并不是所有的对象类型都能相互转换。对象
+// 类型的转换必须要建立在继承的基础之上的，这个跟强制类型转换还是有很大区别的。其次，
+// 对象类型转换主要放生在两个方向上，即父类转换成子类，以及子类转换为父类。通常情况下
+// 对象类型转换以父类转换为子类较多，而将子类转换为父类的情况比较少见
+
+// (1)as操作符: 主要用于将子类转换为父类这种场合(也就是向上转换)，比较少见
+let student = Student(name: "Lucy", age: 12, grade: 6)
+
+// 通过as操作符将其转换为Person类型
+let p = student as Person  // 使用as操作符，强制将子类转换为父类
+
+// (2)as!操作符: 主要是用来在对象类型的转换过程中，对可选值进行隐式拆包，最后转换的结
+// 果是非可选类型。as!操作符的使用主要有两种情况: ①、将非可选类型转换为非可选类型;②、
+// 将可选类型转换为非可选类型。总之，经过as!转换过后的类型都是非可选类型
+let p1 = Person(name: "Tom", age: 12)
+let stu = p1 as! Student  // 使用as!操作符，将父类转换为子类
+
+// (3)as?操作符在对象类型的转换过程中，不执行解包操作，转换之后的结果仍然是可选类型。
+// as?的应用场合主要有两方面: ①、将非可选类型转换为可选类型; ②、将可选类型转换为可
+// 选类型
+let p2: Person? = Student(name: "July", age: 10, grade: 5)
+let stu2 = p2 as? Student
+
+
+/** 3、AnyObject和Any */
+// 在Swift中，有两种类型用来表示不确定类型，即AnyObject和Any。其中，AnyObject主要
+// 是用来表示类的任何类型，也就是引用类型；而Any则是用来表示任何类型，除了类对象之外，
+// 还可以用来表示Int、Double这一类的基本类型，也就是说Any除了可以表示引用类型之外，也
+// 可以用来表示值类型
+// Swift provides two special types for working with nonspecific types:
+// - Any can represent an instance of any type at all, including function types.
+// - AnyObject can represent an instance of any class type.
