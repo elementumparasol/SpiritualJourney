@@ -26,3 +26,21 @@ default:  // default分支是不可少的
 }
 
 print("最终的等级是: \(result)")
+
+
+/** 2、元组 */
+
+// 除了区间匹配之外，我们还可以使用一个元组来在同一个switch中测试多个值
+let somePoint = (1, 5)
+switch somePoint {
+case (0, 0):
+    print("\(somePoint)在坐标原点")
+case (_, 0):
+    print("\(somePoint)在x轴上")
+case (0, _):
+    print("\(somePoint)在y轴上")
+case (-2...2, -2...2):
+    print("\(somePoint)在划定的区间内")
+default:
+    print("\(somePoint)在划定的区间之外")
+}
