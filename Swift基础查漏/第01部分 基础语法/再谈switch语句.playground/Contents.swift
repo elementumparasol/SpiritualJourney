@@ -81,3 +81,20 @@ case let (x, y) where x == -y:
 case let (x, y):
     print("点(\(x), \(y))不在x == y和x == -y这任意两条线上")
 }
+
+
+/** 5、复合型Cases */
+
+// 当多个条件可以使用同一种方法来处理时，可以将这几种可能放在同一个case后面，并且用逗号隔开。当
+// case后面的任意一种模式匹配的时候，这条分支就会被匹配。并且，如果匹配列表过长，还可以分行书写
+
+let someCharacter: Character = "e"
+switch someCharacter {
+case "a", "e", "i", "o", "u":
+    print("\(someCharacter)是元音字母")
+case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
+     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
+    print("\(someCharacter)是辅音字母")
+default:
+    print("\(someCharacter)既不是元音字母，也不是辅音字母")
+}
