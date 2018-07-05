@@ -66,3 +66,18 @@ case let (x, y):  // 绑定到临时变量x和y上
 }
 
 // 因为anotherPoint的坐标是(2, 5)，所以他会被绑定到
+
+
+/** 4、where条件筛选 */
+
+let yetAnotherPoint = (-1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print("点(\(x), \(y))在x == y这条线上")
+    
+case let (x, y) where x == -y:
+    print("点(\(x), \(y))在x == -y这条线上")
+    
+case let (x, y):
+    print("点(\(x), \(y))不在x == y和x == -y这任意两条线上")
+}
