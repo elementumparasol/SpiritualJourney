@@ -44,3 +44,25 @@ case (-2...2, -2...2):
 default:
     print("\(somePoint)在划定的区间之外")
 }
+
+
+/** 3、值绑定 */
+
+// case分支允许将匹配的值声明为临时常量或变量，并且在case分支体内使用 —— 这种行为被称为
+// 值绑定(value binding)，因为匹配的值在case分支体内，与临时的常量或变量绑定。下面的例
+// 子将下图中的点(x, y)，使用(Int, Int)类型的元组表示，然后分类表示
+
+let anotherPoint = (2, 5)
+
+switch anotherPoint {
+case (let x, 0):  // 绑定到临时变量x上
+    print("只有x轴上有值，并且x的值为: \(x)")
+    
+case (0, let y):  // 绑定到临时变量y上
+    print("只有y轴上有值，并且y的值为: \(y)")
+    
+case let (x, y):  // 绑定到临时变量x和y上
+    print("x和y值都存在，分别为: (\(x), \(y))")
+}
+
+// 因为anotherPoint的坐标是(2, 5)，所以他会被绑定到
