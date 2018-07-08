@@ -15,4 +15,4 @@ for item in any {
 
 var anyObject = [AnyObject]()
 anyObject.append(UIView())  // 引用类型
-// anyObject.append(3.14) 添加非引用了性就会出错
+// anyObject.append(3.14) 添加非引用了性就会出错  
