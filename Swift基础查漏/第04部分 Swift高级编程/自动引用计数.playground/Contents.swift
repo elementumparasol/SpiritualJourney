@@ -113,3 +113,38 @@ john = nil
 // 为nil，而另一个属性的值不允许为nil，这也可能会产生循环强引用。这种场景最适合通过无
 // 主引用来解决。
 
+
+/** 3、无主引用和隐式解析可选属性 */
+
+// 除了上面两种场景之外，还存在着第三种场景，在这种场景中，两个属性都必须有值，并且初始化完
+// 成后永远不会为nil。在这种场景中，需要一个类使用无主属性，而另外一个类使用隐式解析可选属性
+
+class Country {
+    
+    let name: String
+    
+    // 隐式可选属性
+    var capitalCity: City!
+    
+    init(name: String, capitalName: String) {
+        self.name = name
+        self.capitalCity = City(name: capitalName, country: self)
+    }
+}
+
+class City {
+    
+    let name: String
+    
+    // 无主引用
+    unowned let country: Country
+    
+    init(name: String, country: Country) {
+        self.name = name
+        self.country = country
+    }
+}
+
+var country = Country(name: "Canada", capitalName: "Ottawa")
+print("\(country.name)'s capital city is called \(country.capitalCity.name)")
+// 打印 "Canada's capital city is called Ottawa"
