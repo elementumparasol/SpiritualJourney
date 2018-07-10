@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// 创建magentaView
-    fileprivate var magentaView: UIView = {
+    fileprivate lazy var magentaView: UIView = {
         
         let magentaView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 180, height: 180)))
         

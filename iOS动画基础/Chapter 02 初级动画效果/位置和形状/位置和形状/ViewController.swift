@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// 创建purpleView
-    fileprivate var purpleView: UIView = {
+    fileprivate lazy var purpleView: UIView = {
         
         let purpleView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 180, height: 180)))
         purpleView.backgroundColor = .purple

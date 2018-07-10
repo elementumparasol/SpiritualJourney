@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// redView
-    fileprivate var redView: UIView = {
+    fileprivate lazy var redView: UIView = {
         
         let redView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         redView.backgroundColor = .red
