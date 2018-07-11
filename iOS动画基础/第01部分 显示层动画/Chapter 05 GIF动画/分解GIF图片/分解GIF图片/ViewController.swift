@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 
 class ViewController: UIViewController {
 
@@ -22,7 +23,22 @@ class ViewController: UIViewController {
         // 将GIF图片转成Data
         let imageData = try! Data(contentsOf: imageURL)
         
-        print(imageData)
+        // 将Data数据转换成CGImageSource
+        guard let imageDataSource = CGImageSourceCreateWithData(imageData as CFData, nil) else { return }
+        
+        // 获取图片的帧数
+        let imageCount = CGImageSourceGetCount(imageDataSource)
+        
+        // 遍历图片的总帧数
+        for idx in 0..<imageCount {
+            
+            // 根据imageDataSource创建CGImage
+            guard let imageRef = CGImageSourceCreateImageAtIndex(imageDataSource, idx, nil) else { return }
+            
+            
+            // 根据已经创建的CGImage数据创建UIImage图片
+            let image = UIImage(cgImage: imageRef, scale: UIScreen.main.scale, orientation: UIImage.Orientation.up)
+        }
     }
 
 
