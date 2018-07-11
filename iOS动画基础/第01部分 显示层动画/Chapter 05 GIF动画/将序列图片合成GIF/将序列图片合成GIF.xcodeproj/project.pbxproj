@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C540F96020F6C0290012E168 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540F95F20F6C0290012E168 /* AppDelegate.swift */; };
+		C540F96220F6C0290012E168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540F96120F6C0290012E168 /* ViewController.swift */; };
+		C540F96520F6C0290012E168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540F96320F6C0290012E168 /* Main.storyboard */; };
+		C540F96720F6C02E0012E168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C540F96620F6C02E0012E168 /* Assets.xcassets */; };
+		C540F96A20F6C02E0012E168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C540F96820F6C02E0012E168 /* LaunchScreen.storyboard */; };
+		C540F99720F6C09D0012E168 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97220F6C09D0012E168 /* 8.png */; };
+		C540F99820F6C09D0012E168 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97320F6C09D0012E168 /* 9.png */; };
+		C540F99920F6C09D0012E168 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97420F6C09D0012E168 /* 14.png */; };
+		C540F99A20F6C09D0012E168 /* 28.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97520F6C09D0012E168 /* 28.png */; };
+		C540F99B20F6C09D0012E168 /* 29.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97620F6C09D0012E168 /* 29.png */; };
+		C540F99C20F6C09D0012E168 /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97720F6C09D0012E168 /* 15.png */; };
+		C540F99D20F6C09D0012E168 /* 17.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97820F6C09D0012E168 /* 17.png */; };
+		C540F99E20F6C09D0012E168 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97920F6C09D0012E168 /* 16.png */; };
+		C540F99F20F6C09D0012E168 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97A20F6C09D0012E168 /* 12.png */; };
+		C540F9A020F6C09D0012E168 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97B20F6C09D0012E168 /* 13.png */; };
+		C540F9A120F6C09D0012E168 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97C20F6C09D0012E168 /* 11.png */; };
+		C540F9A220F6C09D0012E168 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97D20F6C09D0012E168 /* 10.png */; };
+		C540F9A320F6C09D0012E168 /* 35.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97E20F6C09D0012E168 /* 35.png */; };
+		C540F9A420F6C09D0012E168 /* 21.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F97F20F6C09D0012E168 /* 21.png */; };
+		C540F9A520F6C09D0012E168 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98020F6C09D0012E168 /* 20.png */; };
+		C540F9A620F6C09D0012E168 /* 34.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98120F6C09D0012E168 /* 34.png */; };
+		C540F9A720F6C09D0012E168 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98220F6C09D0012E168 /* 22.png */; };
+		C540F9A820F6C09D0012E168 /* 36.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98320F6C09D0012E168 /* 36.png */; };
+		C540F9A920F6C09D0012E168 /* 23.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98420F6C09D0012E168 /* 23.png */; };
+		C540F9AA20F6C09D0012E168 /* 27.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98520F6C09D0012E168 /* 27.png */; };
+		C540F9AB20F6C09D0012E168 /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98620F6C09D0012E168 /* 33.png */; };
+		C540F9AC20F6C09D0012E168 /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98720F6C09D0012E168 /* 32.png */; };
+		C540F9AD20F6C09D0012E168 /* 26.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98820F6C09D0012E168 /* 26.png */; };
+		C540F9AE20F6C09D0012E168 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98920F6C09D0012E168 /* 18.png */; };
+		C540F9AF20F6C09D0012E168 /* 30.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98A20F6C09D0012E168 /* 30.png */; };
+		C540F9B020F6C09D0012E168 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98B20F6C09D0012E168 /* 24.png */; };
+		C540F9B120F6C09D0012E168 /* 25.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98C20F6C09D0012E168 /* 25.png */; };
+		C540F9B220F6C09D0012E168 /* 31.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98D20F6C09D0012E168 /* 31.png */; };
+		C540F9B320F6C09D0012E168 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98E20F6C09D0012E168 /* 19.png */; };
+		C540F9B420F6C09D0012E168 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F98F20F6C09D0012E168 /* 4.png */; };
+		C540F9B520F6C09D0012E168 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99020F6C09D0012E168 /* 5.png */; };
+		C540F9B620F6C09D0012E168 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99120F6C09D0012E168 /* 7.png */; };
+		C540F9B720F6C09D0012E168 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99220F6C09D0012E168 /* 6.png */; };
+		C540F9B820F6C09D0012E168 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99320F6C09D0012E168 /* 2.png */; };
+		C540F9B920F6C09D0012E168 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99420F6C09D0012E168 /* 3.png */; };
+		C540F9BA20F6C09D0012E168 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99520F6C09D0012E168 /* 1.png */; };
+		C540F9BB20F6C09D0012E168 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = C540F99620F6C09D0012E168 /* 0.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C540F95C20F6C0290012E168 /* 将序列图片合成GIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将序列图片合成GIF.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C540F95F20F6C0290012E168 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C540F96120F6C0290012E168 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C540F96420F6C0290012E168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C540F96620F6C02E0012E168 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C540F96920F6C02E0012E168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C540F96B20F6C02E0012E168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C540F97220F6C09D0012E168 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		C540F97320F6C09D0012E168 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		C540F97420F6C09D0012E168 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		C540F97520F6C09D0012E168 /* 28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 28.png; sourceTree = "<group>"; };
+		C540F97620F6C09D0012E168 /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
+		C540F97720F6C09D0012E168 /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
+		C540F97820F6C09D0012E168 /* 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 17.png; sourceTree = "<group>"; };
+		C540F97920F6C09D0012E168 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
+		C540F97A20F6C09D0012E168 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		C540F97B20F6C09D0012E168 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		C540F97C20F6C09D0012E168 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		C540F97D20F6C09D0012E168 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		C540F97E20F6C09D0012E168 /* 35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 35.png; sourceTree = "<group>"; };
+		C540F97F20F6C09D0012E168 /* 21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 21.png; sourceTree = "<group>"; };
+		C540F98020F6C09D0012E168 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20.png; sourceTree = "<group>"; };
+		C540F98120F6C09D0012E168 /* 34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 34.png; sourceTree = "<group>"; };
+		C540F98220F6C09D0012E168 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		C540F98320F6C09D0012E168 /* 36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 36.png; sourceTree = "<group>"; };
+		C540F98420F6C09D0012E168 /* 23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 23.png; sourceTree = "<group>"; };
+		C540F98520F6C09D0012E168 /* 27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 27.png; sourceTree = "<group>"; };
+		C540F98620F6C09D0012E168 /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
+		C540F98720F6C09D0012E168 /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
+		C540F98820F6C09D0012E168 /* 26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 26.png; sourceTree = "<group>"; };
+		C540F98920F6C09D0012E168 /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 18.png; sourceTree = "<group>"; };
+		C540F98A20F6C09D0012E168 /* 30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30.png; sourceTree = "<group>"; };
+		C540F98B20F6C09D0012E168 /* 24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24.png; sourceTree = "<group>"; };
+		C540F98C20F6C09D0012E168 /* 25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 25.png; sourceTree = "<group>"; };
+		C540F98D20F6C09D0012E168 /* 31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 31.png; sourceTree = "<group>"; };
+		C540F98E20F6C09D0012E168 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 19.png; sourceTree = "<group>"; };
+		C540F98F20F6C09D0012E168 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		C540F99020F6C09D0012E168 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		C540F99120F6C09D0012E168 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		C540F99220F6C09D0012E168 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		C540F99320F6C09D0012E168 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		C540F99420F6C09D0012E168 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C540F99520F6C09D0012E168 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		C540F99620F6C09D0012E168 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C540F95920F6C0290012E168 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C540F95320F6C0290012E168 = {
+			isa = PBXGroup;
+			children = (
+				C540F95E20F6C0290012E168 /* 将序列图片合成GIF */,
+				C540F95D20F6C0290012E168 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C540F95D20F6C0290012E168 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C540F95C20F6C0290012E168 /* 将序列图片合成GIF.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C540F95E20F6C0290012E168 /* 将序列图片合成GIF */ = {
+			isa = PBXGroup;
+			children = (
+				C540F97120F6C09D0012E168 /* FunnyKanna */,
+				C540F95F20F6C0290012E168 /* AppDelegate.swift */,
+				C540F96120F6C0290012E168 /* ViewController.swift */,
+				C540F96320F6C0290012E168 /* Main.storyboard */,
+				C540F96620F6C02E0012E168 /* Assets.xcassets */,
+				C540F96820F6C02E0012E168 /* LaunchScreen.storyboard */,
+				C540F96B20F6C02E0012E168 /* Info.plist */,
+			);
+			path = "将序列图片合成GIF";
+			sourceTree = "<group>";
+		};
+		C540F97120F6C09D0012E168 /* FunnyKanna */ = {
+			isa = PBXGroup;
+			children = (
+				C540F97220F6C09D0012E168 /* 8.png */,
+				C540F97320F6C09D0012E168 /* 9.png */,
+				C540F97420F6C09D0012E168 /* 14.png */,
+				C540F97520F6C09D0012E168 /* 28.png */,
+				C540F97620F6C09D0012E168 /* 29.png */,
+				C540F97720F6C09D0012E168 /* 15.png */,
+				C540F97820F6C09D0012E168 /* 17.png */,
+				C540F97920F6C09D0012E168 /* 16.png */,
+				C540F97A20F6C09D0012E168 /* 12.png */,
+				C540F97B20F6C09D0012E168 /* 13.png */,
+				C540F97C20F6C09D0012E168 /* 11.png */,
+				C540F97D20F6C09D0012E168 /* 10.png */,
+				C540F97E20F6C09D0012E168 /* 35.png */,
+				C540F97F20F6C09D0012E168 /* 21.png */,
+				C540F98020F6C09D0012E168 /* 20.png */,
+				C540F98120F6C09D0012E168 /* 34.png */,
+				C540F98220F6C09D0012E168 /* 22.png */,
+				C540F98320F6C09D0012E168 /* 36.png */,
+				C540F98420F6C09D0012E168 /* 23.png */,
+				C540F98520F6C09D0012E168 /* 27.png */,
+				C540F98620F6C09D0012E168 /* 33.png */,
+				C540F98720F6C09D0012E168 /* 32.png */,
+				C540F98820F6C09D0012E168 /* 26.png */,
+				C540F98920F6C09D0012E168 /* 18.png */,
+				C540F98A20F6C09D0012E168 /* 30.png */,
+				C540F98B20F6C09D0012E168 /* 24.png */,
+				C540F98C20F6C09D0012E168 /* 25.png */,
+				C540F98D20F6C09D0012E168 /* 31.png */,
+				C540F98E20F6C09D0012E168 /* 19.png */,
+				C540F98F20F6C09D0012E168 /* 4.png */,
+				C540F99020F6C09D0012E168 /* 5.png */,
+				C540F99120F6C09D0012E168 /* 7.png */,
+				C540F99220F6C09D0012E168 /* 6.png */,
+				C540F99320F6C09D0012E168 /* 2.png */,
+				C540F99420F6C09D0012E168 /* 3.png */,
+				C540F99520F6C09D0012E168 /* 1.png */,
+				C540F99620F6C09D0012E168 /* 0.png */,
+			);
+			path = FunnyKanna;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C540F95B20F6C0290012E168 /* 将序列图片合成GIF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C540F96E20F6C02E0012E168 /* Build configuration list for PBXNativeTarget "将序列图片合成GIF" */;
+			buildPhases = (
+				C540F95820F6C0290012E168 /* Sources */,
+				C540F95920F6C0290012E168 /* Frameworks */,
+				C540F95A20F6C0290012E168 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "将序列图片合成GIF";
+			productName = "将序列图片合成GIF";
+			productReference = C540F95C20F6C0290012E168 /* 将序列图片合成GIF.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C540F95420F6C0290012E168 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Enrica;
+				TargetAttributes = {
+					C540F95B20F6C0290012E168 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = C540F95720F6C0290012E168 /* Build configuration list for PBXProject "将序列图片合成GIF" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C540F95320F6C0290012E168;
+			productRefGroup = C540F95D20F6C0290012E168 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C540F95B20F6C0290012E168 /* 将序列图片合成GIF */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C540F95A20F6C0290012E168 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C540F9B420F6C09D0012E168 /* 4.png in Resources */,
+				C540F9A020F6C09D0012E168 /* 13.png in Resources */,
+				C540F9A320F6C09D0012E168 /* 35.png in Resources */,
+				C540F99F20F6C09D0012E168 /* 12.png in Resources */,
+				C540F9B320F6C09D0012E168 /* 19.png in Resources */,
+				C540F9B920F6C09D0012E168 /* 3.png in Resources */,
+				C540F9B520F6C09D0012E168 /* 5.png in Resources */,
+				C540F9AA20F6C09D0012E168 /* 27.png in Resources */,
+				C540F99C20F6C09D0012E168 /* 15.png in Resources */,
+				C540F9A920F6C09D0012E168 /* 23.png in Resources */,
+				C540F9B820F6C09D0012E168 /* 2.png in Resources */,
+				C540F99720F6C09D0012E168 /* 8.png in Resources */,
+				C540F9AB20F6C09D0012E168 /* 33.png in Resources */,
+				C540F9A720F6C09D0012E168 /* 22.png in Resources */,
+				C540F96A20F6C02E0012E168 /* LaunchScreen.storyboard in Resources */,
+				C540F9B120F6C09D0012E168 /* 25.png in Resources */,
+				C540F9BB20F6C09D0012E168 /* 0.png in Resources */,
+				C540F9A220F6C09D0012E168 /* 10.png in Resources */,
+				C540F9A120F6C09D0012E168 /* 11.png in Resources */,
+				C540F9BA20F6C09D0012E168 /* 1.png in Resources */,
+				C540F96720F6C02E0012E168 /* Assets.xcassets in Resources */,
+				C540F9B620F6C09D0012E168 /* 7.png in Resources */,
+				C540F9AD20F6C09D0012E168 /* 26.png in Resources */,
+				C540F9A520F6C09D0012E168 /* 20.png in Resources */,
+				C540F9A620F6C09D0012E168 /* 34.png in Resources */,
+				C540F9AC20F6C09D0012E168 /* 32.png in Resources */,
+				C540F9B020F6C09D0012E168 /* 24.png in Resources */,
+				C540F99820F6C09D0012E168 /* 9.png in Resources */,
+				C540F99D20F6C09D0012E168 /* 17.png in Resources */,
+				C540F9B220F6C09D0012E168 /* 31.png in Resources */,
+				C540F99B20F6C09D0012E168 /* 29.png in Resources */,
+				C540F9AF20F6C09D0012E168 /* 30.png in Resources */,
+				C540F99E20F6C09D0012E168 /* 16.png in Resources */,
+				C540F9A820F6C09D0012E168 /* 36.png in Resources */,
+				C540F9B720F6C09D0012E168 /* 6.png in Resources */,
+				C540F9A420F6C09D0012E168 /* 21.png in Resources */,
+				C540F99A20F6C09D0012E168 /* 28.png in Resources */,
+				C540F9AE20F6C09D0012E168 /* 18.png in Resources */,
+				C540F99920F6C09D0012E168 /* 14.png in Resources */,
+				C540F96520F6C0290012E168 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C540F95820F6C0290012E168 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C540F96220F6C0290012E168 /* ViewController.swift in Sources */,
+				C540F96020F6C0290012E168 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C540F96320F6C0290012E168 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C540F96420F6C0290012E168 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C540F96820F6C02E0012E168 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C540F96920F6C02E0012E168 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C540F96C20F6C02E0012E168 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C540F96D20F6C02E0012E168 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C540F96F20F6C02E0012E168 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DVFNW8928B;
+				INFOPLIST_FILE = "将序列图片合成GIF/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.imemyself.-------GIF";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C540F97020F6C02E0012E168 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DVFNW8928B;
+				INFOPLIST_FILE = "将序列图片合成GIF/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.imemyself.-------GIF";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C540F95720F6C0290012E168 /* Build configuration list for PBXProject "将序列图片合成GIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C540F96C20F6C02E0012E168 /* Debug */,
+				C540F96D20F6C02E0012E168 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C540F96E20F6C02E0012E168 /* Build configuration list for PBXNativeTarget "将序列图片合成GIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C540F96F20F6C02E0012E168 /* Debug */,
+				C540F97020F6C02E0012E168 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C540F95420F6C0290012E168 /* Project object */;
+}
