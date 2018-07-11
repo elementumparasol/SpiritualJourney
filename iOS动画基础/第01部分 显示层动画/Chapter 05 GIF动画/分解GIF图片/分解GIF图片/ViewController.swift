@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         
 //        print(documentsURL)
         
-        getSandboxDirectorys()
+        createDirectoryInSandbox()
         
         // 遍历图片的总帧数
         for idx in 0..<imageCount {
@@ -65,6 +65,37 @@ class ViewController: UIViewController {
             
             // 写入图片
             try! pngData.write(to: URL(fileURLWithPath: pngImagePath), options: [.atomic])
+        }
+    }
+    
+    /// 在沙盒中Documents文件夹下面创建自定义目录
+    func createDirectoryInSandbox() {
+        
+        // MARK: - 通过String的方式来创建文件夹
+        
+        // 获取沙盒中Documents文件夹所在路径的String
+        let documentsString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        
+        // 在Documents目录下创建自定义文件夹
+        do {
+            try FileManager.default.createDirectory(atPath: "\(documentsString)/Directory1", withIntermediateDirectories: true, attributes: nil)
+            
+        } catch let error {
+            
+            debugPrint(error)
+        }
+        
+        // MARK: - 通过URL的方式来创建文件夹
+        
+        // 获取沙盒中Documents文件夹所在路径的URL
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        // 在Documents目录下创建新的文件夹
+        do {
+            try FileManager.default.createDirectory(at: documentsURL.appendingPathComponent("/Directory2"), withIntermediateDirectories: true, attributes: nil)
+        } catch let error {
+            
+            debugPrint(error)
         }
     }
 
