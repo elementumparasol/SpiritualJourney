@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: - 1、加载GIF图片并将其转换为二进制数据
+        
         // 获取GIF图片所在的路径
         guard let imagePath = Bundle.main.path(forResource: "猫咪.GIF", ofType: nil) else { return }
         
@@ -25,46 +27,48 @@ class ViewController: UIViewController {
         
         
         
-        // 将Data数据转换成CGImageSource
+        
+        // MARK: - 2、将图片的二进制数据转换为CGImageSource
+        
+        // 将Data数据转换成CGImageSource数据
         guard let imageDataSource = CGImageSourceCreateWithData(imageData as CFData, nil) else { return }
         
         // 获取图片的帧数
         let imageCount = CGImageSourceGetCount(imageDataSource)
         
         
+        
+        
+        // MARK: - 3、在沙盒中自定义目录，并且将分割的PNG图片写入目标文件夹
+        
         // 获取应用所在的Documents目录
         let documentsDerectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
         
-        // 获取沙盒中的Documents或者Library文件夹的URL
-        // - documentDirectory: 获取Documents文件夹所在路径
-        // - libraryDirectory: 获取Library文件夹所在路径
-        let documentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
-        
-        // 获取临时文件夹所在路径
-        // let tmpPath = NSTemporaryDirectory()
-        
-//        print(documentsURL)
-        
-        createDirectoryInSandbox()
+        // 在Documents目录下创建自定义目录
+        do {
+            try FileManager.default.createDirectory(atPath: "\(documentsDerectory)/CatImages", withIntermediateDirectories: true, attributes: nil)
+        } catch let error {
+            debugPrint(error)
+        }
         
         // 遍历图片的总帧数
         for idx in 0..<imageCount {
             
-            // 根据imageDataSource创建CGImage
+            // 根据imageDataSource数据创建CGImage图片
             guard let imageRef = CGImageSourceCreateImageAtIndex(imageDataSource, idx, nil) else { return }
             
             
             // 根据已经创建的CGImage数据创建UIImage图片
             let image = UIImage(cgImage: imageRef, scale: UIScreen.main.scale, orientation: UIImage.Orientation.up)
             
-            //
+            // 将UIImage图片转换成PNG形式的二进制数据
             guard let pngData: Data = image.pngData() else { return }
             
-            //
-            let pngImagePath = documentsDerectory + "/\(idx)" + ".png"
+            // 拼接PNG图片的全路径
+            let pngImagePath = documentsDerectory + "/CatImages/\(idx)" + ".png"
             
-            // 写入图片
-            try! pngData.write(to: URL(fileURLWithPath: pngImagePath), options: [.atomic])
+            // 将PNG图片写入目标路径
+            try? pngData.write(to: URL(fileURLWithPath: pngImagePath), options: [.atomic])
         }
     }
     
