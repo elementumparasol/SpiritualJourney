@@ -13,6 +13,7 @@
 		C53C0C9420F9991600E91C66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53C0C9320F9991600E91C66 /* Assets.xcassets */; };
 		C53C0C9720F9991600E91C66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C53C0C9520F9991600E91C66 /* LaunchScreen.storyboard */; };
 		C53C0CA120FA6FA800E91C66 /* AnimationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C0CA020FA6FA800E91C66 /* AnimationButton.swift */; };
+		C53C0CA320FA88E100E91C66 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C0CA220FA88E100E91C66 /* UIColor-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C53C0C9620F9991600E91C66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C53C0C9820F9991600E91C66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53C0CA020FA6FA800E91C66 /* AnimationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationButton.swift; sourceTree = "<group>"; };
+		C53C0CA220FA88E100E91C66 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				C53C0C8C20F9991400E91C66 /* AppDelegate.swift */,
 				C53C0C8E20F9991400E91C66 /* ViewController.swift */,
+				C53C0CA220FA88E100E91C66 /* UIColor-Extension.swift */,
 				C53C0CA020FA6FA800E91C66 /* AnimationButton.swift */,
 				C53C0C9020F9991400E91C66 /* Main.storyboard */,
 				C53C0C9320F9991600E91C66 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53C0CA120FA6FA800E91C66 /* AnimationButton.swift in Sources */,
+				C53C0CA320FA88E100E91C66 /* UIColor-Extension.swift in Sources */,
 				C53C0C8F20F9991400E91C66 /* ViewController.swift in Sources */,
 				C53C0C8D20F9991400E91C66 /* AppDelegate.swift in Sources */,
 			);

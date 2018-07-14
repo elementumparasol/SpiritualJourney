@@ -131,9 +131,9 @@ extension AnimationButton {
         ctx?.addArc(center: touchPoint, radius: waveRadius, startAngle: 0, endAngle: endAngle, clockwise: false)
         
         // 渲染水波的颜色
-        let waveColor = self.waveColor
-        waveColor.setStroke()  // 填充内部颜色
-        waveColor.setFill()  // 填充边缘颜色
+        let strokeColor = waveColor
+        strokeColor.setStroke()  // 填充内部颜色
+        strokeColor.setFill()  // 填充边缘颜色
         
         // 完成图形的绘制
         ctx?.fillPath()

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         let buttonFrame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width - 2 * 20, height: 44))
         
         // 创建按钮对象
-        let button = AnimationButton(frame: buttonFrame, normalTitle: "登录", highlightedTitle: "登录中...", normalTitleColor: .white, highlightedTitleColor: .lightGray, waveColor: .magenta)
+        let button = AnimationButton(frame: buttonFrame, normalTitle: "登录", highlightedTitle: "登录中...", normalTitleColor: .white, highlightedTitleColor: .lightGray, waveColor: UIColor.randomColor())
         
         // 设置按钮的背景颜色
         button.backgroundColor = .red
