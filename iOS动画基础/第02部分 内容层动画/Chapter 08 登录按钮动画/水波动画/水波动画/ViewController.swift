@@ -19,20 +19,20 @@ class ViewController: UIViewController {
         let button = AnimationButtom(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width - 2 * 20, height: 44)))
         
         // 设置按钮的背景颜色
-        button.backgroundColor = .red
+//        button.backgroundColor = .red
         
         // 设置按钮的圆角
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 5
+//        button.layer.masksToBounds = true
+//        button.layer.cornerRadius = 5
         
         // 设置按钮普通状态下的文字
-        button.setTitle("登录", for: .normal)
+//        button.setTitle("登录", for: .normal)
         
         // 设置按钮高亮状态下的文字
-        button.setTitle("登录中", for: .highlighted)
+//        button.setTitle("登录中", for: .highlighted)
         
         // 设置按钮高亮状态下的文字颜色
-        button.setTitleColor(.lightGray, for: .highlighted)
+//        button.setTitleColor(.lightGray, for: .highlighted)
         
         // 监听登录按钮的点击
         button.addTarget(self, action: #selector(ViewController.loginButtonClick(_:_:)), for: .touchUpInside)
