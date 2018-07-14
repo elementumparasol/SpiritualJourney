@@ -47,8 +47,8 @@ class AnimationButton: UIButton {
     ///   - highlightedTitle: 按钮高亮状态下的标题
     ///   - normalTitleColor: 按钮普通状态下标题的颜色
     ///   - highlightedTitleColor: 按钮高亮状态下标题的颜色
-    ///   - waveColor: 按钮水波的颜色
-    init(frame: CGRect, normalTitle: String, highlightedTitle: String, normalTitleColor: UIColor, highlightedTitleColor: UIColor, waveColor: UIColor) {
+    ///   - waveColor: 按钮水波的颜色, 如果外界不设置默认为magenta
+    init(frame: CGRect, normalTitle: String, highlightedTitle: String, normalTitleColor: UIColor, highlightedTitleColor: UIColor, waveColor: UIColor = UIColor.magenta) {
         
         // 初始化自定义属性
         self.normalTitle = normalTitle

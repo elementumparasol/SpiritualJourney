@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    /// 扩充一个生成随机颜色的便利构造函数
+    /// 扩充一个生成指定颜色的便利构造函数
     ///
     /// - Parameters:
     ///   - r: 红色通道的值

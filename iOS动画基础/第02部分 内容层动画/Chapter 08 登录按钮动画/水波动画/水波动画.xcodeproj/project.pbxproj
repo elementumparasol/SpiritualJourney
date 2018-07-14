@@ -60,8 +60,8 @@
 			children = (
 				C53C0C8C20F9991400E91C66 /* AppDelegate.swift */,
 				C53C0C8E20F9991400E91C66 /* ViewController.swift */,
-				C53C0CA220FA88E100E91C66 /* UIColor-Extension.swift */,
 				C53C0CA020FA6FA800E91C66 /* AnimationButton.swift */,
+				C53C0CA220FA88E100E91C66 /* UIColor-Extension.swift */,
 				C53C0C9020F9991400E91C66 /* Main.storyboard */,
 				C53C0C9320F9991600E91C66 /* Assets.xcassets */,
 				C53C0C9520F9991600E91C66 /* LaunchScreen.storyboard */,
