@@ -27,12 +27,17 @@ class AnimationButton: UIButton {
     /// 设置水波的颜色
     private var waveColor: UIColor
     
-    /// 点击区域的x坐标
-    private var centerX: CGFloat = 0
+    /// 水波的半径
+    private var waveRadius: CGFloat = 0
     
-    /// 点击区域的y坐标
-    private var centerY: CGFloat = 0
+    /// 触摸点的坐标
+    private var touchPoint: CGPoint = CGPoint.zero
     
+    /// 记录执行的次数
+    private var count: Int = 0
+    
+    /// 定时器
+    private var timer: Timer?
     
     /// 创建自定的按钮
     ///
@@ -92,6 +97,9 @@ extension AnimationButton {
     ///   - event: 事件
     func startWaveAnimation(_ button: UIButton, event: UIEvent) {
         
+        // 一旦开始执行动画，就禁止按钮的点击
+        isUserInteractionEnabled = false
+        
         // 获取所有的触摸集合
         let touches = event.touches(for: button)
         
@@ -99,12 +107,82 @@ extension AnimationButton {
         guard let touch = touches?.first else { return }
 
         // 获取触摸点的坐标系
-        let point = touch.location(in: button)
+        touchPoint = touch.location(in: button)
         
-        // 获取centerX和centerY的值
-        centerX = point.x
-        centerY = point.y
+        /*********************************************************/
+        
+        // 添加定时器
+        timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(AnimationButton.scheduledTimer), userInfo: nil, repeats: true)
+        
+        // 将定时器添加到RunLoop中
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    /// 绘图
+    override func draw(_ rect: CGRect) {
+        
+        // 获取图形上下文
+        let ctx = UIGraphicsGetCurrentContext()
+        
+        // 设置结束角度
+        let endAngle = CGFloat(Double.pi * 2)  // 360°
+        
+        // 绘制带有弧度的图像(clockwise表示顺时针方向)
+        ctx?.addArc(center: touchPoint, radius: waveRadius, startAngle: 0, endAngle: endAngle, clockwise: false)
+        
+        // 渲染水波的颜色
+        let waveColor = self.waveColor
+        waveColor.setStroke()  // 填充内部颜色
+        waveColor.setFill()  // 填充边缘颜色
+        
+        // 完成图形的绘制
+        ctx?.fillPath()
+    }
+}
 
-        print("x: \(centerX), y: \(centerY)")
+
+// MARK: - 事件监听
+extension AnimationButton {
+    
+    /// 定时器任务
+    @objc func scheduledTimer() {
+        
+        // 调用次数加1
+        count += 1
+        
+        // 创建dispatchTime
+        let dispatchTime = DispatchTime.now() + Double(Int64(0*NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
+        
+        // GCD的延时函数
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            
+            // 增加水波的半径
+            self.waveRadius += 5
+            
+            // 重新绘图
+            self.setNeedsDisplay()
+        }
+        
+        // 如果调用超过60次
+        if count > 60 {
+            
+            // 调用次数和水波半径清零
+            count = 0
+            waveRadius = 0
+            
+            // 移除定时器
+            timer?.invalidate()
+            
+            // GCD延时函数
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                
+                // 半径清零
+                self.waveRadius = 0
+                self.setNeedsDisplay()
+            }
+            
+            // 动画执行完成，让按钮可以交互
+            isUserInteractionEnabled = true
+        }
     }
 }
