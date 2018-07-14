@@ -13,13 +13,13 @@ class ViewController: UIViewController {
     // MARK: - 懒加载属性
     
     /// 登录按钮
-    private lazy var loginButton: AnimationButtom = {
+    private lazy var loginButton: AnimationButton = {
         
         // 创建按钮的frame
         let buttonFrame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width - 2 * 20, height: 44))
         
         // 创建按钮对象
-        let button = AnimationButtom(frame: buttonFrame, normalTitle: "登录", highlightedTitle: "登录中...", normalTitleColor: .white, highlightedTitleColor: .lightGray, waveColor: .magenta)
+        let button = AnimationButton(frame: buttonFrame, normalTitle: "登录", highlightedTitle: "登录中...", normalTitleColor: .white, highlightedTitleColor: .lightGray, waveColor: .magenta)
         
         // 设置按钮的背景颜色
         button.backgroundColor = .red
@@ -51,11 +51,14 @@ extension ViewController {
     /// 监听按钮的点击
     ///
     /// - Parameters:
-    ///   - button: 按钮
-    ///   - event: 事件
+    ///   - button: 当前被点击的按钮
+    ///   - event: 当前按钮点击事件
     @objc func loginButtonClick(_ button: UIButton, _ event: UIEvent) {
         
-        // 播放水波动画
-        print("loginButtonClick(_:_:)")
+        // 将按钮转换为真实类型AnimationButton
+        let btn = button as! AnimationButton
+        
+        // 将按钮和事件传递过去，以便播放水波动画
+        btn.startWaveAnimation(button, event: event)
     }
 }

@@ -1,14 +1,14 @@
 //
-//  AnimationButtom.swift
+//  AnimationButton.swift
 //  水波动画
 //
-//  Created by Enrica on 2018/7/14.
+//  Created by Enrica on 2018/7/15.
 //  Copyright © 2018 Enrica. All rights reserved.
 //
 
 import UIKit
 
-class AnimationButtom: UIButton {
+class AnimationButton: UIButton {
 
     // MARK: - 自定义属性
     
@@ -25,13 +25,13 @@ class AnimationButtom: UIButton {
     private var highlightedTitleColor: UIColor
     
     /// 设置水波的颜色
-    private var waveColor: UIColor  
+    private var waveColor: UIColor
     
     /// 点击区域的x坐标
-    private var centerX: Float = 0
+    private var centerX: CGFloat = 0
     
     /// 点击区域的y坐标
-    private var centerY: Float = 0
+    private var centerY: CGFloat = 0
     
     
     /// 创建自定的按钮
@@ -66,7 +66,7 @@ class AnimationButtom: UIButton {
 
 
 // MARK: - 设置UI界面
-extension AnimationButtom {
+extension AnimationButton {
     
     /// 统一设置UI界面
     private func setupUI() {
@@ -82,5 +82,29 @@ extension AnimationButtom {
         // 设置按钮文字颜色
         setTitleColor(normalTitleColor, for: .normal)
         setTitleColor(highlightedTitleColor, for: .highlighted)
+    }
+    
+    
+    /// 执行水波动画
+    ///
+    /// - Parameters:
+    ///   - button: 按钮
+    ///   - event: 事件
+    func startWaveAnimation(_ button: UIButton, event: UIEvent) {
+        
+        // 获取所有的触摸集合
+        let touches = event.touches(for: button)
+        
+        // 从集合中取出点击事件(因为我们这里按钮只能点击，所以触摸事件只有一个)
+        guard let touch = touches?.first else { return }
+
+        // 获取触摸点的坐标系
+        let point = touch.location(in: button)
+        
+        // 获取centerX和centerY的值
+        centerX = point.x
+        centerY = point.y
+
+        print("x: \(centerX), y: \(centerY)")
     }
 }
