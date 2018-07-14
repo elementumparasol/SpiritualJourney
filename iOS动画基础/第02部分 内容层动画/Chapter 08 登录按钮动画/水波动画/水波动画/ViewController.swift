@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         // 设置按钮高亮状态下的文字颜色
         button.setTitleColor(.lightGray, for: .highlighted)
         
+        // 监听登录按钮的点击
+        button.addTarget(self, action: #selector(ViewController.loginButtonClick(_:_:)), for: .touchUpInside)
+        
         return button
     }()
 
@@ -50,3 +53,17 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController {
+    
+    
+    /// 监听按钮的点击
+    ///
+    /// - Parameters:
+    ///   - button: 按钮
+    ///   - event: 事件
+    @objc func loginButtonClick(_ button: UIButton, _ event: UIEvent) {
+        
+        // 播放水波动画
+        print("loginButtonClick(_:_:)")
+    }
+}
