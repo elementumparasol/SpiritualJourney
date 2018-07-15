@@ -12,6 +12,7 @@
 		C53C0CB620FA980200E91C66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C53C0CB420FA980200E91C66 /* Main.storyboard */; };
 		C53C0CB820FA980400E91C66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53C0CB720FA980400E91C66 /* Assets.xcassets */; };
 		C53C0CBB20FA980400E91C66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C53C0CB920FA980400E91C66 /* LaunchScreen.storyboard */; };
+		C53C0CEA20FAC83600E91C66 /* Emitterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C0CE920FAC83600E91C66 /* Emitterable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C53C0CB720FA980400E91C66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C53C0CBA20FA980400E91C66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C53C0CBC20FA980400E91C66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C53C0CE920FAC83600E91C66 /* Emitterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitterable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				C53C0CB020FA980200E91C66 /* AppDelegate.swift */,
 				C53C0CB220FA980200E91C66 /* ViewController.swift */,
+				C53C0CE920FAC83600E91C66 /* Emitterable.swift */,
 				C53C0CB420FA980200E91C66 /* Main.storyboard */,
 				C53C0CB720FA980400E91C66 /* Assets.xcassets */,
 				C53C0CB920FA980400E91C66 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				C53C0CB320FA980200E91C66 /* ViewController.swift in Sources */,
 				C53C0CB120FA980200E91C66 /* AppDelegate.swift in Sources */,
+				C53C0CEA20FAC83600E91C66 /* Emitterable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

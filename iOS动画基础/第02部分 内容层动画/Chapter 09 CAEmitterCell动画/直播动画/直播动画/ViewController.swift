@@ -15,79 +15,52 @@ class ViewController: UIViewController {
     /// 发射按钮
     private lazy var emitButton: UIButton = {
         
+        // 自定义按钮
         let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 150, height: 44)))
+        
+        // 设置按钮普通状态下的文字
         button.setTitle("点击发射", for: .normal)
+        
+        // 设置按钮高亮状态下的文字
         button.setTitle("发射中...", for: .highlighted)
+        
+        // 设置按钮的圆角
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5
+        
+        // 设置按钮的背景颜色
         button.backgroundColor = .red
-        button.addTarget(self, action: #selector(ViewController.emitButtonClick), for: .touchUpInside)
+        
+        // 监听按钮的点击
+        button.addTarget(self, action: #selector(ViewController.emitButtonClick(_:)), for: .touchUpInside)
+        
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 设置按钮的y值
         emitButton.frame.origin.y = view.bounds.size.height - emitButton.bounds.size.height - 20
+        
+        // 设置按钮中心点x的坐标
         emitButton.center.x = view.center.x
+        
+        // 键按钮添加到当前控制器的view中
         view.addSubview(emitButton)
     }
 }
 
-// MARK: - 监听按钮的点击
-extension ViewController {
+// MARK: - Emitterable协议
+extension ViewController: Emitterable {
     
-    /// 点击屏幕上的发射按钮，发射粒子
-    @objc func emitButtonClick() {
+    /// 监听屏幕上按钮的点击
+    @objc func emitButtonClick(_ button: UIButton) {
         
-        // MARK: - 发射器
+        // 将按钮的选中状态取反
+        button.isSelected = !button.isSelected
         
-        // 创建发射器
-        let emitterLayer = CAEmitterLayer()
-        
-        // 设置发射器的位置
-        emitterLayer.emitterPosition = emitButton.center
-        
-        // 开启三维效果
-        emitterLayer.preservesDepth = true
-        
-        // MARK: - 粒子
-        
-        // 创建粒子
-        let emitterCell = CAEmitterCell()
-        
-        // 设置发射粒子的速度
-        emitterCell.velocity = 150
-        
-        // 设置发射粒子速度的范围(可以理解为误差范围)
-        emitterCell.velocityRange = 100  // [50, 250]
-        
-        // 设置粒子的大小
-        emitterCell.scale = 0.7
-        emitterCell.scaleRange = 0.3
-        
-        // 设置粒子发射的方向
-        emitterCell.emissionLongitude = CGFloat(-Double.pi * 0.5)  // 负数在坐标系中表示向上发射
-        emitterCell.emissionRange = CGFloat(Double.pi * 0.15)
-        
-        // 设置粒子的旋转角度
-        emitterCell.spin = CGFloat(Double.pi * 0.25)
-        emitterCell.spinRange = CGFloat(Double.pi * 0.15)
-        
-        // 设置粒子每秒弹出的个数
-        emitterCell.birthRate = 10  // 每秒弹出10个
-        
-        // 设置粒子的存活时间
-        emitterCell.lifetime = 3
-        emitterCell.lifetimeRange = 1.5
-        
-        // 设置粒子展示的图片
-        emitterCell.contents = UIImage(named: "good3_30x30_")?.cgImage
-        
-        // 将粒子装到发射器中
-        emitterLayer.emitterCells = [emitterCell]
-        
-        // 将发射器layer添加到父控件的layer上
-        view.layer.addSublayer(emitterLayer)
+        // 根据按钮当前的选中状态来决定是否发射粒子
+        button.isSelected ? startEmitterLayer(view, emitButton.center, 9): stopEmitterLayer()
     }
 }
