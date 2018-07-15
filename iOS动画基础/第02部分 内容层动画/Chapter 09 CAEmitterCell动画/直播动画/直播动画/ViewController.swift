@@ -19,10 +19,10 @@ class ViewController: UIViewController {
         let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 150, height: 44)))
         
         // 设置按钮普通状态下的文字
-        button.setTitle("点击发射", for: .normal)
+        button.setTitle("发射粒子", for: .normal)
         
         // 设置按钮高亮状态下的文字
-        button.setTitle("发射中...", for: .highlighted)
+        button.setTitle("停止发射", for: .selected)
         
         // 设置按钮的圆角
         button.layer.masksToBounds = true
