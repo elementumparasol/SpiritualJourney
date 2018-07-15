@@ -13,12 +13,12 @@ class ViewController: UIViewController {
     // MARK: - 懒加载属性
     
     /// drawView
-    private lazy var drawView: UIView = {
+    private lazy var drawView: DrawView = {
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
         
-        let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: screenWidth - 40, height: screenHeight - 40)))
+        let view = DrawView(frame: CGRect(origin: .zero, size: CGSize(width: screenWidth - 40, height: screenHeight - 40)))
         view.backgroundColor = .lightGray
         return view
     }()
