@@ -26,6 +26,9 @@ class DrawView: UIView {
         
         // 绘制椭圆
         drawOvalInRect()
+        
+        // 绘制圆弧
+        drawArcCenter()
     }
 
     /// 使用贝塞尔曲线绘制直线
@@ -131,6 +134,21 @@ class DrawView: UIView {
         let bezierPath = UIBezierPath(ovalIn: CGRect(x: 50, y: 335, width: 235, height: 70))
         bezierPath.lineWidth = 5
         UIColor.cyan.setStroke()
+        bezierPath.stroke()
+    }
+    
+    /// 绘制圆弧
+    func drawArcCenter() {
+        
+        // 确定圆形
+        let arcCenter = CGPoint(x: center.x - 25, y: UIScreen.main.bounds.size.height - 150)
+        
+        // 创建UIBezierPath对象
+        let bezierPath = UIBezierPath(arcCenter: arcCenter, radius: 100, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
+        bezierPath.lineWidth = 5
+        UIColor.green.setStroke()
+        UIColor.orange.setFill()
+        bezierPath.fill()
         bezierPath.stroke()
     }
 }
