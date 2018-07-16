@@ -17,6 +17,8 @@
 		C52901F920FC877700913FCE /* Television.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52901F820FC877700913FCE /* Television.storyboard */; };
 		C52901FB20FC878500913FCE /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52901FA20FC878500913FCE /* Report.storyboard */; };
 		C52901FD20FC8A6000913FCE /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52901FC20FC8A6000913FCE /* Me.storyboard */; };
+		C529020120FC90B300913FCE /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020020FC90B300913FCE /* UIColor-Extension.swift */; };
+		C529020320FC923900913FCE /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020220FC923900913FCE /* UIImage-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C52901F820FC877700913FCE /* Television.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Television.storyboard; sourceTree = "<group>"; };
 		C52901FA20FC878500913FCE /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		C52901FC20FC8A6000913FCE /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		C529020020FC90B300913FCE /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		C529020220FC923900913FCE /* UIImage-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				C52901D720FC851000913FCE /* TV */,
 				C52901E720FC851000913FCE /* Report */,
 				C52901DF20FC851000913FCE /* Me */,
+				C52901FE20FC909400913FCE /* Supporting Files */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -279,6 +284,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C52901FE20FC909400913FCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C52901FF20FC909400913FCE /* Extension */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C52901FF20FC909400913FCE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C529020020FC90B300913FCE /* UIColor-Extension.swift */,
+				C529020220FC923900913FCE /* UIImage-Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -356,6 +378,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52901C520FC791E00913FCE /* AppDelegate.swift in Sources */,
+				C529020320FC923900913FCE /* UIImage-Extension.swift in Sources */,
+				C529020120FC90B300913FCE /* UIColor-Extension.swift in Sources */,
 				C52901F020FC85C600913FCE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,10 +12,31 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    /// 调整tabBar的
+    private func initialWithTabBarAttribues() {
+        
+        // 设置tabBar的tintColor
+        UITabBar.appearance().tintColor = UIColor(r: 234, g: 26, b: 34)
+        
+        // 设置UITabBar的背景图片
+        UITabBar.appearance().backgroundImage = UIImage.imageWithStretchalbe("tabbar_bg_319x49_")
+        UITabBar.appearance().isTranslucent = false  // 取消半透明效果
+        
+        // 设置tabBar标题文字大小
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)], for: .normal)
+        
+        // 调整tabBar标题和图片之间的位置(标题太低了，让它网上lu挪动3个位置)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // 初始化tabBar
+        initialWithTabBarAttribues()
+        
+        
         return true
     }
 
