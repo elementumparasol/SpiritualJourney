@@ -23,6 +23,9 @@ class DrawView: UIView {
         
         // 绘制圆角矩形
         drawRoundRect()
+        
+        // 绘制椭圆
+        drawOvalInRect()
     }
 
     /// 使用贝塞尔曲线绘制直线
@@ -118,6 +121,16 @@ class DrawView: UIView {
         bezierPath.lineWidth = 5
         bezierPath.lineJoinStyle = .round
         UIColor.blue.setStroke()
+        bezierPath.stroke()
+    }
+    
+    /// 绘制椭圆
+    func drawOvalInRect() {
+        
+        // 创建UIBezierPath对象，并且描述椭圆的起点、断轴和长轴
+        let bezierPath = UIBezierPath(ovalIn: CGRect(x: 50, y: 335, width: 235, height: 70))
+        bezierPath.lineWidth = 5
+        UIColor.cyan.setStroke()
         bezierPath.stroke()
     }
 }
