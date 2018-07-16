@@ -19,6 +19,8 @@
 		C52901FD20FC8A6000913FCE /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52901FC20FC8A6000913FCE /* Me.storyboard */; };
 		C529020120FC90B300913FCE /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020020FC90B300913FCE /* UIColor-Extension.swift */; };
 		C529020320FC923900913FCE /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020220FC923900913FCE /* UIImage-Extension.swift */; };
+		C529020520FC9DC600913FCE /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020420FC9DC600913FCE /* NavigationController.swift */; };
+		C529020720FCA59D00913FCE /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529020620FCA59D00913FCE /* NewsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		C52901FC20FC8A6000913FCE /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		C529020020FC90B300913FCE /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 		C529020220FC923900913FCE /* UIImage-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
+		C529020420FC9DC600913FCE /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C529020620FCA59D00913FCE /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				C52901F420FC872A00913FCE /* News.storyboard */,
+				C529020620FCA59D00913FCE /* NewsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				C52901EF20FC85C600913FCE /* MainViewController.swift */,
+				C529020420FC9DC600913FCE /* NavigationController.swift */,
 				C52901F120FC860200913FCE /* Main.storyboard */,
 			);
 			path = View;
@@ -379,6 +385,8 @@
 			files = (
 				C52901C520FC791E00913FCE /* AppDelegate.swift in Sources */,
 				C529020320FC923900913FCE /* UIImage-Extension.swift in Sources */,
+				C529020520FC9DC600913FCE /* NavigationController.swift in Sources */,
+				C529020720FCA59D00913FCE /* NewsViewController.swift in Sources */,
 				C529020120FC90B300913FCE /* UIColor-Extension.swift in Sources */,
 				C52901F020FC85C600913FCE /* MainViewController.swift in Sources */,
 			);

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    /// 调整tabBar的
+    /// 调整tabBar的相关属性
     private func initialWithTabBarAttribues() {
         
         // 设置tabBar的tintColor
@@ -29,13 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 调整tabBar标题和图片之间的位置(标题太低了，让它网上lu挪动3个位置)
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
     }
-
+    
+    /// 初始化导航条的相关设置
+    private func initialWithNavigationBarAttributes() {
+        
+        // 设置导航栏的背景图片
+        UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithStretchalbe("nav_bg_375x64_"), for: .any, barMetrics: .default)
+        
+        // 去掉导航栏底部的分割线
+        UINavigationBar.appearance().shadowImage = UIImage()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // 初始化tabBar
         initialWithTabBarAttribues()
         
+        // 初始化导航条
+        initialWithNavigationBarAttributes()
         
         return true
     }

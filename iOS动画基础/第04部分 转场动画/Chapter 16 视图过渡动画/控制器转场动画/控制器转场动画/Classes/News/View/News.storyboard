@@ -12,7 +12,7 @@
         <!--新闻-->
         <scene sceneID="Ndi-3J-W8o">
             <objects>
-                <navigationController id="py5-oH-4BQ" sceneMemberID="viewController">
+                <navigationController id="py5-oH-4BQ" customClass="NavigationController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="新闻" image="tabbar_news_24x18_" selectedImage="tabbar_news_select_24x18_" id="ikw-JG-fNc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xlK-xF-njx">
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-1214" y="-36"/>
         </scene>
-        <!--View Controller-->
+        <!--News View Controller-->
         <scene sceneID="13F-ed-I2x">
             <objects>
-                <viewController id="lil-nt-WAD" sceneMemberID="viewController">
+                <viewController id="lil-nt-WAD" customClass="NewsViewController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MbX-SN-ZMj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

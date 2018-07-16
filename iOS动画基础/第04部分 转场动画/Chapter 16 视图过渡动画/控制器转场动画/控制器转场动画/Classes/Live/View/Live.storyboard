@@ -12,7 +12,7 @@
         <!--直播-->
         <scene sceneID="X6Y-l6-P6O">
             <objects>
-                <navigationController id="LLI-XK-14r" sceneMemberID="viewController">
+                <navigationController id="LLI-XK-14r" customClass="NavigationController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="直播" image="tabbar_live_24x18_" selectedImage="tabbar_live_select_24x18_" id="ndM-bQ-XiX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xfp-Y9-Ouh">

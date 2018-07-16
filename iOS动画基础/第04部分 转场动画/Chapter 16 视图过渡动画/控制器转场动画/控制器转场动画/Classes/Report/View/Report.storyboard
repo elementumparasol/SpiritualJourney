@@ -12,7 +12,7 @@
         <!--爆料-->
         <scene sceneID="VfA-QX-1Dr">
             <objects>
-                <navigationController id="8Zn-xD-4BU" sceneMemberID="viewController">
+                <navigationController id="8Zn-xD-4BU" customClass="NavigationController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="爆料" image="tabbar_bl_24x18_" selectedImage="tabbar_bl_select_24x18_" id="sL6-c0-j3X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HPI-6x-tMm">

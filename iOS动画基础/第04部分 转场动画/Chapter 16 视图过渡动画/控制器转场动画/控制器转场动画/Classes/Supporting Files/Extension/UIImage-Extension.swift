@@ -14,7 +14,7 @@ extension UIImage {
     /// 对指定的图片进行保护拉伸
     ///
     /// - Parameter imageName: 图片的名称
-    /// - Returns: 返回一张受保护、并且拉伸过的图片；如果图片名称有误，则有可能返回空值
+    /// - Returns: 如果图片加载成功，则返回一张经过保护的拉伸图片；如果图片加载失败，则返回nil
     class func imageWithStretchalbe(_ imageName: String) -> UIImage? {
         
         // 加载原始图片
@@ -25,5 +25,19 @@ extension UIImage {
         
         // 对原始图片进行保护拉伸并返回
         return image.resizableImage(withCapInsets: UIEdgeInsets(top: imageSize.height * 0.5, left: imageSize.width * 0.5, bottom: imageSize.height * 0.5 - 1, right: imageSize.width * 0.5 - 1), resizingMode: UIImage.ResizingMode.stretch)
+    }
+    
+    
+    /// 返回一张未经编译器渲染的原始图片
+    ///
+    /// - Parameter imageName: 图片的名称
+    /// - Returns: 如果图片加载成功，则返回一张未经渲染的原始图片；如果图片加载失败，则返回nil
+    class func imageWithOriginal(_ imageName: String) -> UIImage? {
+        
+        // 加载原始图片
+        guard let image = UIImage(named: imageName) else { return nil }
+        
+        // 返回一张原始图片
+        return image.withRenderingMode(.alwaysOriginal)
     }
 }

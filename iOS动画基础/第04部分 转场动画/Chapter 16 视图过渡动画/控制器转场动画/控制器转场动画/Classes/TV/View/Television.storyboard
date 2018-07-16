@@ -12,7 +12,7 @@
         <!--电视-->
         <scene sceneID="1D5-yT-0oE">
             <objects>
-                <navigationController id="bTD-2q-jmx" sceneMemberID="viewController">
+                <navigationController id="bTD-2q-jmx" customClass="NavigationController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="电视" image="tabbar_tv_24x18_" selectedImage="tabbar_tv_select_24x18_" id="Xyv-p2-bTw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DkA-mf-yC9">

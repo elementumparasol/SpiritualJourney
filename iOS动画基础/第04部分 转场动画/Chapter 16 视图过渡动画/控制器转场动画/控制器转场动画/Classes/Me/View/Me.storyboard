@@ -12,7 +12,7 @@
         <!--我的-->
         <scene sceneID="dY6-L1-IvT">
             <objects>
-                <navigationController id="8ZX-iy-DkF" sceneMemberID="viewController">
+                <navigationController id="8ZX-iy-DkF" customClass="NavigationController" customModule="控制器转场动画" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="tabbar_me_32x32_" selectedImage="tabbar_me_h_32x32_" id="0Ah-gh-Cg2">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="4"/>
                     </tabBarItem>
