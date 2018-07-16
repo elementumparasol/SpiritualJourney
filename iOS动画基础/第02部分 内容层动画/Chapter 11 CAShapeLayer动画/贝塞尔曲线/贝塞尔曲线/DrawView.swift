@@ -20,6 +20,9 @@ class DrawView: UIView {
         
         // 绘制矩形图
         drawRectangle()
+        
+        // 绘制圆角矩形
+        drawRoundRect()
     }
 
     /// 使用贝塞尔曲线绘制直线
@@ -104,6 +107,17 @@ class DrawView: UIView {
         UIColor.purple.setStroke()
         
         // 渲染线条
+        bezierPath.stroke()
+    }
+    
+    /// 绘制圆角矩形
+    func drawRoundRect() {
+        
+        // 创建UIBezierPath对象，并且描述路径和圆角半径
+        let bezierPath = UIBezierPath(roundedRect: CGRect(x: 50, y: 255, width: 235, height: 70), cornerRadius: 20)
+        bezierPath.lineWidth = 5
+        bezierPath.lineJoinStyle = .round
+        UIColor.blue.setStroke()
         bezierPath.stroke()
     }
 }
