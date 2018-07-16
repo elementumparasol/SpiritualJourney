@@ -62,7 +62,7 @@ extension ViewController {
         // 创建CATransition转场动画
         let animation = CATransition()
         animation.duration = 1
-        animation.type = CATransitionType(rawValue: "cameraIrisHollowOpen")  // 相机中心向四周三开
+        animation.type = CATransitionType.reveal  // 从左向右拉动
         imageView.layer.add(animation, forKey: nil)
     }
 }
@@ -73,10 +73,9 @@ extension ViewController {
 //  animation.type = CATransitionType(rawValue: "rippleEffect")  // 水波荡漾
 //  animation.type = CATransitionType(rawValue: "pageUnCurl")  // 左上角向下翻页
 //  animation.type = CATransitionType(rawValue: "pageCurl")  // 右下角向上翻页
-//  animation.type = CATransitionType(rawValue: "cameraIrisHollowOpen")  // 相机中心向四周三开
+//  animation.type = CATransitionType(rawValue: "cameraIrisHollowOpen")  // 相机中心向四周散开
 //  animation.type = CATransitionType(rawValue: "cameraIrisHollowClose")  // 相机四周向中心聚拢
-//  animation.type = CATransitionType(rawValue: "kCATransitionFade")  // 淡化
-//  animation.type = CATransitionType(rawValue: "kCATransitionPush")  // 还是淡化
-//  animation.type = CATransitionType(rawValue: "kCATransitionReveal")  // 还是淡化
-//  animation.type = CATransitionType(rawValue: "kCATransitionMoveIn")  // 还是淡化
-//  animation.subtype = CATransitionSubtype.fromRight  // 淡入淡出
+//  animation.type = CATransitionType.moveIn  // 从左向右进入
+//  animation.type = CATransitionType.fade  // 淡化
+//  animation.type = CATransitionType.push  // 从左向右推挤
+//  animation.type = CATransitionType.reveal  // 从左向右拉动
