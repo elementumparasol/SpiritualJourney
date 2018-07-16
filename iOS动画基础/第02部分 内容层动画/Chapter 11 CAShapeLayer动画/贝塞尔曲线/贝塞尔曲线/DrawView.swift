@@ -18,6 +18,8 @@ class DrawView: UIView {
         // 绘制曲线
         drawQuadCurveLine()
         
+        // 绘制矩形图
+        drawRectangle()
     }
 
     /// 使用贝塞尔曲线绘制直线
@@ -81,6 +83,25 @@ class DrawView: UIView {
         
         // 设置线条的颜色
         UIColor.brown.setStroke()
+        
+        // 渲染线条
+        bezierPath.stroke()
+    }
+    
+    /// 绘制矩形
+    func drawRectangle() {
+        
+        // 创建UIBezierPath对象，并且描述矩形路径
+        let bezierPath = UIBezierPath(rect: CGRect(x: 50, y: 175, width: 235, height: 70))
+        
+        // 设置线条的宽度
+        bezierPath.lineWidth = 5
+        
+        // 设置线条连接处的样式
+        bezierPath.lineJoinStyle = .round
+        
+        // 设置线条的颜色
+        UIColor.purple.setStroke()
         
         // 渲染线条
         bezierPath.stroke()
