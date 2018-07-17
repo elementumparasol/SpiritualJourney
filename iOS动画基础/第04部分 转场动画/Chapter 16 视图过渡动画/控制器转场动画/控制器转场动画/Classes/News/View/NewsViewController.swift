@@ -71,6 +71,16 @@ extension NewsViewController {
     /// 监听导航条上面搜索按钮的点击
     @objc private func rightBarButtonItemClick() {
         
-        print(print("NewsViewController.rightBarButtonItemClick"))
+        // push控制器
+        pushToSearchController()
+    }
+    
+    
+    private func pushToSearchController() {
+        
+        let vc = UIViewController()
+        vc.view.backgroundColor = .brown
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

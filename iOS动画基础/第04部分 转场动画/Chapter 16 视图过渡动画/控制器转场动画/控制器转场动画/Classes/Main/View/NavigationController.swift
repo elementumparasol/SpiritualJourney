@@ -22,6 +22,18 @@ class NavigationController: UINavigationController {
         setupUI()
     }
 
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        
+        // 判断是否为根控制器
+        if viewControllers.count > 0 {
+            
+            // 隐藏底部的tabBar
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        
+        // 还原系统的push方法(这个很重要，如果忘记还原系统的push方法，那么所有的push操作都将会被破坏)
+        super.pushViewController(viewController, animated: animated)
+    }
 }
 
 
