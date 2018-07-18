@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5DFF80A20FECC8500042481 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5DFF80920FECC8500042481 /* main.cpp */; };
+		C5DFF85620FED88700042481 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5DFF85520FED88700042481 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C5DFF80420FECC8500042481 /* CopyFiles */ = {
+		C5DFF85020FED88700042481 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C5DFF80620FECC8500042481 /* HelloWorld */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloWorld; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5DFF80920FECC8500042481 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C5DFF85220FED88700042481 /* 1.2-初识输入输出 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "1.2-初识输入输出"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5DFF85520FED88700042481 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C5DFF80320FECC8500042481 /* Frameworks */ = {
+		C5DFF84F20FED88700042481 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C5DFF7FD20FECC8500042481 = {
+		C5DFF84920FED88700042481 = {
 			isa = PBXGroup;
 			children = (
-				C5DFF80820FECC8500042481 /* HelloWorld */,
-				C5DFF80720FECC8500042481 /* Products */,
+				C5DFF85420FED88700042481 /* 1.2-初识输入输出 */,
+				C5DFF85320FED88700042481 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C5DFF80720FECC8500042481 /* Products */ = {
+		C5DFF85320FED88700042481 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5DFF80620FECC8500042481 /* HelloWorld */,
+				C5DFF85220FED88700042481 /* 1.2-初识输入输出 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C5DFF80820FECC8500042481 /* HelloWorld */ = {
+		C5DFF85420FED88700042481 /* 1.2-初识输入输出 */ = {
 			isa = PBXGroup;
 			children = (
-				C5DFF80920FECC8500042481 /* main.cpp */,
+				C5DFF85520FED88700042481 /* main.cpp */,
 			);
-			path = HelloWorld;
+			path = "1.2-初识输入输出";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C5DFF80520FECC8500042481 /* HelloWorld */ = {
+		C5DFF85120FED88700042481 /* 1.2-初识输入输出 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5DFF80D20FECC8500042481 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
+			buildConfigurationList = C5DFF85920FED88700042481 /* Build configuration list for PBXNativeTarget "1.2-初识输入输出" */;
 			buildPhases = (
-				C5DFF80220FECC8500042481 /* Sources */,
-				C5DFF80320FECC8500042481 /* Frameworks */,
-				C5DFF80420FECC8500042481 /* CopyFiles */,
+				C5DFF84E20FED88700042481 /* Sources */,
+				C5DFF84F20FED88700042481 /* Frameworks */,
+				C5DFF85020FED88700042481 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HelloWorld;
-			productName = HelloWorld;
-			productReference = C5DFF80620FECC8500042481 /* HelloWorld */;
+			name = "1.2-初识输入输出";
+			productName = "1.2-初识输入输出";
+			productReference = C5DFF85220FED88700042481 /* 1.2-初识输入输出 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C5DFF7FE20FECC8500042481 /* Project object */ = {
+		C5DFF84A20FED88700042481 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Enrica;
 				TargetAttributes = {
-					C5DFF80520FECC8500042481 = {
+					C5DFF85120FED88700042481 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = C5DFF80120FECC8500042481 /* Build configuration list for PBXProject "HelloWorld" */;
+			buildConfigurationList = C5DFF84D20FED88700042481 /* Build configuration list for PBXProject "1.2-初识输入输出" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C5DFF7FD20FECC8500042481;
-			productRefGroup = C5DFF80720FECC8500042481 /* Products */;
+			mainGroup = C5DFF84920FED88700042481;
+			productRefGroup = C5DFF85320FED88700042481 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C5DFF80520FECC8500042481 /* HelloWorld */,
+				C5DFF85120FED88700042481 /* 1.2-初识输入输出 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C5DFF80220FECC8500042481 /* Sources */ = {
+		C5DFF84E20FED88700042481 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5DFF80A20FECC8500042481 /* main.cpp in Sources */,
+				C5DFF85620FED88700042481 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C5DFF80B20FECC8500042481 /* Debug */ = {
+		C5DFF85720FED88700042481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -184,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		C5DFF80C20FECC8500042481 /* Release */ = {
+		C5DFF85820FED88700042481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +236,7 @@
 			};
 			name = Release;
 		};
-		C5DFF80E20FECC8500042481 /* Debug */ = {
+		C5DFF85A20FED88700042481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -245,7 +245,7 @@
 			};
 			name = Debug;
 		};
-		C5DFF80F20FECC8500042481 /* Release */ = {
+		C5DFF85B20FED88700042481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -257,25 +257,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C5DFF80120FECC8500042481 /* Build configuration list for PBXProject "HelloWorld" */ = {
+		C5DFF84D20FED88700042481 /* Build configuration list for PBXProject "1.2-初识输入输出" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C5DFF80B20FECC8500042481 /* Debug */,
-				C5DFF80C20FECC8500042481 /* Release */,
+				C5DFF85720FED88700042481 /* Debug */,
+				C5DFF85820FED88700042481 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5DFF80D20FECC8500042481 /* Build configuration list for PBXNativeTarget "HelloWorld" */ = {
+		C5DFF85920FED88700042481 /* Build configuration list for PBXNativeTarget "1.2-初识输入输出" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C5DFF80E20FECC8500042481 /* Debug */,
-				C5DFF80F20FECC8500042481 /* Release */,
+				C5DFF85A20FED88700042481 /* Debug */,
+				C5DFF85B20FED88700042481 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C5DFF7FE20FECC8500042481 /* Project object */;
+	rootObject = C5DFF84A20FED88700042481 /* Project object */;
 }
