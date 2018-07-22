@@ -18,7 +18,7 @@ int main(int argc, const char * argv[]) {
     for (int i = 1; i <= sizeof(a) / sizeof(int) - 1; i++) {
         
         // 第i趟时，从a[0]到a[n - i - 1]都与它们下一个数进行比较
-        for (int j = 0; j < sizeof(a) / sizeof(int) - i; j++) {
+        for (int j = 1; j < sizeof(a) / sizeof(int) - i; j++) {
             
             // 如果左边的数更小，则交换
             if (a[j] < a[j + 1]) {
