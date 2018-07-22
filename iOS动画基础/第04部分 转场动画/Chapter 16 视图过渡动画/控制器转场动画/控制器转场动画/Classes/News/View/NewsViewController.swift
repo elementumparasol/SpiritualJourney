@@ -27,6 +27,8 @@ extension NewsViewController {
     /// 设置UI界面
     private func setupUI() {
         
+        view.backgroundColor = UIColor.randomColor()
+        
         // 设置导航栏
         setNavigationBarButtonItems()
     }

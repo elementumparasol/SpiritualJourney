@@ -30,7 +30,8 @@ extension UIColor {
     /// - Returns: 随机颜色
     class func randomColor() -> UIColor {
         
-        return UIColor(r: CGFloat(arc4random_uniform(256)), g: CGFloat(arc4random_uniform(256)), b: CGFloat(arc4random_uniform(256)))
+//        return UIColor(r: CGFloat(arc4random_uniform(256)), g: CGFloat(arc4random_uniform(256)), b: CGFloat(arc4random_uniform(256)))
+        return UIColor(r: CGFloat.random(in: 0..<256), g: CGFloat.random(in: 0..<256), b: CGFloat.random(in: 0..<256))
     }
 }
 
