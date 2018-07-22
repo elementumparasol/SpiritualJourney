@@ -62,5 +62,10 @@ int main(int argc, const char * argv[]) {
     printf("acos(45°) = %.2f\n", db72);
     printf("atan(45°) = %.2f\n", db73);
     
+    
+    /** 8、四舍五入函数round(double x) */
+    double db8 = round(1.732);
+    printf("1.732四舍五入结果为: %.2f\n", db8);
+    
     return 0;
 }
