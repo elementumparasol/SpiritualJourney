@@ -34,5 +34,15 @@ int main(int argc, const char * argv[]) {
     double db4 = sqrt(2.0);
     printf("2的算术平方根为: %.3f\n", db4);
     
+    
+    /** 5、以自然数为底的对数函数log(double x) */
+    double db5 = log(10.0);
+    printf("10以自然数e为底的对数为: %.2f\n", db5);
+    
+    // 注意: 因为C语言中没有一任意数为底的对数函数，因此，如果需要求以任意数为底
+    // 的对数函数，必须用换底公式: loga(b) = logb / loga
+    double x = log(3.0) / log(2.0);  // 表示求以2为底3的对数
+    printf("以2为底3的对数结果为: %.2f\n", x);
+    
     return 0;
 }
