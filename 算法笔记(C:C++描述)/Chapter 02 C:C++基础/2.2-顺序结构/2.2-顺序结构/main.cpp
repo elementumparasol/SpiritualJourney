@@ -53,5 +53,14 @@ int main(int argc, const char * argv[]) {
     printf("cos(45°) = %.2f\n", db62);
     printf("tan(45°) = %.2f\n", db63);
     
+    
+    /** 7、反三角函数asin(double x)、acos(double x)和atan(double x) */
+    double db71 = asin(M_PI_4);
+    double db72 = acos(M_PI_4);
+    double db73 = atan(M_PI_4);
+    printf("asin(45°) = %.2f\n", db71);
+    printf("acos(45°) = %.2f\n", db72);
+    printf("atan(45°) = %.2f\n", db73);
+    
     return 0;
 }
