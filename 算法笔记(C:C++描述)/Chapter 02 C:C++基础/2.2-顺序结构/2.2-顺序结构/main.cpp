@@ -16,5 +16,12 @@ int main(int argc, const char * argv[]) {
     double db = -12.56;
     printf("|db| = %.2f\n", fabs(db));
     
+    
+    /** 2、floor(double x)和ceil(double x)函数 */
+    
+    double db1 = -5.2, db2 = 5.2;
+    printf("floor(db1) = %.0f, ceil(db1) = %.0f\n", floor(db1), ceil(db1));
+    printf("floor(db2) = %.0f, ceil(db2) = %.0f\n", floor(db2), ceil(db2));
+    
     return 0;
 }
