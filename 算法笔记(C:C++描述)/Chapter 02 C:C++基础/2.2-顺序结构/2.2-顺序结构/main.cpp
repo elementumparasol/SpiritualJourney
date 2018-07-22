@@ -23,5 +23,11 @@ int main(int argc, const char * argv[]) {
     printf("floor(db1) = %.0f, ceil(db1) = %.0f\n", floor(db1), ceil(db1));
     printf("floor(db2) = %.0f, ceil(db2) = %.0f\n", floor(db2), ceil(db2));
     
+    
+    /** 3、幂指数函数pow(double r, double p) */
+    
+    double db3 = pow(2.0, 3.0);
+    printf("2的3次方: %.0f\n", db3);
+    
     return 0;
 }
