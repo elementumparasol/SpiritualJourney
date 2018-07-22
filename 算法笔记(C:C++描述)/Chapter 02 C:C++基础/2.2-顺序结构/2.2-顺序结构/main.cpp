@@ -29,5 +29,10 @@ int main(int argc, const char * argv[]) {
     double db3 = pow(2.0, 3.0);
     printf("2的3次方: %.0f\n", db3);
     
+    
+    /** 4、算术平方根函数sqrt(double x) */
+    double db4 = sqrt(2.0);
+    printf("2的算术平方根为: %.3f\n", db4);
+    
     return 0;
 }
