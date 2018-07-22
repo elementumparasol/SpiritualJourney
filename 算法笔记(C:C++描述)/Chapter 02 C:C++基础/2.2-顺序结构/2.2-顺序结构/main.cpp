@@ -44,5 +44,14 @@ int main(int argc, const char * argv[]) {
     double x = log(3.0) / log(2.0);  // 表示求以2为底3的对数
     printf("以2为底3的对数结果为: %.2f\n", x);
     
+    
+    /** 6、sin(double x)、cos(double x)和tan(double x)函数 */
+    double db61 = sin(M_PI_4);
+    double db62 = cos(M_PI_4);
+    double db63 = tan(M_PI_4);
+    printf("sin(45°) = %.2f\n", db61);
+    printf("cos(45°) = %.2f\n", db62);
+    printf("tan(45°) = %.2f\n", db63);
+    
     return 0;
 }
