@@ -52,7 +52,7 @@ class ChecklistViewController: UITableViewController {
         super.viewDidLoad()
         
         // 设置导航栏大标题
-        // navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
