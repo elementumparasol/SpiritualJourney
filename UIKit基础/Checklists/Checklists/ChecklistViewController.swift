@@ -50,6 +50,34 @@ class ChecklistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 设置导航栏大标题
+        // navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    
+    /// 1、创建新的模型数据
+    /// 2、将新的模型数据添加到模型数组中
+    /// 3、将新的模型数据显示到tableView上面
+    @IBAction func addItem() {
+        
+        // 获取模型的个数
+        let newRowIndex = items.count
+        
+        // 创建新的模型
+        let item = ChecklistItem()
+        item.text = "新的一行"
+        item.checked = false
+        items.append(item)
+        
+        // 创建IndexPath
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        
+        // 创建indexPath数组
+        let indexPaths = [indexPath]
+        
+        // 将indexPath插入到数组中
+        tableView.insertRows(at: indexPaths, with: .automatic)
     }
 
     // MARK: - Table view data source
@@ -75,6 +103,16 @@ class ChecklistViewController: UITableViewController {
     
     
     // MARK: - Delegate
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // 从模型数组中删除模型数据
+        items.remove(at: indexPath.row)
+        
+        // 从tableView中删除相关的行
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
     
     /// 处理cell的点击
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
