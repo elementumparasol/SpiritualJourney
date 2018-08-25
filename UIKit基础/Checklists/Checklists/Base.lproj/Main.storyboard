@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" title="Checklists" largeTitleDisplayMode="always" id="21t-X0-puz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fqh-EC-69J">
                             <connections>
-                                <segue destination="WSO-fq-XPj" kind="show" id="YMg-lI-24p"/>
+                                <segue destination="WSO-fq-XPj" kind="show" identifier="AddItem" id="YMg-lI-24p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

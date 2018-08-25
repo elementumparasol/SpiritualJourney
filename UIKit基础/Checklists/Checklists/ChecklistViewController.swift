@@ -54,31 +54,6 @@ class ChecklistViewController: UITableViewController {
         // 设置导航栏大标题
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-    
-    /// 1、创建新的模型数据
-    /// 2、将新的模型数据添加到模型数组中
-    /// 3、将新的模型数据显示到tableView上面
-    @IBAction func addItem() {
-        
-        // 获取模型的个数
-        let newRowIndex = items.count
-        
-        // 创建新的模型
-        let item = ChecklistItem()
-        item.text = "新的一行"
-        item.checked = false
-        items.append(item)
-        
-        // 创建IndexPath
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        
-        // 创建indexPath数组
-        let indexPaths = [indexPath]
-        
-        // 将indexPath插入到数组中
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
 
     // MARK: - Table view data source
 
@@ -145,5 +120,45 @@ class ChecklistViewController: UITableViewController {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
     }
+    
+    
+    // MARK: - 设置ChecklistViewController成为AddItemViewController的代理
+    
+    /// 告诉AddItemViewController，ChecklistViewController成为它的代理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "AddItem" {
+            
+            // 根据segue的标识符取出AddItemViewController
+            let controller = segue.destination as! AddItemViewController
+            
+            // 让当前控制器成为AddItemViewController的代理
+            controller.delegate = self
+        }
+    }
 
+}
+
+
+
+extension ChecklistViewController: AddItemViewControllerDelegate {
+    
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        
+        // 创建新的item
+        let newRowIndex = items.count
+        items.append(item)
+        
+        // 将新创建的item插入到tableView中
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -8,6 +8,17 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: class {
+    
+    /// 取消添加Item
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
+    
+    /// 添加完Item
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+}
+
+
+
 class AddItemViewController: UITableViewController {
 
     // MARK: - 控件属性
@@ -17,6 +28,12 @@ class AddItemViewController: UITableViewController {
     
     /// 完成按钮
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    
+    // MARK: - AddItemViewControllerDelegate属性
+    
+    /// 代理属性，用于通知
+    weak var delegate: AddItemViewControllerDelegate?
     
     
     /// 视图控件即将显示的时候调用
@@ -37,15 +54,24 @@ class AddItemViewController: UITableViewController {
     
     /// 取消编辑
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
+        
+        // 通知代理
+        delegate?.addItemViewControllerDidCancel(self)
     }
     
     /// 完成编辑
     @IBAction func done() {
         
-        print("textField文本框中的内容为: \(textField.text!)")
+        //print("textField文本框中的内容为: \(textField.text!)")
+        let item = ChecklistItem()
+        item.text = textField.text!
+        item.checked = false
         
-        navigationController?.popViewController(animated: true)
+        // 通知代理
+        delegate?.addItemViewController(self, didFinishAdding: item)
+        
+        //navigationController?.popViewController(animated: true)
     }
     
     
