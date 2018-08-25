@@ -10,6 +10,12 @@ import UIKit
 
 class AddItemViewController: UITableViewController {
 
+    // MARK: - 控件属性
+    
+    /// textField
+    @IBOutlet weak var textField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +30,9 @@ class AddItemViewController: UITableViewController {
     
     /// 完成编辑
     @IBAction func done() {
+        
+        print("textField文本框中的内容为: \(textField.text!)")
+        
         navigationController?.popViewController(animated: true)
     }
     
