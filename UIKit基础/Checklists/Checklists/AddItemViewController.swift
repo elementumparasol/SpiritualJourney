@@ -15,6 +15,18 @@ class AddItemViewController: UITableViewController {
     /// textField
     @IBOutlet weak var textField: UITextField!
     
+    /// 完成按钮
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    
+    /// 视图控件即将显示的时候调用
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 让textField成为第一响应者，当textField
+        // 控件显示出来时，键盘也跟随者主动弹出来
+        textField.becomeFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,4 +59,26 @@ class AddItemViewController: UITableViewController {
     
     
 
+}
+
+
+
+extension AddItemViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let oldText = textField.text!
+        let stringRange = Range(range, in: oldText)!
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        
+//        if newText.isEmpty {
+//            doneBarButton.isEnabled = false
+//        } else {
+//            doneBarButton.isEnabled = true
+//        }
+        doneBarButton.isEnabled = !newText.isEmpty
+        
+        return true
+    }
+    
 }

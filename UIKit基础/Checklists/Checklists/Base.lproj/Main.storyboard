@@ -70,12 +70,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-cE-vP5">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="新建Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-cE-vP5">
                                                     <rect key="frame" x="16" y="6" width="343" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done" destination="WSO-fq-XPj" eventType="editingDidEndOnExit" id="Zxv-TW-fLq"/>
+                                                        <outlet property="delegate" destination="WSO-fq-XPj" id="pmU-gd-TGf"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -94,13 +98,14 @@
                                 <action selector="cancel" destination="WSO-fq-XPj" id="Ngx-vm-QbD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="UCd-tT-8Pv">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="完成" id="UCd-tT-8Pv">
                             <connections>
                                 <action selector="done" destination="WSO-fq-XPj" id="uYN-AC-gk6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="UCd-tT-8Pv" id="jxv-0y-3kQ"/>
                         <outlet property="textField" destination="jfq-cE-vP5" id="KUP-zI-eRV"/>
                     </connections>
                 </tableViewController>
