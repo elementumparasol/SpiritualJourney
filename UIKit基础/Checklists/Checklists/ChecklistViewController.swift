@@ -9,6 +9,44 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController {
+    
+    // MARK: - 实例变量
+    
+    /// 声明模型数组
+    var items: [ChecklistItem]
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        // 初始化模型数组
+        items = [ChecklistItem]()
+        
+        let row0item = ChecklistItem()
+        row0item.text = "遛狗"
+        row0item.checked = false
+        items.append(row0item)
+        
+        let row1item = ChecklistItem()
+        row1item.text = "刷牙"
+        row1item.checked = true
+        items.append(row1item)
+        
+        let row2item = ChecklistItem()
+        row2item.text = "学习iOS编程"
+        row2item.checked = true
+        items.append(row2item)
+        
+        let row3item = ChecklistItem()
+        row3item.text = "踢足球"
+        row3item.checked = false
+        items.append(row3item)
+        
+        let row4item = ChecklistItem()
+        row4item.text = "吃冰激凌"
+        row4item.checked = true
+        items.append(row4item)
+        
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,28 +56,19 @@ class ChecklistViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 100
+        return items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistsItem", for: indexPath)
-
-        // 从tableView中取出tag值为1000的控件，也就是UILabel
-        let label = cell.viewWithTag(1000) as! UILabel
         
-        if indexPath.row % 5 == 0 {
-            label.text = "遛狗"
-        } else if indexPath.row % 5 == 1 {
-            label.text = "刷牙"
-        } else if indexPath.row % 5 == 2 {
-            label.text = "学习iOS开发"
-        } else if indexPath.row % 5 == 3 {
-            label.text = "踢足球"
-        } else if indexPath.row % 5 == 4 {
-            label.text = "吃冰激凌"
-        }
+        // 取出模型
+        let item = items[indexPath.row]
+        
+        configureText(for: cell, with: item)
+        configureCheckmark(for: cell, with: item)
 
         return cell
     }
@@ -47,65 +76,36 @@ class ChecklistViewController: UITableViewController {
     
     // MARK: - Delegate
     
-    
+    /// 处理cell的点击
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             
-            if cell.accessoryType == .none {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            let item = items[indexPath.row]
+            
+            item.toggleChecked()
+            
+            configureCheckmark(for: cell, with: item)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    /// 设置checkmark
+    func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
+        
+        if item.checked {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+    }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    /// 设置cell的Label的Text
+    func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
+        
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
