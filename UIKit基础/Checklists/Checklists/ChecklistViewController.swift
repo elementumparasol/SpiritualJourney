@@ -12,50 +12,18 @@ class ChecklistViewController: UITableViewController {
     
     // MARK: - 实例变量
     
-    /// 声明模型数组
-    var items: [ChecklistItem]
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        // 初始化模型数组
-        items = [ChecklistItem]()
-        
-        let row0item = ChecklistItem()
-        row0item.text = "遛狗"
-        row0item.checked = false
-        items.append(row0item)
-        
-        let row1item = ChecklistItem()
-        row1item.text = "刷牙"
-        row1item.checked = true
-        items.append(row1item)
-        
-        let row2item = ChecklistItem()
-        row2item.text = "学习iOS编程"
-        row2item.checked = true
-        items.append(row2item)
-        
-        let row3item = ChecklistItem()
-        row3item.text = "踢足球"
-        row3item.checked = false
-        items.append(row3item)
-        
-        let row4item = ChecklistItem()
-        row4item.text = "吃冰激凌"
-        row4item.checked = true
-        items.append(row4item)
-        
-        super.init(coder: aDecoder)
-        
-        print("Documents文件夹: \(documentsDirectory())")
-        print("数据文件的全路径: \(dataFilePath())")
-    }
+    /// 声明并初始化模型数组
+    var items = [ChecklistItem]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 设置导航栏大标题
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // 从plist文件中加载数据
+        loadChecklistItems()
     }
 
     // MARK: - Table view data source
@@ -115,12 +83,6 @@ class ChecklistViewController: UITableViewController {
     
     /// 设置checkmark
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
-        
-//        if item.checked {
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
         
         let label = cell.viewWithTag(1001) as! UILabel
         
@@ -234,10 +196,10 @@ extension ChecklistViewController {
 }
 
 
-// MARK: - 将数据写入文件
+// MARK: - 沙盒数据的读取和写入
 extension ChecklistViewController {
     
-    /// 将数据写入一个.plist文件中
+    /// 将数据写入到沙盒中Documents目录下的.plist文件中
     func saveChecklistItems() {
         
         // 创建PropertyListEncoder实例
@@ -256,7 +218,39 @@ extension ChecklistViewController {
         } catch {
             
             // encode方法执行失败时，会进入到catch分支
-            print("对item数组执行encoding时发生错误!")
+            print("对items数组进行编码时发生错误!")
+        }
+    }
+    
+    /**
+     对会抛出异常的方法进行异常处理，有两种常见的方式:
+     - (1)、使用try?
+     - (2)、在do-catch代码块中使用try
+     */
+    
+    
+    /// 读取沙盒中Documents文件夹里面的plist数据
+    func loadChecklistItems() {
+        
+        // 获取Checklist.plist文件的路径
+        let path = dataFilePath()
+        
+        // 读取Checklist.plist文件中的数据，并且将其转换成Data数据
+        if let data = try? Data(contentsOf: path) {
+            
+            // 创建PropertyListDecoder实例
+            let decoder = PropertyListDecoder()
+            
+            // 对decode方法进行异常处理
+            do {
+                
+                // 对items进行解码
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                
+                // 如果decode方法执行失败，则进入到catch分支里面执行print()
+                print("对items数组进行解码时发生错误!")
+            }
         }
     }
 }
