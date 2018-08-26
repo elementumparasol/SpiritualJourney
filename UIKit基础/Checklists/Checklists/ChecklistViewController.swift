@@ -14,6 +14,9 @@ class ChecklistViewController: UITableViewController {
     
     /// 声明并初始化模型数组
     var items = [ChecklistItem]()
+    
+    /// Checklist类型的属性
+    var checklist: Checklist!
 
 
     override func viewDidLoad() {
@@ -24,6 +27,9 @@ class ChecklistViewController: UITableViewController {
         
         // 从plist文件中加载数据
         loadChecklistItems()
+        
+        // 设置导航栏标题
+        title = checklist.name
     }
 
     // MARK: - Table view data source

@@ -9,12 +9,31 @@
 import UIKit
 
 class AllListsViewController: UITableViewController {
+    
+    
+    // MARK: - 自定义属性
+    
+    /// 存储Checklist实例对象
+    var lists = [Checklist]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // 开启导航栏大标题
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // 搞一些假数据
+        var list = Checklist(name: "生日")
+        lists.append(list)
+        
+        list = Checklist(name: "杂货店")
+        lists.append(list)
+        
+        list = Checklist(name: "有趣的Apps")
+        lists.append(list)
+        
+        list = Checklist(name: "To Do")
+        lists.append(list)
     }
 
     // MARK: - Table view data source
@@ -23,7 +42,7 @@ class AllListsViewController: UITableViewController {
     /// 返回tableView的行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return lists.count
     }
 
     /// 返回tableViewCell
@@ -33,7 +52,15 @@ class AllListsViewController: UITableViewController {
         
         // 调用makeCell(for: )方法，取出或者创建cell
         let cell = makeCell(for: tableView)
-        cell.textLabel?.text = "List \(indexPath.row)"
+        
+        // 取出模型
+        let checklist = lists[indexPath.row]
+        
+        // 设置标题
+        cell.textLabel?.text = checklist.name
+        
+        // 设置cell的附件样式
+        cell.accessoryType = .detailDisclosureButton
         
         return cell
     }
@@ -63,9 +90,23 @@ class AllListsViewController: UITableViewController {
     /// 告诉代理，指定的行已经被选中
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let checklist = lists[indexPath.row]
+        
         // 从当前控制器的storyboard文件中启动指定标识符的segue
-        performSegue(withIdentifier: "ShowChecklist", sender: nil)
+        performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
     
-    
+    /// 通知控制器，即将执行一个segue(也就是segue执行的时候调用)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 如果segue的标识符为ShowChecklist
+        if segue.identifier == "ShowChecklist" {
+            
+            // 取出segue的目标控制器
+            let controller = segue.destination as! ChecklistViewController
+            
+            // 将目标控制器的checklist
+            controller.checklist = (sender as! Checklist)
+        }
+    }
 }
