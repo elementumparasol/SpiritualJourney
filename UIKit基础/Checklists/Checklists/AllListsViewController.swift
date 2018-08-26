@@ -102,10 +102,10 @@ class AllListsViewController: UITableViewController {
         // 如果segue的标识符为ShowChecklist
         if segue.identifier == "ShowChecklist" {
             
-            // 取出segue的目标控制器
+            // 取出segue的目标控制器，并且将其强制转换为ChecklistViewController
             let controller = segue.destination as! ChecklistViewController
             
-            // 将目标控制器的checklist
+            // 将目标控制器的checklist强制转换为Checklist类型，并且解包
             controller.checklist = (sender as! Checklist)
         }
     }
