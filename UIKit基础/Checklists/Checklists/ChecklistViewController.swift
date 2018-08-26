@@ -46,6 +46,9 @@ class ChecklistViewController: UITableViewController {
         items.append(row4item)
         
         super.init(coder: aDecoder)
+        
+        print("Documents文件夹: \(documentsDirectory())")
+        print("数据文件的全路径: \(dataFilePath())")
     }
 
     override func viewDidLoad() {
@@ -87,6 +90,9 @@ class ChecklistViewController: UITableViewController {
         // 从tableView中删除相关的行
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        // 保存修改
+        saveChecklistItems()
     }
     
     /// 处理cell的点击
@@ -102,6 +108,9 @@ class ChecklistViewController: UITableViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // 保存修改
+        saveChecklistItems()
     }
     
     /// 设置checkmark
@@ -158,7 +167,7 @@ class ChecklistViewController: UITableViewController {
 }
 
 
-
+// MARK: - ItemDetailViewControllerDelegate
 extension ChecklistViewController: ItemDetailViewControllerDelegate {
     
     /// 取消添加或者修改item
@@ -179,6 +188,9 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+        // 保存数据
+        saveChecklistItems()
+        
         navigationController?.popViewController(animated: true)
     }
 
@@ -195,15 +207,56 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
             }
+            
+            // 保存数据
+            saveChecklistItems()
         }
         navigationController?.popViewController(animated: true)
     }
 }
 
-/*
-let students = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
-if let i = students.firstIndex(where: { $0.hasPrefix("A") }) {
-    print("\(students[i]) starts with 'A'!")
+
+// MARK: - 获取沙盒中的Documents文件夹
+extension ChecklistViewController {
+    
+    /// 获取Documents文件夹路径
+    func documentsDirectory() -> URL {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    /// 创建plist文件的路径
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
 }
-// Prints "Abena starts with 'A'!"
- */
+
+
+// MARK: - 将数据写入文件
+extension ChecklistViewController {
+    
+    /// 将数据写入一个.plist文件中
+    func saveChecklistItems() {
+        
+        // 创建PropertyListEncoder实例
+        let encoder = PropertyListEncoder()
+        
+        // 处理错误(对会抛出异常的方法进行处理)
+        do {
+            
+            // encode方法在无法对目标进行编码时，会抛出异常
+            // 所以需要用do-catch对其进行处理
+            let data = try encoder.encode(items)  // Encodable协议
+            
+            // 如果encode方法执行成功，就将数据些人到目标文件(即Checklists.plist)
+            // 因为write(to: options:)方法也会抛出异常，所以这里也要进行异常处理
+            try data.write(to: dataFilePath(), options: .atomic)
+        } catch {
+            
+            // encode方法执行失败时，会进入到catch分支
+            print("对item数组执行encoding时发生错误!")
+        }
+    }
+}
