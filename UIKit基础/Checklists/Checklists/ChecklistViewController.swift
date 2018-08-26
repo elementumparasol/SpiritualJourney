@@ -107,10 +107,18 @@ class ChecklistViewController: UITableViewController {
     /// 设置checkmark
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         
+//        if item.checked {
+//            cell.accessoryType = .checkmark
+//        } else {
+//            cell.accessoryType = .none
+//        }
+        
+        let label = cell.viewWithTag(1001) as! UILabel
+        
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            label.text = ""
         }
     }
     
@@ -122,18 +130,28 @@ class ChecklistViewController: UITableViewController {
     }
     
     
-    // MARK: - 设置ChecklistViewController成为AddItemViewController的代理
+    // MARK: - 设置ChecklistViewController成为ItemDetailViewController的代理
     
-    /// 告诉AddItemViewController，ChecklistViewController成为它的代理
+    /// 告诉ItemDetailViewController，ChecklistViewController成为它的代理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "AddItem" {
             
-            // 根据segue的标识符取出AddItemViewController
-            let controller = segue.destination as! AddItemViewController
+            // 根据segue的标识符取出ItemDetailViewController
+            let controller = segue.destination as! ItemDetailViewController
             
-            // 让当前控制器成为AddItemViewController的代理
+            // 让当前控制器成为ItemDetailViewController的代理
             controller.delegate = self
+        }else if segue.identifier == "EditItem" {
+            
+            let controller = segue.destination as! ItemDetailViewController
+            
+            controller.delegate = self
+            
+            // 编辑之前的item
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
 
@@ -141,14 +159,16 @@ class ChecklistViewController: UITableViewController {
 
 
 
-extension ChecklistViewController: AddItemViewControllerDelegate {
+extension ChecklistViewController: ItemDetailViewControllerDelegate {
     
-    
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+    /// 取消添加或者修改item
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+    
+    /// 添加item
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
         
         // 创建新的item
         let newRowIndex = items.count
@@ -161,4 +181,29 @@ extension ChecklistViewController: AddItemViewControllerDelegate {
         
         navigationController?.popViewController(animated: true)
     }
+
+    
+    /// 完成item的修改
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
+        
+        // 一个对象只有在遵守Equatable协议之后，我们才能使用firstIndex(of: )
+        // 方法。所以，我们可以让ChecklistItem继承自NSObject。因为NSObject
+        // 是遵守Equatable协议的
+        if let index = items.firstIndex(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
 }
+
+/*
+let students = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
+if let i = students.firstIndex(where: { $0.hasPrefix("A") }) {
+    print("\(students[i]) starts with 'A'!")
+}
+// Prints "Abena starts with 'A'!"
+ */

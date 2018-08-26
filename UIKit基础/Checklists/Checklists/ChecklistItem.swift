@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChecklistItem {
+class ChecklistItem: NSObject {
     
     /// 描述checklist item的文本内容
     var text = ""

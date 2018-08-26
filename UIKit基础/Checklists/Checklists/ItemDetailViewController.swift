@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.swift
+//  itemDetailViewController.swift
 //  Checklists
 //
 //  Created by Enrica on 2018/8/25.
@@ -8,18 +8,21 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate: class {
+protocol ItemDetailViewControllerDelegate: class {
     
     /// 取消添加Item
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
     
     /// 添加完Item
-    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem)
+    
+    /// 完成对Item的编辑
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
 }
 
 
 
-class AddItemViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController {
 
     // MARK: - 控件属性
     
@@ -30,10 +33,16 @@ class AddItemViewController: UITableViewController {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     
-    // MARK: - AddItemViewControllerDelegate属性
+    // MARK: - itemDetailViewControllerDelegate属性
     
     /// 代理属性，用于通知
-    weak var delegate: AddItemViewControllerDelegate?
+    weak var delegate: ItemDetailViewControllerDelegate?
+    
+    
+    // MARK: - 实例变量
+    
+    /// 编辑item
+    var itemToEdit: ChecklistItem?
     
     
     /// 视图控件即将显示的时候调用
@@ -50,6 +59,13 @@ class AddItemViewController: UITableViewController {
 
         // 取消大标题
         navigationItem.largeTitleDisplayMode = .never
+        
+        // 修改导航栏标题
+        if let item = itemToEdit {
+            title = "编辑item"
+            textField.text = item.text
+            doneBarButton.isEnabled = true
+        }
     }
     
     /// 取消编辑
@@ -57,21 +73,33 @@ class AddItemViewController: UITableViewController {
         //navigationController?.popViewController(animated: true)
         
         // 通知代理
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.itemDetailViewControllerDidCancel(self)
     }
     
     /// 完成编辑
     @IBAction func done() {
         
         //print("textField文本框中的内容为: \(textField.text!)")
-        let item = ChecklistItem()
-        item.text = textField.text!
-        item.checked = false
-        
-        // 通知代理
-        delegate?.addItemViewController(self, didFinishAdding: item)
+//        let item = ChecklistItem()
+//        item.text = textField.text!
+//        item.checked = false
+//
+//        // 通知代理
+//        delegate?.itemDetailViewController(self, didFinishAdding: item)
         
         //navigationController?.popViewController(animated: true)
+        
+        if let itemToEdit = itemToEdit {
+            itemToEdit.text = textField.text!
+            delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
+        } else {
+            let item = ChecklistItem()
+            item.text = textField.text!
+            item.checked = false
+    
+            // 通知代理
+            delegate?.itemDetailViewController(self, didFinishAdding: item)
+        }
     }
     
     
@@ -89,7 +117,7 @@ class AddItemViewController: UITableViewController {
 
 
 
-extension AddItemViewController: UITextFieldDelegate {
+extension ItemDetailViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
