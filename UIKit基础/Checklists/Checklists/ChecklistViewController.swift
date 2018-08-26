@@ -19,8 +19,8 @@ class ChecklistViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 设置导航栏大标题
-        navigationController?.navigationBar.prefersLargeTitles = true
+        // 取消大标题
+        navigationItem.largeTitleDisplayMode = .never
         
         // 从plist文件中加载数据
         loadChecklistItems()

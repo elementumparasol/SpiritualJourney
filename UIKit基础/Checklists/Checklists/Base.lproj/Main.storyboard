@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklists-->
+        <!--Checklist-->
         <scene sceneID="DJa-q8-tRb">
             <objects>
-                <tableViewController id="mZn-7H-O6L" customClass="ChecklistViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mZn-7H-O6L" userLabel="Checklist" customClass="ChecklistViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g3L-NU-bvC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="mZn-7H-O6L" id="PsQ-Gl-yCm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklists" largeTitleDisplayMode="always" id="21t-X0-puz">
+                    <navigationItem key="navigationItem" title="Checklist" largeTitleDisplayMode="always" id="21t-X0-puz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fqh-EC-69J">
                             <connections>
                                 <segue destination="WSO-fq-XPj" kind="show" identifier="AddItem" id="YMg-lI-24p"/>
@@ -123,6 +123,28 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="-371.06446776611699"/>
         </scene>
+        <!--All Lists-->
+        <scene sceneID="AjS-3n-iiE">
+            <objects>
+                <tableViewController id="L8o-X4-CWm" userLabel="All Lists" customClass="AllListsViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ncV-qQ-YDT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="L8o-X4-CWm" id="nFe-Om-qjl"/>
+                            <outlet property="delegate" destination="L8o-X4-CWm" id="0XJ-Z5-NCm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="Cyn-FZ-JPY"/>
+                    <connections>
+                        <segue destination="mZn-7H-O6L" kind="show" identifier="ShowChecklist" id="hQx-qx-67N"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGM-wq-rSi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="-1164"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UAV-L6-6Rr">
             <objects>
@@ -134,7 +156,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mZn-7H-O6L" kind="relationship" relationship="rootViewController" id="yvq-qg-Rfi"/>
+                        <segue destination="L8o-X4-CWm" kind="relationship" relationship="rootViewController" id="eoX-WV-xaD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6j-2U-BJr" userLabel="First Responder" sceneMemberID="firstResponder"/>

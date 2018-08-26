@@ -13,6 +13,8 @@ class AllListsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 开启导航栏大标题
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Table view data source
@@ -52,4 +54,18 @@ class AllListsViewController: UITableViewController {
             return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
     }
+    
+    
+    
+    // MARK: - UITableViewDelegate
+    
+    
+    /// 告诉代理，指定的行已经被选中
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 从当前控制器的storyboard文件中启动指定标识符的segue
+        performSegue(withIdentifier: "ShowChecklist", sender: nil)
+    }
+    
+    
 }
