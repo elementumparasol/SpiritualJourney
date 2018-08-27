@@ -18,12 +18,9 @@ class AllListsViewController: UITableViewController {
     
     /// dataModel属性
     var dataModel: DataModel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // 开启导航栏大标题
-        navigationController?.navigationBar.prefersLargeTitles = true
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         // 设置代理
         navigationController?.delegate = self
@@ -40,6 +37,15 @@ class AllListsViewController: UITableViewController {
             // 跳转到指定的界面
             performSegue(withIdentifier: "ShowChecklist", sender: checklist)
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 开启导航栏大标题
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
     }
 
     // MARK: - Table view data source
