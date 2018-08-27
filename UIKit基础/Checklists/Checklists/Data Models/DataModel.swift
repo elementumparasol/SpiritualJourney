@@ -38,13 +38,33 @@ class DataModel {
         
         // 注册default
         registerDefaults()
+        
+        // 处理应用第一次启动的情况
+        handleFirstTime()
     }
     
     func registerDefaults() {
         
-        let dictionary = ["ChecklistIndex": -1]
+        let dictionary: [String: Any] = ["ChecklistIndex": -1, "FirstTime": true]
         
         UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    func handleFirstTime() {
+        
+        let userDefaults = UserDefaults.standard
+        
+        let firstTime = userDefaults.bool(forKey: "FirstTime")
+        
+        if firstTime {
+            
+            let checklist = Checklist(name: "List")
+            lists.append(checklist)
+            
+            indexOfSelectedChecklist = 0
+            userDefaults.set(false, forKey: "FirstTime")
+            userDefaults.synchronize()
+        }
     }
 }
 
