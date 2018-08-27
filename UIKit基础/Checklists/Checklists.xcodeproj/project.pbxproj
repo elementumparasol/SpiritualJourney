@@ -16,6 +16,7 @@
 		C5F2E073213276A40028AB5F /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2E072213276A40028AB5F /* ItemDetailViewController.swift */; };
 		C5F2E0752132BBD30028AB5F /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2E0742132BBD30028AB5F /* AllListsViewController.swift */; };
 		C5F2E0772132E5DC0028AB5F /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2E0762132E5DC0028AB5F /* Checklist.swift */; };
+		C5F2E0792132F9390028AB5F /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2E0782132F9390028AB5F /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C5F2E072213276A40028AB5F /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		C5F2E0742132BBD30028AB5F /* AllListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		C5F2E0762132E5DC0028AB5F /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		C5F2E0782132F9390028AB5F /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				C56229B62130FFF800ED2B1F /* Info.plist */,
 				C5F2E0742132BBD30028AB5F /* AllListsViewController.swift */,
+				C5F2E0782132F9390028AB5F /* ListDetailViewController.swift */,
 				C56229AA2130FFF600ED2B1F /* AppDelegate.swift */,
 				C5F2E0762132E5DC0028AB5F /* Checklist.swift */,
 				C56229DC213136E300ED2B1F /* ChecklistItem.swift */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56229AB2130FFF600ED2B1F /* AppDelegate.swift in Sources */,
+				C5F2E0792132F9390028AB5F /* ListDetailViewController.swift in Sources */,
 				C56229DD213136E300ED2B1F /* ChecklistItem.swift in Sources */,
 				C5F2E0772132E5DC0028AB5F /* Checklist.swift in Sources */,
 				C5F2E073213276A40028AB5F /* ItemDetailViewController.swift in Sources */,
