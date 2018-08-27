@@ -12,9 +12,6 @@ class ChecklistViewController: UITableViewController {
     
     // MARK: - 实例变量
     
-    /// 声明并初始化模型数组
-    //var items = [ChecklistItem]()
-    
     /// Checklist类型的属性
     var checklist: Checklist!
 
@@ -24,9 +21,6 @@ class ChecklistViewController: UITableViewController {
         
         // 取消大标题
         navigationItem.largeTitleDisplayMode = .never
-        
-        // 从plist文件中加载数据
-        // loadChecklistItems()
         
         // 设置导航栏标题
         title = checklist.name
@@ -64,9 +58,6 @@ class ChecklistViewController: UITableViewController {
         // 从tableView中删除相关的行
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        
-        // 保存修改
-        // saveChecklistItems()
     }
     
     /// 处理cell的点击
@@ -82,9 +73,6 @@ class ChecklistViewController: UITableViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // 保存修改
-        // saveChecklistItems()
     }
     
     /// 设置checkmark
@@ -156,9 +144,6 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
-        // 保存数据
-        // saveChecklistItems()
-        
         navigationController?.popViewController(animated: true)
     }
 
@@ -176,91 +161,7 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
                 configureText(for: cell, with: item)
             }
             
-            // 保存数据
-            // saveChecklistItems()
         }
         navigationController?.popViewController(animated: true)
     }
 }
-
-
-
-
-/*
-// MARK: - 获取沙盒中的Documents文件夹
-extension ChecklistViewController {
-    
-    /// 获取Documents文件夹路径
-    func documentsDirectory() -> URL {
-
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        return paths[0]
-    }
-    
-    /// 创建plist文件的路径
-    func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("Checklists.plist")
-    }
-}
-
-
-// MARK: - 沙盒数据的读取和写入
-extension ChecklistViewController {
-    
-    /// 将数据写入到沙盒中Documents目录下的.plist文件中
-    func saveChecklistItems() {
-        
-        // 创建PropertyListEncoder实例
-        let encoder = PropertyListEncoder()
-        
-        // 处理错误(对会抛出异常的方法进行处理)
-        do {
-            
-            // encode方法在无法对目标进行编码时，会抛出异常
-            // 所以需要用do-catch对其进行处理
-            let data = try encoder.encode(checklist.items)  // Encodable协议
-            
-            // 如果encode方法执行成功，就将数据些人到目标文件(即Checklists.plist)
-            // 因为write(to: options:)方法也会抛出异常，所以这里也要进行异常处理
-            try data.write(to: dataFilePath(), options: .atomic)
-        } catch {
-            
-            // encode方法执行失败时，会进入到catch分支
-            print("对items数组进行编码时发生错误!")
-        }
-    }
-    
-    /**
-     对会抛出异常的方法进行异常处理，有两种常见的方式:
-     - (1)、使用try?
-     - (2)、在do-catch代码块中使用try
-     */
-    
-    
-    /// 读取沙盒中Documents文件夹里面的plist数据
-    func loadChecklistItems() {
-        
-        // 获取Checklist.plist文件的路径
-        let path = dataFilePath()
-        
-        // 读取Checklist.plist文件中的数据，并且将其转换成Data数据
-        if let data = try? Data(contentsOf: path) {
-            
-            // 创建PropertyListDecoder实例
-            let decoder = PropertyListDecoder()
-            
-            // 对decode方法进行异常处理
-            do {
-                
-                // 对items进行解码
-                checklist.items = try decoder.decode([ChecklistItem].self, from: data)
-            } catch {
-                
-                // 如果decode方法执行失败，则进入到catch分支里面执行print()
-                print("对items数组进行解码时发生错误!")
-            }
-        }
-    }
-}
-*/

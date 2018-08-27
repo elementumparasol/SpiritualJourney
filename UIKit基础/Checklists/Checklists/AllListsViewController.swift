@@ -13,23 +13,25 @@ class AllListsViewController: UITableViewController {
     
     // MARK: - 自定义属性
     
-    /// 存储Checklist实例对象
-//    var lists = [Checklist]()
-    
     /// dataModel属性
     var dataModel: DataModel!
     
+    // viewDidAppear在程序启动时会被调用一次
+    // 每次程序离开当前界面，然后再次回到当前界
+    // 面时又会被调用
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // 设置代理
+        // 让当前控制器成为导航控制器的代理
         navigationController?.delegate = self
         
         // 取出最后保存的程序状态
-        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        // let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        let index = dataModel.indexOfSelectedChecklist
         
         // 如果程序最后退出时，不是AllListViewController界面
-        if index != -1 {
+        // 执行检查的条件index必须合法，不能越界
+        if index >= 0 && index < dataModel.lists.count {  // index >= 0 && index < dataModel.lists.count
             
             // 根据保存的index取出与之对应的模型数据
             let checklist = dataModel.lists[index]
@@ -112,7 +114,8 @@ class AllListsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 偏好设置。使用UserDefaults来存储当前被选中的行
-        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        // UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        dataModel.indexOfSelectedChecklist = indexPath.row
         
         
         let checklist = dataModel.lists[indexPath.row]
@@ -134,10 +137,10 @@ class AllListsViewController: UITableViewController {
             controller.checklist = (sender as! Checklist)
         } else if segue.identifier == "AddChecklist" {
             
-            //
+            // 取出ListDetailViewController控制器
             let controller = segue.destination as! ListDetailViewController
             
-            //
+            // 设置当前控制器为ListDetailViewController的代理
             controller.delegate = self
         }
     }
@@ -148,8 +151,8 @@ class AllListsViewController: UITableViewController {
         // 根据标识符，从storyboard中加载指定的控制器
         let controller = storyboard!.instantiateViewController(withIdentifier: "ListDetailViewController") as! ListDetailViewController
         
-        // 设置控制器代理
-        // controller.delegate = self  // 这句代码是多余的，因为系统默认设置了代理
+        // 让当前控制器成为ListDetailViewController的代理
+        controller.delegate = self
         
         // 设置导航栏标题
         let checklist = dataModel.lists[indexPath.row]
@@ -175,7 +178,7 @@ extension AllListsViewController: ListDetailViewControllerDelegate {
     
     /// 完成Checklist的添加
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
-        
+        /////////////////////////
         let newRowIndex = dataModel.lists.count
         dataModel.lists.append(checklist)
         
@@ -218,7 +221,8 @@ extension AllListsViewController: UINavigationControllerDelegate {
         if viewController === self {
             
             // 设置ChecklistIndex的值为-1，表示当前没有checklist行被选中
-            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            // UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            dataModel.indexOfSelectedChecklist = -1
         }
     }
 }

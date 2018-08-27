@@ -70,7 +70,6 @@ class ItemDetailViewController: UITableViewController {
     
     /// 取消编辑
     @IBAction func cancel() {
-        //navigationController?.popViewController(animated: true)
         
         // 通知代理
         delegate?.itemDetailViewControllerDidCancel(self)
@@ -78,16 +77,6 @@ class ItemDetailViewController: UITableViewController {
     
     /// 完成编辑
     @IBAction func done() {
-        
-        //print("textField文本框中的内容为: \(textField.text!)")
-//        let item = ChecklistItem()
-//        item.text = textField.text!
-//        item.checked = false
-//
-//        // 通知代理
-//        delegate?.itemDetailViewController(self, didFinishAdding: item)
-        
-        //navigationController?.popViewController(animated: true)
         
         if let itemToEdit = itemToEdit {
             itemToEdit.text = textField.text!
@@ -125,11 +114,6 @@ extension ItemDetailViewController: UITextFieldDelegate {
         let stringRange = Range(range, in: oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
         
-//        if newText.isEmpty {
-//            doneBarButton.isEnabled = false
-//        } else {
-//            doneBarButton.isEnabled = true
-//        }
         doneBarButton.isEnabled = !newText.isEmpty
         
         return true

@@ -15,7 +15,19 @@ import Foundation
 
 class DataModel {
     
+    /// checklist模型数组
     var lists = [Checklist]()
+    
+    /// 计算属性，用与获取存储的行号
+    var indexOfSelectedChecklist: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "ChecklistIndex")
+        }
+    }
     
     // 因为DataModel没有继承自任何类，
     // 所以，这里不需要调用super.init()
@@ -23,6 +35,16 @@ class DataModel {
         
         // 加载数据
         loadChecklists()
+        
+        // 注册default
+        registerDefaults()
+    }
+    
+    func registerDefaults() {
+        
+        let dictionary = ["ChecklistIndex": -1]
+        
+        UserDefaults.standard.register(defaults: dictionary)
     }
 }
 

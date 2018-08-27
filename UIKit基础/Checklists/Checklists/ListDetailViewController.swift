@@ -28,8 +28,11 @@ class ListDetailViewController: UITableViewController {
     
     // MARK: - 控件属性
     
+    /// 文本框控件属性
     @IBOutlet weak var textField: UITextField!
     
+    
+    /// 完成添加的按钮属性
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     // MARK: - 自定义属性
@@ -37,7 +40,7 @@ class ListDetailViewController: UITableViewController {
     /// 代理属性
     weak var delegate: ListDetailViewControllerDelegate?
     
-    ///
+    /// 编辑list
     var checklistToEdit: Checklist?
     
     
@@ -61,6 +64,9 @@ class ListDetailViewController: UITableViewController {
             textField.text = checklist.name
             doneBarButton.isEnabled = true
         }
+        
+        // 让当前控制器成为textField的代理(可以从storyboard中设置)
+        // textField.delegate = self
     }
 
     /// 点击取消按钮
@@ -95,7 +101,7 @@ class ListDetailViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 extension ListDetailViewController {
     
-    ///
+    /// 这个方法一般用来通知代理，返回的那一行被选中，如果返回nil，则表示不选中
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
