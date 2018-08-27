@@ -125,6 +125,26 @@ class AllListsViewController: UITableViewController {
             controller.delegate = self
         }
     }
+    
+    /// 告诉代理，用户点击了某一行的accessory控件
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        // 根据标识符，从storyboard中加载指定的控制器
+        let controller = storyboard!.instantiateViewController(withIdentifier: "ListDetailViewController") as! ListDetailViewController
+        
+        // 设置控制器代理
+        // controller.delegate = self  // 这句代码是多余的，因为系统默认设置了代理
+        
+        // 设置导航栏标题
+        let checklist = lists[indexPath.row]
+        controller.checklistToEdit = checklist
+        
+        // push到指定的控制器
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
+    
 }
 
 
