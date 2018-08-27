@@ -111,6 +111,10 @@ class AllListsViewController: UITableViewController {
     /// 告诉代理，指定的行已经被选中
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // 偏好设置。使用UserDefaults来存储当前被选中的行
+        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        
+        
         let checklist = dataModel.lists[indexPath.row]
         
         // 从当前控制器的storyboard文件中启动指定标识符的segue
@@ -201,4 +205,21 @@ extension AllListsViewController: ListDetailViewControllerDelegate {
 }
 
 
+
+
+// MARK: - UINavigationControllerDelegate
+extension AllListsViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        // 如果即将出现的控制器是AllListsViewController
+        // - (1) == 用于判断两个变量是否具有相等的值
+        // - (2) === 用于判断两个变量是否引用同一个对象
+        if viewController === self {
+            
+            // 设置ChecklistIndex的值为-1，表示当前没有checklist行被选中
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+        }
+    }
+}
 
