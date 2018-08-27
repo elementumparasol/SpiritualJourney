@@ -13,11 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    // MARK: - 自定义属性
+    
+    /// dataModel属性。在AppDelegate里面创建DataModel对象
+    /// AppDelegate可以将DataModel对象传递给任何需要用它的控制器
+    let dataModel = DataModel()
+    
     // MARK: - 保存应用数据
     
     /// 保存应用数据。AppDelegate会发出所有和应用状态(比如说退出、进入后台、
     /// 被杀死等)相关的消息，所以在这里面保存应用数据是最安全有效的 
     func saveData() {
+        
+        // 保存应用数据
+        dataModel.saveChecklists()
+    }
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         
         // 获取导航控制器(也就是根控制器)
         let navigationController = window!.rootViewController as! UINavigationController
@@ -25,13 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 通过导航控制器拿到主控制器AllListsViewController
         let controller = navigationController.viewControllers[0] as! AllListsViewController
         
-        // 保存应用数据
-        controller.saveChecklists()
-    }
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // 将应用数据传递给AllListsViewController
+        controller.dataModel = dataModel
+        
+        
         return true
     }
 
