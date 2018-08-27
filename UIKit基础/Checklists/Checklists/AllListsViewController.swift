@@ -25,27 +25,21 @@ class AllListsViewController: UITableViewController {
         // 开启导航栏大标题
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // 搞一些假数据
-        var list = Checklist(name: "生日")
-        dataModel.lists.append(list)
-
-        list = Checklist(name: "杂货店")
-        dataModel.lists.append(list)
-
-        list = Checklist(name: "有趣的Apps")
-        dataModel.lists.append(list)
-
-        list = Checklist(name: "To Do")
-        dataModel.lists.append(list)
-
-        // 搞点假数据用于调试
-        for list in dataModel.lists {
-            let item = ChecklistItem()
-            item.text = "Item for \(list.name)"
-            list.items.append(item)
-        }
+        // 设置代理
+        navigationController?.delegate = self
         
-//        loadChecklists()
+        // 取出最后保存的程序状态
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        
+        // 如果程序最后退出时，不是AllListViewController界面
+        if index != -1 {
+            
+            // 根据保存的index取出与之对应的模型数据
+            let checklist = dataModel.lists[index]
+            
+            // 跳转到指定的界面
+            performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        }
     }
 
     // MARK: - Table view data source
