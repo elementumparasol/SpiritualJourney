@@ -12,6 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // MARK: - 保存应用数据
+    
+    /// 保存应用数据。AppDelegate会发出所有和应用状态(比如说退出、进入后台、
+    /// 被杀死等)相关的消息，所以在这里面保存应用数据是最安全有效的 
+    func saveData() {
+        
+        // 获取导航控制器(也就是根控制器)
+        let navigationController = window!.rootViewController as! UINavigationController
+        
+        // 通过导航控制器拿到主控制器AllListsViewController
+        let controller = navigationController.viewControllers[0] as! AllListsViewController
+        
+        // 保存应用数据
+        controller.saveChecklists()
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -27,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        // 在应用程序进入后台时，及时保存数据
+        saveData()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -39,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        // 在应用程序即将被杀死时，及时保存数据
+        saveData()
     }
 
 

@@ -13,7 +13,7 @@ class ChecklistViewController: UITableViewController {
     // MARK: - 实例变量
     
     /// 声明并初始化模型数组
-    var items = [ChecklistItem]()
+    //var items = [ChecklistItem]()
     
     /// Checklist类型的属性
     var checklist: Checklist!
@@ -26,7 +26,7 @@ class ChecklistViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .never
         
         // 从plist文件中加载数据
-        loadChecklistItems()
+        // loadChecklistItems()
         
         // 设置导航栏标题
         title = checklist.name
@@ -36,7 +36,7 @@ class ChecklistViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return checklist.items.count
     }
 
     
@@ -45,7 +45,7 @@ class ChecklistViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistsItem", for: indexPath)
         
         // 取出模型
-        let item = items[indexPath.row]
+        let item = checklist.items[indexPath.row]
         
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
@@ -59,14 +59,14 @@ class ChecklistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         // 从模型数组中删除模型数据
-        items.remove(at: indexPath.row)
+        checklist.items.remove(at: indexPath.row)
         
         // 从tableView中删除相关的行
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
         
         // 保存修改
-        saveChecklistItems()
+        // saveChecklistItems()
     }
     
     /// 处理cell的点击
@@ -74,7 +74,7 @@ class ChecklistViewController: UITableViewController {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             
-            let item = items[indexPath.row]
+            let item = checklist.items[indexPath.row]
             
             item.toggleChecked()
             
@@ -84,7 +84,7 @@ class ChecklistViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // 保存修改
-        saveChecklistItems()
+        // saveChecklistItems()
     }
     
     /// 设置checkmark
@@ -127,7 +127,7 @@ class ChecklistViewController: UITableViewController {
             
             // 编辑之前的item
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.itemToEdit = items[indexPath.row]
+                controller.itemToEdit = checklist.items[indexPath.row]
             }
         }
     }
@@ -148,8 +148,8 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
         
         // 创建新的item
-        let newRowIndex = items.count
-        items.append(item)
+        let newRowIndex = checklist.items.count
+        checklist.items.append(item)
         
         // 将新创建的item插入到tableView中
         let indexPath = IndexPath(row: newRowIndex, section: 0)
@@ -157,7 +157,7 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
         tableView.insertRows(at: indexPaths, with: .automatic)
         
         // 保存数据
-        saveChecklistItems()
+        // saveChecklistItems()
         
         navigationController?.popViewController(animated: true)
     }
@@ -169,7 +169,7 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
         // 一个对象只有在遵守Equatable协议之后，我们才能使用firstIndex(of: )
         // 方法。所以，我们可以让ChecklistItem继承自NSObject。因为NSObject
         // 是遵守Equatable协议的
-        if let index = items.firstIndex(of: item) {
+        if let index = checklist.items.firstIndex(of: item) {
             let indexPath = IndexPath(row: index, section: 0)
             
             if let cell = tableView.cellForRow(at: indexPath) {
@@ -177,21 +177,24 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
             }
             
             // 保存数据
-            saveChecklistItems()
+            // saveChecklistItems()
         }
         navigationController?.popViewController(animated: true)
     }
 }
 
 
+
+
+/*
 // MARK: - 获取沙盒中的Documents文件夹
 extension ChecklistViewController {
     
     /// 获取Documents文件夹路径
     func documentsDirectory() -> URL {
-        
+
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        
+
         return paths[0]
     }
     
@@ -216,7 +219,7 @@ extension ChecklistViewController {
             
             // encode方法在无法对目标进行编码时，会抛出异常
             // 所以需要用do-catch对其进行处理
-            let data = try encoder.encode(items)  // Encodable协议
+            let data = try encoder.encode(checklist.items)  // Encodable协议
             
             // 如果encode方法执行成功，就将数据些人到目标文件(即Checklists.plist)
             // 因为write(to: options:)方法也会抛出异常，所以这里也要进行异常处理
@@ -251,7 +254,7 @@ extension ChecklistViewController {
             do {
                 
                 // 对items进行解码
-                items = try decoder.decode([ChecklistItem].self, from: data)
+                checklist.items = try decoder.decode([ChecklistItem].self, from: data)
             } catch {
                 
                 // 如果decode方法执行失败，则进入到catch分支里面执行print()
@@ -260,3 +263,4 @@ extension ChecklistViewController {
         }
     }
 }
+*/
