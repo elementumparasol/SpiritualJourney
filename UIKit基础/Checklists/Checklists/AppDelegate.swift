@@ -67,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
         center.add(request)
         
+        // 让AppDelegate成为UNUserNotificationCenter的代理
+        center.delegate = self
         
         return true
     }
@@ -102,3 +104,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    /// 监听在前台运行的本地通知
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Receive local notification \(notification)")
+    }
+}
