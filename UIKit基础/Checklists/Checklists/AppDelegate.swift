@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // MARK: - 处理应用数据
         
         // 获取导航控制器(也就是根控制器)
         let navigationController = window!.rootViewController as! UINavigationController
@@ -41,6 +43,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 将应用数据传递给AllListsViewController
         controller.dataModel = dataModel
+        
+        
+        // MARK: - 处理本地通知
+        
+        // 获取本地通知权限
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            
+            if granted {
+                print("We have permission")
+            } else {
+                print("Permission denied")
+            }
+        }
+        
+        // 通知内容
+        let content = UNMutableNotificationContent()
+        content.title = "Hello!"
+        content.body = "I am a local notification"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
+        center.add(request)
         
         
         return true
