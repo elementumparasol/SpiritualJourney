@@ -14,7 +14,7 @@ class Checklist: NSObject, Codable {
     var name: String
     
     /// 图标名字
-    var iconName = "No Icon"
+    var iconName: String
     
     /// 用于保存items模型
     var items = [ChecklistItem]()
@@ -22,8 +22,10 @@ class Checklist: NSObject, Codable {
     /// 自定义构造方法
     ///
     /// - Parameter name: Checklist实例的名字
-    init(name: String) {
+    /// - Parameter iconName: 图片的名称
+    init(name: String, iconName: String = "No Icon") {
         self.name = name
+        self.iconName = iconName
         super.init()
     }
     

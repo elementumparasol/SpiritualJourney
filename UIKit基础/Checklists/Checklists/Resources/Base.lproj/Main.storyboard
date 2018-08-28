@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1057" y="-371"/>
         </scene>
-        <!--添加Checklist-->
+        <!--Add Checklist-->
         <scene sceneID="iBU-qC-wGR">
             <objects>
                 <tableViewController storyboardIdentifier="ListDetailViewController" id="NJp-tx-5I6" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,13 +95,41 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="eAo-iF-VSM">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="hjT-XR-qVD">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hjT-XR-qVD" id="58J-uo-oZt">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-tp-T88">
+                                                    <rect key="frame" x="274" y="4" width="36" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHR-ct-e1d">
+                                                    <rect key="frame" x="27" y="12" width="33" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HgX-Ed-ZFb" kind="show" identifier="PickIcon" id="0Lo-uc-sGY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="NJp-tx-5I6" id="5HA-2d-XXf"/>
                             <outlet property="delegate" destination="NJp-tx-5I6" id="XJE-l1-8zV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="添加Checklist" largeTitleDisplayMode="never" id="8gq-sL-RSD">
+                    <navigationItem key="navigationItem" title="Add Checklist" largeTitleDisplayMode="never" id="8gq-sL-RSD">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="2dt-na-stw">
                             <connections>
                                 <action selector="cancel" destination="NJp-tx-5I6" id="Rqx-2d-DdB"/>
@@ -115,14 +143,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="6Ut-YK-nua" id="gZz-3S-9kV"/>
+                        <outlet property="iconImageView" destination="n2c-tp-T88" id="I8q-de-ibU"/>
                         <outlet property="textField" destination="cHP-YH-c8X" id="1R5-Cn-Cv3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxu-IK-mMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="430"/>
+            <point key="canvasLocation" x="53.600000000000001" y="429.53523238380814"/>
         </scene>
-        <!--添加Item-->
+        <!--Add Item-->
         <scene sceneID="dzG-5N-Tpe">
             <objects>
                 <tableViewController id="WSO-fq-XPj" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,7 +191,7 @@
                             <outlet property="delegate" destination="WSO-fq-XPj" id="5cW-HN-gbw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="添加Item" id="an9-gE-ubT">
+                    <navigationItem key="navigationItem" title="Add Item" id="an9-gE-ubT">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="ppZ-bv-fhX">
                             <connections>
                                 <action selector="cancel" destination="WSO-fq-XPj" id="Ngx-vm-QbD"/>
@@ -212,6 +241,44 @@
             </objects>
             <point key="canvasLocation" x="54" y="-371"/>
         </scene>
+        <!--Choose Icon-->
+        <scene sceneID="gkq-Ld-nb7">
+            <objects>
+                <tableViewController id="HgX-Ed-ZFb" customClass="IconPickerViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j3v-y7-0gd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconCell" textLabel="F9o-4G-DMI" style="IBUITableViewCellStyleDefault" id="E8s-ZG-To8">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E8s-ZG-To8" id="oJx-d3-XwY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F9o-4G-DMI">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HgX-Ed-ZFb" id="oDf-bb-pAx"/>
+                            <outlet property="delegate" destination="HgX-Ed-ZFb" id="b9A-jb-U2W"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Icon" id="EuH-0h-Htu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6BA-kb-chE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="430"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UAV-L6-6Rr">
             <objects>
@@ -235,4 +302,5 @@
         <segue reference="f84-wz-cRg"/>
         <segue reference="h1t-mR-Zfy"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.015686274509803921" green="0.66274509803921566" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
 </document>

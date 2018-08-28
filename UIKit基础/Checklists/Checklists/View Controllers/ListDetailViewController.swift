@@ -31,9 +31,13 @@ class ListDetailViewController: UITableViewController {
     /// 文本框控件属性
     @IBOutlet weak var textField: UITextField!
     
-    
     /// 完成添加的按钮属性
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    /// 图片控件属性
+    @IBOutlet weak var iconImageView: UIImageView!
+    
+    
     
     // MARK: - 自定义属性
     
@@ -42,6 +46,9 @@ class ListDetailViewController: UITableViewController {
     
     /// 编辑list
     var checklistToEdit: Checklist?
+    
+    /// 图片名称
+    var iconName: String = "Folder"
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +70,13 @@ class ListDetailViewController: UITableViewController {
             title = "编辑checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
+            
+            // iconName
+            iconName = checklist.iconName
         }
         
-        // 让当前控制器成为textField的代理(可以从storyboard中设置)
-        // textField.delegate = self
+        // 设置图片
+        iconImageView.image = UIImage(named: iconName)
     }
 
     /// 点击取消按钮
@@ -82,16 +92,33 @@ class ListDetailViewController: UITableViewController {
         if let checklist = checklistToEdit {
             checklist.name = textField.text!
             
+            checklist.iconName = iconName
+            
             // 通知代理，完成item的编辑
             delegate?.listDetailViewController(self, didFinishEditing: checklist)
         } else {
             
-            let checklist = Checklist(name: textField.text!)
+            let checklist = Checklist(name: textField.text!, iconName: iconName)
             
             // 通知代理，完成item的添加
             delegate?.listDetailViewController(self, didFinishAdding: checklist)
         }
     }
+    
+    /// UIViewController的方法，用于通知控制器，即将执行segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 判断是否为指定的segue标识符
+        if segue.identifier == "PickIcon" {
+            
+            // 根据给定的标识符取出对应的目标控制器IconPickerViewController
+            let controller = segue.destination as! IconPickerViewController
+            
+            // 将当前控制器设置为目标控制器IconPickerViewController的代理
+            controller.delegate = self
+        }
+    }
+    
     
     
     
@@ -103,8 +130,15 @@ extension ListDetailViewController {
     
     /// 这个方法一般用来通知代理，返回的那一行被选中，如果返回nil，则表示不选中
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+        
+        if indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
     }
+    
+
 }
 
 
@@ -124,3 +158,19 @@ extension ListDetailViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
+
+// MARK: - IconPickerViewControllerDelegate
+extension ListDetailViewController: IconPickerViewControllerDelegate {
+    func iconPicker(_ picker: IconPickerViewController, didPick iconName: String) {
+        
+        self.iconName = iconName
+        iconImageView.image = UIImage(named: iconName)
+        navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+
+
