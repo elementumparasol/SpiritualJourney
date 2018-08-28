@@ -43,6 +43,7 @@ class DataModel {
         handleFirstTime()
     }
     
+    /// 注册偏好设置
     func registerDefaults() {
         
         let dictionary: [String: Any] = ["ChecklistIndex": -1, "FirstTime": true]
@@ -50,6 +51,7 @@ class DataModel {
         UserDefaults.standard.register(defaults: dictionary)
     }
     
+    /// 处理第一次安装和登录应用时的偏好设置
     func handleFirstTime() {
         
         let userDefaults = UserDefaults.standard
@@ -65,6 +67,22 @@ class DataModel {
             userDefaults.set(false, forKey: "FirstTime")
             userDefaults.synchronize()
         }
+    }
+    
+    /// 给checklist排序
+    func sortChecklist() {
+        
+        /*
+         localizedStandardCompare表示按照当地语言标准排序，也就是说
+         华语地区、英语地区和法语地区，排序的结果可能会不一样
+        lists.sort { (checklist1, checklist2) -> Bool in
+            return checklist1.name.localizedStandardCompare(checklist2.name) == .orderedAscending
+        }
+        
+        lists.sort(by: {$0.name.localizedStandardCompare($1.name) == .orderedAscending})
+        */
+        
+        lists.sort { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 }
 
@@ -136,6 +154,9 @@ extension DataModel {
                 
                 // 对items进行解码
                 lists = try decoder.decode([Checklist].self, from: data)
+                
+                // 对结果进行排序
+                sortChecklist()
             } catch {
                 
                 // 如果decode方法执行失败，则进入到catch分支里面执行print()
