@@ -100,6 +100,7 @@ class AllListsViewController: UITableViewController {
         
         // 设置cell的附件样式
         cell.accessoryType = .detailDisclosureButton
+        cell.imageView?.image = UIImage(named: checklist.iconName)
         
         return cell
     }

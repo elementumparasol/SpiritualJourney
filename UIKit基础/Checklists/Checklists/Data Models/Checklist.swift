@@ -13,6 +13,9 @@ class Checklist: NSObject, Codable {
     /// Checklist实例的名字
     var name: String
     
+    /// 图标名字
+    var iconName = "No Icon"
+    
     /// 用于保存items模型
     var items = [ChecklistItem]()
     
