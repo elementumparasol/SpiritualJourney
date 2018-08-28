@@ -16,9 +16,25 @@ class AllListsViewController: UITableViewController {
     /// dataModel属性
     var dataModel: DataModel!
     
-    // viewDidAppear在程序启动时会被调用一次
-    // 每次程序离开当前界面，然后再次回到当前界
-    // 面时又会被调用
+    
+    /**
+     viewWillAppear()比viewDidAppear()先调用，它是在view即将出现，
+     但是动画还没有开始之前调用。而viewDidAppear()则是在view出现之后，
+     并且动画完成之后调用
+     */
+    
+    /// 控价即将出现，但是动画还没有执行之前调用
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // tableView中的内容发生变化之后，调用reloadData()
+        // 方法，重新加载新的数据
+        tableView.reloadData()
+    }
+    
+    /// 在控件出现之后，并且动画已经结束之后调用。这个方法会
+    /// 被调用多次: 程序启动的时候会被调一次，然后每次离开当
+    /// 前控制器，然后再次回到当前控制器时，也会被调用
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -73,6 +89,15 @@ class AllListsViewController: UITableViewController {
         // 设置标题
         cell.textLabel?.text = checklist.name
         
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel?.text = "(No Items)"
+        }else if count == 0 {
+            cell.detailTextLabel?.text = "All done!"
+        } else {
+            cell.detailTextLabel?.text = "\(count) Remaining"
+        }
+        
         // 设置cell的附件样式
         cell.accessoryType = .detailDisclosureButton
         
@@ -92,7 +117,7 @@ class AllListsViewController: UITableViewController {
         } else {
             
             // 如果没有这样的cell，就创建带标识符的cell
-            return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+            return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
     }
     
