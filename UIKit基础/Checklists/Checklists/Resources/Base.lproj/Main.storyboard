@@ -269,13 +269,12 @@
                                                     <rect key="frame" x="20" y="11.5" width="72" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="hsU-wG-hYY"/>
-                                                        <constraint firstAttribute="width" constant="72" id="xCe-7e-B4a"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYT-Te-jrB">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYT-Te-jrB">
                                                     <rect key="frame" x="112" y="11.5" width="243" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Hxc-KJ-ASY"/>
@@ -315,6 +314,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="datePicker" destination="n8U-fm-dl9" id="0Oa-Yg-Jyc"/>
+                        <outlet property="datePickerCell" destination="R2W-ie-qPn" id="mKe-vk-kch"/>
                         <outlet property="doneBarButton" destination="UCd-tT-8Pv" id="jxv-0y-3kQ"/>
                         <outlet property="dueDateLabel" destination="MYT-Te-jrB" id="Dgp-CV-hMW"/>
                         <outlet property="shouldRemindSwitch" destination="a7k-se-bhr" id="h3i-d7-IBv"/>
@@ -322,6 +323,28 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLg-AK-ebT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="R2W-ie-qPn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2W-ie-qPn" id="YNo-ZD-ePF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="216.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="n8U-fm-dl9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="216.5"/>
+                                <date key="date" timeIntervalSinceReferenceDate="557238317.11101997">
+                                    <!--2018-08-29 12:25:17 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="n8U-fm-dl9" secondAttribute="bottom" id="AOv-9R-0Aj"/>
+                            <constraint firstItem="n8U-fm-dl9" firstAttribute="leading" secondItem="YNo-ZD-ePF" secondAttribute="leading" id="Gqo-wk-iTN"/>
+                            <constraint firstItem="n8U-fm-dl9" firstAttribute="top" secondItem="YNo-ZD-ePF" secondAttribute="top" id="jwQ-Ho-6C9"/>
+                            <constraint firstAttribute="trailing" secondItem="n8U-fm-dl9" secondAttribute="trailing" id="rg1-2K-jWK"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="2052" y="-371"/>
         </scene>

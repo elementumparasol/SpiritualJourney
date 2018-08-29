@@ -38,6 +38,12 @@ class ItemDetailViewController: UITableViewController {
     /// 计划日期
     @IBOutlet weak var dueDateLabel: UILabel!
     
+    /// 插入datePicker控件的cell
+    @IBOutlet weak var datePickerCell: UITableViewCell!
+    
+    /// datePicker控件
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     
     // MARK: - itemDetailViewControllerDelegate属性
     
@@ -52,6 +58,10 @@ class ItemDetailViewController: UITableViewController {
     
     /// 日期变量
     var dueDate = Date()
+    
+    ///
+    var datePickerVisible = false
+    
     
     
     /// 视图控件即将显示的时候调用
@@ -105,14 +115,14 @@ class ItemDetailViewController: UITableViewController {
             item.checked = false
             
             item.shouldRemind = shouldRemindSwitch.isOn
-            item.dueDate = dueDate 
+            item.dueDate = dueDate
     
             // 通知代理
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
     
-    
+    /// 设置显示时间label上面的Text
     func updateDueDateLabel() {
         
         // 将Date实例变量的值转换为文字，需要用到DateFormatter实例
@@ -122,17 +132,89 @@ class ItemDetailViewController: UITableViewController {
         dueDateLabel.text = formatter.string(from: dueDate)
     }
     
-    
-    // MARK: - UITableViewDelegation
-    
-    
-    /// 取消选中时变灰的效果(告诉tableView，当用户点击那一行时，不要选中)
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+    ///
+    func showDatePicker() {
+        
+        datePickerVisible = true
+        
+        let indexPathDatePicker = IndexPath(row: 2, section: 1)
+        tableView.insertRows(at: [indexPathDatePicker], with: .fade)
     }
     
     
+    
+    
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 1 && datePickerVisible {
+            return 3
+        } else {
+            return super.tableView(tableView, numberOfRowsInSection: section)
+        }
+    }
+    
+    // 因为ItemDetailViewController描述的是静态的tableView，所以是不需要
+    // 实现数据源方法的。但是，有时候会有一些特殊需求，需要用到数据源中的方法
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // 对Section1和row3这一行cell进行特殊处理，其它的按照系统默认处理
+        if indexPath.section == 1 && indexPath.row == 2 {
+            return datePickerCell
+        } else {
+            return super.tableView(tableView, cellForRowAt: indexPath)
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: - UITableViewDelegation
+    
+    /// 取消选中时变灰的效果(告诉tableView，当用户点击那一行时，不要选中)
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        
+        if indexPath.section == 1 && indexPath.row == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 1 && indexPath.row == 2 {
+            return 217
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        textField.resignFirstResponder()
+        
+        if indexPath.section == 1 && indexPath.row == 1 {
+            showDatePicker()
+        }
+    }
 
+    // 如果在静态cell的tableView中实现了数据源方法，就必须实现这个
+    // 代理方法，否则，会引发程序崩溃
+    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        
+        var newIndexPath = indexPath
+        if indexPath.section == 1 && indexPath.row == 2 {
+            newIndexPath = IndexPath(row: 0, section: indexPath.section)
+        }
+        
+        return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
+    }
+    
 }
 
 
