@@ -32,6 +32,12 @@ class ItemDetailViewController: UITableViewController {
     /// 完成按钮
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
+    /// Switch开关
+    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    
+    /// 计划日期
+    @IBOutlet weak var dueDateLabel: UILabel!
+    
     
     // MARK: - itemDetailViewControllerDelegate属性
     
@@ -43,6 +49,9 @@ class ItemDetailViewController: UITableViewController {
     
     /// 编辑item
     var itemToEdit: ChecklistItem?
+    
+    /// 日期变量
+    var dueDate = Date()
     
     
     /// 视图控件即将显示的时候调用
@@ -65,7 +74,12 @@ class ItemDetailViewController: UITableViewController {
             title = "编辑item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+            
+            shouldRemindSwitch.isOn = item.shouldRemind
+            dueDate = item.dueDate
         }
+        
+        updateDueDateLabel()
     }
     
     /// 取消编辑
@@ -78,17 +92,34 @@ class ItemDetailViewController: UITableViewController {
     /// 完成编辑
     @IBAction func done() {
         
-        if let itemToEdit = itemToEdit {
-            itemToEdit.text = textField.text!
-            delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate
+            
+            delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
             let item = ChecklistItem()
             item.text = textField.text!
             item.checked = false
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate 
     
             // 通知代理
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
+    }
+    
+    
+    func updateDueDateLabel() {
+        
+        // 将Date实例变量的值转换为文字，需要用到DateFormatter实例
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        dueDateLabel.text = formatter.string(from: dueDate)
     }
     
     

@@ -49,23 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 获取本地通知权限
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            
-            if granted {
-                print("We have permission")
-            } else {
-                print("Permission denied")
-            }
-        }
-        
-        // 通知内容
-        let content = UNMutableNotificationContent()
-        content.title = "Hello!"
-        content.body = "I am a local notification"
-        content.sound = UNNotificationSound.default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
-        center.add(request)
         
         // 让AppDelegate成为UNUserNotificationCenter的代理
         center.delegate = self
