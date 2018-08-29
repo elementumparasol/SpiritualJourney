@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol ItemDetailViewControllerDelegate: class {
     
@@ -108,6 +109,8 @@ class ItemDetailViewController: UITableViewController {
             item.shouldRemind = shouldRemindSwitch.isOn
             item.dueDate = dueDate
             
+            item.scheduleNotification()
+            
             delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
             let item = ChecklistItem()
@@ -116,17 +119,33 @@ class ItemDetailViewController: UITableViewController {
             
             item.shouldRemind = shouldRemindSwitch.isOn
             item.dueDate = dueDate
+            
+            item.scheduleNotification()
     
             // 通知代理
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
     
-    
+    /// UIDatePicker
     @IBAction func dateChanged(_ datePicker: UIDatePicker) {
         
         dueDate = datePicker.date
         updateDueDateLabel()
+    }
+    
+    /// UISwitch
+    @IBAction func shouldRemindToggle(_ switchControl: UISwitch) {
+        
+        textField.resignFirstResponder()
+        
+        if switchControl.isOn  {
+            
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                // do nothing
+            }
+        }
     }
     
     

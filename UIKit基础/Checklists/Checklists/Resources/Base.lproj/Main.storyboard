@@ -247,6 +247,9 @@
                                                         <constraint firstAttribute="height" constant="31" id="1wd-HX-AYk"/>
                                                         <constraint firstAttribute="width" constant="47" id="hxv-tk-Dc8"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggle:" destination="WSO-fq-XPj" eventType="valueChanged" id="UYv-5A-OvL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
