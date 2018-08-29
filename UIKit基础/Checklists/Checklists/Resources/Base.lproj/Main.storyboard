@@ -335,6 +335,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="557238317.11101997">
                                     <!--2018-08-29 12:25:17 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="WSO-fq-XPj" eventType="valueChanged" id="lha-qA-Kip"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <constraints>

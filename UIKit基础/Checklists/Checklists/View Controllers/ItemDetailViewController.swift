@@ -122,6 +122,15 @@ class ItemDetailViewController: UITableViewController {
         }
     }
     
+    
+    @IBAction func dateChanged(_ datePicker: UIDatePicker) {
+        
+        dueDate = datePicker.date
+        updateDueDateLabel()
+    }
+    
+    
+    
     /// 设置显示时间label上面的Text
     func updateDueDateLabel() {
         
@@ -132,16 +141,25 @@ class ItemDetailViewController: UITableViewController {
         dueDateLabel.text = formatter.string(from: dueDate)
     }
     
-    ///
+    /// 显示datePicker
     func showDatePicker() {
         
         datePickerVisible = true
-        
         let indexPathDatePicker = IndexPath(row: 2, section: 1)
         tableView.insertRows(at: [indexPathDatePicker], with: .fade)
+        datePicker.setDate(dueDate, animated: false)
     }
     
-    
+    /// 隐藏datePicker
+    func hideDatePicker() {
+        
+        if datePickerVisible {
+            datePickerVisible = false
+            
+            let indexPathDatePicker = IndexPath(row: 2, section: 1)
+            tableView.deleteRows(at: [indexPathDatePicker], with: .fade)
+        }
+    }
     
     
     // MARK: - UITableViewDataSource
@@ -199,7 +217,11 @@ class ItemDetailViewController: UITableViewController {
         textField.resignFirstResponder()
         
         if indexPath.section == 1 && indexPath.row == 1 {
-            showDatePicker()
+            if !datePickerVisible {
+                showDatePicker()
+            } else {
+                hideDatePicker()
+            }
         }
     }
 
@@ -230,6 +252,11 @@ extension ItemDetailViewController: UITextFieldDelegate {
         doneBarButton.isEnabled = !newText.isEmpty
         
         return true
+    }
+    
+    // 当开始在textFiled里面编辑时，需要隐藏datePicker
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideDatePicker()
     }
     
 }
