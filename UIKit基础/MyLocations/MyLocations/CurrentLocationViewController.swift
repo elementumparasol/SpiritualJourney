@@ -54,9 +54,32 @@ class CurrentLocationViewController: UIViewController {
             return
         }
         
+        // 如果获取地理位置被禁止了，则弹出alert提示
+        if authStatus == .denied || authStatus == .restricted {
+            showLocationServicesDeniedAlert()
+            return
+        }
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
+    }
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 如果获取地理位置被禁止，则弹出提示
+    func showLocationServicesDeniedAlert() {
+        
+        let alert = UIAlertController(title: "Location Services Disabled",
+                                      message: "Please enable location services for this app in Settings.",
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
