@@ -58,6 +58,9 @@ class CurrentLocationViewController: UIViewController {
     /// 在执行geocoding是最后发生的错误
     var lastGeocodingError: Error?
     
+    /// 定时器
+    var timer: Timer?
+    
     
 
     override func viewDidLoad() {
@@ -197,6 +200,8 @@ class CurrentLocationViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters  // 10米精度级别的
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            
+            timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
         }
     }
     
@@ -212,6 +217,10 @@ class CurrentLocationViewController: UIViewController {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            
+            if let timer = timer {
+                timer.invalidate()  // 移除Timer
+            }
         }
     }
     
@@ -292,15 +301,6 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         let newLocation = locations.last!  // 获取位置信息
         print("didUpdateLocations: \(newLocation)")
         
-        // 将最新的位置信息保存到location中
-        // location = newLocation
-        
-        // 在更新位置信息之前，先将之前的错误信息移除
-        // lastLocationError = nil
-        
-        // 更新label上面的文本内容
-        // updateLabels()
-        
         
         // 如果获取地理位置信息等待时间过长，就用缓存信息
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
@@ -312,6 +312,11 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         // 这个值就是非法的，我们就可以忽略它
         if newLocation.horizontalAccuracy < 0 {
             return
+        }
+        
+        var distance = CLLocationDistance(Double.greatestFiniteMagnitude)
+        if let location = location {
+            distance = newLocation.distance(from: location)
         }
         
         // 在获取地理位置信息时，值越大就表示约不精确(比如说，100米级别的
@@ -337,6 +342,10 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 print("*** We're done!")
                 stopLocationManager()
+                
+                if distance > 0 {
+                    performingReverseGeocoding = false
+                }
             }
             
             // 更新各种label上面的内容
@@ -369,7 +378,16 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
                     self.updateLabels()
                 }
             }
+        } else if distance < 1 {
+            let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
+            
+            if timeInterval > 10 {
+                print("*** Force done!")
+                stopLocationManager()
+                updateLabels()
+            }
         }
+        
     }
 
 
@@ -386,4 +404,21 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
 
 
 
+}
+
+
+
+
+extension CurrentLocationViewController {
+    
+    @objc func didTimeOut() {
+        
+        print("*** Time out!")
+        if location == nil {
+            stopLocationManager()
+            lastLocationError = NSError(domain: "MyLocationErrorDomain", code: 1, userInfo: nil)
+            
+            updateLabels()
+        }
+    }
 }
