@@ -49,7 +49,7 @@
                                 <state key="normal" title="Tag Location"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elC-2R-3nP">
-                                <rect key="frame" x="131.5" y="553" width="112" height="30"/>
+                                <rect key="frame" x="131.5" y="394" width="112" height="30"/>
                                 <state key="normal" title="Get My Location"/>
                                 <connections>
                                     <action selector="getLocation" destination="9pv-A4-QxB" eventType="touchUpInside" id="CqS-Lu-a0p"/>
@@ -92,10 +92,10 @@
                             <constraint firstItem="X30-uO-vcA" firstAttribute="top" secondItem="7lz-19-RhV" secondAttribute="bottom" constant="30" id="eZH-bl-nI3"/>
                             <constraint firstItem="MFx-jM-6GJ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="fde-2B-f3Y"/>
                             <constraint firstItem="dKO-gF-SWR" firstAttribute="leading" secondItem="X30-uO-vcA" secondAttribute="trailing" id="jW7-if-Rrd"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="elC-2R-3nP" secondAttribute="bottom" constant="35" id="muG-wO-Pl6"/>
                             <constraint firstItem="7lz-19-RhV" firstAttribute="top" secondItem="MFx-jM-6GJ" secondAttribute="top" id="nfe-im-km9"/>
                             <constraint firstItem="XjE-Wc-IT2" firstAttribute="top" secondItem="X30-uO-vcA" secondAttribute="bottom" constant="50" id="nuy-o7-5tI"/>
                             <constraint firstItem="7lz-19-RhV" firstAttribute="leading" secondItem="MFx-jM-6GJ" secondAttribute="trailing" id="pDt-lh-gcb"/>
+                            <constraint firstItem="elC-2R-3nP" firstAttribute="top" secondItem="EX6-mP-PQU" secondAttribute="bottom" constant="30" id="reu-JQ-pgg"/>
                             <constraint firstItem="7lz-19-RhV" firstAttribute="height" secondItem="MFx-jM-6GJ" secondAttribute="height" id="uJt-R5-eY1"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="XjE-Wc-IT2" secondAttribute="trailing" constant="20" id="zbQ-yd-ipK"/>
                         </constraints>
