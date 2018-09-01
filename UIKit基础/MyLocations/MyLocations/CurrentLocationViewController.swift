@@ -79,6 +79,17 @@ class CurrentLocationViewController: UIViewController {
         // 程序一起动就显示文本信息
         updateLabels()
     }
+    
+    /// 执行segue的时候调用
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 将数据传递到LocationDetailsViewController中
+        if segue.identifier == "TagLocation" {
+            let controller = segue.destination as! LocationDetailsViewController
+            controller.coordinate = location!.coordinate
+            controller.placemark = placemark
+        }
+    }
 
     
     // MARK: - @IBAction

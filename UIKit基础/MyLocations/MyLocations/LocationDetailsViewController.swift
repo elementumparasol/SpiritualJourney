@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationDetailsViewController: UITableViewController {
     
@@ -29,6 +30,16 @@ class LocationDetailsViewController: UITableViewController {
     
     /// dateLabel控件
     @IBOutlet weak var dateLabel: UILabel!
+    
+    
+    // MARK: - 自定义属性
+    
+    
+    /// 经纬度(包含通过locationManager获取到的location信息，如经纬度)
+    var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
+    /// 地标信息(包含街道和城市信息)
+    var placemark: CLPlacemark?
     
     
     // MARK: - @IBAction
@@ -58,4 +69,14 @@ class LocationDetailsViewController: UITableViewController {
         // 显示导航条
         navigationController?.isNavigationBarHidden = false
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
