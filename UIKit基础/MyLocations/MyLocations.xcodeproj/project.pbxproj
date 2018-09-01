@@ -13,6 +13,7 @@
 		C5BA0F452136EB16003339B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F432136EB16003339B0 /* Main.storyboard */; };
 		C5BA0F472136EB1A003339B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F462136EB1A003339B0 /* Assets.xcassets */; };
 		C5BA0F4A2136EB1A003339B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F482136EB1A003339B0 /* LaunchScreen.storyboard */; };
+		C5BA0F52213A9386003339B0 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C5BA0F462136EB1A003339B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5BA0F492136EB1A003339B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5BA0F4B2136EB1A003339B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				C5BA0F3D2136EB16003339B0 /* AppDelegate.swift */,
 				C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */,
+				C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */,
 				C5BA0F412136EB16003339B0 /* SecondViewController.swift */,
 				C5BA0F432136EB16003339B0 /* Main.storyboard */,
 				C5BA0F462136EB1A003339B0 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5BA0F52213A9386003339B0 /* LocationDetailsViewController.swift in Sources */,
 				C5BA0F422136EB16003339B0 /* SecondViewController.swift in Sources */,
 				C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */,
 				C5BA0F402136EB16003339B0 /* CurrentLocationViewController.swift in Sources */,

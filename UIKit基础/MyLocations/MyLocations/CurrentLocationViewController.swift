@@ -62,7 +62,17 @@ class CurrentLocationViewController: UIViewController {
     var timer: Timer?
     
     
-
+    // MARK: - 类自带的方法
+    
+    /// 控制器的view即将显示的时候调用
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 隐藏导航条
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    /// 控制器的view显示的时候调用
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -187,9 +197,9 @@ class CurrentLocationViewController: UIViewController {
             }
             
             messageLabel.text = statusMessage
-            
-            configureGetButton()
         }
+        
+        configureGetButton()
     }
     
     /// 开始获取位置信息
@@ -234,7 +244,7 @@ class CurrentLocationViewController: UIViewController {
         }
     }
     
-    ///
+    /// 显示详细的地理位置
     func string(from placemark: CLPlacemark) -> String {
         
         var line1 = ""
