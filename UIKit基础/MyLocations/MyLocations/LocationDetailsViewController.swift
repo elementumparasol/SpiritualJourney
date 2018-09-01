@@ -12,22 +12,22 @@ class LocationDetailsViewController: UITableViewController {
     
     // MARK: - @IBOutlet
     
-    ///
+    /// textView控件
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    ///
+    /// categoryLabel控件
     @IBOutlet weak var categoryLabel: UILabel!
     
-    ///
+    /// latitudeLabel控件
     @IBOutlet weak var latitudeLabel: UILabel!
     
-    ///
+    /// longitudeLabel控件
     @IBOutlet weak var longitudeLabel: UILabel!
     
-    ///
+    /// addressLabel控件
     @IBOutlet weak var addressLabel: UILabel!
     
-    ///
+    /// dateLabel控件
     @IBOutlet weak var dateLabel: UILabel!
     
     
