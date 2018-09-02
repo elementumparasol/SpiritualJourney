@@ -41,6 +41,16 @@ class LocationDetailsViewController: UITableViewController {
     /// 地标信息(包含街道和城市信息)
     var placemark: CLPlacemark?
     
+    /// 创建DateFomatter
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
+    
+    
     
     // MARK: - @IBAction
     
@@ -70,9 +80,75 @@ class LocationDetailsViewController: UITableViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
+    /// 控制器的view加载完毕之后调用
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        descriptionTextView.text = ""
+        categoryLabel.text = ""
+        
+        // 设置经纬度信息
+        latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
+        longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
+        
+        // 设置地址信息
+        if let placemark = placemark {
+            addressLabel.text = string(from: placemark)
+        } else {
+            addressLabel.text = "No Address Found"
+        }
+        
+        // 设置时间信息
+        dateLabel.text = format(date: Date())
+    }
     
     
+    // MARK: - 自定义方法
     
+    /// 获取详细的地址信息
+    func string(from placemark: CLPlacemark) -> String {
+        
+        // 用于存储详细的地址信息
+        var text = ""
+        
+        // 街道详细信息
+        if let s = placemark.subThoroughfare {
+            text += s + " "
+        }
+        
+        // 街道信息
+        if let s = placemark.thoroughfare {
+            text += s + ", "
+        }
+        
+        // 城市信息
+        if let s = placemark.locality {
+            text += s + ", "
+        }
+        
+        // 州或者省级信息
+        if let s = placemark.administrativeArea {
+            text += s + " "
+        }
+        
+        // 邮编信息
+        if let s = placemark.postalCode {
+            text += s + ", "
+        }
+        
+        // 国家信息
+        if let s = placemark.country {
+            text += s
+        }
+        
+        return text
+    }
+    
+    /// 显示时间信息(将时间转换为字符串，以便于阅读)
+    func format(date: Date) -> String {
+        
+        return dateFormatter.string(from: date)
+    }
     
     
     

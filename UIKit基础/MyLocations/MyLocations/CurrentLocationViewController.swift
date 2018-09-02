@@ -260,29 +260,35 @@ class CurrentLocationViewController: UIViewController {
         
         var line1 = ""
         
+        // 更加详细的街道信息
         if let s = placemark.subThoroughfare {
             line1 += s + " "
         }
         
+        // 街道信息
         if let s = placemark.thoroughfare {
             line1 += s
         }
         
         var line2 = ""
         
+        // 城市信息
         if let s = placemark.locality {
             line2 += s + " "
         }
         
+        // 州或者省级信息
         if let s = placemark.administrativeArea {
             line2 += s + " "
         }
         
+        // 邮编信息
         if let s = placemark.postalCode {
             line2 += s
         }
         
-        return line1 + "\n" + line2
+        // 按照中国的习惯，城市应该放在街道的前面
+        return line2 + " " + line1
     }
     
     
