@@ -13,7 +13,7 @@ class HudView: UIView {
     var text = ""
     
     /// 创建hudView
-    class func hud(inView view: UIView, animated: Bool) -> UIView {
+    class func hud(inView view: UIView, animated: Bool) -> HudView {
         
         // 创建hudView
         let hudView = HudView(frame: view.bounds)
