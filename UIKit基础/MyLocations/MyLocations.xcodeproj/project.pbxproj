@@ -16,6 +16,7 @@
 		C5BA0F52213A9386003339B0 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */; };
 		C5BA0F54213E4932003339B0 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F53213E4932003339B0 /* CategoryPickerViewController.swift */; };
 		C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F55213EDA90003339B0 /* HudView.swift */; };
+		C5BA0F58213F0222003339B0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F57213F0222003339B0 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		C5BA0F53213E4932003339B0 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		C5BA0F55213EDA90003339B0 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		C5BA0F57213F0222003339B0 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				C5BA0F53213E4932003339B0 /* CategoryPickerViewController.swift */,
 				C5BA0F412136EB16003339B0 /* SecondViewController.swift */,
 				C5BA0F55213EDA90003339B0 /* HudView.swift */,
+				C5BA0F57213F0222003339B0 /* Functions.swift */,
 				C5BA0F432136EB16003339B0 /* Main.storyboard */,
 				C5BA0F462136EB1A003339B0 /* Assets.xcassets */,
 				C5BA0F482136EB1A003339B0 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 				C5BA0F52213A9386003339B0 /* LocationDetailsViewController.swift in Sources */,
 				C5BA0F422136EB16003339B0 /* SecondViewController.swift in Sources */,
 				C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */,
+				C5BA0F58213F0222003339B0 /* Functions.swift in Sources */,
 				C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */,
 				C5BA0F54213E4932003339B0 /* CategoryPickerViewController.swift in Sources */,
 				C5BA0F402136EB16003339B0 /* CurrentLocationViewController.swift in Sources */,

@@ -66,8 +66,7 @@ class LocationDetailsViewController: UITableViewController {
         hudView.text = "Tagged"
         
         // 使用GCD来延迟执行
-        let delayInSeconds = 0.6
-        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
+        afterDelay(0.6) {
             
             // 在退出当前控制器之前隐藏HUD
             hudView.hide()
