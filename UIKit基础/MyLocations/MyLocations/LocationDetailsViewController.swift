@@ -206,6 +206,28 @@ extension LocationDetailsViewController {
         }
     }
     
+    // 某一行cell即将被选中的时候调用
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        
+        // 只让第0组和第1组cell被选中。因为第0组的第0行需要填写
+        // 描述信息，而第1组需要选择照片，所以这两组都需要能被选中
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil  // 其它组cell不需要做任何事情，所以他们需要被选中功能
+        }
+    }
+    
+    // 某一行cell被选中的时候调用
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 第0组的第0行cell被选中的时候
+        if indexPath.section == 0 && indexPath.row == 0 {
+            
+            // 让descriptionTextView成为第一响应者
+            descriptionTextView.becomeFirstResponder()
+        }
+    }
     
     
     
