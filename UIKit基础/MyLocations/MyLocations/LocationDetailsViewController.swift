@@ -114,6 +114,17 @@ class LocationDetailsViewController: UITableViewController {
         
         // 设置时间信息
         dateLabel.text = format(date: Date())
+        
+        
+        
+        // 创建tapGesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
+        
+        // 设置cancelsTouchesInView的值为false
+        tapGesture.cancelsTouchesInView = false
+        
+        // 将tapGesture手势添加到tableView中
+        tableView.addGestureRecognizer(tapGesture)
     }
     
     /// 执行segue的时候调用
@@ -179,7 +190,26 @@ class LocationDetailsViewController: UITableViewController {
         return dateFormatter.string(from: date)
     }
     
-    
+    /// 隐藏键盘(除了textView里面之外，点击tableView的任何位置，都将退出键盘)
+    @objc func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
+        
+        // 获取鼠标点击的坐标(tap position)
+        let point = gestureRecognizer.location(in: tableView)
+        
+        // 通过坐标获取与之对应的indexPath
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 当indexPath的值为nil时，一般表示点击的区域是tableView的hearder或者footer
+        // 我们需要的效果是，只要不是点击第0组的第0行，点击tableView中的任意地方，都要让
+        // 键盘退下去
+        if indexPath == nil || !(indexPath?.section == 0 && indexPath?.row == 0) {
+            
+            // 除了第0组的第0行之外，点击tableView的任何地方都将退出键盘
+            descriptionTextView.resignFirstResponder()
+        }
+        
+        
+    }
     
     
     
