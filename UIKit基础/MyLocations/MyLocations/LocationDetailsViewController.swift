@@ -49,7 +49,8 @@ class LocationDetailsViewController: UITableViewController {
         return formatter
     }()
     
-    
+    /// 分类的名称
+    var categoryName = "No Category"
     
     
     // MARK: - @IBAction
@@ -85,7 +86,7 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         
         descriptionTextView.text = ""
-        categoryLabel.text = ""
+        categoryLabel.text = categoryName
         
         // 设置经纬度信息
         latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
@@ -100,6 +101,16 @@ class LocationDetailsViewController: UITableViewController {
         
         // 设置时间信息
         dateLabel.text = format(date: Date())
+    }
+    
+    /// 执行segue的时候调用
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 根据segue标识符取出对应的控制器，然后将categoryName传递过去
+        if segue.identifier == "PickCategory" {
+            let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = categoryName
+        }
     }
     
     
@@ -118,7 +129,7 @@ class LocationDetailsViewController: UITableViewController {
         
         // 国家信息
         if let s = placemark.country {
-            text += s
+            text += s + " "
         }
         
         // 州或者省级信息
@@ -128,12 +139,12 @@ class LocationDetailsViewController: UITableViewController {
         
         // 城市信息
         if let s = placemark.locality {
-            text += s + ", "
+            text += s + " "
         }
         
         // 街道信息
         if let s = placemark.thoroughfare {
-            text += s + ", "
+            text += s + " "
         }
         
         // 街道详细信息
@@ -167,6 +178,7 @@ class LocationDetailsViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 extension LocationDetailsViewController {
     
+    // 在加载tableViewCell的时候调用
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 && indexPath.row == 0 {
