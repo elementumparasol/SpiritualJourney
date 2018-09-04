@@ -51,9 +51,23 @@ class CategoryPickerViewController: UITableViewController {
                 break
             }
         }
-        
-        
     }
+    
+    /// 执行segue的时候调用
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("CategoryPickerViewController --- prepare")
+        if segue.identifier == "PickedCategory" {
+            
+            let cell = sender as! UITableViewCell
+            
+            if let indexPath = tableView.indexPath(for: cell) {
+                
+                // 给selectedCategoryName设置数据
+                selectedCategoryName = categories[indexPath.row]
+            }
+        }
+    }
+    
     
     
     

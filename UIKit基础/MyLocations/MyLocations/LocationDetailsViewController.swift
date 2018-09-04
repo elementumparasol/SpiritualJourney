@@ -72,7 +72,7 @@ class LocationDetailsViewController: UITableViewController {
     
     /// Unwind Segue to CategoryPickerViewController
     @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue) {
-        
+        print("LocationDetailsViewController --- Unwind Segue")
         // 通过source取出segue的源控制器
         let controller = segue.source as! CategoryPickerViewController
         
@@ -118,7 +118,7 @@ class LocationDetailsViewController: UITableViewController {
     
     /// 执行segue的时候调用
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print("LocationDetailsViewController --- prepare")
         // 根据segue标识符取出对应的控制器，然后将categoryName传递过去
         if segue.identifier == "PickCategory" {
             let controller = segue.destination as! CategoryPickerViewController
@@ -211,3 +211,20 @@ extension LocationDetailsViewController {
     
     
 }
+
+
+/**
+ (1)、首先，从LocationDetailsViewController跳转到CategoryPickerViewController
+     它会现执行LocationDetailsViewController中的prepare方法
+ (2)、然后点击CategoryPickerViewController中的cell，此时会执行Unwind Segue关闭当
+     前控制器，回到LocationDetailsViewController。不过，在回到LocationDetailsViewController之前，它会先调用CategoryPickerViewController这个控制器中的prepare方法，因此，我们可以在
+     prepare方法中先给selectedCategoryName属性赋值
+ (3)、当我们回到LocationDetailsViewController这个控制器之后，CategoryPickerViewController控制器中的selectedCategoryName属性已经有值了，此时
+     系统会执行Unwind Segue，也就是调用categoryPickerDidPickCategory()方法，然后我们
+     就可以把CategoryPickerViewController中的值回传过来
+ 
+ 方法的调用顺序依次为:
+    - LocationDetailsViewController --- prepare
+    - CategoryPickerViewController --- prepare
+    - LocationDetailsViewController --- categoryPickerDidPickCategory
+ */

@@ -367,7 +367,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ZTB-PW-Fkg" kind="unwind" unwindAction="categoryPickerDidPickCategory:" id="KSR-04-ekg"/>
+                                    <segue destination="ZTB-PW-Fkg" kind="unwind" identifier="PickedCategory" unwindAction="categoryPickerDidPickCategory:" id="KSR-04-ekg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
