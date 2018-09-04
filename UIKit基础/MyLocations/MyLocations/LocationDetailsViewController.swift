@@ -105,25 +105,20 @@ class LocationDetailsViewController: UITableViewController {
     
     // MARK: - 自定义方法
     
-    /// 获取详细的地址信息
+    /// 获取详细的地址信息(国家 省 市 区 街道 门牌号 邮编)
     func string(from placemark: CLPlacemark) -> String {
         
         // 用于存储详细的地址信息
         var text = ""
         
-        // 街道详细信息
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
+        /**
+         按照中国人的习惯，将国家信息放在最前面，即
+         - 中国，上海，上海市，杨浦区，街道信息，门牌号，邮编信息
+         */
         
-        // 街道信息
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        
-        // 城市信息
-        if let s = placemark.locality {
-            text += s + ", "
+        // 国家信息
+        if let s = placemark.country {
+            text += s
         }
         
         // 州或者省级信息
@@ -131,14 +126,24 @@ class LocationDetailsViewController: UITableViewController {
             text += s + " "
         }
         
-        // 邮编信息
-        if let s = placemark.postalCode {
+        // 城市信息
+        if let s = placemark.locality {
             text += s + ", "
         }
         
-        // 国家信息
-        if let s = placemark.country {
-            text += s
+        // 街道信息
+        if let s = placemark.thoroughfare {
+            text += s + ", "
+        }
+        
+        // 街道详细信息
+        if let s = placemark.subThoroughfare {
+            text += s + " "
+        }
+        
+        // 邮编信息
+        if let s = placemark.postalCode {
+            text += s + ", "
         }
         
         return text
