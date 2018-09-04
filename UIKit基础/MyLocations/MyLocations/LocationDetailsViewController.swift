@@ -70,6 +70,19 @@ class LocationDetailsViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    /// Unwind Segue to CategoryPickerViewController
+    @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue) {
+        
+        // 通过source取出segue的源控制器
+        let controller = segue.source as! CategoryPickerViewController
+        
+        // 将源控制器中的数据回传到当前控制器的categoryName中
+        categoryName = controller.selectedCategoryName
+        
+        // 再将categoryName中的数据设置到categoryLabel上面
+        categoryLabel.text = categoryName
+    }
+    
     
     // MARK: - 类自带的方法
     

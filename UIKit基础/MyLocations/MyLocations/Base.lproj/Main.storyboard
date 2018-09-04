@@ -366,6 +366,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZTB-PW-Fkg" kind="unwind" unwindAction="categoryPickerDidPickCategory:" id="KSR-04-ekg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -375,6 +378,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNl-s0-7oh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ZTB-PW-Fkg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3172" y="-321"/>
         </scene>
