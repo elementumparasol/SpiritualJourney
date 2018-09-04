@@ -62,7 +62,7 @@ class LocationDetailsViewController: UITableViewController {
         // 从导航栏堆栈中退出栈顶控制器
 //        navigationController?.popViewController(animated: true)
         
-        let hudView = HudView.hud(inView: tabBarController!.view, animated: true)
+        let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         
         hudView.text = "Tagged"
     }
