@@ -27,7 +27,7 @@ class HudView: UIView {
         // 设置view不可交互
         view.isUserInteractionEnabled = false
         
-        // 调用show(animated: )方法显示HUD并执行动画
+        // 调用show(animated: )方法执行动画
         hudView.show(animated: animated)
         
         return hudView
@@ -94,7 +94,7 @@ class HudView: UIView {
         text.draw(at: textPoint, withAttributes: attribs)
     }
     
-    ///
+    /// 执行HUD动画
     func show(animated: Bool) {
         
         // 如果需要执行动画
@@ -107,15 +107,25 @@ class HudView: UIView {
             transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             
             // 执行UIView动画
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
                 
                 // 设置当前控件不透明
                 self.alpha = 1
                 
                 // 清除transform
                 self.transform = CGAffineTransform.identity
-            }
+            }, completion: nil)
         }
+    }
+    
+    /// 隐藏HUD
+    func hide() {
+        
+        // 设置父控件可交互
+        superview?.isUserInteractionEnabled = true
+        
+        // 从父控件上面移除HUD
+        removeFromSuperview()
     }
     
     

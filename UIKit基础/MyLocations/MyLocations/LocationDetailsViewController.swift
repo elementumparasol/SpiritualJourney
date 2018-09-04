@@ -59,12 +59,24 @@ class LocationDetailsViewController: UITableViewController {
     /// 点击导航栏上面的完成按钮
     @IBAction func done() {
         
-        // 从导航栏堆栈中退出栈顶控制器
-//        navigationController?.popViewController(animated: true)
-        
+        // 创建HUD
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         
+        // 设置HUD的描述文本
         hudView.text = "Tagged"
+        
+        // 使用GCD来延迟执行
+        let delayInSeconds = 0.6
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
+            
+            // 在退出当前控制器之前隐藏HUD
+            hudView.hide()
+            
+            // 从导航栏堆栈中退出栈顶控制器
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        
     }
     
     /// 点击导航栏上面的取消按钮
