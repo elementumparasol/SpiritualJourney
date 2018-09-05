@@ -55,7 +55,7 @@ class CategoryPickerViewController: UITableViewController {
     
     /// 执行segue的时候调用
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("CategoryPickerViewController --- prepare")
+        
         if segue.identifier == "PickedCategory" {
             
             let cell = sender as! UITableViewCell

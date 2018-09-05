@@ -87,7 +87,7 @@ class LocationDetailsViewController: UITableViewController {
     
     /// Unwind Segue to CategoryPickerViewController
     @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue) {
-        print("LocationDetailsViewController --- Unwind Segue")
+        
         // 通过source取出segue的源控制器
         let controller = segue.source as! CategoryPickerViewController
         
@@ -144,7 +144,7 @@ class LocationDetailsViewController: UITableViewController {
     
     /// 执行segue的时候调用
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("LocationDetailsViewController --- prepare")
+        
         // 根据segue标识符取出对应的控制器，然后将categoryName传递过去
         if segue.identifier == "PickCategory" {
             let controller = segue.destination as! CategoryPickerViewController

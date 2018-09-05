@@ -326,7 +326,7 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         
         // 为什么要用最后一个？因为最后一个位置消息是最新的
         let newLocation = locations.last!  // 获取位置信息
-        print("didUpdateLocations: \(newLocation)")
+        // print("didUpdateLocations: \(newLocation)")
         
         
         // 如果获取地理位置信息等待时间过长，就用缓存信息
@@ -367,7 +367,7 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
             // 比之前一次要小，就说明我们已经获取到了更精准的位
             // 置信息，那么就没有必要再接着继续获取地理位置信息了
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-                print("*** We're done!")
+                // print("*** We're done!")
                 stopLocationManager()
                 
                 if distance > 0 {
@@ -381,18 +381,9 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
             
             
             if !performingReverseGeocoding {
-                print("*** Going to geocode")
+                // print("*** Going to geocode")
                 performingReverseGeocoding = true
                 geocoder.reverseGeocodeLocation(newLocation) { (placemarks, error) in
-                    
-//                    if let error = error {
-//                        print("*** Reverse Geocoding error: \(error.localizedDescription)")
-//                        return
-//                    }
-//
-//                    if let places = placemarks {
-//                        print("*** Found places: \(places)")
-//                    }
                     
                     self.lastLocationError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
@@ -409,7 +400,7 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
             let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
             
             if timeInterval > 10 {
-                print("*** Force done!")
+                // print("*** Force done!")
                 stopLocationManager()
                 updateLabels()
             }
