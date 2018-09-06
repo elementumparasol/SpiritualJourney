@@ -95,8 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 取出tabBarController里面的viewControllers
         if let tabViewControllers = tabBarController.viewControllers {
             
-            // 取出导航控制器
-            let navController = tabViewControllers[0] as! UINavigationController
+            // 取出第0个导航控制器
+            var navController = tabViewControllers[0] as! UINavigationController
             
             // 取出CurrentLocationViewController
             let controller = navController.viewControllers.first as! CurrentLocationViewController
@@ -104,6 +104,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 将AppDelegate中的managedObjectContext传递
             // 给CurrentLocationViewController中的managedObjectContext
             controller.managedObjectContext = managedObjectContext
+            
+            
+            
+            // 取出第1个navController
+            navController = tabViewControllers[1] as! UINavigationController
+            
+            // 取出LocationsViewController
+            let locationsController = navController.viewControllers.first as! LocationsViewController
+            
+            // 将managedObjectContext传递给LocationsViewController
+            // 中的managedObjectContext
+            locationsController.managedObjectContext = managedObjectContext
+            
         }
         
         // print(applicationDocumentsDirectory)
