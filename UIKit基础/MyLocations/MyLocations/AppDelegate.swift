@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.managedObjectContext = managedObjectContext
         }
         
-        
+        // print(applicationDocumentsDirectory)
         
         
         

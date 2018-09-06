@@ -57,6 +57,9 @@ class LocationDetailsViewController: UITableViewController {
     /// 用于创建和存取ManagedObject
     var managedObjectContext: NSManagedObjectContext!
     
+    /// 用于存储当前的Date
+    var date = Date()
+    
     
     // MARK: - @IBAction
     
@@ -70,14 +73,36 @@ class LocationDetailsViewController: UITableViewController {
         // 设置HUD的描述文本
         hudView.text = "Tagged"
         
-        // 使用GCD来延迟执行
-        afterDelay(0.6) {
+        // 创建一个Location实例变量。因为这是一个managed object，所以
+        // 要使用init(context: )方法
+        let location = Location(context: managedObjectContext)
+        
+        // 给location实例的属性赋值
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        // 调用save()方法保存context。因为save()方法是一个可失败
+        // 的方法(在执行过程中可能会抛出异常)，所以需要对异常进行处理
+        do {
+            try managedObjectContext.save()
             
-            // 在退出当前控制器之前隐藏HUD
-            hudView.hide()
+            // 使用GCD来延迟执行隐藏HUD和退出栈顶控制器
+            afterDelay(0.6) {
+                
+                // 在退出当前控制器之前隐藏HUD
+                hudView.hide()
+                
+                // 从导航栏堆栈中退出栈顶控制器
+                self.navigationController?.popViewController(animated: true)
+            }
+        } catch {
             
-            // 从导航栏堆栈中退出栈顶控制器
-            self.navigationController?.popViewController(animated: true)
+            // 终止程序，并且捕捉异常情况
+            fatalError("Error: \(error)")
         }
         
         
@@ -133,7 +158,7 @@ class LocationDetailsViewController: UITableViewController {
         }
         
         // 设置时间信息
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
         
         
