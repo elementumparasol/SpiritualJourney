@@ -42,6 +42,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// 用于对CoreData执行一列的操作(包括创建和存取操作)
     lazy var managedObjectContext: NSManagedObjectContext =
         self.persistentContainer.viewContext
+    
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 监听通知中心发出的和CoreData存储错误相关的通知
+    func listenForFatalCoreDataNotifications() {
+        
+        // 监听名为CoreDataSaveFailedNotification的通知
+        NotificationCenter.default.addObserver(forName: CoreDataSaveFailedNotification, object: nil, queue: OperationQueue.main, using: { notification in
+            
+            // 输出错误消息和提示
+            let message = """
+                           Core Data在存储数据的过程中发生了严重的错误！
+                           点击"OK"退出程序。对使用过程中造成的不便表示抱歉。
+                          """
+            
+            // 创建UIAlertController实例，用于展示错误信息
+            let alert = UIAlertController(title: "内部错误", message: message, preferredStyle: .alert)
+            
+            // 创建action按钮
+            let action = UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                
+                // 利用NSException创建详细崩溃日志
+                // NSException比fatalError更好用
+                let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Core Data发生严重错误", userInfo: nil)
+                
+                exception.raise()
+            })
+            
+            // 将action添加到alert中
+            alert.addAction(action)
+            
+            // 拿到tabBarController
+            let tabController = self.window!.rootViewController!
+            
+            // 弹出alert控制器
+            tabController.present(alert, animated: true, completion: nil)
+        })
+    }
 
     
     
@@ -68,7 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // print(applicationDocumentsDirectory)
         
-        
+        // 监听通知中心发出的通知
+        listenForFatalCoreDataNotifications()
         
         return true
     }

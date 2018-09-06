@@ -102,7 +102,7 @@ class LocationDetailsViewController: UITableViewController {
         } catch {
             
             // 终止程序，并且捕捉异常情况
-            fatalError("Error: \(error)")
+            fatalCoreDataError(error)
         }
         
         
