@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController {
     
@@ -61,6 +62,10 @@ class CurrentLocationViewController: UIViewController {
     /// 定时器
     var timer: Timer?
     
+    /// 用于创建和存取ManagedObject(使用依赖注入设计模式，通过
+    /// segue的执行，将其传递给LocationDetailsViewController)
+    var managedObjectContext: NSManagedObjectContext!
+    
     
     // MARK: - 类自带的方法
     
@@ -88,6 +93,10 @@ class CurrentLocationViewController: UIViewController {
             let controller = segue.destination as! LocationDetailsViewController
             controller.coordinate = location!.coordinate
             controller.placemark = placemark
+            
+            // 将当前控制器中的managedObjectContext传递给
+            // LocationDetailsViewController中的managedObjectContext
+            controller.managedObjectContext = managedObjectContext
         }
     }
 

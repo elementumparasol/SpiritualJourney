@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import CoreData
+
 
 class LocationDetailsViewController: UITableViewController {
     
@@ -51,6 +53,9 @@ class LocationDetailsViewController: UITableViewController {
     
     /// 分类的名称
     var categoryName = "No Category"
+    
+    /// 用于创建和存取ManagedObject
+    var managedObjectContext: NSManagedObjectContext!
     
     
     // MARK: - @IBAction
