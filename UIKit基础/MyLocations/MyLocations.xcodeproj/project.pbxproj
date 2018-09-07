@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C50BD5112140375400F9858A /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C50BD50F2140375400F9858A /* DataModel.xcdatamodeld */; };
+		C5AED6F82142D85300DF0F7B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AED6F72142D85300DF0F7B /* MapViewController.swift */; };
 		C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F3D2136EB16003339B0 /* AppDelegate.swift */; };
 		C5BA0F402136EB16003339B0 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */; };
 		C5BA0F422136EB16003339B0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F412136EB16003339B0 /* SecondViewController.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		C50BD5102140375400F9858A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		C5AED6F72142D85300DF0F7B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C5BA0F3A2136EB16003339B0 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BA0F3D2136EB16003339B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				C5BA0F432136EB16003339B0 /* Main.storyboard */,
 				C5BD5C0F214170F0009118A2 /* LocationsViewController.swift */,
 				C5BD5C1121421B2A009118A2 /* LocationCell.swift */,
+				C5AED6F72142D85300DF0F7B /* MapViewController.swift */,
 				C5BA0F462136EB1A003339B0 /* Assets.xcassets */,
 				C5BA0F482136EB1A003339B0 /* LaunchScreen.storyboard */,
 				C5BA0F4B2136EB1A003339B0 /* Info.plist */,
@@ -171,6 +174,7 @@
 				C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */,
 				C5BD5C10214170F0009118A2 /* LocationsViewController.swift in Sources */,
 				C5FDAE5721403E6C005C657A /* Location+CoreDataProperties.swift in Sources */,
+				C5AED6F82142D85300DF0F7B /* MapViewController.swift in Sources */,
 				C5BD5C1221421B2A009118A2 /* LocationCell.swift in Sources */,
 				C5BA0F58213F0222003339B0 /* Functions.swift in Sources */,
 				C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */,
