@@ -182,11 +182,11 @@ class CurrentLocationViewController: UIViewController {
             if let placemark = placemark {
                 addressLabel.text = string(from: placemark)
             } else if performingReverseGeocoding {
-                addressLabel.text = "Searching for Address..."
+                addressLabel.text = "正在定位..."
             } else if lastGeocodingError != nil {
-                addressLabel.text = "Error Finding Address"
+                addressLabel.text = "定位错误"
             } else {
-                addressLabel.text = "No Address Found"
+                addressLabel.text = "没有位置信息"
             }
             
             
@@ -203,17 +203,17 @@ class CurrentLocationViewController: UIViewController {
                 
                 if error.domain == kCLErrorDomain &&
                     error.code == CLError.denied.rawValue {
-                    statusMessage = "Location Services Disabled"
+                    statusMessage = "无法获取位置服务"
                 } else {
-                    statusMessage = "Error Getting Location"
+                    statusMessage = "获取位置出错"
                 }
                 
             } else if !CLLocationManager.locationServicesEnabled() {
-                statusMessage = "Location Services Disabled"
+                statusMessage = "无法获取定位服务"
             } else if updatingLocation {
-                statusMessage = "Searching..."
+                statusMessage = "正在定位..."
             } else {
-                statusMessage = "Tap 'Get My Location' to Start"
+                statusMessage = "点击 '获取我的位置' 开始定位"
             }
             
             messageLabel.text = statusMessage
@@ -258,9 +258,9 @@ class CurrentLocationViewController: UIViewController {
     func configureGetButton() {
         
         if updatingLocation {
-            getButton.setTitle("Stop", for: .normal)
+            getButton.setTitle("停止", for: .normal)
         } else {
-            getButton.setTitle("Get My Location", for: .normal)
+            getButton.setTitle("获取我的位置", for: .normal)
         }
     }
     

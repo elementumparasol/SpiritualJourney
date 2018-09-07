@@ -52,6 +52,9 @@ class LocationsViewController: UITableViewController {
         
         // NSFetchedResultsController<Location>.deleteCache(withName: "Locations")
         performFetch()
+        
+        // 在cell左边添加删除按钮
+        navigationItem.rightBarButtonItem = editButtonItem
     }
     
     /// 执行segue的时候调用
@@ -79,7 +82,6 @@ class LocationsViewController: UITableViewController {
         }
     }
     
-    ///
     deinit {
         fetchedResultsController.delegate = nil
     }
@@ -130,7 +132,7 @@ class LocationsViewController: UITableViewController {
     }
     */
     
-    ///
+    /// 执行fetchedResultsController的fetch操作
     func performFetch() {
         
         do {
@@ -186,8 +188,32 @@ extension LocationsViewController {
 
         return cell
     }
+    
+    // 对tableView中的cell进行编辑(删除tableView中的数据)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // 判断是否为删除
+        if editingStyle == .delete {
+            
+            // 如果是删除，则根据indexPath取出与之对应的location数据
+            let location = fetchedResultsController.object(at: indexPath)
+            
+            // 从managedObjectContext中删除指定的location数据
+            managedObjectContext.delete(location)
+            
+            // 删除完数据之后，需要对managedObjectContext进行
+            // 保存。有因为save()会抛出异常，所以需要进行异常处理
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        }
+    }
+    
+    
+    
 }
-
 
 
 // MARK: - NSFetchedResultsControllerDelegate
