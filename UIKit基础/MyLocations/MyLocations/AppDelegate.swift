@@ -117,6 +117,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 中的managedObjectContext
             locationsController.managedObjectContext = managedObjectContext
             
+            // 提前加载LocationsViewConroller的view
+            // 主要是为了修复在插入新的location数据时，
+            // Locations这个tableView中数据不能及时显示的but
+            let _ = locationsController.view
+            
         }
         
         // print(applicationDocumentsDirectory)

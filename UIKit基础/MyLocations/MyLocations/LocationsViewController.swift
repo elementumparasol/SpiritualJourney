@@ -19,7 +19,27 @@ class LocationsViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     
     /// 用于存储从CoreData Store中取出的数据
-    var locations = [Location]()
+    /// var locations = [Location]()
+    lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
+        
+        let fetchRequest = NSFetchRequest<Location>()
+        
+        let entity = Location.entity()
+        fetchRequest.entity = entity
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // 每次取出20个
+        fetchRequest.fetchBatchSize = 20
+        
+        let fetchdResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Locations")
+        
+        fetchdResultsController.delegate = self
+        
+        return fetchdResultsController
+    }()
     
     
     // MARK: - 类自带的方法
@@ -28,9 +48,10 @@ class LocationsViewController: UITableViewController {
         super.viewDidLoad()
         
         // 从Core Data Store中取出数据，并且将其存储到数组locations中
-        fetchRequestFromCoreData()
+        // fetchRequestFromCoreData()
         
-        
+        // NSFetchedResultsController<Location>.deleteCache(withName: "Locations")
+        performFetch()
     }
     
     /// 执行segue的时候调用
@@ -49,12 +70,18 @@ class LocationsViewController: UITableViewController {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 
                 // 通过indexPath取出与之对应的location数据
-                let location = locations[indexPath.row]
+                // let location = locations[indexPath.row]
+                let location = fetchedResultsController.object(at: indexPath)
                 
                 // 将location数据传递过去
                 controller.locaitonToEdit = location
             }
         }
+    }
+    
+    ///
+    deinit {
+        fetchedResultsController.delegate = nil
     }
     
     
@@ -70,6 +97,7 @@ class LocationsViewController: UITableViewController {
     
     // MARK: - 自定义方法
     
+    /*
     /// 从CoreData Store中取出location数据
     func fetchRequestFromCoreData() {
         
@@ -100,6 +128,17 @@ class LocationsViewController: UITableViewController {
             fatalCoreDataError(error)
         }
     }
+    */
+    
+    ///
+    func performFetch() {
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalCoreDataError(error)
+        }
+    }
     
     
     
@@ -115,7 +154,15 @@ extension LocationsViewController {
 
     // 返回tableView中每一组cell的行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        
+        // fetchdResultsController的sections属性会返回一个
+        // NSFetchedResultsSectionInfo数组，该数组用于描述
+        // tableView中的每一组(即每一个Section)数据
+        let sectionInfo = fetchedResultsController.sections![section]
+        
+        // tableView中每一组的行数由sectionInfo中的
+        // numberOfObjects属性描述，直接返回它就可以
+        return sectionInfo.numberOfObjects
     }
 
     // 返回cell
@@ -125,7 +172,11 @@ extension LocationsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         
         // 从数组locations中取出location数据
-        let location = locations[indexPath.row]
+        // let location = locations[indexPath.row]
+        
+        // 现在不用问locations要数据了，而是直接通过indexPath问
+        // fetchedResultsController要数据
+        let location = fetchedResultsController.object(at: indexPath)
         
         // 调用configure(for: )方法，给cell设置数据
         // 从面相对象的角度来讲，一般自己的事情应该交给自
@@ -135,4 +186,68 @@ extension LocationsViewController {
 
         return cell
     }
+}
+
+
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension LocationsViewController: NSFetchedResultsControllerDelegate {
+    
+    //
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("*** controllerWillChangeContent")
+        
+        tableView.beginUpdates()
+    }
+    
+    //
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            print("*** NSFetchedResultsChangeInsert (object)")
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            print("*** NSFetchedResultsChangeDelete (object)")
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            print("*** NSFetchedResultsChangeUpdate (object)")
+            if let cell = tableView.cellForRow(at: indexPath!) as? LocationCell {
+                
+                let location = controller.object(at: indexPath!) as! Location
+                
+                cell.configure(for: location)
+            }
+        case .move:
+            print("*** NSFetchedResultsChangeMove (object)")
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        }
+    }
+    
+    //
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case .insert:
+            print("*** NSFetchedResultsChangeInsert (section)")
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            print("*** NSFetchedResultsChangeDelete (section)")
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .update:
+            print("*** NSFetchedResultsChangeUpdate (section)")
+        case .move:
+            print("*** NSFetchedResultsChangeMove (section)")
+        }
+    }
+    
+    //
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("*** controllerDidChangeContent")
+        
+        
+        tableView.endUpdates()
+    }
+    
 }
