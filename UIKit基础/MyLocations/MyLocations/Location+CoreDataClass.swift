@@ -21,7 +21,7 @@ public class Location: NSManagedObject, MKAnnotation {
     public var title: String? {
         
         if locationDescription.isEmpty {
-            return "(No Description)"
+            return "(没有描述信息)"
         } else {
             return locationDescription
         }
