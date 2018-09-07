@@ -23,6 +23,19 @@ class MapViewController: UIViewController {
     /// managedObjectContext
     var managedObjectContext: NSManagedObjectContext!
     
+    /// 保存用户位置信息
+    var locations = [Location]()
+    
+    
+    // MARK: - 类自带的方法
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 取出用户保存的位置信息，然后将其展示在mapView上面
+        updateLocations()
+    }
+    
     
     // MARK: - @IBAction
     
@@ -36,11 +49,33 @@ class MapViewController: UIViewController {
         mapView.setRegion(mapView.regionThatFits(regon), animated: true)
     }
     
-    /// 显示位置信息
+    /// 显示用户保存的所有位置信息
     @IBAction func showLocations() {
         
         //
     }
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 从CoreData Store中取出数据，然后将其展示在mapView上面
+    func updateLocations() {
+        
+        mapView.removeAnnotations(locations)
+        
+        let entity = Location.entity()
+        
+        let fetchRequest = NSFetchRequest<Location>()
+        fetchRequest.entity = entity
+        
+        locations = try! managedObjectContext.fetch(fetchRequest)
+        
+        mapView.addAnnotations(locations)
+    }
+    
+    
+    
+    
 }
 
 
