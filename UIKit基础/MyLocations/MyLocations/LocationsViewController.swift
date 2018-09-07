@@ -27,14 +27,20 @@ class LocationsViewController: UITableViewController {
         let entity = Location.entity()
         fetchRequest.entity = entity
         
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        // let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        // 创建描述符
+        let sort1 = NSSortDescriptor(key: "category", ascending: true)
+        let sort2 = NSSortDescriptor(key: "date", ascending: true)
+        
+        // 按照描述符进行排序
+        fetchRequest.sortDescriptors = [sort1, sort2]
         
         // 每次取出20个
         fetchRequest.fetchBatchSize = 20
         
-        let fetchdResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Locations")
+        // fetch的结果将按照category属性的值进行分组
+        let fetchdResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: "Locations")
         
         fetchdResultsController.delegate = self
         
@@ -153,6 +159,17 @@ class LocationsViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 extension LocationsViewController {
+    
+    // 返回tableView中的分组数
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
+    
+    // 设置分组头部标题
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.name
+    }
 
     // 返回tableView中每一组cell的行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
