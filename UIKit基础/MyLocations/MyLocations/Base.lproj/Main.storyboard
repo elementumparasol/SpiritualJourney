@@ -460,6 +460,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="UrA-Gw-G7W" id="Rxu-uE-mOx"/>
                                     <outlet property="descriptionLabel" destination="h3c-g0-YrD" id="0LZ-go-HJH"/>
+                                    <segue destination="jMO-xd-htX" kind="show" identifier="EditLocation" id="QTE-xk-Nfo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -495,4 +496,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="QTE-xk-Nfo"/>
+    </inferredMetricsTieBreakers>
 </document>

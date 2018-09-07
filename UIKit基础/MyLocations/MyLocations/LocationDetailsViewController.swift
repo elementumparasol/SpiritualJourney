@@ -60,6 +60,30 @@ class LocationDetailsViewController: UITableViewController {
     /// 用于存储当前的Date
     var date = Date()
     
+    /// 用于存储Location数据(对它的值进行监听)
+    var locaitonToEdit: Location? {
+        
+        didSet {
+            
+            // 对locationToEdit的值进行校验，如果有值，就将其赋值给location
+            if let location = locaitonToEdit {
+                
+                // 重新给相关的属性赋值
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    
+    /// 描述location的文本
+    var descriptionText = ""
+    
+    
+    
+    
     
     // MARK: - @IBAction
     
@@ -143,7 +167,14 @@ class LocationDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descriptionTextView.text = ""
+        // 对locaitonToEdit进行校验
+        if let _ = locaitonToEdit {
+            
+            // 如果locaitonToEdit有值，则重新设置title
+            title = "Edit Location"
+        }
+        
+        descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
         
         // 设置经纬度信息
