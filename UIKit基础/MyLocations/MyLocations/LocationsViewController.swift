@@ -59,6 +59,12 @@ class LocationsViewController: UITableViewController {
     
     
     
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -75,42 +81,16 @@ extension LocationsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // 根据可重用标识符取出cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         
         // 取出location
         let location = locations[indexPath.row]
         
-        // 获取Description所在的Label
-        let descriptionLabel = cell.viewWithTag(100) as! UILabel
-        descriptionLabel.text = location.locationDescription
-
-        // 获取Address所在的Label
-        let addressLabel = cell.viewWithTag(101) as! UILabel
-        
-        if let placemark = location.placemark {
-            
-            var text = ""
-            
-            // 城市信息
-            if let s = placemark.locality {
-                text += s + " "
-            }
-            
-            // 街道信息
-            if let s = placemark.thoroughfare {
-                text += s + " "
-            }
-            
-            // 更加详细的街道信息
-            if let s = placemark.subThoroughfare {
-                text += s + " "
-            }
-            
-            // 设置详细地址
-            addressLabel.text = text
-        } else {
-            addressLabel.text = ""
-        }
+        // 调用configure(for: )方法，给cell设置数据
+        // 从面相对象的角度来讲，一般自己的事情应该交给自
+        // 己去做。所以，给cell设置数据的细节应该封装在
+        // LocationCell这个类中
+        cell.configure(for: location)
 
         return cell
     }

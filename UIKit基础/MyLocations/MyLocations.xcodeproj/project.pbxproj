@@ -19,6 +19,7 @@
 		C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F55213EDA90003339B0 /* HudView.swift */; };
 		C5BA0F58213F0222003339B0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F57213F0222003339B0 /* Functions.swift */; };
 		C5BD5C10214170F0009118A2 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD5C0F214170F0009118A2 /* LocationsViewController.swift */; };
+		C5BD5C1221421B2A009118A2 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD5C1121421B2A009118A2 /* LocationCell.swift */; };
 		C5FDAE5621403E6C005C657A /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDAE5421403E6C005C657A /* Location+CoreDataClass.swift */; };
 		C5FDAE5721403E6C005C657A /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDAE5521403E6C005C657A /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		C5BA0F55213EDA90003339B0 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		C5BA0F57213F0222003339B0 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C5BD5C0F214170F0009118A2 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		C5BD5C1121421B2A009118A2 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		C5FDAE5421403E6C005C657A /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C5FDAE5521403E6C005C657A /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				C5FDAE5521403E6C005C657A /* Location+CoreDataProperties.swift */,
 				C5BA0F432136EB16003339B0 /* Main.storyboard */,
 				C5BD5C0F214170F0009118A2 /* LocationsViewController.swift */,
+				C5BD5C1121421B2A009118A2 /* LocationCell.swift */,
 				C5BA0F462136EB1A003339B0 /* Assets.xcassets */,
 				C5BA0F482136EB1A003339B0 /* LaunchScreen.storyboard */,
 				C5BA0F4B2136EB1A003339B0 /* Info.plist */,
@@ -168,6 +171,7 @@
 				C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */,
 				C5BD5C10214170F0009118A2 /* LocationsViewController.swift in Sources */,
 				C5FDAE5721403E6C005C657A /* Location+CoreDataProperties.swift in Sources */,
+				C5BD5C1221421B2A009118A2 /* LocationCell.swift in Sources */,
 				C5BA0F58213F0222003339B0 /* Functions.swift in Sources */,
 				C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */,
 				C5FDAE5621403E6C005C657A /* Location+CoreDataClass.swift in Sources */,
