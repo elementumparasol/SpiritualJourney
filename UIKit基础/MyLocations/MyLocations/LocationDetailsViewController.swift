@@ -61,7 +61,7 @@ class LocationDetailsViewController: UITableViewController {
     var date = Date()
     
     /// 用于存储Location数据(对它的值进行监听)
-    var locaitonToEdit: Location? {
+    var locaitonToEdit: Location? {  // 它里面的值由
         
         didSet {
             
@@ -94,12 +94,24 @@ class LocationDetailsViewController: UITableViewController {
         // 创建HUD
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         
-        // 设置HUD的描述文本
-        hudView.text = "Tagged"
+        let location: Location
         
-        // 创建一个Location实例变量。因为这是一个managed object，所以
-        // 要使用init(context: )方法
-        let location = Location(context: managedObjectContext)
+        // 对LocationToEdit的值进行校验，如果它有值，就将其赋值给tmp
+        if let tmp = locaitonToEdit {
+            
+            // 修改HUD的提示文字
+            hudView.text = "Updated"
+            
+            // 将tmp赋值给location
+            location = tmp
+        } else {
+            
+            // 如果locaitonToEdit没有值，则设置HUD的提示文字为Tagged
+            hudView.text = "Tagged"
+            
+            // 通过Location的init(context: )方法给location赋值
+            location = Location(context: managedObjectContext)
+        }
         
         // 给location实例的属性赋值
         location.locationDescription = descriptionTextView.text
