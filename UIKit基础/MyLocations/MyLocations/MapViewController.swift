@@ -21,7 +21,24 @@ class MapViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// managedObjectContext
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext! {
+        
+        // 监听属性的改变
+        didSet {
+            
+            // 监听NSManagedObjectContextObjectsDidChange发出的通知
+            // 只要是Data Store发生改变，managedObjectContext就会发出通知
+            NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext, queue: OperationQueue.main) { (_) in
+                
+                // 当控制器的view加载完毕之后，调用下面的方法
+                if self.isViewLoaded {
+                    
+                    // 从CoreData Store中取出数据，然后将其展示在mapView上面
+                    self.updateLocations()
+                }
+            }
+        }
+    }
     
     /// 保存用户位置信息
     var locations = [Location]()
