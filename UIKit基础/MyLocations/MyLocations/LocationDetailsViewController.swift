@@ -347,8 +347,13 @@ extension LocationDetailsViewController {
         } else if indexPath.section == 1 && indexPath.row == 0 {
             
             // 如果用户点击的是第1组的第0行(也就是点击"添加照片"所在的行)
-            // 调用takePotoWithCamera()方法
-            takePotoWithCamera()
+            
+            
+            // 使用相机
+            // takePotoWithCamera()
+            
+            // 使用系统相册
+            choosePhotoFromLibrary()
         }
     }
     
@@ -381,7 +386,7 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // MARK: - 与相机和系统相册相关的自定义方法
     
     
-    /// 使用相机或者访问系统相册
+    /// 使用相机
     func takePotoWithCamera() {
         
         // 创建UIImagePickerController实例
@@ -393,6 +398,21 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         imagePicker.allowsEditing = true
         
         // 以modal的方式弹出imagePicker控制器
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    /// 访问系统相册
+    func choosePhotoFromLibrary() {
+        
+        // 创建UIImagePickerController实例对象
+        let imagePicker = UIImagePickerController()
+        
+        // 设置相关的属性
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        // 弹出imagePicker控制器
         present(imagePicker, animated: true, completion: nil)
     }
 }
