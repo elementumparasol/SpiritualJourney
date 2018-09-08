@@ -195,6 +195,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MA3-gF-IBN">
+                                                    <rect key="frame" x="93" y="6" width="234" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Zm2-gJ-2Iy" firstAttribute="leading" secondItem="PHT-xy-P4g" secondAttribute="leading" constant="16" id="CiK-eF-jYV"/>
@@ -329,17 +333,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="Zm2-gJ-2Iy" id="ebF-40-3co"/>
                         <outlet property="addressLabel" destination="OjA-C4-WLX" id="vk7-Kb-pIb"/>
                         <outlet property="categoryLabel" destination="RYW-WB-Rh5" id="kiR-Tg-UKn"/>
                         <outlet property="dateLabel" destination="Tcp-6U-1Gu" id="cTr-UJ-pmW"/>
                         <outlet property="descriptionTextView" destination="j42-2b-1D2" id="nf5-yl-tfi"/>
+                        <outlet property="imageView" destination="MA3-gF-IBN" id="Rz0-hb-K8z"/>
                         <outlet property="latitudeLabel" destination="lqh-B0-dSz" id="ear-te-YPy"/>
                         <outlet property="longitudeLabel" destination="fl1-OG-EAr" id="ogA-JY-D3X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqG-bm-NyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="-321"/>
+            <point key="canvasLocation" x="2784.8000000000002" y="-321.58920539730138"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="g5j-K1-UVu">

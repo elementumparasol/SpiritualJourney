@@ -33,6 +33,12 @@ class LocationDetailsViewController: UITableViewController {
     /// dateLabel控件
     @IBOutlet weak var dateLabel: UILabel!
     
+    /// 用于显示添加照片的imageView控件
+    @IBOutlet weak var imageView: UIImageView!
+    
+    /// 添加照片时的UILabel提示控件
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    
     
     // MARK: - 自定义属性
     
