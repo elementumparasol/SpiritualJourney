@@ -446,11 +446,19 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         alert.addAction(actCancel)
         
         // 拍照选项
-        let actPhoto = UIAlertAction(title: "拍照", style: .default, handler: nil)
+        let actPhoto = UIAlertAction(title: "拍照", style: .default, handler: { _ in
+            
+            // 使用相机拍照
+            self.takePotoWithCamera()
+        })
         alert.addAction(actPhoto)
         
         // 访问系统相册选项
-        let actLibrary = UIAlertAction(title: "访问相册", style: .default, handler: nil)
+        let actLibrary = UIAlertAction(title: "访问相册", style: .default, handler: { _ in
+            
+            // 直接访问系统相册
+            self.choosePhotoFromLibrary()
+        })
         alert.addAction(actLibrary)
         
         // 弹出alert控制器
