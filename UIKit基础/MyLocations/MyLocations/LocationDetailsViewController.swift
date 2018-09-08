@@ -87,7 +87,7 @@ class LocationDetailsViewController: UITableViewController {
     /// 描述location的文本
     var descriptionText = ""
     
-    /// 照片image
+    /// 用于存储用户选择使用的照片
     var image: UIImage?
     
     
@@ -320,13 +320,27 @@ extension LocationDetailsViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 && indexPath.row == 0 {
+            
+            // 设置第0组第0行cell的高度(用于描述的textView所在行)
             return 88
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            
+            // 设置第1组第0行cell的高度(添加照片所在行)
+            if imageView.isHidden {
+                return 44  // 无照片时，设置高度为44
+            } else {
+                return 280  // 有照片时，设置高度为280
+            }
         } else if indexPath.section == 2 && indexPath.row == 2 {
+            
+            // 设置第2组第2行cell的高度(地址label所在行)
             addressLabel.frame.size = CGSize(width: view.bounds.size.width - 120, height: 1000)
             addressLabel.sizeToFit()
             addressLabel.frame.origin.x = view.bounds.size.width - addressLabel.frame.size.width - 16
             return addressLabel.frame.size.height + 20
         } else {
+            
+            // 其它cell的高度沿用默认高度44
             return 44
         }
     }
@@ -369,11 +383,29 @@ extension LocationDetailsViewController {
             pickPhoto()
         }
     }
-    
-    
-    
-    
 }
+
+
+
+//extension LocationDetailsViewController {
+//
+//    //
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        if indexPath.section == 0 && indexPath.row == 0 {
+//            return 88
+//        } else if indexPath.section == 1 && indexPath.row == 0 {
+//
+//            if imageView.isHidden {
+//                return 44
+//            } else {
+//                return 280
+//            }
+//        } else {
+//            return 44
+//        }
+//    }
+//}
 
 
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
@@ -384,15 +416,19 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // 完成操作以后调用
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        // UIImagePickerControllerEditedImage
+        // UIImagePickerControllerEditedImage在Swift 4.2中被新的名称取代了
+        // 字典info中存放的就是用户选择使用的照片
         image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         
-        // 对照片进行校验
+        // 对照片进行校验，如果照片不为空时，将其显示出来
         if let theImage = image {
             
             // 显示照片
             show(image: theImage)
         }
+        
+        // 刷新tableView
+        tableView.reloadData()
         
         // 从屏幕上移除imagePicker控制器
         dismiss(animated: true, completion: nil)
@@ -488,9 +524,12 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     /// 显示照片
     func show(image: UIImage) {
         
+        // 将照片添加到imageView控件上去
         imageView.image = image
         imageView.isHidden = false
         imageView.frame = CGRect(x: 10, y: 10, width: 260, height: 260)
+        
+        // 隐藏addPhotoLabel控件
         addPhotoLabel.isHidden = true
     }
     
