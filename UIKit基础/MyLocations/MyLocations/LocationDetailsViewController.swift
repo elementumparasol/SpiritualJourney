@@ -319,30 +319,33 @@ extension LocationDetailsViewController {
     // 在加载tableViewCell的时候调用
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
+        // 根据实际情况调整cell的高度
+        switch (indexPath.section, indexPath.row) {
             
-            // 设置第0组第0行cell的高度(用于描述的textView所在行)
+        // 设置第0组第0行cell的高度(用于描述的textView所在行)
+        case (0, 0):
             return 88
-        } else if indexPath.section == 1 && indexPath.row == 0 {
             
-            // 设置第1组第0行cell的高度(添加照片所在行)
-            if imageView.isHidden {
-                return 44  // 无照片时，设置高度为44
-            } else {
-                return 280  // 有照片时，设置高度为280
-            }
-        } else if indexPath.section == 2 && indexPath.row == 2 {
+        // 设置第1组所有cell的高度(添加照片所在行)
+        case (1, _):
             
-            // 设置第2组第2行cell的高度(地址label所在行)
+            // 如果imageView是被隐藏的，那么它所在cell的高度为44
+            // 如果imageView是可见的，那么它所在cell的高度就为280
+            return imageView.isHidden ? 44 : 280
+            
+        // 设置第2组第2行cell的高度(地址label所在行)
+        case (2, 2):
+            
             addressLabel.frame.size = CGSize(width: view.bounds.size.width - 120, height: 1000)
             addressLabel.sizeToFit()
             addressLabel.frame.origin.x = view.bounds.size.width - addressLabel.frame.size.width - 16
             return addressLabel.frame.size.height + 20
-        } else {
-            
-            // 其它cell的高度沿用默认高度44
+          
+        // 其它cell的高度沿用默认高度44
+        default:
             return 44
         }
+        
     }
     
     // 某一行cell即将被选中的时候调用
