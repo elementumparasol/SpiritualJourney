@@ -220,6 +220,10 @@ class LocationDetailsViewController: UITableViewController {
         
         // 将tapGesture手势添加到tableView中
         tableView.addGestureRecognizer(tapGesture)
+        
+        // 监听程序运行状态，如果程序退出到后台，并且此时
+        // 界面上有alertController，则让其消失
+        listenForBackgroundNotification()
     }
     
     /// 执行segue的时候调用
@@ -389,30 +393,16 @@ extension LocationDetailsViewController {
 }
 
 
-
-//extension LocationDetailsViewController {
-//
-//    //
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        if indexPath.section == 0 && indexPath.row == 0 {
-//            return 88
-//        } else if indexPath.section == 1 && indexPath.row == 0 {
-//
-//            if imageView.isHidden {
-//                return 44
-//            } else {
-//                return 280
-//            }
-//        } else {
-//            return 44
-//        }
-//    }
-//}
-
-
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    /**
+     注意: 在使用相机或者访问系统相册时，除了需要遵守
+     UIImagePickerControllerDelegate协议之外，
+     还需要遵守UINavigationControllerDelegate
+     协议。虽然不需要实现UINavigationControllerDelegate
+     协议中的任何方法，但是必须要遵守，否则无法设置代理
+     */
     
     // MARK: - UIImagePickerControllerDelegate
     
@@ -535,6 +525,36 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         // 隐藏addPhotoLabel控件
         addPhotoLabel.isHidden = true
     }
+    
+    /// 监听应用程序进入后台时操作系统发出的通知
+    func listenForBackgroundNotification() {
+        
+        /**
+         从设计的角度来讲，苹果建议，当用户在按下Home键进入到后台之前，如果
+         此时屏幕上还有任何alert控制器或者是action sheet，我们就应该在后
+         台将其手动退出。应为用户再次让应用进入前台时，可能会经历相当长的时间，
+         当应用程序进入前台时，用户可能已将忘记之前要干什么了，所以退出是比较
+         好的做法
+         */
+        
+        // 监听程序退出到后台时操作系统发出的通知
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) { (_) in
+            
+            // 如果imagePicker控制器和action sheet都是通过present的方式
+            // modal出来的。如果此时有任何控制器或者action sheet是通过modal
+            // 的形式弹出来的，那么UIViewController的presentationController
+            // 属性就会持有它，所以我们可以通过判断presentationController是否
+            // 为nil的形式来将其退出
+            if self.presentationController != nil {
+                self.dismiss(animated: false, completion: nil)
+            }
+            
+            self.descriptionTextView.resignFirstResponder()
+        }
+        
+        
+    }
+    
     
     
     
