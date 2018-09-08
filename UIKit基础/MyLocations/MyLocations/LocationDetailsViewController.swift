@@ -355,6 +355,9 @@ extension LocationDetailsViewController {
             // 使用系统相册
             // choosePhotoFromLibrary()
             
+            // 取消cell选中时背景颜色变暗的效果
+            tableView.deselectRow(at: indexPath, animated: true)
+            
             // 选择拍照还是直接访问系统相册
             pickPhoto()
         }
