@@ -90,6 +90,8 @@ class LocationDetailsViewController: UITableViewController {
     /// 用于存储用户选择使用的照片
     var image: UIImage?
     
+    /// 通知中心发出的通知
+    var observer: Any!
     
     
     // MARK: - @IBAction
@@ -234,6 +236,14 @@ class LocationDetailsViewController: UITableViewController {
             let controller = segue.destination as! CategoryPickerViewController
             controller.selectedCategoryName = categoryName
         }
+    }
+    
+    /// 当实例对象结束期生命周期时，系统会自动调用deinit方法
+    deinit {
+        print("-- deinit \(self) ---")
+        
+        // 移除通知
+        NotificationCenter.default.removeObserver(observer)
     }
     
     
@@ -538,18 +548,30 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
          */
         
         // 监听程序退出到后台时操作系统发出的通知
-        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) { (_) in
+        // 因为当前控制器通过observe属性对闭包有一个强引用，
+        // 而闭包又通过self对当前控制器有一个强引用，因此这
+        // 里就出现了循环引用，从而导致内存泄漏。使用[weak self]
+        // 告诉闭包，仍然捕获self，但是要将其当成弱引用
+        //
+        observer = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) {[weak self] (_) in
             
             // 如果imagePicker控制器和action sheet都是通过present的方式
             // modal出来的。如果此时有任何控制器或者action sheet是通过modal
             // 的形式弹出来的，那么UIViewController的presentationController
             // 属性就会持有它，所以我们可以通过判断presentationController是否
-            // 为nil的形式来将其退出
-            if self.presentationController != nil {
-                self.dismiss(animated: false, completion: nil)
+            // 为nil的形式来将其退出。另外，弱引用的值允许出现nil，也就是说此时捕获
+            // 的self是一个可选类型。因此，在正式使用之前，需要对其进行校验
+            if let weakSelf = self {
+                
+                // 如果weakSelf(也就是self)有值的时候，执行如下操作
+                if weakSelf.presentationController != nil {
+                    weakSelf.dismiss(animated: false, completion: nil)
+                }
+                
+                weakSelf.descriptionTextView.resignFirstResponder()
             }
             
-            self.descriptionTextView.resignFirstResponder()
+            
         }
         
         
