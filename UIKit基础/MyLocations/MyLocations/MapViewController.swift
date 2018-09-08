@@ -40,6 +40,29 @@ class MapViewController: UIViewController {
         }
     }
     
+    // 执行segue的时候调用
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 判断是否为指定的标识符
+        if segue.identifier == "EditLocation" {
+            
+            // 根据指定的标识符，取出与之对应的控制器
+            let controller = segue.destination as! LocationDetailsViewController
+            
+            // 将managedObjectContext传递到指定控制器中的managedObjectContext
+            controller.managedObjectContext = managedObjectContext
+            
+            // 取出按钮
+            let button = sender as! UIButton
+            
+            // 根据按钮的tag取出对应的location
+            let location = locations[button.tag]
+            
+            // 将location赋值给控制器的locaitonToEdit
+            controller.locaitonToEdit = location
+        }
+    }
+    
     
     // MARK: - @IBAction
     
@@ -206,7 +229,10 @@ extension MapViewController: MKMapViewDelegate {
 // MARK: - 监听按钮的点击事件
 extension MapViewController {
     
+    /// 点击地图上面的annotationView(大头针)时调用
     @objc func showLocationDetails(_ sender: UIButton) {
         
+        // 根据标识符，执行指定的segue
+        performSegue(withIdentifier: "EditLocation", sender: sender)
     }
 }

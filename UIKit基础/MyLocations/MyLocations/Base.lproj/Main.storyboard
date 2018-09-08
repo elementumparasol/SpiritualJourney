@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="-321"/>
+            <point key="canvasLocation" x="1745" y="-322"/>
         </scene>
         <!--标记位置-->
         <scene sceneID="Wfh-ND-T3v">
@@ -339,7 +339,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqG-bm-NyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2423.1999999999998" y="-321.42857142857144"/>
+            <point key="canvasLocation" x="2785" y="-321"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="g5j-K1-UVu">
@@ -380,7 +380,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNl-s0-7oh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZTB-PW-Fkg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3242" y="-321"/>
+            <point key="canvasLocation" x="3660" y="-322"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -474,7 +474,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QP1-6M-ldL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="552.77361319340332"/>
+            <point key="canvasLocation" x="1745" y="553"/>
         </scene>
         <!--位置-->
         <scene sceneID="YAg-KA-9bP">
@@ -526,11 +526,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="I8r-Sf-TQD" id="rES-Ub-zeE"/>
+                        <segue destination="jMO-xd-htX" kind="show" identifier="EditLocation" id="gJi-fg-Tab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33I-oK-NTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="1515"/>
+            <point key="canvasLocation" x="1745" y="1533"/>
         </scene>
         <!--地图-->
         <scene sceneID="Bu9-BF-fYj">
@@ -556,6 +557,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QTE-xk-Nfo"/>
+        <segue reference="gJi-fg-Tab"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -183,7 +183,7 @@ class LocationDetailsViewController: UITableViewController {
         if let _ = locaitonToEdit {
             
             // 如果locaitonToEdit有值，则重新设置title
-            title = "Edit Location"
+            title = "编辑位置"
         }
         
         descriptionTextView.text = descriptionText
