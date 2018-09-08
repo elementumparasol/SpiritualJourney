@@ -52,7 +52,7 @@ class LocationDetailsViewController: UITableViewController {
     }()
     
     /// 分类的名称
-    var categoryName = "No Category"
+    var categoryName = "暂无分类"
     
     /// 用于创建和存取ManagedObject
     var managedObjectContext: NSManagedObjectContext!
@@ -100,14 +100,14 @@ class LocationDetailsViewController: UITableViewController {
         if let tmp = locaitonToEdit {
             
             // 修改HUD的提示文字
-            hudView.text = "Updated"
+            hudView.text = "已修改"
             
             // 将tmp赋值给location
             location = tmp
         } else {
             
             // 如果locaitonToEdit没有值，则设置HUD的提示文字为Tagged
-            hudView.text = "Tagged"
+            hudView.text = "已标记"
             
             // 通过Location的init(context: )方法给location赋值
             location = Location(context: managedObjectContext)
@@ -197,7 +197,7 @@ class LocationDetailsViewController: UITableViewController {
         if let placemark = placemark {
             addressLabel.text = string(from: placemark)
         } else {
-            addressLabel.text = "No Address Found"
+            addressLabel.text = "暂无地址信息"
         }
         
         // 设置时间信息

@@ -17,17 +17,17 @@ class CategoryPickerViewController: UITableViewController {
     
     /// 存放分类名称的数组
     let categories = [
-        "No Category",
+        "暂无分类",
         "Apple Store",
-        "Bar",
-        "Bookstore",
-        "Club",
-        "Grocery Store",
-        "Historic Building",
-        "House",
-        "Icecream Vendor",
-        "Landmark",
-        "Park"]
+        "酒吧",
+        "书店",
+        "夜总会",
+        "杂货店",
+        "古建筑",
+        "家",
+        "冰激凌小卖部",
+        "地标",
+        "公园"]
     
     /// 被选中cell的indexPath
     var selectedIndexPath = IndexPath()

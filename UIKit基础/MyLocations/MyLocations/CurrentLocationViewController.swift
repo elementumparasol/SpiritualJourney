@@ -147,12 +147,12 @@ class CurrentLocationViewController: UIViewController {
     func showLocationServicesDeniedAlert() {
         
         // 创建alertController
-        let alert = UIAlertController(title: "Location Services Disabled",
-                                      message: "Please enable location services for this app in Settings.",
+        let alert = UIAlertController(title: "无法使用位置服务",
+                                      message: "请在设置中开启位置服务",
                                       preferredStyle: .alert)
         
         // 创建action
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "确定", style: .default, handler: nil)
         
         // 将action添加到alert控制器中
         alert.addAction(okAction)
@@ -213,7 +213,7 @@ class CurrentLocationViewController: UIViewController {
             } else if updatingLocation {
                 statusMessage = "正在定位..."
             } else {
-                statusMessage = "点击 '获取我的位置' 开始定位"
+                statusMessage = "点击\"获取我的位置\"开始定位"
             }
             
             messageLabel.text = statusMessage

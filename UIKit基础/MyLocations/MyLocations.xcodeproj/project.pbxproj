@@ -11,7 +11,6 @@
 		C5AED6F82142D85300DF0F7B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AED6F72142D85300DF0F7B /* MapViewController.swift */; };
 		C5BA0F3E2136EB16003339B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F3D2136EB16003339B0 /* AppDelegate.swift */; };
 		C5BA0F402136EB16003339B0 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */; };
-		C5BA0F422136EB16003339B0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA0F412136EB16003339B0 /* SecondViewController.swift */; };
 		C5BA0F452136EB16003339B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F432136EB16003339B0 /* Main.storyboard */; };
 		C5BA0F472136EB1A003339B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F462136EB1A003339B0 /* Assets.xcassets */; };
 		C5BA0F4A2136EB1A003339B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BA0F482136EB1A003339B0 /* LaunchScreen.storyboard */; };
@@ -31,7 +30,6 @@
 		C5BA0F3A2136EB16003339B0 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BA0F3D2136EB16003339B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
-		C5BA0F412136EB16003339B0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C5BA0F442136EB16003339B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5BA0F462136EB1A003339B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5BA0F492136EB1A003339B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				C5BA0F3F2136EB16003339B0 /* CurrentLocationViewController.swift */,
 				C5BA0F51213A9386003339B0 /* LocationDetailsViewController.swift */,
 				C5BA0F53213E4932003339B0 /* CategoryPickerViewController.swift */,
-				C5BA0F412136EB16003339B0 /* SecondViewController.swift */,
 				C5BA0F55213EDA90003339B0 /* HudView.swift */,
 				C5BA0F57213F0222003339B0 /* Functions.swift */,
 				C5FDAE5421403E6C005C657A /* Location+CoreDataClass.swift */,
@@ -170,7 +167,6 @@
 			files = (
 				C5BA0F52213A9386003339B0 /* LocationDetailsViewController.swift in Sources */,
 				C50BD5112140375400F9858A /* DataModel.xcdatamodeld in Sources */,
-				C5BA0F422136EB16003339B0 /* SecondViewController.swift in Sources */,
 				C5BA0F56213EDA90003339B0 /* HudView.swift in Sources */,
 				C5BD5C10214170F0009118A2 /* LocationsViewController.swift in Sources */,
 				C5FDAE5721403E6C005C657A /* Location+CoreDataProperties.swift in Sources */,

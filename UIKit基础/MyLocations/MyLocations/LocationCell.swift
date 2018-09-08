@@ -43,7 +43,7 @@ class LocationCell: UITableViewCell {
         
         // 设置descriptionLabel上面的文字
         if location.locationDescription.isEmpty {
-            descriptionLabel.text = "(No Description)"
+            descriptionLabel.text = "(没有描述信息)"
         } else {
             descriptionLabel.text = location.locationDescription
         }

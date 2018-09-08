@@ -118,7 +118,7 @@
             </objects>
             <point key="canvasLocation" x="1586" y="-321"/>
         </scene>
-        <!--Tag Location-->
+        <!--标记位置-->
         <scene sceneID="Wfh-ND-T3v">
             <objects>
                 <tableViewController id="jMO-xd-htX" customClass="LocationDetailsViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
@@ -316,7 +316,7 @@
                             <outlet property="delegate" destination="jMO-xd-htX" id="9Uj-Yf-c6t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tag Location" id="nRi-cl-oNp">
+                    <navigationItem key="navigationItem" title="标记位置" id="nRi-cl-oNp">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="uVh-c8-Emn">
                             <connections>
                                 <action selector="cancel" destination="jMO-xd-htX" id="TbP-7G-jrj"/>
@@ -420,7 +420,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Locations-->
+        <!--位置信息-->
         <scene sceneID="rsK-Ml-A5Z">
             <objects>
                 <tableViewController id="iLR-OJ-v0a" customClass="LocationsViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
@@ -470,7 +470,7 @@
                             <outlet property="delegate" destination="iLR-OJ-v0a" id="kll-g6-284"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Locations" id="lvo-yz-gii"/>
+                    <navigationItem key="navigationItem" title="位置信息" id="lvo-yz-gii"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QP1-6M-ldL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -493,7 +493,7 @@
             </objects>
             <point key="canvasLocation" x="749" y="554"/>
         </scene>
-        <!--Map-->
+        <!--地图-->
         <scene sceneID="7V7-t5-wG5">
             <objects>
                 <viewController id="ngT-q4-blq" customClass="MapViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
@@ -512,13 +512,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="T7g-Er-Cqr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="XGy-cB-yjm">
-                        <barButtonItem key="leftBarButtonItem" title="Locations" id="0pH-rh-qnI">
+                    <navigationItem key="navigationItem" title="地图" id="XGy-cB-yjm">
+                        <barButtonItem key="leftBarButtonItem" title="位置标记" id="0pH-rh-qnI">
                             <connections>
                                 <action selector="showLocations" destination="ngT-q4-blq" id="so2-Bs-Zxf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="User" id="pL3-Kp-52e">
+                        <barButtonItem key="rightBarButtonItem" title="用户位置" id="pL3-Kp-52e">
                             <connections>
                                 <action selector="showUser" destination="ngT-q4-blq" id="KVk-Lb-00z"/>
                             </connections>
@@ -556,6 +556,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6ut-cz-IH0"/>
+        <segue reference="QTE-xk-Nfo"/>
     </inferredMetricsTieBreakers>
 </document>

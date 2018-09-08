@@ -80,7 +80,7 @@ class MapViewController: UIViewController {
         mapView.addAnnotations(locations)
     }
     
-    ///
+    /// 返回已标记的区域信息
     func region(for annotations: [MKAnnotation]) -> MKCoordinateRegion {
         
         let region: MKCoordinateRegion
@@ -128,8 +128,85 @@ class MapViewController: UIViewController {
 }
 
 
-
+// MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
     
     //
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        // 校验annotation的真实类型是否为Location
+        guard annotation is Location else {
+            return nil
+        }
+        
+        // 设置annotationView的可重用标识符(类似于tableViewCell的可重用机制)
+        let identifier = "Location"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        // 判断annotationView是否为nil
+        if annotationView == nil {
+            
+            // 如果annotationView为空，则创建MKPinAnnotationView
+            // 实例对象，并且给它设置一个可重用标识符
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            
+            // 设置pinView的相关属性
+            pinView.isEnabled = true
+            pinView.canShowCallout = true
+            pinView.animatesDrop = false
+            pinView.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)  // 设置大头针的颜色为绿色
+            
+            // 创建一个rightButton
+            let rightButton = UIButton(type: .detailDisclosure)
+            
+            // 监听按钮rightButton的点击
+            rightButton.addTarget(self, action: #selector(showLocationDetails(_:)), for: .touchUpInside)
+            
+            // 将按钮rightButton赋值给pinView的rightCalloutAccessoryView
+            pinView.rightCalloutAccessoryView = rightButton
+            
+            // 再将pinView赋值给annotationView
+            annotationView = pinView
+        }
+        
+        // 对annotationView进行校验
+        if let annotationView = annotationView {
+            
+            // 将annotation赋值给annotationVie的annotation
+            annotationView.annotation = annotation
+            
+            // 取出annotationView中的rightCalloutAccessoryView
+            // 并且将其转换为UIButton类型
+            let button = annotationView.rightCalloutAccessoryView as! UIButton
+            
+            // 获取annotation所在的下标值
+            /*
+            if let index = locations.index(of: annotation as! Location) {
+                
+                // 将下标值index与button的tag进行绑定
+                button.tag = index
+            }*/
+            
+            // 在Swift 4.2中，index(of: )被firstIndex(of: )取代了
+            if let index = locations.firstIndex(of: annotation as! Location) {
+                button.tag = index
+            }
+        }
+        
+        return annotationView
+    }
+    
+    
+    
+    
+}
+
+
+
+// MARK: - 监听按钮的点击事件
+extension MapViewController {
+    
+    @objc func showLocationDetails(_ sender: UIButton) {
+        
+    }
 }
