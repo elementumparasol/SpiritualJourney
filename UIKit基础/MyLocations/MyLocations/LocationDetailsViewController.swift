@@ -344,12 +344,57 @@ extension LocationDetailsViewController {
             
             // 让descriptionTextView成为第一响应者
             descriptionTextView.becomeFirstResponder()
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            
+            // 如果用户点击的是第1组的第0行(也就是点击"添加照片"所在的行)
+            // 调用takePotoWithCamera()方法
+            takePotoWithCamera()
         }
     }
     
     
     
     
+}
+
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: - UIImagePickerControllerDelegate
+    
+    // 完成操作以后调用
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // 从屏幕上移除imagePicker控制器
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // 点击取消操作的时候调用
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        // 从屏幕上移除imagePicker控制器
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - 与相机和系统相册相关的自定义方法
+    
+    
+    /// 使用相机或者访问系统相册
+    func takePotoWithCamera() {
+        
+        // 创建UIImagePickerController实例
+        let imagePicker = UIImagePickerController()
+        
+        // 设置imagePicker的属性
+        imagePicker.sourceType = .camera  // 模拟器没有相机，所以会崩溃，但是真机不会
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        // 以modal的方式弹出imagePicker控制器
+        present(imagePicker, animated: true, completion: nil)
+    }
 }
 
 
