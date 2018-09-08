@@ -353,7 +353,10 @@ extension LocationDetailsViewController {
             // takePotoWithCamera()
             
             // 使用系统相册
-            choosePhotoFromLibrary()
+            // choosePhotoFromLibrary()
+            
+            // 选择拍照还是直接访问系统相册
+            pickPhoto()
         }
     }
     
@@ -415,6 +418,49 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         // 弹出imagePicker控制器
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    /// 照片库选项
+    func pickPhoto() {
+        
+        // 判断相机是否可用
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            // 如果相机可用，可选择使用相机拍照，还是直接访问相册
+            showPhotoMenu()
+        } else {
+            
+            // 如果相机不可用，则直接进入访问相册模式
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    
+    /// 显示照片库选项(拍照或者访问系统相册)
+    func showPhotoMenu() {
+        
+        // 创建UIAlertController实例
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // 取消选项
+        let actCancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(actCancel)
+        
+        // 拍照选项
+        let actPhoto = UIAlertAction(title: "拍照", style: .default, handler: nil)
+        alert.addAction(actPhoto)
+        
+        // 访问系统相册选项
+        let actLibrary = UIAlertAction(title: "访问相册", style: .default, handler: nil)
+        alert.addAction(actLibrary)
+        
+        // 弹出alert控制器
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
 }
 
 
