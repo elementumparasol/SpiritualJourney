@@ -87,7 +87,8 @@ class LocationDetailsViewController: UITableViewController {
     /// 描述location的文本
     var descriptionText = ""
     
-    
+    /// 照片image
+    var image: UIImage?
     
     
     
@@ -383,6 +384,16 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // 完成操作以后调用
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        // UIImagePickerControllerEditedImage
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        
+        // 对照片进行校验
+        if let theImage = image {
+            
+            // 显示照片
+            show(image: theImage)
+        }
+        
         // 从屏幕上移除imagePicker控制器
         dismiss(animated: true, completion: nil)
     }
@@ -474,7 +485,14 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         present(alert, animated: true, completion: nil)
     }
     
-    
+    /// 显示照片
+    func show(image: UIImage) {
+        
+        imageView.image = image
+        imageView.isHidden = false
+        imageView.frame = CGRect(x: 10, y: 10, width: 260, height: 260)
+        addPhotoLabel.isHidden = true
+    }
     
     
     
