@@ -59,8 +59,24 @@ class LocationsViewController: UITableViewController {
         // NSFetchedResultsController<Location>.deleteCache(withName: "Locations")
         performFetch()
         
+        
+        // 设置编辑按钮文字
+        editButtonItem.possibleTitles = Set<String>(arrayLiteral: "编辑", "完成")
+        editButtonItem.title = "编辑"
+        
         // 在cell左边添加删除按钮
         navigationItem.rightBarButtonItem = editButtonItem
+    }
+    
+    // 设置不同状态下编辑按钮的文字
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        if editing {
+            editButtonItem.title = "完成"
+        } else {
+            editButtonItem.title = "编辑"
+        }
     }
     
     /// 执行segue的时候调用
@@ -231,6 +247,18 @@ extension LocationsViewController {
         }
     }
     
+    
+}
+
+
+
+// MARK: - UITableViewDelegate
+extension LocationsViewController {
+    
+    // 修改左滑删除按钮为中文
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
     
     
 }

@@ -443,30 +443,40 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3c-g0-YrD">
-                                            <rect key="frame" x="16" y="5" width="343" height="21"/>
+                                            <rect key="frame" x="73" y="5" width="286" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrA-Gw-G7W">
-                                            <rect key="frame" x="16" y="34.5" width="343" height="17"/>
+                                            <rect key="frame" x="73" y="34.5" width="286" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mvb-FJ-sVq">
+                                            <rect key="frame" x="16" y="2" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="8Pz-Nq-4Od"/>
+                                                <constraint firstAttribute="height" constant="52" id="DoY-ve-d43"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="UrA-Gw-G7W" firstAttribute="leading" secondItem="thc-o1-0Gs" secondAttribute="leading" constant="16" id="C8n-N8-iDG"/>
+                                        <constraint firstItem="h3c-g0-YrD" firstAttribute="leading" secondItem="mvb-FJ-sVq" secondAttribute="trailing" constant="5" id="IqJ-Tk-Jck"/>
                                         <constraint firstAttribute="trailing" secondItem="UrA-Gw-G7W" secondAttribute="trailing" constant="16" id="JHE-Vc-Ydt"/>
                                         <constraint firstAttribute="trailing" secondItem="h3c-g0-YrD" secondAttribute="trailing" constant="16" id="OoP-wV-hMg"/>
                                         <constraint firstItem="h3c-g0-YrD" firstAttribute="top" secondItem="thc-o1-0Gs" secondAttribute="top" constant="5" id="cFb-hh-PWN"/>
                                         <constraint firstAttribute="bottom" secondItem="UrA-Gw-G7W" secondAttribute="bottom" constant="5" id="gWb-2W-2zs"/>
-                                        <constraint firstItem="h3c-g0-YrD" firstAttribute="leading" secondItem="thc-o1-0Gs" secondAttribute="leading" constant="16" id="kM4-Bj-5da"/>
+                                        <constraint firstItem="mvb-FJ-sVq" firstAttribute="leading" secondItem="thc-o1-0Gs" secondAttribute="leading" constant="16" id="lIM-M8-LTe"/>
+                                        <constraint firstItem="mvb-FJ-sVq" firstAttribute="top" secondItem="thc-o1-0Gs" secondAttribute="top" constant="2" id="ooG-U4-HI6"/>
+                                        <constraint firstItem="UrA-Gw-G7W" firstAttribute="leading" secondItem="mvb-FJ-sVq" secondAttribute="trailing" constant="5" id="ppR-Mr-fRp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="UrA-Gw-G7W" id="Rxu-uE-mOx"/>
                                     <outlet property="descriptionLabel" destination="h3c-g0-YrD" id="0LZ-go-HJH"/>
+                                    <outlet property="photoImageView" destination="mvb-FJ-sVq" id="6bL-LT-SS9"/>
                                     <segue destination="jMO-xd-htX" kind="show" identifier="EditLocation" id="QTE-xk-Nfo"/>
                                 </connections>
                             </tableViewCell>
@@ -563,6 +573,6 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gJi-fg-Tab"/>
+        <segue reference="QTE-xk-Nfo"/>
     </inferredMetricsTieBreakers>
 </document>

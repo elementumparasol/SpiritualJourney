@@ -18,8 +18,8 @@ class LocationCell: UITableViewCell {
     /// addressLabel
     @IBOutlet weak var addressLabel: UILabel!
     
-    
-    
+    /// photoImageView
+    @IBOutlet weak var photoImageView: UIImageView!
     
     
     // MARK: - 类自带的方法
@@ -48,7 +48,7 @@ class LocationCell: UITableViewCell {
             descriptionLabel.text = location.locationDescription
         }
         
-        // 如果placemark有值
+        // 如果placemark有值，就给地址label设置数据
         if let placemark = location.placemark {
             
             var text = ""
@@ -75,10 +75,24 @@ class LocationCell: UITableViewCell {
             // 如果placemark没有值，就设置经纬度信息
             addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
         }
+        
+        // 给photoImageView设置图片
+        photoImageView.image = thumbnail(for: location)
     }
     
-    
-    
+    /// 在cell左边显示缩略图
+    func thumbnail(for location: Location) -> UIImage {
+        
+        // 如果location实例中有一张图片，则将其返回
+        if location.hasPhoto, let image = location.photoImage {
+            
+            // 返回一张经过压缩之后的图片
+            return image.resize(withBounds: CGSize(width: 52, height: 52))
+        }
+        
+        // 如果location里面没有图片，则显示一张占位图片
+        return UIImage()
+    }
     
     
 
