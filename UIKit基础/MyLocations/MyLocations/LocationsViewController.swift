@@ -215,6 +215,9 @@ extension LocationsViewController {
             // 如果是删除，则根据indexPath取出与之对应的location数据
             let location = fetchedResultsController.object(at: indexPath)
             
+            // 删除location实例之前，顺便删除与之对应的图片
+            location.removePhotoFile()
+            
             // 从managedObjectContext中删除指定的location数据
             managedObjectContext.delete(location)
             
