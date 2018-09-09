@@ -103,6 +103,11 @@ extension CategoryPickerViewController {
             cell.accessoryType = .none
         }
         
+        // 设置cell被选中时的背景颜色
+        let selectionView = UIView(frame: .zero)
+        selectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        cell.selectedBackgroundView = selectionView
+        
         return cell
     }
     
