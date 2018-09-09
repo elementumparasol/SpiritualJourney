@@ -83,7 +83,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
-    
+    /// 自定义应用外观
+    func customizeAppearance() {
+        
+        // 设置导航条的背景颜色
+        UINavigationBar.appearance().barTintColor = UIColor.black
+        
+        // 设置导航条标题的颜色
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        
+        // 设置tabBar的背景颜色
+        UITabBar.appearance().barTintColor = UIColor.black
+        
+        // 自定义颜色
+        let tintColor = UIColor(red: 255/255.0, green: 238/255.0, blue: 136/255.0, alpha: 1.0)
+        
+        // 设置tabBar上面item的标题颜色
+        UITabBar.appearance().tintColor = tintColor
+    }
     
     // MARK: - AppDelegate自带的方法
 
@@ -150,6 +169,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 监听通知中心发出的通知
         listenForFatalCoreDataNotifications()
+        
+        // 自定义应用程序外观
+        customizeAppearance()
         
         return true
     }
