@@ -435,6 +435,15 @@ extension LocationDetailsViewController {
             pickPhoto()
         }
     }
+    
+    // 在cell即将显示的时候调用
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        // 设置cell被选中时的背景颜色
+        let selectionView = UIView(frame: .zero)
+        selectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        cell.selectedBackgroundView = selectionView
+    }
 }
 
 
