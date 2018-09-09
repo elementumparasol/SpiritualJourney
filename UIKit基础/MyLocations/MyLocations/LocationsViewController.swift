@@ -66,6 +66,10 @@ class LocationsViewController: UITableViewController {
         
         // 在cell左边添加删除按钮
         navigationItem.rightBarButtonItem = editButtonItem
+        
+        
+        // 设置headerView的高度
+        tableView.sectionHeaderHeight = 28
     }
     
     // 设置不同状态下编辑按钮的文字
@@ -184,7 +188,7 @@ extension LocationsViewController {
     // 设置分组头部标题
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.name
+        return sectionInfo.name.uppercased()
     }
 
     // 返回tableView中每一组cell的行数
@@ -248,6 +252,9 @@ extension LocationsViewController {
     }
     
     
+    
+    
+    
 }
 
 
@@ -259,6 +266,71 @@ extension LocationsViewController {
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除"
     }
+    
+    // 自定义HeaderView
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        /**
+         HeaderView上面显示文字的label控件
+         */
+        
+        // 创建label的尺寸
+        let labelRect = CGRect(x: 15, y: tableView.sectionHeaderHeight - 14, width: 300, height: 14)
+        
+        // 创建显示Header标题的label
+        let label = UILabel(frame: labelRect)
+        
+        // 设置label上面标题字体的大小
+        label.font = UIFont.boldSystemFont(ofSize: 11)
+        
+        // 设置label上面的标题(找数据源要数据)
+        label.text = tableView.dataSource!.tableView!(tableView, titleForHeaderInSection: section)
+        
+        // 设置label上面标题的颜色
+        label.textColor = UIColor(white: 1.0, alpha: 0.4)
+        
+        // 设置label的背景颜色
+        label.backgroundColor = .clear
+        
+        
+        /**
+         HeaderView上面的分割线
+         */
+        
+        // 创建分割线的尺寸
+        let separatorRect = CGRect(x: 15, y: tableView.sectionHeaderHeight - 0.5, width: tableView.bounds.size.width - 15, height: 0.5)
+        
+        // 创建分割线
+        let separator = UIView(frame: separatorRect)
+        
+        // 设置分割线的背景颜色
+        separator.backgroundColor = tableView.separatorColor
+        
+        
+        /**
+         自定义的HeaderView
+         */
+        
+        // 设置HeaderView的尺寸
+        let viewRect = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.sectionHeaderHeight)
+        
+        // 创建headerView
+        let view = UIView(frame: viewRect)
+        
+        // 设置headerView的背景颜色
+        view.backgroundColor = UIColor(white: 0, alpha: 0.85)
+        
+        // 将显示headerView标题的label添加到headerView上面
+        view.addSubview(label)
+        
+        // 将分割线添加到headerView上面
+        view.addSubview(separator)
+        
+        // 返回headerView
+        return view
+    }
+    
+    
     
     
 }

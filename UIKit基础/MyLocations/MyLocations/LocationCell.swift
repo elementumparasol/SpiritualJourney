@@ -26,7 +26,21 @@ class LocationCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // 创建一个灰色的view
+        let selectionView = UIView(frame: .zero)
+        selectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        
+        // 将这个灰色的view赋值给selectedBackgroundView
+        selectedBackgroundView = selectionView
+        
+        // 将缩略图裁剪成圆形
+        photoImageView.layer.cornerRadius = photoImageView.bounds.size.width / 2
+        photoImageView.clipsToBounds = true
+        
+        // 调整分割线的位置
+        separatorInset = UIEdgeInsets(top: 0, left: 82, bottom: 0, right: 0)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,7 +99,7 @@ class LocationCell: UITableViewCell {
         }
         
         // 如果location里面没有图片，则显示一张占位图片
-        return UIImage()
+        return UIImage(named: "No Photo")!
     }
     
     
