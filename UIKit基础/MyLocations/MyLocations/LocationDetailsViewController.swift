@@ -130,6 +130,38 @@ class LocationDetailsViewController: UITableViewController {
         location.date = date
         location.placemark = placemark
         
+        
+        /**
+         保存图片
+         */
+        
+        // 对图片进行校验
+        if let image = image {
+            
+            // 判断是否有图片
+            if !location.hasPhoto {
+                
+                // 设置图片的ID
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            
+            // 在Swift 4.2中UIImageJPEGRepresentation()变成了实例方法
+            // 将图片转换为二进制数据
+            if let data = image.jpegData(compressionQuality: 0.5) {
+                
+                do {
+                    
+                    // 将图片的二进制数据写入到指定的路径中
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("图片数据写入错误: \(error)")
+                }
+            }
+        }
+        
+        
+        
+        
         // 调用save()方法保存context。因为save()方法是一个可失败
         // 的方法(在执行过程中可能会抛出异常)，所以需要对异常进行处理
         do {
