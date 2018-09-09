@@ -307,40 +307,23 @@ class LocationDetailsViewController: UITableViewController {
         // 用于存储详细的地址信息
         var text = ""
         
-        /**
-         按照中国人的习惯，将国家信息放在最前面，即
-         - 中国，上海，上海市，杨浦区，街道信息，门牌号，邮编信息
-         */
-        
         // 国家信息
-        if let s = placemark.country {
-            text += s + " "
-        }
+        text.add(text: placemark.country, separatedBy: " ")
         
         // 州或者省级信息
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
+        text.add(text: placemark.administrativeArea, separatedBy: " ")
         
         // 城市信息
-        if let s = placemark.locality {
-            text += s + " "
-        }
+        text.add(text: placemark.locality, separatedBy: " ")
         
-        // 街道信息
-        if let s = placemark.thoroughfare {
-            text += s + " "
-        }
+        // 街道信息(哪条路)
+        text.add(text: placemark.thoroughfare, separatedBy: " ")
         
-        // 街道详细信息
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
+        // 街道详细信息(多少号)
+        text.add(text: placemark.subThoroughfare, separatedBy: ", ")
         
         // 邮编信息
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
+        text.add(text: placemark.postalCode, separatedBy: " ")
         
         return text
     }

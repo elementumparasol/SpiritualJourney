@@ -54,19 +54,13 @@ class LocationCell: UITableViewCell {
             var text = ""
             
             // 城市信息
-            if let s = placemark.locality {
-                text += s + " "
-            }
+            text.add(text: placemark.locality, separatedBy: " ")
             
-            // 街道信息
-            if let s = placemark.thoroughfare {
-                text += s + " "
-            }
+            // 街道信息(什么路)
+            text.add(text: placemark.thoroughfare, separatedBy: " ")
             
-            // 详细的街道信息
-            if let s = placemark.subThoroughfare {
-                text += s + " "
-            }
+            // 详细的街道信息(多少号)
+            text.add(text: placemark.subThoroughfare, separatedBy: " ")
             
             // 设置addressLabel上面的文字
             addressLabel.text = text

@@ -267,41 +267,45 @@ class CurrentLocationViewController: UIViewController {
     /// 显示详细的地理位置
     func string(from placemark: CLPlacemark) -> String {
         
+        /**
+         省市一级的信息
+         */
+        
+        
         var line1 = ""
         
-        // 更加详细的街道信息
-        if let s = placemark.subThoroughfare {
-            line1 += s + " "
-        }
+        // 州或者省级信息
+        line1.add(text: placemark.administrativeArea, separatedBy: " ")
         
-        // 街道信息
-        if let s = placemark.thoroughfare {
-            line1 += s
-        }
+        // 城市信息
+        line1.add(text: placemark.locality)
+        
+        // 邮编信息
+        // line1.add(text: placemark.postalCode, separatedBy: " ")
+        
+        
+        /**
+         社区和街道一级的信息
+         */
         
         var line2 = ""
         
-        // 城市信息
-        if let s = placemark.locality {
-            line2 += s + " "
-        }
+        // 街道信息(哪条路)
+        line2.add(text: placemark.thoroughfare, separatedBy: " ")
         
-        // 州或者省级信息
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
+        // 更加详细的街道信息(多少号)
+        line2.add(text: placemark.subThoroughfare)
         
-        // 邮编信息
-        if let s = placemark.postalCode {
-            line2 += s
-        }
+        
+        /**
+         按照 "国家+省(直辖市)+城市+街道(路)+社区和门牌号" 进行汇总
+         */
         
         // 按照中国的习惯，城市应该放在街道的前面
-        return line2 + " " + line1
+        line1.add(text: line2, separatedBy: "\n")
+        
+        return line2
     }
-    
-    
-    
     
 }
 
@@ -416,20 +420,6 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         }
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
