@@ -232,10 +232,19 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         
         // 对locaitonToEdit进行校验
-        if let _ = locaitonToEdit {
+        if let location = locaitonToEdit {
             
             // 如果locaitonToEdit有值，则重新设置title
             title = "编辑位置"
+            
+            // 判断实例location中是否有图片
+            if location.hasPhoto {
+                
+                // 如果有图片，就将其展示到相应的位置上
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         
         descriptionTextView.text = descriptionText
