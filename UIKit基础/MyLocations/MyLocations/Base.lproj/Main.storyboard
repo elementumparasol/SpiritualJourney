@@ -392,10 +392,10 @@
             </objects>
             <point key="canvasLocation" x="3660" y="-322"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MyTabBarController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -415,7 +415,7 @@
         <scene sceneID="qhh-6y-vBd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Du-Jz-1Se" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="标签" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="标签" image="Tag" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s8w-Bz-QbK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -500,7 +500,7 @@
         <scene sceneID="YAg-KA-9bP">
             <objects>
                 <navigationController id="uZc-EQ-Vrx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="位置" id="N7t-sA-yhH"/>
+                    <tabBarItem key="tabBarItem" title="位置" image="Locations" id="N7t-sA-yhH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UWa-xA-yWv">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -557,7 +557,7 @@
         <scene sceneID="Bu9-BF-fYj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaH-ag-ZjN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="地图" id="VQT-0p-D5R"/>
+                    <tabBarItem key="tabBarItem" title="地图" image="Map" id="VQT-0p-D5R"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gkN-Qx-gnQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -574,7 +574,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="Locations" width="30" height="30"/>
+        <image name="Map" width="30" height="30"/>
+        <image name="Tag" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6ut-cz-IH0"/>

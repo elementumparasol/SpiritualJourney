@@ -487,7 +487,10 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     func takePotoWithCamera() {
         
         // 创建UIImagePickerController实例
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+        
+        // 设置imagePicker的view的tintColor
+        imagePicker.view.tintColor = view.tintColor
         
         // 设置imagePicker的属性
         imagePicker.sourceType = .camera  // 模拟器没有相机，所以会崩溃，但是真机不会
@@ -502,7 +505,11 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     func choosePhotoFromLibrary() {
         
         // 创建UIImagePickerController实例对象
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+
+        
+        // 设置imagePicker的view的tintColor
+        imagePicker.view.tintColor = view.tintColor
         
         // 设置相关的属性
         imagePicker.sourceType = .photoLibrary
