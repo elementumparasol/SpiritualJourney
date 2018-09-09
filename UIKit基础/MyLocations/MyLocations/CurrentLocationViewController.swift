@@ -17,10 +17,10 @@ class CurrentLocationViewController: UIViewController {
     /// 消息label
     @IBOutlet weak var messageLabel: UILabel!
     
-    /// 纬度
+    /// 显示具体的纬度数据
     @IBOutlet weak var latitudelabel: UILabel!
     
-    /// 精度
+    /// 显示具体的经度数据
     @IBOutlet weak var longitudelabel: UILabel!
     
     /// 地址
@@ -31,6 +31,16 @@ class CurrentLocationViewController: UIViewController {
     
     /// get location
     @IBOutlet weak var getButton: UIButton!
+    
+    /// 提示纬度信息的label
+    @IBOutlet weak var latitudeTextLabel: UILabel!
+    
+    /// 提示经度信息的label
+    @IBOutlet weak var longitudeTextLabel: UILabel!
+    
+    /// containerView(容器控件，方便整体布局)
+    @IBOutlet weak var containerView: UIView!
+    
     
     
     // MARK: - 自定义属性
@@ -65,6 +75,31 @@ class CurrentLocationViewController: UIViewController {
     /// 用于创建和存取ManagedObject(使用依赖注入设计模式，通过
     /// segue的执行，将其传递给LocationDetailsViewController)
     var managedObjectContext: NSManagedObjectContext!
+    
+    /// 是否显示Logo(默认不可见)
+    var isLogoVisible = false
+    
+    /// 用于显示Logo的按钮
+    lazy var logoButton: UIButton = {
+        
+        // 创建按钮
+        let button = UIButton(type: .custom)
+        
+        // 设置按钮的背景图片
+        button.setBackgroundImage(UIImage(named: "Logo"), for: .normal)
+        
+        // 设置按钮的尺寸
+        button.sizeToFit()
+        
+        // 监听按钮的点击
+        button.addTarget(self, action: #selector(getLocation), for: .touchUpInside)
+        
+        // 设置按钮中心点的位置
+        button.center.x = self.view.bounds.midX
+        button.center.y = 220
+        
+        return button
+    }()
     
     
     // MARK: - 类自带的方法
@@ -136,7 +171,12 @@ class CurrentLocationViewController: UIViewController {
             startLocationManager()
         }
         
+        // 获取到地理位置数据之后，就可以隐藏logoButton了
+        if isLogoVisible {
+            hideLogoButton()
+        }
         
+        // 将数据显示到各种label上面去
         updateLabels()
     }
     
@@ -166,6 +206,10 @@ class CurrentLocationViewController: UIViewController {
         
         if let location = location {
             
+            // 有location数据的时候，显示提示经度和纬度的label
+            latitudeTextLabel.isHidden = false
+            longitudeTextLabel.isHidden = false
+            
             // 更新纬度信息
             latitudelabel.text = String(format: "%.8f", location.coordinate.latitude)
             
@@ -191,6 +235,11 @@ class CurrentLocationViewController: UIViewController {
             
             
         } else {
+            
+            // 没有location数据的时候，隐藏提示经纬度信息的label
+            latitudeTextLabel.isHidden = true
+            longitudeTextLabel.isHidden = true
+            
             latitudelabel.text = ""
             longitudelabel.text = ""
             addressLabel.text = ""
@@ -213,7 +262,8 @@ class CurrentLocationViewController: UIViewController {
             } else if updatingLocation {
                 statusMessage = "正在定位..."
             } else {
-                statusMessage = "点击\"获取我的位置\"开始定位"
+                statusMessage = ""
+                showLogoButton()
             }
             
             messageLabel.text = statusMessage
@@ -257,10 +307,26 @@ class CurrentLocationViewController: UIViewController {
     /// 设置getButton的标题
     func configureGetButton() {
         
+        let spinnerTag = 1000
+        
         if updatingLocation {
             getButton.setTitle("停止", for: .normal)
+            
+            if view.viewWithTag(spinnerTag) == nil {
+                let spinner = UIActivityIndicatorView(style: .white)
+                spinner.center = messageLabel.center
+                spinner.center.y += spinner.bounds.size.height / 2 + 25
+                spinner.startAnimating()
+                spinner.tag = spinnerTag
+                containerView.addSubview(spinner)
+            }
+            
         } else {
             getButton.setTitle("获取我的位置", for: .normal)
+            
+            if let spinner = view.viewWithTag(spinnerTag) {
+                spinner.removeFromSuperview()
+            }
         }
     }
     
@@ -302,9 +368,85 @@ class CurrentLocationViewController: UIViewController {
          */
         
         // 按照中国的习惯，城市应该放在街道的前面
-        line1.add(text: line2, separatedBy: "\n")
+        //line1.add(text: line2, separatedBy: " ")
         
-        return line2
+        return line1 + line2
+    }
+    
+    /// 显示logoButton
+    func showLogoButton() {
+        
+        // 如果logoButton不可见
+        if !isLogoVisible {
+            
+            // 让logoButton可见
+            isLogoVisible = true
+            
+            // 隐藏containerView
+            containerView.isHidden = true
+            
+            // 将logoButton添加到控制器的view上面
+            view.addSubview(logoButton)
+        }
+    }
+    
+    /// 隐藏logoButton
+    func hideLogoButton() {
+        
+        // 隐藏logoButton
+        // isLogoVisible = false
+        
+        // 显示containerView
+        // containerView.isHidden = false
+        
+        // 将logoButton从父控件上移除
+        // logoButton.removeFromSuperview()
+        
+        
+        
+        if !isLogoVisible { return }
+        
+        isLogoVisible = false
+        containerView.isHidden = false
+        
+        containerView.center.x = view.bounds.size.width * 2
+        containerView.center.y = containerView.bounds.size.height / 2 + 40
+        let centerX = view.bounds.midX
+        
+        let panelMover = CABasicAnimation(keyPath: "position")
+        panelMover.isRemovedOnCompletion = false
+        panelMover.fillMode = CAMediaTimingFillMode.forwards
+        panelMover.duration = 0.6
+        panelMover.fromValue = NSValue(cgPoint: containerView.center)
+        panelMover.toValue = NSValue(cgPoint:
+            CGPoint(x: centerX, y: containerView.center.y))
+        panelMover.timingFunction = CAMediaTimingFunction(
+            name: CAMediaTimingFunctionName.easeOut)
+        panelMover.delegate = self
+        containerView.layer.add(panelMover, forKey: "panelMover")
+        
+        let logoMover = CABasicAnimation(keyPath: "position")
+        logoMover.isRemovedOnCompletion = false
+        logoMover.fillMode = CAMediaTimingFillMode.forwards
+        logoMover.duration = 0.5
+        logoMover.fromValue = NSValue(cgPoint: logoButton.center)
+        logoMover.toValue = NSValue(cgPoint:
+            CGPoint(x: -centerX, y: logoButton.center.y))
+        logoMover.timingFunction = CAMediaTimingFunction(
+            name: CAMediaTimingFunctionName.easeIn)
+        logoButton.layer.add(logoMover, forKey: "logoMover")
+        
+        let logoRotator = CABasicAnimation(keyPath:
+            "transform.rotation.z")
+        logoRotator.isRemovedOnCompletion = false
+        logoRotator.fillMode = CAMediaTimingFillMode.forwards
+        logoRotator.duration = 0.5
+        logoRotator.fromValue = 0.0
+        logoRotator.toValue = -2 * Double.pi
+        logoRotator.timingFunction = CAMediaTimingFunction(
+            name: CAMediaTimingFunctionName.easeIn)
+        logoButton.layer.add(logoRotator, forKey: "logoRotator")
+        
     }
     
 }
@@ -424,8 +566,25 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
 }
 
 
+// MARK: - CAAnimationDelegate
+extension CurrentLocationViewController: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        
+        containerView.layer.removeAllAnimations()
+        
+        containerView.center.x = view.bounds.size.width / 2
+        
+        containerView.center.y = 40 + containerView.bounds.size.height / 2
+        
+        logoButton.layer.removeAllAnimations()
+        
+        logoButton.removeFromSuperview()
+    }
+}
 
 
+// MARK: - 监听NSTimer
 extension CurrentLocationViewController {
     
     @objc func didTimeOut() {
