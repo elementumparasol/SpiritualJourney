@@ -103,6 +103,10 @@ class LocationDetailsViewController: UITableViewController {
         // 创建HUD
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         
+        /**
+         设置Location实例对象
+         */
+        
         let location: Location
         
         // 对LocationToEdit的值进行校验，如果它有值，就将其赋值给tmp
@@ -120,6 +124,11 @@ class LocationDetailsViewController: UITableViewController {
             
             // 通过Location的init(context: )方法给location赋值
             location = Location(context: managedObjectContext)
+            
+            // 因为每次创建一个Location实例时，它的photoID值默认为0，
+            // 而实际上新创建的Location实例它是没有任何图片的，因此它
+            // 的photoID此时应该为nil，为此我们需要手动设置一下
+            location.photoID = nil
         }
         
         // 给location实例的属性赋值
@@ -160,7 +169,9 @@ class LocationDetailsViewController: UITableViewController {
         }
         
         
-        
+        /**
+         保存managed object context
+         */
         
         // 调用save()方法保存context。因为save()方法是一个可失败
         // 的方法(在执行过程中可能会抛出异常)，所以需要对异常进行处理
