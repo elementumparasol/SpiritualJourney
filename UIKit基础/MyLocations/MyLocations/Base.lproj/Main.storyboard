@@ -533,12 +533,12 @@
                         <viewLayoutGuide key="safeArea" id="T7g-Er-Cqr"/>
                     </view>
                     <navigationItem key="navigationItem" title="地图" id="XGy-cB-yjm">
-                        <barButtonItem key="leftBarButtonItem" title="位置标记" id="0pH-rh-qnI">
+                        <barButtonItem key="leftBarButtonItem" title="位置标记" image="Pin" id="0pH-rh-qnI">
                             <connections>
                                 <action selector="showLocations" destination="ngT-q4-blq" id="so2-Bs-Zxf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="用户位置" id="pL3-Kp-52e">
+                        <barButtonItem key="rightBarButtonItem" title="用户位置" image="User" id="pL3-Kp-52e">
                             <connections>
                                 <action selector="showUser" destination="ngT-q4-blq" id="KVk-Lb-00z"/>
                             </connections>
@@ -576,10 +576,12 @@
     <resources>
         <image name="Locations" width="30" height="30"/>
         <image name="Map" width="30" height="30"/>
+        <image name="Pin" width="24" height="24"/>
         <image name="Tag" width="30" height="30"/>
+        <image name="User" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6ut-cz-IH0"/>
+        <segue reference="gJi-fg-Tab"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333333333335" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
 </document>

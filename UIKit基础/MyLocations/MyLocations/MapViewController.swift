@@ -205,6 +205,9 @@ extension MapViewController: MKMapViewDelegate {
             // 将按钮rightButton赋值给pinView的rightCalloutAccessoryView
             pinView.rightCalloutAccessoryView = rightButton
             
+            // 设置pinView的tintColor
+            pinView.tintColor = UIColor(white: 0.0, alpha: 0.5)
+            
             // 再将pinView赋值给annotationView
             annotationView = pinView
         }
