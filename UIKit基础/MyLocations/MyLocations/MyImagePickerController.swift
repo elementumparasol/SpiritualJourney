@@ -14,10 +14,16 @@ class MyImagePickerController: UIImagePickerController {
         return .lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.backgroundColor = .black
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // title = "相册"
+        
     }
 }
 

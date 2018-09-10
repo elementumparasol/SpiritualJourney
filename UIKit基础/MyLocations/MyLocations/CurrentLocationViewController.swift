@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import CoreData
+import AudioToolbox
+
 
 class CurrentLocationViewController: UIViewController {
     
@@ -101,6 +103,9 @@ class CurrentLocationViewController: UIViewController {
         return button
     }()
     
+    ///
+    var soundID: SystemSoundID = 0
+    
     
     // MARK: - 类自带的方法
     
@@ -118,6 +123,9 @@ class CurrentLocationViewController: UIViewController {
         
         // 程序一起动就显示文本信息
         updateLabels()
+        
+        // 加载声音
+        loadSoundEffect("Sound.caf")
     }
     
     /// 执行segue的时候调用
@@ -449,6 +457,37 @@ class CurrentLocationViewController: UIViewController {
         
     }
     
+    /// 加载声音
+    func loadSoundEffect(_ name: String) {
+        
+        if let path = Bundle.main.path(forResource: name, ofType: nil) {
+            
+            let fileURL = URL(fileURLWithPath: path, isDirectory: false)
+            
+            let error = AudioServicesCreateSystemSoundID(fileURL as CFURL, &soundID)
+            
+            if error != kAudioServicesNoError {
+                print("Error code \(error) loading sound: \(path)")
+            }
+        }
+    }
+    
+    /// 移除声音播放
+    func unloadSoundEffect() {
+        
+        AudioServicesDisposeSystemSoundID(soundID)
+        soundID = 0
+    }
+    
+    /// 播放声音
+    func playSoundEffect() {
+        AudioServicesPlaySystemSound(soundID)
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -542,7 +581,14 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
                     
                     self.lastLocationError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
+                        
+                        if self.placemark == nil {
+                            print("CurrentLocationViewController -- locationManager(_: didUpdateLocations:) --- ")
+                            self.playSoundEffect()
+                        }
+                        
                         self.placemark = p.last!
+                        
                     } else {
                         self.placemark = nil
                     }

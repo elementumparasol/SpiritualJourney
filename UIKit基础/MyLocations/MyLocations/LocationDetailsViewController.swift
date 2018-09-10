@@ -520,6 +520,9 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         // 设置imagePicker的view的tintColor
         imagePicker.view.tintColor = view.tintColor
         
+        imagePicker.title = "相册"
+        
+        
         // 设置相关的属性
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
