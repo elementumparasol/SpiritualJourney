@@ -16,9 +16,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZS2-3z-VB2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IPZ-C9-MI4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IPZ-C9-MI4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3JS-vc-Vlb"/>
+                            <constraint firstItem="IPZ-C9-MI4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7B9-ev-qxJ"/>
+                            <constraint firstItem="ZS2-3z-VB2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LWD-iN-X7y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZS2-3z-VB2" secondAttribute="trailing" id="UpO-cm-xmz"/>
+                            <constraint firstItem="IPZ-C9-MI4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fhR-0j-llM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZS2-3z-VB2" secondAttribute="bottom" id="ghK-S1-jy9"/>
+                            <constraint firstItem="ZS2-3z-VB2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tfe-HU-gsu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="IPZ-C9-MI4" id="WfT-F0-69c"/>
+                        <outlet property="tableView" destination="ZS2-3z-VB2" id="Vow-dm-BSW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
