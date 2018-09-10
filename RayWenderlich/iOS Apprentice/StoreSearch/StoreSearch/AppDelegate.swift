@@ -11,11 +11,35 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
+    // MARK: - 类自带的属性
     var window: UIWindow?
-
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 自定义应用的外观
+    func customizeAppearence() {
+        
+        let barTintColor = UIColor(red: 20/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
+        
+        // 设置SearchBar的外观颜色
+        UISearchBar.appearance().barTintColor = barTintColor
+        
+        // 设置window的外观颜色
+        window!.tintColor = UIColor(red: 10/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
+    }
+    
+    
+    
+    // MARK: - 类自带的方法
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 自定义应用外观颜色
+        customizeAppearence()
+        
         return true
     }
 
