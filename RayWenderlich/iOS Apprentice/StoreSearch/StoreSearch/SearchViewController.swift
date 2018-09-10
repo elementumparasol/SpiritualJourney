@@ -10,6 +10,19 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    // MARK: - 常量
+    
+    /// cell的可重用标识符
+    struct TableViewCellIdentifiers {
+        
+        /// 搜索有结果的可重用标识符
+        static let searchResultCell = "SearchResultCell"
+        
+        /// 搜索无结果的可重用标识符
+        static let nothingFoundCell = "NothingFoundCell"
+    }
+    
+    
     // MARK: - @IBOutlet
     
     /// tableView
@@ -35,6 +48,21 @@ class SearchViewController: UIViewController {
         
         // 调整tableView的边距(searchBar遮挡住了tableView第0行cell)
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        
+        // 加载SearchResultCell.xib
+        var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
+        
+        // 注册SearchResultCell
+        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
+        
+        // 加载NothingFoundCell.xib
+        cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
+        
+        // 注册NothingFoundCell
+        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+        
+        // 设置cell的行高
+        tableView.rowHeight = 80
     }
 
     
@@ -62,30 +90,43 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // 创建cell标识符
-        let cellIdentifier = "SearchResultCell"
+        // let cellIdentifier = "SearchResultCell"
         
         // 通过cell标识符去缓存池中取出cell
-        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        // var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
         // 如果缓存池中没有这样的cell，则创建带标识符的cell
+        /*
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        }
+        }*/
+        
+        
+        
         
         if searchResults.count == 0 {
-            cell.textLabel!.text = "(Nothing Found)"
-            cell.detailTextLabel!.text = ""
+            
+            // 如果搜索无结果
+            return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
+            
         } else {
+            
+            // 根据指定的标识符去缓存池中取出cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
+            
             // 取出模型数据
             let searchResult = searchResults[indexPath.row]
             
             // 给cell设置数据
-            cell.textLabel!.text = searchResult.name
-            cell.detailTextLabel!.text = searchResult.artistName
+            cell.nameLabel!.text = searchResult.name
+            cell.artistNameLabel!.text = searchResult.artistName
+            
+            return cell
         }
         
-        return cell
     }
+    
+    
 }
 
 
