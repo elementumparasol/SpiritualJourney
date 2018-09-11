@@ -84,17 +84,43 @@ class SearchViewController: UIViewController {
     }
     
     /// 发送网络请求(接收从服务器返回的JSON格式的数据)
-    func performStoreRequest(with url: URL) -> String? {
+    func performStoreRequest(with url: URL) -> Data? {
         
         do {
-            return try String(contentsOf: url, encoding: .utf8)
+            // return try String(contentsOf: url, encoding: .utf8)
+            return try Data(contentsOf: url)
         } catch {
             print("Download Error: \(error.localizedDescription)")
+            
+            showNetworkError()
             return nil
         }
     }
     
+    /// 解析JSON数据
+    func parse(data: Data) -> [SearchResult] {
+        
+        do {
+            let decode = JSONDecoder()
+            let result = try decode.decode(ResultArray.self, from: data)
+            return result.results
+        } catch {
+            print("JSON Error: \(error)")
+            return []
+        }
+    }
     
+    /// 处理网络错误
+    func showNetworkError() {
+        
+        let alert = UIAlertController(title: "Whoops...", message: "There was an error accessing the iTunes Store." + "Please try again.", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
     
     
 }
@@ -223,8 +249,12 @@ extension SearchViewController: UISearchBarDelegate {
             
             // 调用performStoreRequest(with:)方法，
             // 接收从服务器返回的JSON格式的数据
-            if let jsonString = performStoreRequest(with: url) {
-                print("Received JSON string: \(jsonString)")
+            //if let jsonString = performStoreRequest(with: url) {
+                //print("Received JSON string: \(jsonString)")
+            //}
+            if let data = performStoreRequest(with: url) {
+                let results = parse(data: data)
+                print("Got results: \(results)")
             }
             
             tableView.reloadData()
