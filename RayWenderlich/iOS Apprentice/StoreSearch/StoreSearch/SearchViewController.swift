@@ -68,6 +68,35 @@ class SearchViewController: UIViewController {
     
     // MARK: - 自定义方法
 
+    /// 返回一个URL
+    func iTunesURL(searchText: String) -> URL {
+        
+        // 将不允许出现在URL中的特殊字符进行转义(让它们合法化)
+        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        // 拼接URL字符串
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", encodedText)
+        
+        // 将String类型的URL字符串转换为URL对象
+        let url = URL(string: urlString)
+        
+        return url!
+    }
+    
+    /// 发送网络请求(接收从服务器返回的JSON格式的数据)
+    func performStoreRequest(with url: URL) -> String? {
+        
+        do {
+            return try String(contentsOf: url, encoding: .utf8)
+        } catch {
+            print("Download Error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    
+    
+    
 }
 
 
@@ -162,6 +191,7 @@ extension SearchViewController: UISearchBarDelegate {
     // 点击搜索按钮的时候调用
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        /*
         // 点击完搜索按钮之后，让键盘退出去
         searchBar.resignFirstResponder()
         
@@ -180,7 +210,25 @@ extension SearchViewController: UISearchBarDelegate {
         
         // 到这里，说明用户已经发起了搜索请求
         hasSearched = true
-        tableView.reloadData()
+        tableView.reloadData()*/
+        
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()
+            
+            hasSearched = true
+            searchResults = []
+            
+            let url = iTunesURL(searchText: searchBar.text!)
+            print("URL: \(url)")
+            
+            // 调用performStoreRequest(with:)方法，
+            // 接收从服务器返回的JSON格式的数据
+            if let jsonString = performStoreRequest(with: url) {
+                print("Received JSON string: \(jsonString)")
+            }
+            
+            tableView.reloadData()
+        }
     }
     
     // 消除searchBar和顶部statusBar之间的空白
