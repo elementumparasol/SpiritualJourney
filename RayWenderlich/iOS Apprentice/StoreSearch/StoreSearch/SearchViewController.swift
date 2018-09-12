@@ -90,7 +90,7 @@ class SearchViewController: UIViewController {
             // return try String(contentsOf: url, encoding: .utf8)
             return try Data(contentsOf: url)
         } catch {
-            print("Download Error: \(error.localizedDescription)")
+            //print("Download Error: \(error.localizedDescription)")
             
             showNetworkError()
             return nil
@@ -174,7 +174,12 @@ extension SearchViewController: UITableViewDataSource {
             
             // 给cell设置数据
             cell.nameLabel!.text = searchResult.name
-            cell.artistNameLabel!.text = searchResult.artistName
+            
+            if searchResult.artistName.isEmpty {
+                cell.artistNameLabel.text = "Unknown"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.type)
+            }
             
             return cell
         }
@@ -245,7 +250,7 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             
             let url = iTunesURL(searchText: searchBar.text!)
-            print("URL: \(url)")
+            //print("URL: \(url)")
             
             // 调用performStoreRequest(with:)方法，
             // 接收从服务器返回的JSON格式的数据
@@ -253,8 +258,9 @@ extension SearchViewController: UISearchBarDelegate {
                 //print("Received JSON string: \(jsonString)")
             //}
             if let data = performStoreRequest(with: url) {
-                let results = parse(data: data)
-                print("Got results: \(results)")
+                
+                // 将解析完的数据存储到数组searchResults中
+                searchResults = parse(data: data)
             }
             
             tableView.reloadData()
