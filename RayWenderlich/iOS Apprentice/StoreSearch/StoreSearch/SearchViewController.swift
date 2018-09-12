@@ -261,6 +261,20 @@ extension SearchViewController: UISearchBarDelegate {
                 
                 // 将解析完的数据存储到数组searchResults中
                 searchResults = parse(data: data)
+                
+                // 对数组searchResults里面的数据进行排序
+                //searchResults.sort { (result1, result2) -> Bool in
+                    //return result1.name.localizedStandardCompare(result2.name) == .orderedAscending
+                //}
+                
+                // 上面的排序可以简化为下面的代码:
+                // searchResults.sort {
+                    // return $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                // }
+                
+                // 对小于号运算符进行重载之后才能这样用
+                //searchResults.sort {$0 < $1}
+                searchResults.sort(by: <)
             }
             
             tableView.reloadData()
