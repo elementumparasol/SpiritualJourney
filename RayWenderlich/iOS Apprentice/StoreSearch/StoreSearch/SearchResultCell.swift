@@ -22,6 +22,12 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     
     
+    // MARK: - 自定义属性
+    
+    /// 存储downloadTask
+    var downloadTask: URLSessionDownloadTask?
+    
+    
     // MARK: - 类自带的方法
 
     override func awakeFromNib() {
@@ -31,6 +37,17 @@ class SearchResultCell: UITableViewCell {
         let selectedView = UIView(frame: .zero)
         selectedView.backgroundColor = UIColor(red: 20/255.0, green: 160/255.0, blue: 160/255.0, alpha: 0.5)
         selectedBackgroundView = selectedView
+    }
+    
+    /// 因为tableView的cell有重用机制，所以从
+    /// 理论上讲，你很有可能会重用到上一次的cell
+    /// 为了不会错误的使用上一次的数据，有必要在
+    /// 使用cell之前，先将上一次可能存在的数据清理掉
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        print("--- prepareForReuse ---")
+        downloadTask?.cancel()
+        downloadTask = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,12 +62,20 @@ class SearchResultCell: UITableViewCell {
     /// 设置cell上面的数据
     func configure(for result: SearchResult) {
         
+        // 给nameLabel设置文字
         nameLabel.text = result.name
         
+        // 给artistNameLabel设置文字
         if result.artistName.isEmpty {
             artistNameLabel.text = "Unknown"
         } else {
             artistNameLabel.text = String(format: "%@ (%@)", result.artistName, result.type)
+        }
+        
+        // 给artworkImageView设置图片
+        artworkImageView.image = UIImage(named: "Placeholder")
+        if let smallURL = URL(string: result.imageSmall) {
+            downloadTask = artworkImageView.loadImage(url: smallURL)
         }
     }
 
