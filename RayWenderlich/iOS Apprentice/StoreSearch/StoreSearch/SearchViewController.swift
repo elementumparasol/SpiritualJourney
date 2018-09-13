@@ -95,6 +95,7 @@ class SearchViewController: UIViewController {
         return url!
     }
     
+    /*
     /// 发送网络请求(接收从服务器返回的JSON格式的数据)
     func performStoreRequest(with url: URL) -> Data? {
         
@@ -107,7 +108,7 @@ class SearchViewController: UIViewController {
             showNetworkError()
             return nil
         }
-    }
+    }*/
     
     /// 解析JSON数据
     func parse(data: Data) -> [SearchResult] {
@@ -256,32 +257,28 @@ extension SearchViewController: UISearchBarDelegate {
             // 属于UI界面的代码，最好是将其移到主线程里面执行
             let url = iTunesURL(searchText: searchBar.text!)
             
-            // 获取一个globalQueue
-            let queue = DispatchQueue.global()
+            // 获取URLSession实例。这个实例会使用一些默认的配置
+            let session = URLSession.shared
             
-            // 在后台采用异步的形式执行代码
-            queue.async {
+            // 创建dataTask。dataTask的作用是，根据指定的URL
+            // 从服务器获取相应的数据。当dataTask收到服务器的响
+            // 应时，就会调用闭包，并且执行它里面的代码
+            let dataTask = session.dataTask(with: url) { (data, response, error) in
                 
-                // 调用performStoreRequest(with:)方法，
-                // 接收从服务器返回的JSON格式的数据
-                if let data = self.performStoreRequest(with: url) {
-                    
-                    // 将解析完的数据存储到数组searchResults中
-                    self.searchResults = self.parse(data: data)
-                    
-                    // 对数组searchResults里面的数据进行排序
-                    // 对小于号运算符进行重载之后才能这样用
-                    self.searchResults.sort(by: <)
-                    
-                    // 回到主线程中刷新UI界面
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                        self.tableView.reloadData()
-                    }
-                    
-                    return
+                if let error = error {
+                    print("Failure: \(error)")
+                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    print("SUCCESS: \(data!)")
+                } else {
+                    print("Failure: \(response!)")
                 }
             }
+            
+            // 创建完dataTask之后，需要调用resume()方法来使用它
+            // 这个步骤会以后台执行的方式向服务器发送网络请求。也就
+            // 是说，真正发起网络请求的是在调用resume()方法之后
+            dataTask.resume()  // 这一步完成之后才会执行dataTask的闭包
+            
             
             
         }
