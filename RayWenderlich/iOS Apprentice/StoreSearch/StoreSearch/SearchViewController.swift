@@ -42,7 +42,9 @@ class SearchViewController: UIViewController {
     
     /// segmentedControl
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        print("Segment Changed: \(sender.selectedSegmentIndex)")
+        
+        // 点击segmentedControl执行搜索
+        performSearch()
     }
     
     
@@ -67,8 +69,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 调整tableView的边距(searchBar遮挡住了tableView第0行cell)
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        // 调整tableView的边距。searchBar和NavigationBar
+        // 遮挡住了tableView第0行cell
+        tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         
         // 加载SearchResultCell.xib
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
@@ -96,13 +99,28 @@ class SearchViewController: UIViewController {
     // MARK: - 自定义方法
 
     /// 返回一个URL
-    func iTunesURL(searchText: String) -> URL {
+    func iTunesURL(searchText: String, category: Int) -> URL {
+        
+        // 用于保存搜索类型
+        let kind: String
+        
+        switch category {
+        case 1:
+            kind = "musicTrack"
+        case 2:
+            kind = "software"
+        case 3:
+            kind = "ebook"
+        default:
+            kind = ""
+        }
         
         // 将不允许出现在URL中的特殊字符进行转义(让它们合法化)
         let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         // 拼接URL字符串
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", encodedText)
+        //let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", encodedText)
+        let urlString = "https://itunes.apple.com/search?" + "term=\(encodedText)&limit=200&entity=\(kind)"
         
         // 将String类型的URL字符串转换为URL对象
         let url = URL(string: urlString)
@@ -259,6 +277,25 @@ extension SearchViewController: UISearchBarDelegate {
     // 点击搜索按钮的时候调用
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        // 点击搜索框的搜索按钮时，发起网络请求
+        performSearch()
+    }
+    
+    // 消除searchBar和顶部statusBar之间的空白
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+    
+}
+
+
+
+// MARK: - 网络
+extension SearchViewController {
+    
+    /// 向服务器发起网络请求，执行搜索
+    func performSearch() {
+        
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
@@ -273,7 +310,7 @@ extension SearchViewController: UISearchBarDelegate {
             
             // 拼接URL全路径。这句代码会访问SearchBar，而这个是
             // 属于UI界面的代码，最好是将其移到主线程里面执行
-            let url = iTunesURL(searchText: searchBar.text!)
+            let url = iTunesURL(searchText: searchBar.text!, category: segmentedControl.selectedSegmentIndex)
             
             // 获取URLSession实例。这个实例会使用一些默认的配置
             let session = URLSession.shared
@@ -344,10 +381,4 @@ extension SearchViewController: UISearchBarDelegate {
             
         }
     }
-    
-    // 消除searchBar和顶部statusBar之间的空白
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
-    
 }
