@@ -46,6 +46,9 @@ class SearchViewController: UIViewController {
     /// 标记是否正在下载数据
     var isLoading = false
     
+    /// 用于存储dataTask
+    var dataTask: URLSessionDataTask?
+    
 
     // MARK: - 类自带的方法
     
@@ -247,6 +250,9 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
+            // 取消前一次的dataTask
+            dataTask?.cancel()
+            
             isLoading = true
             tableView.reloadData()
             
@@ -263,27 +269,48 @@ extension SearchViewController: UISearchBarDelegate {
             // 创建dataTask。dataTask的作用是，根据指定的URL
             // 从服务器获取相应的数据。当dataTask收到服务器的响
             // 应时，就会调用闭包，并且执行它里面的代码
-            let dataTask = session.dataTask(with: url) { (data, response, error) in
+            dataTask = session.dataTask(with: url) { (data, response, error) in
                 
-                if let data = data {
+                if let error = error as NSError?, error.code == -999 {
                     
-                    // 解析JSON数据
-                    self.searchResults = self.parse(data: data)
+                    /**
+                     处理搜索取消
+                     */
                     
-                    // 对数据按A~Z进行排序
-                    self.searchResults.sort(by: <)
-                    
-                    // 回到主线程中刷新UI。因为URLSession默认是在后台异
-                    // 步执行网络请求的，因此要记得回到主线程中刷新UI界面
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                        self.tableView.reloadData()
-                    }
-                    
-                    // 如果网络请求成功，则直接退出，不再执行后面失败的代码
+                    // 直接返回
                     return
                     
+                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    
+                    /**
+                     处理搜索成功
+                     */
+                    
+                    if let data = data {
+                        
+                        // 解析JSON数据
+                        self.searchResults = self.parse(data: data)
+                        
+                        // 对数据按A~Z进行排序
+                        self.searchResults.sort(by: <)
+                        
+                        // 回到主线程中刷新UI。因为URLSession默认是在后台异
+                        // 步执行网络请求的，因此要记得回到主线程中刷新UI界面
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                        
+                        // 如果网络请求成功，则直接退出，不再执行后面失败的代码
+                        return
+                        
+                    }
                 } else {
+                    
+                    /**
+                     处理搜索失败
+                     */
+                    
                     print("Failure: \(response!)")
                 }
                 
@@ -299,7 +326,7 @@ extension SearchViewController: UISearchBarDelegate {
             // 创建完dataTask之后，需要调用resume()方法来使用它
             // 这个步骤会以后台执行的方式向服务器发送网络请求。也就
             // 是说，真正发起网络请求的是在调用resume()方法之后
-            dataTask.resume()  // 这一步完成之后才会执行dataTask的闭包
+            dataTask?.resume()  // 这一步完成之后才会执行dataTask的闭包
             
             
             
