@@ -20,6 +20,9 @@ class SearchViewController: UIViewController {
         
         /// 搜索无结果的可重用标识符
         static let nothingFoundCell = "NothingFoundCell"
+        
+        /// cell加载标识
+        static let loadingCell = "LoadingCell"
     }
     
     
@@ -39,6 +42,9 @@ class SearchViewController: UIViewController {
     
     /// 记录用户是否发起搜索请求
     var hasSearched = false
+    
+    /// 标记是否正在下载数据
+    var isLoading = false
     
 
     // MARK: - 类自带的方法
@@ -60,6 +66,12 @@ class SearchViewController: UIViewController {
         
         // 注册NothingFoundCell
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+        
+        // 加载LoadingCell.xib文件
+        cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
+        
+        // 注册LoadingCell
+        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
         
         // 设置cell的行高
         tableView.rowHeight = 80
@@ -132,7 +144,9 @@ extension SearchViewController: UITableViewDataSource {
     // 返回每一组中cell的行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if !hasSearched {
+        if isLoading {
+            return 1
+        } else if !hasSearched {
             return 0
         } else if searchResults.count == 0 {
             return 1
@@ -156,8 +170,15 @@ extension SearchViewController: UITableViewDataSource {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }*/
         
-        
-        
+        if isLoading {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.loadingCell, for: indexPath)
+            
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+            
+            spinner.startAnimating()
+            
+            return cell
+        }
         
         if searchResults.count == 0 {
             
@@ -204,7 +225,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
         // 只有拥有搜索结果之后才能选中某一行cell
-        if searchResults.count == 0 {
+        if searchResults.count == 0 || isLoading {
             return nil  // 也就是确保搜索结果出现"Nothing Found"是不会被选中
         } else {
             return indexPath
@@ -222,61 +243,47 @@ extension SearchViewController: UISearchBarDelegate {
     // 点击搜索按钮的时候调用
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        /*
-        // 点击完搜索按钮之后，让键盘退出去
-        searchBar.resignFirstResponder()
-        
-        searchResults = []
-        
-        if searchBar.text! != "Justin Bieber" {
-            
-            for i in 0...2 {
-                
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake Result %d for", i)
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
-            }
-        }
-        
-        // 到这里，说明用户已经发起了搜索请求
-        hasSearched = true
-        tableView.reloadData()*/
-        
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
+            
+            isLoading = true
+            tableView.reloadData()
             
             hasSearched = true
             searchResults = []
             
+            // 拼接URL全路径。这句代码会访问SearchBar，而这个是
+            // 属于UI界面的代码，最好是将其移到主线程里面执行
             let url = iTunesURL(searchText: searchBar.text!)
             
-            // 调用performStoreRequest(with:)方法，
-            // 接收从服务器返回的JSON格式的数据
-            //if let jsonString = performStoreRequest(with: url) {
-                //print("Received JSON string: \(jsonString)")
-            //}
-            if let data = performStoreRequest(with: url) {
+            // 获取一个globalQueue
+            let queue = DispatchQueue.global()
+            
+            // 在后台采用异步的形式执行代码
+            queue.async {
                 
-                // 将解析完的数据存储到数组searchResults中
-                searchResults = parse(data: data)
-                
-                // 对数组searchResults里面的数据进行排序
-                //searchResults.sort { (result1, result2) -> Bool in
-                    //return result1.name.localizedStandardCompare(result2.name) == .orderedAscending
-                //}
-                
-                // 上面的排序可以简化为下面的代码:
-                // searchResults.sort {
-                    // return $0.name.localizedStandardCompare($1.name) == .orderedAscending
-                // }
-                
-                // 对小于号运算符进行重载之后才能这样用
-                //searchResults.sort {$0 < $1}
-                searchResults.sort(by: <)
+                // 调用performStoreRequest(with:)方法，
+                // 接收从服务器返回的JSON格式的数据
+                if let data = self.performStoreRequest(with: url) {
+                    
+                    // 将解析完的数据存储到数组searchResults中
+                    self.searchResults = self.parse(data: data)
+                    
+                    // 对数组searchResults里面的数据进行排序
+                    // 对小于号运算符进行重载之后才能这样用
+                    self.searchResults.sort(by: <)
+                    
+                    // 回到主线程中刷新UI界面
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                    }
+                    
+                    return
+                }
             }
             
-            tableView.reloadData()
+            
         }
     }
     
