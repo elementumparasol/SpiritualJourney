@@ -34,6 +34,18 @@ class SearchViewController: UIViewController {
     /// searchBar
     @IBOutlet weak var searchBar: UISearchBar!
     
+    /// segmentControl
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    
+    // MARK: - @IBAction
+    
+    /// segmentedControl
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        print("Segment Changed: \(sender.selectedSegmentIndex)")
+    }
+    
+    
     
     // MARK: - 自定义属性
     
