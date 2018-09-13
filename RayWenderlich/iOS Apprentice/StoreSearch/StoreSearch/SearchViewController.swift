@@ -75,7 +75,7 @@ class SearchViewController: UIViewController {
         let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         // 拼接URL字符串
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@", encodedText)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", encodedText)
         
         // 将String类型的URL字符串转换为URL对象
         let url = URL(string: urlString)
@@ -250,7 +250,6 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             
             let url = iTunesURL(searchText: searchBar.text!)
-            //print("URL: \(url)")
             
             // 调用performStoreRequest(with:)方法，
             // 接收从服务器返回的JSON格式的数据
