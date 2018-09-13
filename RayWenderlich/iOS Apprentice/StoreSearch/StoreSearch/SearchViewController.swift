@@ -265,12 +265,34 @@ extension SearchViewController: UISearchBarDelegate {
             // 应时，就会调用闭包，并且执行它里面的代码
             let dataTask = session.dataTask(with: url) { (data, response, error) in
                 
-                if let error = error {
-                    print("Failure: \(error)")
-                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    print("SUCCESS: \(data!)")
+                if let data = data {
+                    
+                    // 解析JSON数据
+                    self.searchResults = self.parse(data: data)
+                    
+                    // 对数据按A~Z进行排序
+                    self.searchResults.sort(by: <)
+                    
+                    // 回到主线程中刷新UI。因为URLSession默认是在后台异
+                    // 步执行网络请求的，因此要记得回到主线程中刷新UI界面
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                    }
+                    
+                    // 如果网络请求成功，则直接退出，不再执行后面失败的代码
+                    return
+                    
                 } else {
                     print("Failure: \(response!)")
+                }
+                
+                // 如果网路请求失败，则执行下面的代码
+                DispatchQueue.main.async {
+                    self.hasSearched = false
+                    self.isLoading = false
+                    self.tableView.reloadData()
+                    self.showNetworkError()
                 }
             }
             
