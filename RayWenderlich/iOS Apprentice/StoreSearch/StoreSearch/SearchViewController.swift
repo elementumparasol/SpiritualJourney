@@ -228,13 +228,7 @@ extension SearchViewController: UITableViewDataSource {
             let searchResult = searchResults[indexPath.row]
             
             // 给cell设置数据
-            cell.nameLabel!.text = searchResult.name
-            
-            if searchResult.artistName.isEmpty {
-                cell.artistNameLabel.text = "Unknown"
-            } else {
-                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.type)
-            }
+            cell.configure(for: searchResult)
             
             return cell
         }

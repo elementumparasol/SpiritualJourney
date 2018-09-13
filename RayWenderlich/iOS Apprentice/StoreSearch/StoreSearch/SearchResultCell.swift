@@ -21,6 +21,8 @@ class SearchResultCell: UITableViewCell {
     /// artistName
     @IBOutlet weak var artistNameLabel: UILabel!
     
+    
+    // MARK: - 类自带的方法
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +37,21 @@ class SearchResultCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 设置cell上面的数据
+    func configure(for result: SearchResult) {
+        
+        nameLabel.text = result.name
+        
+        if result.artistName.isEmpty {
+            artistNameLabel.text = "Unknown"
+        } else {
+            artistNameLabel.text = String(format: "%@ (%@)", result.artistName, result.type)
+        }
     }
 
 }
