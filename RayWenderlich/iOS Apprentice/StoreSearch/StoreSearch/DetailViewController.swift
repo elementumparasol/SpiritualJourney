@@ -66,6 +66,18 @@ class DetailViewController: UIViewController {
         
         // 裁剪popupView为圆角
         popupView.layer.cornerRadius = 10
+        
+        
+        // 创建tapGesture手势
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(close))
+        tapGesture.cancelsTouchesInView = false
+        
+        // 设置手势代理
+        tapGesture.delegate = self
+        
+        // 将tapGesture手势添加到当前控制器的view上面
+        view.addGestureRecognizer(tapGesture)
+        
     }
 
 }
@@ -81,5 +93,18 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
         // init(presentedViewController:presenting:)这个构造方法主要是
         // 用于初始化并返回一个presentation控制器，以便于在指定的控制器之间跳转
         return DimmingPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+
+// MARK: - UIGestureRecognizerDelegate
+extension DetailViewController: UIGestureRecognizerDelegate {
+    
+    // 询问代理，手势识别器是否需要接收触摸对象(也就是UIGestureRecognizer)
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        // 只有当touch在当前控制器的view上面时，才会返回true
+        // 如果touch在popupView内部，则返回false
+        return (touch.view === self.view)  // ===用来判断它们是否引用同一个对象
     }
 }
