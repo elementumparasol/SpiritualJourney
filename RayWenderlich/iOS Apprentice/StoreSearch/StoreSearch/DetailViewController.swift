@@ -39,6 +39,9 @@ class DetailViewController: UIViewController {
     /// 用于保存搜索结果
     var searchResult: SearchResult!
     
+    /// 用于保存downloadTask
+    var downloadTask: URLSessionDownloadTask?
+    
     
     // MARK: - @IBAction
     
@@ -91,11 +94,24 @@ class DetailViewController: UIViewController {
         
     }
     
+    // 控制器实例对象被销毁的时候调用
+    deinit {
+        print("deinit: \(self)")
+        
+        // 取消下载
+        downloadTask?.cancel()
+    }
+    
+    
     
     // MARK: - 自定义方法
     
     /// 设置UI界面
     func setupUI() {
+        
+        /**
+         显示各种label上面的数据
+         */
         
         // 显示nameLabel的数据
         nameLabel.text = searchResult.name
@@ -112,6 +128,11 @@ class DetailViewController: UIViewController {
         
         // 显示genreLabel上面的数据
         genreLabel.text = searchResult.genre
+        
+        
+        /**
+         显示价格按钮上面的数据
+         */
         
         // 创建NumberFormatter对象，用于转换字符对象为数值对象
         let formatter = NumberFormatter()
@@ -130,6 +151,18 @@ class DetailViewController: UIViewController {
         
         // 将最终的价格设置到按钮上面去
         priceButton.setTitle(priceText, for: .normal)
+        
+        
+        /**
+         显示插图数据
+         */
+        
+        // 对插图的URL路径进行校验
+        if let largeURL = URL(string: searchResult.imageLarge) {
+            
+            // 开始下载插图数据
+            downloadTask = artworkImageView.loadImage(url: largeURL)
+        }
     }
     
 
