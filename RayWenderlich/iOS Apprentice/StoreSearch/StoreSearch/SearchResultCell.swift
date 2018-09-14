@@ -45,7 +45,6 @@ class SearchResultCell: UITableViewCell {
     /// 使用cell之前，先将上一次可能存在的数据清理掉
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("--- prepareForReuse ---")
         downloadTask?.cancel()
         downloadTask = nil
     }

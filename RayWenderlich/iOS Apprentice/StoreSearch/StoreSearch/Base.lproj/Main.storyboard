@@ -38,7 +38,7 @@
                                     <navigationItem id="ALg-3X-3h9">
                                         <nil key="title"/>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ZXy-5l-8ZF">
-                                            <rect key="frame" x="57" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="76.666666666666686" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="All"/>
@@ -73,11 +73,54 @@
                         <outlet property="searchBar" destination="IPZ-C9-MI4" id="WfT-F0-69c"/>
                         <outlet property="segmentedControl" destination="ZXy-5l-8ZF" id="1iV-z7-2oV"/>
                         <outlet property="tableView" destination="ZS2-3z-VB2" id="Vow-dm-BSW"/>
+                        <segue destination="UPE-NJ-6yk" kind="presentation" identifier="ShowDetail" id="2Tm-Ke-2zz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114" y="90"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="nt7-O1-9cV">
+            <objects>
+                <viewController id="UPE-NJ-6yk" customClass="DetailViewController" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i4X-eW-2ZZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-AR-Uip" userLabel="Pop-up View">
+                                <rect key="frame" x="87" y="248" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHK-lK-h4F" userLabel="Close Button">
+                                        <rect key="frame" x="4" y="2" width="15" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="CloseButton"/>
+                                        <connections>
+                                            <action selector="close" destination="UPE-NJ-6yk" eventType="touchUpInside" id="MAg-4f-WEv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Wp4-eX-59J"/>
+                                    <constraint firstAttribute="height" constant="240" id="lnd-KL-Fw8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iN0-AR-Uip" firstAttribute="centerX" secondItem="i4X-eW-2ZZ" secondAttribute="centerX" id="chU-2g-5od"/>
+                            <constraint firstItem="iN0-AR-Uip" firstAttribute="centerY" secondItem="i4X-eW-2ZZ" secondAttribute="centerY" id="e43-P4-OUj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jj6-sP-i1A"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Pj-8U-Hog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="677" y="90"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="CloseButton" width="15" height="15"/>
+    </resources>
 </document>

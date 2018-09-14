@@ -247,6 +247,9 @@ extension SearchViewController: UITableViewDelegate {
         
         // 取消cell被选中
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // 执行Segue，跳转到指定的控制器
+        performSegue(withIdentifier: "ShowDetail", sender: indexPath)
     }
     
     // 返回被选中cell的indexPath
