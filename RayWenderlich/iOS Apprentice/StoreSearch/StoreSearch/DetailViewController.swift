@@ -97,20 +97,45 @@ class DetailViewController: UIViewController {
     /// 设置UI界面
     func setupUI() {
         
+        // 显示nameLabel的数据
         nameLabel.text = searchResult.name
         
+        // 显示artistNameLabel上面的数据
         if searchResult.artistName.isEmpty {
             artistNameLabel.text = "Unknown"
         } else {
             artistNameLabel.text = searchResult.artistName
         }
         
+        // 显示kindLabel上面的数据
         kindLabel.text = searchResult.type
         
+        // 显示genreLabel上面的数据
         genreLabel.text = searchResult.genre
+        
+        // 创建NumberFormatter对象，用于转换字符对象为数值对象
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency  // 货币类型
+        formatter.currencyCode = searchResult.currency
+        
+        // 对price的不同情况进行处理
+        let priceText: String
+        if searchResult.price == 0 {
+            priceText = "Free"
+        } else if let text = formatter.string(from: searchResult.price as NSNumber) {
+            priceText = text
+        } else {
+            priceText = ""
+        }
+        
+        // 将最终的价格设置到按钮上面去
+        priceButton.setTitle(priceText, for: .normal)
     }
     
 
+    
+    
+    
 }
 
 
