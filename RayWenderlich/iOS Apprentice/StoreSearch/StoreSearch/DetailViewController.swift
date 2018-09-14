@@ -61,7 +61,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // 重新设置本界面的tintColor
+        view.tintColor = UIColor(red: 20/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
+        
+        // 裁剪popupView为圆角
+        popupView.layer.cornerRadius = 10
     }
 
 }
