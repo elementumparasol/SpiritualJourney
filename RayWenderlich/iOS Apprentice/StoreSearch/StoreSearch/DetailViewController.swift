@@ -10,6 +10,29 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: - @IBOutlet
+    
+    /// 容器控件popupView
+    @IBOutlet weak var popupView: UIView!
+    
+    /// 显示插图的控件artworkImageView
+    @IBOutlet weak var artworkImageView: UIImageView!
+    
+    /// 显示名称的控件nameLabel
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    /// 显示艺术家名字的控件artistNameLabel
+    @IBOutlet weak var artistNameLabel: UILabel!
+    
+    /// 显示分类的控件kindLabel
+    @IBOutlet weak var kindLabel: UILabel!
+    
+    /// 显示类型或者流派的控件genreLabel
+    @IBOutlet weak var genreLabel: UILabel!
+    
+    /// 显示价格的按钮priceButton
+    @IBOutlet weak var priceButton: UIButton!
+    
     
     // MARK: - @IBAction
     
@@ -40,17 +63,6 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
