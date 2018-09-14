@@ -94,6 +94,26 @@ class SearchViewController: UIViewController {
         // 设置cell的行高
         tableView.rowHeight = 80
     }
+    
+    
+    // 当执行segue是调用这个方法(在这里将数据传递过去)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowDetail" {
+            
+            // 取出相应的控制器
+            let controller = segue.destination as! DetailViewController
+            
+            // 取出对应的indexPath
+            let indexPath = sender as! IndexPath
+            
+            // 获取对应的searchResult数据
+            let searchResult = searchResults[indexPath.row]
+            
+            // 将searchResult数据传递给DetailViewController的searchResult
+            controller.searchResult = searchResult
+        }
+    }
 
     
     // MARK: - 自定义方法

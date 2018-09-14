@@ -34,6 +34,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceButton: UIButton!
     
     
+    // MARK: - 自定义属性
+    
+    /// 用于保存搜索结果
+    var searchResult: SearchResult!
+    
+    
     // MARK: - @IBAction
     
     /// 点击按钮关闭
@@ -78,7 +84,32 @@ class DetailViewController: UIViewController {
         // 将tapGesture手势添加到当前控制器的view上面
         view.addGestureRecognizer(tapGesture)
         
+        // 设置UI界面(更新poppuView上面的数据)
+        if searchResult != nil {
+            setupUI()
+        }
+        
     }
+    
+    
+    // MARK: - 自定义方法
+    
+    /// 设置UI界面
+    func setupUI() {
+        
+        nameLabel.text = searchResult.name
+        
+        if searchResult.artistName.isEmpty {
+            artistNameLabel.text = "Unknown"
+        } else {
+            artistNameLabel.text = searchResult.artistName
+        }
+        
+        kindLabel.text = searchResult.type
+        
+        genreLabel.text = searchResult.genre
+    }
+    
 
 }
 
