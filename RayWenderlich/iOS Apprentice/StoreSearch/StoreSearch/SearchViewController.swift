@@ -229,6 +229,9 @@ class SearchViewController: UIViewController {
         // 再次对landscapeVC进行校验，看是否从storyboard中加载成功
         if let controller = landscapeVC {
             
+            // 将数据传递给LandscapeViewController的searchResults
+            controller.searchResults = searchResults
+            
             // 设置controller的view的frame
             controller.view.frame = view.bounds
             
