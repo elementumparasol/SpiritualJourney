@@ -214,6 +214,11 @@ class SearchViewController: UIViewController {
     /// segmentedController上面
     func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         
+        // 隐藏当前界面上所有modal出来的控制器
+        if self.presentedViewController != nil {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         // 对landscapeVC进行校验
         guard landscapeVC == nil else { return }
         
@@ -227,23 +232,62 @@ class SearchViewController: UIViewController {
             // 设置controller的view的frame
             controller.view.frame = view.bounds
             
+            // 设置透明度动画
+            controller.view.alpha = 0
+            
             // 将controller的view添加到当前控制器的view上
             view.addSubview(controller.view)
             
             // 将controller作为当前控制器的子控制器
             addChild(controller)
             
-            // 通过didMove(toParent: )方法告诉controller
-            // 它现在有一个父控制器。也就是说，现在SearchViewController
-            // 是父控制器，而LandscapeViewController是它的子控制器
-            controller.didMove(toParent: self)
+            // 执行透明度动画
+            coordinator.animate(alongsideTransition: { (_) in
+                
+                // 重新恢复alpha值
+                controller.view.alpha = 1
+                
+                // 隐藏键盘
+                self.searchBar.resignFirstResponder()
+            }) { (_) in
+                
+                // 通过didMove(toParent: )方法告诉controller
+                // 它现在有一个父控制器。也就是说，现在SearchViewController
+                // 是父控制器，而LandscapeViewController是它的子控制器
+                // 这个方法是在把控制器添加到父控制器之后调用，或者把控制器
+                // 从父控制器上面移除之后调用
+                controller.didMove(toParent: self)
+            }
         }
     }
     
     /// 隐藏横屏控制器
     func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         
-        
+        // 对landscapeVC的值进行校验
+        if let controller = landscapeVC {
+            
+            // 把控制器添加到其父控制器之前调用
+            // 或者把控制器从其父控制器上面移除之前调用
+            controller.willMove(toParent: nil)
+            
+            // 添加动画
+            coordinator.animate(alongsideTransition: { (_) in
+                
+                controller.view.alpha = 0
+            }) { (_) in
+                
+                // 将controller的view从它的父控件上移除
+                controller.view.removeFromSuperview()
+                
+                // 将controller从它的父控制器上移除
+                controller.removeFromParent()
+                
+                // 清空landscapeVC的值。移除对LandscapeViewController
+                // 的强引用，如若不清空，则LandscapeViewController无法释放
+                self.landscapeVC = nil
+            }
+        }
     }
 }
 

@@ -18,6 +18,9 @@ class GradientView: UIView {
         
         // 设置透明的背景颜色
         backgroundColor = .clear
+        
+        // 宽度和高度随父控件的变化而进行相应的伸缩
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,6 +28,9 @@ class GradientView: UIView {
         
         // 设置透明的背景颜色
         backgroundColor = .clear
+        
+        // 宽度和高度随父控件的变化而进行相应的伸缩
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     // 绘制梯度渐变的背景。一般来说，因为draw(_:)方法有可能会
