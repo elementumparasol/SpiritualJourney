@@ -92,6 +92,8 @@ class DetailViewController: UIViewController {
             setupUI()
         }
         
+        // 设置背景颜色为透明
+        view.backgroundColor = .clear
     }
     
     // 控制器实例对象被销毁的时候调用
