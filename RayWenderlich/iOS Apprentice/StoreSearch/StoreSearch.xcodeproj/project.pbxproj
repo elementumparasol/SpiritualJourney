@@ -21,6 +21,7 @@
 		C5BF18CC214B05F200D486B0 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CB214B05F200D486B0 /* UIImageView+DownloadImage.swift */; };
 		C5BF18CE214BE9DD00D486B0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CD214BE9DD00D486B0 /* DetailViewController.swift */; };
 		C5BF18D0214BEE9400D486B0 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CF214BEE9400D486B0 /* DimmingPresentationController.swift */; };
+		C5BF18D2214D52B800D486B0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D1214D52B800D486B0 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C5BF18CB214B05F200D486B0 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		C5BF18CD214BE9DD00D486B0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C5BF18CF214BEE9400D486B0 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		C5BF18D1214D52B800D486B0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				C5BF18CB214B05F200D486B0 /* UIImageView+DownloadImage.swift */,
 				C5BF18CD214BE9DD00D486B0 /* DetailViewController.swift */,
 				C5BF18CF214BEE9400D486B0 /* DimmingPresentationController.swift */,
+				C5BF18D1214D52B800D486B0 /* GradientView.swift */,
 				C50D64A12146FF8E003DD456 /* SearchResultCell.xib */,
 				C50D64A5214706C3003DD456 /* NothingFoundCell.xib */,
 				C5BF18C9214A8ACE00D486B0 /* LoadingCell.xib */,
@@ -173,6 +176,7 @@
 				C50D648E2146BECB003DD456 /* AppDelegate.swift in Sources */,
 				C5BF18CC214B05F200D486B0 /* UIImageView+DownloadImage.swift in Sources */,
 				C5BF18CE214BE9DD00D486B0 /* DetailViewController.swift in Sources */,
+				C5BF18D2214D52B800D486B0 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
