@@ -10,6 +10,20 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: - 枚举常量
+    
+    /// 动画切换样式
+    enum AnimationStyle {
+        
+        /// 幻灯片效果
+        case slide
+        
+        /// 逐渐消失
+        case fade
+    }  // 注意，因为是定义在DetailViewController内部
+       // 所以，这个枚举的全名应该是DetailViewController.AnimationStyle
+    
+    
     // MARK: - @IBOutlet
     
     /// 容器控件popupView
@@ -42,11 +56,17 @@ class DetailViewController: UIViewController {
     /// 用于保存downloadTask
     var downloadTask: URLSessionDownloadTask?
     
+    /// 动画效果
+    var dismissStyle = AnimationStyle.fade
+    
     
     // MARK: - @IBAction
     
     /// 点击按钮关闭
     @IBAction func close() {
+        
+        // 选择关闭时的动画样式
+        dismissStyle = .slide
         
         // 退出当前控制器
         dismiss(animated: true, completion: nil)
@@ -194,7 +214,14 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
     
     // 自定义转场动画(dismiss)
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAnimationController()
+        
+        // 根据dismissStyle的值来执行相应的动画
+        switch dismissStyle {
+        case .slide:
+            return SlideOutAnimationController()
+        case .fade:
+            return FadeOutAnimationController()
+        }
     }
 }
 
