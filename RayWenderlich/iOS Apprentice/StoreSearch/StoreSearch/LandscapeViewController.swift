@@ -27,6 +27,9 @@ class LandscapeViewController: UIViewController {
     /// 标记是否为第一次
     private var isFirstTime = true
     
+    /// 用于保存downloadTasks
+    private var downloadTasks = [URLSessionDownloadTask]()
+    
     
     // MARK: - 类自带的方法
 
@@ -92,13 +95,18 @@ class LandscapeViewController: UIViewController {
         //
         if isFirstTime {
             isFirstTime = false
-            titleButtons(searchResults)
+            tileButtons(searchResults)
             
         }
     }
     
     deinit {
-        print("--- LandscapeViewController ---")
+        print("--- deinit: LandscapeViewController ---")
+        
+        // LandscapeViewController实例被销毁时，取消下载
+        for downloadTask in downloadTasks {
+            downloadTask.cancel()
+        }
     }
     
     
@@ -117,7 +125,7 @@ class LandscapeViewController: UIViewController {
     // MARK: - 自定义方法
     
     /// 根据搜索结果来创建用于显示数据的按钮
-    private func titleButtons(_ searchResults: [SearchResult]) {
+    private func tileButtons(_ searchResults: [SearchResult]) {
         
         var columnsPerPage = 5
         var rowsPerPage = 3
@@ -128,27 +136,24 @@ class LandscapeViewController: UIViewController {
         
         let viewWidth = scrollView.bounds.size.width
         
+        // 适配屏幕
         switch viewWidth {
-        case 568:  // 5、5s、SE的屏幕高度(320, 568)
+        case 568:
             columnsPerPage = 6
             itemWidth = 94
             marginX = 2
             
-        case 667:  // 6、7、8的屏幕高度(375, 667)
+        case 667:
             columnsPerPage = 7
             itemWidth = 95
             itemHeight = 98
             marginX = 1
             marginY = 29
             
-        case 736:  // Plus屏幕的高度(414, 736)
+        case 736:
             columnsPerPage = 8
             rowsPerPage = 4
             itemWidth = 92
-            
-            // X、XS的屏幕高度(375, 812)
-            
-            // XR、XS Max的屏幕高度(414, 896)
             
         default:
             break
@@ -157,52 +162,97 @@ class LandscapeViewController: UIViewController {
         // 设置按钮的size
         let buttonWidth: CGFloat = 82
         let buttonHeight: CGFloat = 82
-        let paddingHorz = (itemWidth - buttonWidth) / 2
-        let paddingVert = (itemHeight - buttonHeight) / 2
+        let paddingHorz = (itemWidth - buttonWidth)/2
+        let paddingVert = (itemHeight - buttonHeight)/2
         
-        
-        // 添加按钮
+        // 创建添加按钮
         var row = 0
         var column = 0
         var x = marginX
-        
-        for (index, result) in searchResults.enumerated() {
+        for (_, result) in searchResults.enumerated() {
             
-            let button = UIButton(type: .system)
-            button.backgroundColor = .white
-            button.setTitle("\(index)", for: .normal)
+            // 创建按钮(注意，这里按钮类型一定要用.custom，否则会无法显示图片)
+            let button = UIButton(type: .custom)
             
-            button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row) * itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
+            // 设置按钮的背景图片
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
             
+            // 下载网路插图
+            downloadImage(for: result, andPlaceOn: button)
+            
+            // 设置按钮的frame
+            button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row)*itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
+            
+            // 添加按钮
             scrollView.addSubview(button)
             
+            // 计算下一个按钮的位置
             row += 1
             if row == rowsPerPage {
-                row = 0
-                x += itemWidth
-                column += 1
+                row = 0; x += itemWidth; column += 1
                 
                 if column == columnsPerPage {
-                    column = 0
-                    x += marginX * 2
+                    column = 0; x += marginX * 2
                 }
             }
         }
         
-        
-        //
-        let buttonPerPage = columnsPerPage * rowsPerPage
-        let numPages = 1 + (searchResults.count - 1) / buttonPerPage
-        
-        // 设置scrollView的contentSize(可滚动区域)
+        // 设置scrollView的contentSize
+        let buttonsPerPage = columnsPerPage * rowsPerPage
+        let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * viewWidth, height: scrollView.bounds.size.height)
-        // print("-- page的数量: \(numPages)")
+        print("Number of pages: \(numPages)")
         
-        
-        // 设置分页数量，并且让指示器指示第0个位置
+        // 设置pageControl的numberOfPages的总数量
         pageControl.numberOfPages = numPages
-        pageControl.currentPage = 0
         
+        // 设置pageControl的初始位置
+        pageControl.currentPage = 0
+    }
+    
+    /// 下载插图数据
+    private func downloadImage(for searchResult: SearchResult, andPlaceOn button: UIButton) {
+        
+        // 从searchResult中获取插图的url字符串，并且将其转换为URL实例
+        if let url = URL(string: searchResult.imageSmall) {
+            
+            // 创建downloadTask
+            let downloadTask = URLSession.shared.downloadTask(with: url) {
+                
+                // 为了防止循环引用，应该以弱引用的方式来捕获button
+                [weak button] url, response, error in
+                
+                // 如果图片下载成功(error == nil)，则对url进行校验
+                // 当url有值，就使用Data(contentsOf: )下载数据，并将其转换为data
+                // 然后对data进行校验，如果data创建成功，则调用UIImage(data: )
+                // 将其转换为图片
+                if error == nil,
+                    let url = url,
+                    let data = try? Data(contentsOf: url),
+                    let image = UIImage(data: data) {
+                    
+                    // 回到主线程中设置UI界面
+                    DispatchQueue.main.async {
+                        
+                        // 因为前面用[weak button]来处理循环引用的问题
+                        // 因此，此时button有可能为nil。为此，在正式使用
+                        // button之前，必须先对其进行校验，确保有值才能使用
+                        if let weakButton = button {
+                            
+                            // 给button设置图片
+                            weakButton.setImage(image, for: .normal)
+                        }
+                    }
+                }
+                
+            }
+            
+            // 开始执行下载
+            downloadTask.resume()
+            
+            // 将downloadTask保存到downloadTasks数组中
+            downloadTasks.append(downloadTask)
+        }
     }
 
 }
