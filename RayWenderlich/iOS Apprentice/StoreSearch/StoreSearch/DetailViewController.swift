@@ -185,6 +185,17 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
         // 用于初始化并返回一个presentation控制器，以便于在指定的控制器之间跳转
         return DimmingPresentationController(presentedViewController: presented, presenting: presenting)
     }
+    
+    // 自定义转场动画(present)
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return BounceAnimationController()
+    }
+    
+    // 自定义转场动画(dismiss)
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
+    }
 }
 
 
