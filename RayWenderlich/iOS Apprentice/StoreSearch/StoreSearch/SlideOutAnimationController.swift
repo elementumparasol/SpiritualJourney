@@ -31,8 +31,8 @@ class SlideOutAnimationController: NSObject, UIViewControllerAnimatedTransitioni
             // 添加UIView动画
             UIView.animate(withDuration: time, animations: {
                 
-                // 重设fromView中心点x的坐标
-                fromView.center.x -= containerView.bounds.size.height
+                // 重设fromView中心点y的坐标
+                fromView.center.y -= containerView.bounds.size.height
                 
                 // 设置fromView基于bounds的中心点位置的视图变换
                 fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

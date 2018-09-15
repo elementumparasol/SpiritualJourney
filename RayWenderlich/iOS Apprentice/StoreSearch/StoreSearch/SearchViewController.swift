@@ -63,6 +63,9 @@ class SearchViewController: UIViewController {
     /// 用于存储dataTask
     var dataTask: URLSessionDataTask?
     
+    /// 横屏控制器
+    var landscapeVC: LandscapeViewController?
+    
 
     // MARK: - 类自带的方法
     
@@ -112,6 +115,25 @@ class SearchViewController: UIViewController {
             
             // 将searchResult数据传递给DetailViewController的searchResult
             controller.searchResult = searchResult
+        }
+    }
+    
+    // 这个方法并不会在设置旋转时调用，而是当控制器的特征集合
+    // 发生改变时，就会自动调用。控制器的特征集合主要有:
+    // - 水平方向size classes的改变
+    // - 垂直方向size classes的改变
+    // - 显示比例(比如说，是否为Retina屏幕)
+    // - 用户界面(比如说，是iPhone还是iPad)
+    // - 首选的动态类型字体大小
+    // - 以及一些其它事项
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        switch newCollection.verticalSizeClass {
+        case .compact:
+            showLandscape(with: coordinator)
+        case .regular, .unspecified:
+            hideLandscape(with: coordinator)
         }
     }
 
@@ -188,7 +210,41 @@ class SearchViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    /// 显示横屏控制器。它其实是改在tableView、navigationBar和
+    /// segmentedController上面
+    func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        // 对landscapeVC进行校验
+        guard landscapeVC == nil else { return }
+        
+        // 通过storyboard标识符加载LandscapeViewController
+        // 控制器，并且将其保存到landscapeVC中
+        landscapeVC = storyboard!.instantiateViewController(withIdentifier: "LandscapeViewController") as? LandscapeViewController
+        
+        // 再次对landscapeVC进行校验，看是否从storyboard中加载成功
+        if let controller = landscapeVC {
+            
+            // 设置controller的view的frame
+            controller.view.frame = view.bounds
+            
+            // 将controller的view添加到当前控制器的view上
+            view.addSubview(controller.view)
+            
+            // 将controller作为当前控制器的子控制器
+            addChild(controller)
+            
+            // 通过didMove(toParent: )方法告诉controller
+            // 它现在有一个父控制器。也就是说，现在SearchViewController
+            // 是父控制器，而LandscapeViewController是它的子控制器
+            controller.didMove(toParent: self)
+        }
+    }
     
+    /// 隐藏横屏控制器
+    func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        
+    }
 }
 
 
