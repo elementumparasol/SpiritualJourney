@@ -22,7 +22,7 @@ class LandscapeViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// 搜索的数据
-    var searchResults = [SearchResult]()
+    var search: Search!
     
     /// 标记是否为第一次
     private var isFirstTime = true
@@ -95,7 +95,7 @@ class LandscapeViewController: UIViewController {
         //
         if isFirstTime {
             isFirstTime = false
-            tileButtons(searchResults)
+            tileButtons(search.searchResults)
             
         }
     }

@@ -26,6 +26,7 @@
 		C5BF18D6214D74A100D486B0 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D5214D74A100D486B0 /* SlideOutAnimationController.swift */; };
 		C5BF18D8214D780700D486B0 /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */; };
 		C5BF18DA214D91D500D486B0 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */; };
+		C5BF18DC214E6A1B00D486B0 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18DB214E6A1B00D486B0 /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C5BF18D5214D74A100D486B0 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		C5BF18DB214E6A1B00D486B0 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				C5BF18D5214D74A100D486B0 /* SlideOutAnimationController.swift */,
 				C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */,
 				C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */,
+				C5BF18DB214E6A1B00D486B0 /* Search.swift */,
 				C50D64A12146FF8E003DD456 /* SearchResultCell.xib */,
 				C50D64A5214706C3003DD456 /* NothingFoundCell.xib */,
 				C5BF18C9214A8ACE00D486B0 /* LoadingCell.xib */,
@@ -193,6 +196,7 @@
 				C5BF18CE214BE9DD00D486B0 /* DetailViewController.swift in Sources */,
 				C5BF18D8214D780700D486B0 /* LandscapeViewController.swift in Sources */,
 				C5BF18D2214D52B800D486B0 /* GradientView.swift in Sources */,
+				C5BF18DC214E6A1B00D486B0 /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
