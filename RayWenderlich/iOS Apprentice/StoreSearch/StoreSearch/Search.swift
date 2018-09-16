@@ -14,6 +14,44 @@ typealias SearchComplete = (Bool) -> Void
 
 class Search {
     
+    // MARK: - 枚举常量
+    
+    /// 搜索分类。注意，因为Category是定义在
+    /// Search这个类里面的，所以在外部使用时
+    /// 应该使用全名Search.Category，换句话
+    /// 说，Category是在命名空间Search内部
+    enum Category: Int {
+        
+        /// 全部
+        case all = 0
+        
+        /// 音乐
+        case music = 1
+        
+        /// 软件
+        case software = 2
+        
+        /// 电子书
+        case ebooks = 3
+        
+        /// 在Swift中，枚举具有部分面向对象的特性，
+        /// 它允许我们在里面定义属性和方法。所以，
+        /// 我们可以在里面定义一个type计算属性，将
+        /// 每个成员所代表的字符串含义返回出去
+        var type: String {
+            
+            switch self {
+            case .all:
+                return ""
+            case .music:
+                return "musicTrack"
+            case .software:
+                return "software"
+            case .ebooks:
+                return "ebook"
+            }
+        }
+    }
     
     // MARK: - 自定义属性
     
@@ -39,7 +77,7 @@ class Search {
     ///   - text: 搜索的内容
     ///   - category: 搜索的类别
     ///   - completionSearch: 一个闭包，搜索完成之后，通知外界到底是搜索成功还是失败
-    func performSearch(for text: String, category: Int, completionSearch: @escaping SearchComplete) {
+    func performSearch(for text: String, category: Category, completionSearch: @escaping SearchComplete) {
         
         if !text.isEmpty {
             
@@ -128,21 +166,10 @@ class Search {
     ///   - searchText: 搜索的内容
     ///   - category: 搜索分类，枚举进行表示
     /// - Returns: 返回一个完整的用于网络请求的URL地址
-    private func iTunesURL(searchText: String, category: Int) -> URL {
+    private func iTunesURL(searchText: String, category: Category) -> URL {
         
         // 用于保存搜索类型
-        let kind: String
-        
-        switch category {
-        case 1:
-            kind = "musicTrack"
-        case 2:
-            kind = "software"
-        case 3:
-            kind = "ebook"
-        default:
-            kind = ""
-        }
+        let kind = category.type
         
         // 将不允许出现在URL中的特殊字符进行转义(让它们合法化)
         let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

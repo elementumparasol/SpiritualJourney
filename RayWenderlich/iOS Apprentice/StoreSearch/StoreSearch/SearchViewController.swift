@@ -361,17 +361,27 @@ extension SearchViewController {
     /// 向服务器发起网络请求，执行搜索
     func performSearch() {
         
-        search.performSearch(for: searchBar.text!, category: segmentedControl.selectedSegmentIndex, completionSearch: {success in
+        // 先将Int转换为我们自定的Category，并且对转换结果进行校验
+        // 因为init(rawValue: )可能转换失败，因此其结果是一个可选类型
+        if let category = Search.Category(rawValue: segmentedControl.selectedSegmentIndex) {
             
-            if !success {
-                self.showNetworkError()
-            }
-            
-            self.tableView.reloadData()
-        })
+            // 向服务器请求网络数据
+            search.performSearch(for: searchBar.text!, category: category, completionSearch: {success in
+                
+                // 如果请求失败，则显示错误信息
+                if !success {
+                    self.showNetworkError()
+                }
+                
+                // 如果请求成功，则刷新tableView
+                self.tableView.reloadData()
+            })
+        }
         
+        // 刷新tableView
         tableView.reloadData()
         
+        // 数据请求完成，释放键盘
         searchBar.resignFirstResponder()
     }
     
