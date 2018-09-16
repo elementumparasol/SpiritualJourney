@@ -53,23 +53,34 @@ class Search {
         }
     }
     
+    /// 显示Search状态
+    enum State {
+        
+        /// 还没开始搜索
+        case notSearchedYet
+        
+        /// 正在加载数据
+        case loading
+        
+        /// 搜索没有结果
+        case noResults
+        
+        /// 有搜索结果(其结果为[SearchResult]类型)
+        case results([SearchResult])  // 关联值
+    }
+    
+    
     // MARK: - 自定义属性
-    
-    /// 存储搜索结果
-    var searchResults: [SearchResult] = []
-    
-    /// 记录用户是否发起搜索请求
-    var hasSearched = false
-    
-    /// 标记是否正在下载数据
-    var isLoading = false
     
     /// 用于存储dataTask
     private var dataTask: URLSessionDataTask? = nil
     
+    /// 用于检查搜索状态。private后面的set用于告诉Swift，
+    /// 其它对象可以正常读取，但是赋值只能在Search内部进行
+    private(set) var state: State = .notSearchedYet
+    
     
     // MARK: - 自定义方法
-    
     
     /// 执行网络搜索
     ///
@@ -84,9 +95,8 @@ class Search {
             // 取消前一次的dataTask
             dataTask?.cancel()
             
-            isLoading = true
-            hasSearched = true
-            searchResults = []
+            // 正在加载数据
+            state = .loading
             
             // 拼接URL全路径。这句代码会访问SearchBar，而这个是
             // 属于UI界面的代码，最好是将其移到主线程里面执行
@@ -99,6 +109,8 @@ class Search {
             // 从服务器获取相应的数据。当dataTask收到服务器的响
             // 应时，就会调用闭包，并且执行它里面的代码
             dataTask = session.dataTask(with: url) { (data, response, error) in
+                
+                var newState = State.notSearchedYet
                 
                 var success = false
                 
@@ -119,32 +131,29 @@ class Search {
                      处理搜索成功
                      */
                     
-                    // 解析JSON数据
-                    self.searchResults = self.parse(data: data)
+                    // 解析JSON数据，并且将其存储在searchResults中
+                    var searchResults = self.parse(data: data)
                     
-                    // 对数据按A~Z进行排序
-                    self.searchResults.sort(by: <)
-                    
-                    print("Sucess!")
-                    
-                    self.isLoading = false
+                    // 对searchResults进行检查
+                    if searchResults.isEmpty {
+                        newState = State.noResults
+                    } else {
+                        
+                        // 对数据按A~Z进行排序
+                        searchResults.sort(by: <)
+                        newState = State.results(searchResults)
+                    }
                     
                     // 如果网络请求成功，则表示success为true
                     success = true
                 }
                 
-                /**
-                 处理搜索失败
-                 */
-                
-                if !success {
-                    print("Failure: \(response!)")
-                    self.hasSearched = false
-                    self.isLoading = false
-                }
-                
                 // 搜索完成以后，调用闭包通知外界
                 DispatchQueue.main.async {
+                    
+                    // 这个state一定要在主线程中设置，
+                    // 否则有可能产生竞争条件bug
+                    self.state = newState
                     
                     // 调用completionSearch，
                     // 并且将参数success传进去

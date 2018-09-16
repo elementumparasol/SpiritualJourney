@@ -92,10 +92,20 @@ class LandscapeViewController: UIViewController {
         // 设置pageControl的位置和尺寸
         pageControl.frame = CGRect(x: 0, y: view.frame.size.height - pageControl.frame.size.height, width: view.frame.size.width, height: pageControl.frame.size.height)
         
-        //
+        // 如果是首次搜索
         if isFirstTime {
             isFirstTime = false
-            tileButtons(search.searchResults)
+            
+            switch search.state {
+            case .notSearchedYet:
+                break
+            case .loading:
+                break
+            case .noResults:
+                break
+            case .results(let list):
+                tileButtons(list)
+            }
             
         }
     }
@@ -112,7 +122,7 @@ class LandscapeViewController: UIViewController {
     
     // MARK: - @IBAction
     
-    ///
+    /// pageControl发生改变的时候调用
     @IBAction func pageChanged(_ sender: UIPageControl) {
         
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
@@ -138,22 +148,26 @@ class LandscapeViewController: UIViewController {
         
         // 适配屏幕
         switch viewWidth {
-        case 568:
+        case 568:  // 5、5s、SE的屏幕
             columnsPerPage = 6
             itemWidth = 94
             marginX = 2
             
-        case 667:
+        case 667:  // 6、7、8的屏幕
             columnsPerPage = 7
             itemWidth = 95
             itemHeight = 98
             marginX = 1
             marginY = 29
             
-        case 736:
+        case 736:  // Plus的屏幕
             columnsPerPage = 8
             rowsPerPage = 4
             itemWidth = 92
+            
+            // X、XS的屏幕812
+            
+            // XR、XS Max的屏幕896
             
         default:
             break

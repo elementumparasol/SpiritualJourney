@@ -107,17 +107,20 @@ class SearchViewController: UIViewController {
         
         if segue.identifier == "ShowDetail" {
             
-            // 取出相应的控制器
-            let controller = segue.destination as! DetailViewController
-            
-            // 取出对应的indexPath
-            let indexPath = sender as! IndexPath
-            
-            // 获取对应的searchResult数据
-            let searchResult = search.searchResults[indexPath.row]
-            
-            // 将searchResult数据传递给DetailViewController的searchResult
-            controller.searchResult = searchResult
+            if case .results(let list) = search.state {
+                
+                // 取出相应的控制器
+                let controller = segue.destination as! DetailViewController
+                
+                // 取出对应的indexPath
+                let indexPath = sender as! IndexPath
+                
+                // 获取对应的searchResult数据
+                let searchResult = list[indexPath.row]
+                
+                // 将searchResult数据传递给DetailViewController的searchResult
+                controller.searchResult = searchResult
+            }
         }
     }
     
@@ -246,14 +249,15 @@ extension SearchViewController: UITableViewDataSource {
     // 返回每一组中cell的行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if search.isLoading {
-            return 1
-        } else if !search.hasSearched {
+        switch search.state {
+        case .notSearchedYet:
             return 0
-        } else if search.searchResults.count == 0 {
+        case .loading:
             return 1
-        } else {
-            return search.searchResults.count
+        case .noResults:
+            return 1
+        case .results(let array):
+            return array.count
         }
     }
     
@@ -272,7 +276,15 @@ extension SearchViewController: UITableViewDataSource {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }*/
         
-        if search.isLoading {
+        // 根据不同的状态返回不同的cell
+        switch search.state {
+            
+        // 还没有开始搜索
+        case .notSearchedYet:
+            fatalError("Should never get there")
+        
+        // 正在加载，显示菊花cell
+        case .loading:
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.loadingCell, for: indexPath)
             
             let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
@@ -280,20 +292,18 @@ extension SearchViewController: UITableViewDataSource {
             spinner.startAnimating()
             
             return cell
-        }
-        
-        if search.searchResults.count == 0 {
             
-            // 如果搜索无结果
+        // 搜索无结果，显示Nothing Found
+        case .noResults:
             return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
-            
-        } else {
-            
+        
+        // 搜索有结果，展示乡相应的数据
+        case .results(let list):
             // 根据指定的标识符去缓存池中取出cell
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             
             // 取出模型数据
-            let searchResult = search.searchResults[indexPath.row]
+            let searchResult = list[indexPath.row]
             
             // 给cell设置数据
             cell.configure(for: searchResult)
@@ -324,9 +334,11 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
         // 只有拥有搜索结果之后才能选中某一行cell
-        if search.searchResults.count == 0 || search.isLoading {
-            return nil  // 也就是确保搜索结果出现"Nothing Found"是不会被选中
-        } else {
+        switch search.state {
+            
+        case .notSearchedYet, .loading, .noResults:
+            return nil
+        case .results:
             return indexPath
         }
     }
