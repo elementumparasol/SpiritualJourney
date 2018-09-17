@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Kind Value"; ObjectID = "0ze-pd-TmW"; */
+"0ze-pd-TmW.text" = "Kind Value";
+
+/* Class = "UISearchBar"; placeholder = "App name, artist, song, album, e-book"; ObjectID = "IPZ-C9-MI4"; */
+"IPZ-C9-MI4.placeholder" = "应用名称, 艺术家, 音乐, 专辑, 电子书";
+
+/* Class = "UISegmentedControl"; ZXy-5l-8ZF.segmentTitles[0] = "All"; ObjectID = "ZXy-5l-8ZF"; */
+"ZXy-5l-8ZF.segmentTitles[0]" = "全部";
+
+/* Class = "UISegmentedControl"; ZXy-5l-8ZF.segmentTitles[1] = "Music"; ObjectID = "ZXy-5l-8ZF"; */
+"ZXy-5l-8ZF.segmentTitles[1]" = "音乐";
+
+/* Class = "UISegmentedControl"; ZXy-5l-8ZF.segmentTitles[2] = "Software"; ObjectID = "ZXy-5l-8ZF"; */
+"ZXy-5l-8ZF.segmentTitles[2]" = "应用";
+
+/* Class = "UISegmentedControl"; ZXy-5l-8ZF.segmentTitles[3] = "E-Books"; ObjectID = "ZXy-5l-8ZF"; */
+"ZXy-5l-8ZF.segmentTitles[3]" = "电子书";
+
+/* Class = "UILabel"; text = "Artist Name"; ObjectID = "g0D-kx-LoV"; */
+"g0D-kx-LoV.text" = "艺术家";
+
+/* Class = "UIButton"; normalTitle = "$9.99"; ObjectID = "mPD-XM-EvQ"; */
+"mPD-XM-EvQ.normalTitle" = "￥9.99";
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "mgF-nn-uVG"; */
+"mgF-nn-uVG.text" = "流派";
+
+/* Class = "UILabel"; text = "Genre Value"; ObjectID = "oyh-xg-Ewy"; */
+"oyh-xg-Ewy.text" = "Genre Value";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "taO-Lr-Jwq"; */
+"taO-Lr-Jwq.text" = "名称";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "znn-7A-1np"; */
+"znn-7A-1np.text" = "类型";

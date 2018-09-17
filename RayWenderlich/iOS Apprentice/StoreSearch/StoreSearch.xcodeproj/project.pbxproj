@@ -13,11 +13,9 @@
 		C50D64952146BECE003DD456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50D64942146BECE003DD456 /* Assets.xcassets */; };
 		C50D64982146BECE003DD456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50D64962146BECE003DD456 /* LaunchScreen.storyboard */; };
 		C50D64A02146EF15003DD456 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D649F2146EF15003DD456 /* SearchResult.swift */; };
-		C50D64A22146FF8F003DD456 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50D64A12146FF8E003DD456 /* SearchResultCell.xib */; };
 		C50D64A4214703EE003DD456 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D64A3214703EE003DD456 /* SearchResultCell.swift */; };
-		C50D64A6214706C3003DD456 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50D64A5214706C3003DD456 /* NothingFoundCell.xib */; };
+		C51CEC652150009000B32BF6 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51CEC672150009000B32BF6 /* SearchResultCell.xib */; };
 		C54532ED21495ECC0054AA0C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54532EC21495ECC0054AA0C /* Functions.swift */; };
-		C5BF18CA214A8ACE00D486B0 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF18C9214A8ACE00D486B0 /* LoadingCell.xib */; };
 		C5BF18CC214B05F200D486B0 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CB214B05F200D486B0 /* UIImageView+DownloadImage.swift */; };
 		C5BF18CE214BE9DD00D486B0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CD214BE9DD00D486B0 /* DetailViewController.swift */; };
 		C5BF18D0214BEE9400D486B0 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18CF214BEE9400D486B0 /* DimmingPresentationController.swift */; };
@@ -27,6 +25,8 @@
 		C5BF18D8214D780700D486B0 /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */; };
 		C5BF18DA214D91D500D486B0 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */; };
 		C5BF18DC214E6A1B00D486B0 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF18DB214E6A1B00D486B0 /* Search.swift */; };
+		C5BF18DD214FF83500D486B0 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF18DF214FF83500D486B0 /* NothingFoundCell.xib */; };
+		C5BF18E1214FFBFD00D486B0 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF18E3214FFBFD00D486B0 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +38,11 @@
 		C50D64972146BECE003DD456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C50D64992146BECE003DD456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50D649F2146EF15003DD456 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		C50D64A12146FF8E003DD456 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		C50D64A3214703EE003DD456 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		C50D64A5214706C3003DD456 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		C51CEC64214FFE1D00B32BF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C51CEC662150009000B32BF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchResultCell.xib; sourceTree = "<group>"; };
+		C51CEC692150009900B32BF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SearchResultCell.strings"; sourceTree = "<group>"; };
 		C54532EC21495ECC0054AA0C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		C5BF18C9214A8ACE00D486B0 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		C5BF18CB214B05F200D486B0 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		C5BF18CD214BE9DD00D486B0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C5BF18CF214BEE9400D486B0 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
@@ -52,6 +52,10 @@
 		C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
 		C5BF18DB214E6A1B00D486B0 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		C5BF18DE214FF83500D486B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NothingFoundCell.xib; sourceTree = "<group>"; };
+		C5BF18E0214FF94700D486B0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/NothingFoundCell.xib"; sourceTree = "<group>"; };
+		C5BF18E2214FFBFD00D486B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoadingCell.xib; sourceTree = "<group>"; };
+		C5BF18E5214FFC1300D486B0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LoadingCell.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,9 @@
 				C5BF18D9214D91D500D486B0 /* FadeOutAnimationController.swift */,
 				C5BF18D7214D780700D486B0 /* LandscapeViewController.swift */,
 				C5BF18DB214E6A1B00D486B0 /* Search.swift */,
-				C50D64A12146FF8E003DD456 /* SearchResultCell.xib */,
-				C50D64A5214706C3003DD456 /* NothingFoundCell.xib */,
-				C5BF18C9214A8ACE00D486B0 /* LoadingCell.xib */,
+				C51CEC672150009000B32BF6 /* SearchResultCell.xib */,
+				C5BF18DF214FF83500D486B0 /* NothingFoundCell.xib */,
+				C5BF18E3214FFBFD00D486B0 /* LoadingCell.xib */,
 				C50D64912146BECB003DD456 /* Main.storyboard */,
 				C50D64942146BECE003DD456 /* Assets.xcassets */,
 				C50D64962146BECE003DD456 /* LaunchScreen.storyboard */,
@@ -151,6 +155,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = C50D64812146BECA003DD456;
 			productRefGroup = C50D648B2146BECB003DD456 /* Products */;
@@ -169,9 +174,9 @@
 			files = (
 				C50D64982146BECE003DD456 /* LaunchScreen.storyboard in Resources */,
 				C50D64952146BECE003DD456 /* Assets.xcassets in Resources */,
-				C5BF18CA214A8ACE00D486B0 /* LoadingCell.xib in Resources */,
-				C50D64A22146FF8F003DD456 /* SearchResultCell.xib in Resources */,
-				C50D64A6214706C3003DD456 /* NothingFoundCell.xib in Resources */,
+				C5BF18E1214FFBFD00D486B0 /* LoadingCell.xib in Resources */,
+				C51CEC652150009000B32BF6 /* SearchResultCell.xib in Resources */,
+				C5BF18DD214FF83500D486B0 /* NothingFoundCell.xib in Resources */,
 				C50D64932146BECB003DD456 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +212,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C50D64922146BECB003DD456 /* Base */,
+				C51CEC64214FFE1D00B32BF6 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -219,6 +225,33 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		C51CEC672150009000B32BF6 /* SearchResultCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51CEC662150009000B32BF6 /* Base */,
+				C51CEC692150009900B32BF6 /* zh-Hans */,
+			);
+			name = SearchResultCell.xib;
+			sourceTree = "<group>";
+		};
+		C5BF18DF214FF83500D486B0 /* NothingFoundCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5BF18DE214FF83500D486B0 /* en */,
+				C5BF18E0214FF94700D486B0 /* zh-Hans */,
+			);
+			name = NothingFoundCell.xib;
+			sourceTree = "<group>";
+		};
+		C5BF18E3214FFBFD00D486B0 /* LoadingCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5BF18E2214FFBFD00D486B0 /* Base */,
+				C5BF18E5214FFC1300D486B0 /* zh-Hans */,
+			);
+			name = LoadingCell.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -226,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -287,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -103,25 +103,35 @@ class SearchResult: Codable, CustomStringConvertible {
         
         switch kind {
         case "album":
-            return "Album"
-        case "audibook":
-            return "Audiobook"
+            return NSLocalizedString("Album",
+                                     comment: "Localized kind: Album")
+        case "audiobook":
+            return NSLocalizedString("Audio Book",
+                                     comment: "Localized kind: Audio Book")
         case "book":
-            return "Book"
+            return NSLocalizedString("Book",
+                                     comment: "Localized kind: Book")
         case "ebook":
-            return "E-Book"
+            return NSLocalizedString("E-Book",
+                                     comment: "Localized kind: E-Book")
         case "feature-moive":
-            return "Moive"
+            return NSLocalizedString("Moive",
+                                     comment: "Localized kind: Moive")
         case "music-video":
-            return "Music Video"
+            return NSLocalizedString("Music Video",
+                                     comment: "Localized kind: Music Video")
         case "podcast":
-            return "Podcast"
+            return NSLocalizedString("Podcast",
+                                     comment: "Localized kind: Podcast")
         case "software":
-            return "App"
+            return NSLocalizedString("App",
+                                     comment: "Localized kind: Software")
         case "song":
-            return "Song"
+            return NSLocalizedString("Song",
+                                     comment: "Localized kind: Song")
         case "tv-episode":
-            return "TV Episode"
+            return NSLocalizedString("TV Episode",
+                                     comment: "Localized kind: TV Episode")
             
         default:
             break
