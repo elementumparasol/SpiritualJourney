@@ -103,7 +103,8 @@ class LandscapeViewController: UIViewController {
                 // 显示菊花
                 showSpinner()
             case .noResults:
-                break
+                // 显示Nothing Found
+                showNothingFoundLabel()
             case .results(let list):
                 tileButtons(list)
             }
@@ -298,8 +299,11 @@ class LandscapeViewController: UIViewController {
         hideSpinner()
         
         switch search.state {
-        case .loading, .noResults, .notSearchedYet:
+        case .loading, .notSearchedYet:
             break
+            
+        case .noResults:
+            showNothingFoundLabel()
             
         case .results(let list):
             
@@ -308,6 +312,26 @@ class LandscapeViewController: UIViewController {
         }
     }
     
+    /// 没有搜索结果信息
+    private func showNothingFoundLabel() {
+        
+        let label = UILabel(frame: .zero)
+        label.text = "Nothing Found"
+        label.textColor = .white
+        label.backgroundColor = .clear
+        
+        label.sizeToFit()
+        
+        var rect = label.frame
+        rect.size.width = ceil(rect.size.width / 2) * 2
+        rect.size.height = ceil(rect.size.height / 2) * 2
+        label.frame = rect
+        
+        label.center = CGPoint(x: scrollView.bounds.midX,
+                               y: scrollView.bounds.midY)
+        
+        view.addSubview(label)
+    }
 
 }
 
