@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// 自定义一个只带一个Bool参数，并且没有返回
 /// 值的新类型，然后将其命名为SearchComplete
@@ -95,6 +96,9 @@ class Search {
             // 取消前一次的dataTask
             dataTask?.cancel()
             
+            // 在状态栏显示网络菊花
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
             // 正在加载数据
             state = .loading
             
@@ -158,6 +162,9 @@ class Search {
                     // 调用completionSearch，
                     // 并且将参数success传进去
                     completionSearch(success)
+                    
+                    // 关闭状态栏的网络菊花
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
                 
             }

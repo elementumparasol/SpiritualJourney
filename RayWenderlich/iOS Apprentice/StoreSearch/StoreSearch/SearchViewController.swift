@@ -387,6 +387,9 @@ extension SearchViewController {
                 
                 // 如果请求成功，则刷新tableView
                 self.tableView.reloadData()
+                
+                // 创建按钮并在按钮上面显示插图
+                self.landscapeVC?.searchResultsReceived()
             })
         }
         

@@ -100,7 +100,8 @@ class LandscapeViewController: UIViewController {
             case .notSearchedYet:
                 break
             case .loading:
-                break
+                // 显示菊花
+                showSpinner()
             case .noResults:
                 break
             case .results(let list):
@@ -268,6 +269,45 @@ class LandscapeViewController: UIViewController {
             downloadTasks.append(downloadTask)
         }
     }
+    
+    /// 显示一个菊花
+    private func showSpinner() {
+        
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        
+        spinner.center = CGPoint(x: scrollView.bounds.midX + 0.5,
+                                 y: scrollView.bounds.midY + 0.5)
+        
+        spinner.tag = 1000
+        
+        view.addSubview(spinner)
+        
+        spinner.startAnimating()
+    }
+    
+    /// 隐藏菊花
+    private func hideSpinner() {
+        
+        view.viewWithTag(1000)?.removeFromSuperview()
+    }
+    
+    /// 根据搜索结果来决定是否需要显示按钮插图
+    func searchResultsReceived() {
+        
+        // 隐藏菊花
+        hideSpinner()
+        
+        switch search.state {
+        case .loading, .noResults, .notSearchedYet:
+            break
+            
+        case .results(let list):
+            
+            // 在按钮上显示图片数据
+            tileButtons(list)
+        }
+    }
+    
 
 }
 
