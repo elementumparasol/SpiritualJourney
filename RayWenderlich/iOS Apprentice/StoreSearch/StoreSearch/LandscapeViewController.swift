@@ -121,6 +121,20 @@ class LandscapeViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            
+            if case .results(let list) = search.state {
+                
+                let controller = segue.destination as! DetailViewController
+                
+                let searchResult = list[(sender as! UIButton).tag - 2000]
+                
+                controller.searchResult = searchResult
+            }
+        }
+    }
+    
     
     // MARK: - @IBAction
     
@@ -185,10 +199,14 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for (_, result) in searchResults.enumerated() {
+        for (index, result) in searchResults.enumerated() {
             
             // 创建按钮(注意，这里按钮类型一定要用.custom，否则会无法显示图片)
             let button = UIButton(type: .custom)
+            
+            // 监听按钮的点击
+            button.tag = 2000 + index
+            button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
             
             // 设置按钮的背景图片
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
@@ -331,6 +349,11 @@ class LandscapeViewController: UIViewController {
                                y: scrollView.bounds.midY)
         
         view.addSubview(label)
+    }
+    
+    /// 显示详情页
+    @objc func buttonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ShowDetail", sender: sender)
     }
 
 }

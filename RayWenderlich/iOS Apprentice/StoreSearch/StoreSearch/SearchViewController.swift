@@ -226,6 +226,12 @@ class SearchViewController: UIViewController {
             coordinator.animate(alongsideTransition: { (_) in
                 
                 controller.view.alpha = 0
+                
+                // 从横屏切换到竖屏时，隐藏present控制器
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             }) { (_) in
                 
                 // 将controller的view从它的父控件上移除
