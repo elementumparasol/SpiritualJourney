@@ -136,15 +136,15 @@ class Search {
                      */
                     
                     // 解析JSON数据，并且将其存储在searchResults中
-                    var searchResults = self.parse(data: data)
+                    let searchResults = self.parse(data: data)
                     
                     // 对searchResults进行检查
                     if searchResults.isEmpty {
                         newState = State.noResults
                     } else {
                         
-                        // 对数据按A~Z进行排序
-                        searchResults.sort(by: <)
+                        // 对数据按A~Z进行排序(手动排序会影响搜索准确度)
+                        //searchResults.sort(by: <)
                         newState = State.results(searchResults)
                     }
                     
