@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C506BD2821514B4C00B8DB40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C506BD2A21514B4C00B8DB40 /* Main.storyboard */; };
 		C50D648E2146BECB003DD456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D648D2146BECB003DD456 /* AppDelegate.swift */; };
 		C50D64902146BECB003DD456 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D648F2146BECB003DD456 /* SearchViewController.swift */; };
-		C50D64932146BECB003DD456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50D64912146BECB003DD456 /* Main.storyboard */; };
 		C50D64952146BECE003DD456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50D64942146BECE003DD456 /* Assets.xcassets */; };
 		C50D64982146BECE003DD456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50D64962146BECE003DD456 /* LaunchScreen.storyboard */; };
 		C50D64A02146EF15003DD456 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D649F2146EF15003DD456 /* SearchResult.swift */; };
@@ -30,16 +30,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C506BD2921514B4C00B8DB40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C506BD2C21514B5100B8DB40 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C50D648A2146BECB003DD456 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50D648D2146BECB003DD456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50D648F2146BECB003DD456 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		C50D64922146BECB003DD456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C50D64942146BECE003DD456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C50D64972146BECE003DD456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C50D64992146BECE003DD456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50D649F2146EF15003DD456 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C50D64A3214703EE003DD456 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		C51CEC64214FFE1D00B32BF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C51CEC662150009000B32BF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchResultCell.xib; sourceTree = "<group>"; };
 		C51CEC692150009900B32BF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SearchResultCell.strings"; sourceTree = "<group>"; };
 		C54532EC21495ECC0054AA0C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				C51CEC672150009000B32BF6 /* SearchResultCell.xib */,
 				C5BF18DF214FF83500D486B0 /* NothingFoundCell.xib */,
 				C5BF18E3214FFBFD00D486B0 /* LoadingCell.xib */,
-				C50D64912146BECB003DD456 /* Main.storyboard */,
+				C506BD2A21514B4C00B8DB40 /* Main.storyboard */,
 				C50D64942146BECE003DD456 /* Assets.xcassets */,
 				C50D64962146BECE003DD456 /* LaunchScreen.storyboard */,
 				C50D64992146BECE003DD456 /* Info.plist */,
@@ -175,9 +175,9 @@
 				C50D64982146BECE003DD456 /* LaunchScreen.storyboard in Resources */,
 				C50D64952146BECE003DD456 /* Assets.xcassets in Resources */,
 				C5BF18E1214FFBFD00D486B0 /* LoadingCell.xib in Resources */,
+				C506BD2821514B4C00B8DB40 /* Main.storyboard in Resources */,
 				C51CEC652150009000B32BF6 /* SearchResultCell.xib in Resources */,
 				C5BF18DD214FF83500D486B0 /* NothingFoundCell.xib in Resources */,
-				C50D64932146BECB003DD456 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,11 +208,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C50D64912146BECB003DD456 /* Main.storyboard */ = {
+		C506BD2A21514B4C00B8DB40 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C50D64922146BECB003DD456 /* Base */,
-				C51CEC64214FFE1D00B32BF6 /* zh-Hans */,
+				C506BD2921514B4C00B8DB40 /* Base */,
+				C506BD2C21514B5100B8DB40 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

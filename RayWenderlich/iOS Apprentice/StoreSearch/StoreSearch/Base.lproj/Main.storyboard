@@ -33,12 +33,12 @@
                                 </connections>
                             </searchBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULw-AP-7ZS">
-                                <rect key="frame" x="0.0" y="56" width="1058" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="736" height="44"/>
                                 <items>
                                     <navigationItem id="ALg-3X-3h9">
                                         <nil key="title"/>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ZXy-5l-8ZF">
-                                            <rect key="frame" x="379" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="218" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="All"/>
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="-222"/>
+            <point key="canvasLocation" x="-1139" y="143"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="nt7-O1-9cV">
@@ -190,6 +190,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jj6-sP-i1A"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rKw-jt-7Ox"/>
                     <connections>
                         <outlet property="artistNameLabel" destination="g0D-kx-LoV" id="tLL-ZW-aDA"/>
                         <outlet property="artworkImageView" destination="OzW-wX-gNX" id="BRJ-j4-rL7"/>
@@ -202,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pj-8U-Hog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676.81159420289862" y="89.673913043478265"/>
+            <point key="canvasLocation" x="42" y="481"/>
         </scene>
         <!--Landscape View Controller-->
         <scene sceneID="HDA-3u-bwd">
@@ -239,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydP-0k-OTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="590"/>
+            <point key="canvasLocation" x="-1139" y="896"/>
         </scene>
     </scenes>
     <resources>
