@@ -235,3 +235,84 @@ example(of: "deferred") {
         print()
     }
 }
+
+
+
+/// single
+example(of: "Single") {
+    
+    let disposeBag = DisposeBag()
+    
+    // 定义一个枚举错误，用来模拟从磁盘读取文件时
+    // 有可能发生的一些错误
+    enum FileReadError: Error {
+        
+        /// 路径错误
+        case fileNotFound
+        
+        /// 不可读取错误
+        case unreadable
+        
+        /// 解码错误
+        case encodingFailed
+    }
+    
+    // 用一个函数来加载磁盘中的文件，并且该函数返回一个Single
+    func loadText(from name: String) -> Single<String> {
+        
+        // 创建并返回一个Single
+        return Single.create(subscribe: { (single) -> Disposable in
+            
+            // 因为订阅(subscribe)需要返回一个disposable
+            // 所以我们需要在这里创建一个，以便在不同的阶段进行返回
+            let disposable = Disposables.create()
+            
+            // 校验文件所在的路径
+            guard let path = Bundle.main.path(forResource: name, ofType: "txt") else {
+                
+                // 如果路径错误，就添加一个找不到文件的error到
+                // Single，并且返回相应的disposable
+                single(.error(FileReadError.fileNotFound))
+                return disposable
+            }
+            
+            // 根据指定的路径，读取文件中的数据，并且对其进行校验
+            guard let data = FileManager.default.contents(atPath: path) else {
+                
+                // 如果数据读取错误，就添加一个读取错误的error
+                // 到Single，并且返回相应的disposable
+                single(.error(FileReadError.unreadable))
+                return disposable
+            }
+            
+            // 将文件中的数据转换为相应的字符串，并且对其进行校验
+            guard let contents = String(data: data, encoding: .utf8) else {
+            
+                // 如果数据转换错误，就添加一个编码错误的error
+                // 到Single，并且返回相应的disposable
+                single(.error(FileReadError.encodingFailed))
+                return disposable
+            }
+            
+            // 如果上述所有步骤都操作成功，就将转换成功的contents
+            // 作为一个success添加到Single中，最后返回相应的disposable
+            single(.success(contents))
+            return disposable
+        })
+    }
+    
+    // 调用函数loadText(from: )
+    loadText(from: "将进酒")
+        .subscribe {  // 订阅这个Single Observable
+            
+            // 处理Single
+            switch $0 {
+            case .success(let string):
+                print(string)
+                
+            case .error(let error):
+                print(error)
+            }
+    }
+    .disposed(by: disposeBag)  // 将订阅的返回值添加到DisposeBag中
+}
