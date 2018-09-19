@@ -78,3 +78,22 @@ example(of: "empty") {
             print("Completed")
     })
 }
+
+
+
+/// 监听never
+example(of: "never") {
+    
+    let observable = Observable<Any>.never()
+    
+    observable
+        .subscribe(
+            onNext: { (element) in
+            print(element)
+        },
+                   
+            onCompleted: {
+                print("Completed")
+        }
+    )
+}
