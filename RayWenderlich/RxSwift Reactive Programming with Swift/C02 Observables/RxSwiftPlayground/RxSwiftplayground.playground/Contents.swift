@@ -97,3 +97,106 @@ example(of: "never") {
         }
     )
 }
+
+
+
+/// range
+example(of: "range") {
+    
+    // 创建Observable实例
+    let observable = Observable<Int>.range(start: 1, count: 10)
+    
+    // 监听observable
+    observable
+        .subscribe(onNext: { (i) in
+            
+            let n = Double(i)
+            let fibonacci = Int((pow(1.61803, n) - pow(0.61803, n)) / 2.23606.rounded())
+            
+            print(fibonacci)
+        }
+    )
+}
+
+
+
+/// dispose
+example(of: "dispose") {
+    
+    let observable = Observable.of("A", "B", "C")
+    
+    // 监听observable，并且将其返回值保存到subscription中
+    let subcription = observable.subscribe({event in
+        print(event)
+    })
+    
+    // 调用dispose()方法，取消订阅
+    subcription.dispose()
+}
+
+
+
+/// DisposeBag
+/// 在订阅完成时，或者因为某种原因而导致订阅终止时，
+/// 如果你忘记将一个订阅的返回值添加到DisposeBag，
+/// 或者说忘记手动调用dispose()方法，那么就会导致
+/// 内存泄漏问题
+example(of: "DisposeBag") {
+    
+    // 创建一个DisposeBag实例
+    let disposeBag = DisposeBag()
+    
+    // 创建一个Observable实例
+    Observable.of("A", "B", "C")
+    .subscribe({  // 订阅Observable实例
+        print($0)
+    })
+    .disposed(by: disposeBag)  // 将订阅的返回值添加到disposeBag中
+}
+
+
+
+/// create
+example(of: "create") {
+    
+    enum MyError: Error {
+        case anError
+    }
+    
+    
+    // 创建DisposeBag实例
+    let disposeBag = DisposeBag()
+    
+    // 创建Observable实例
+    Observable<String>.create({ (observer) -> Disposable in
+        
+        // 添加一个.next事件到observer
+        observer.onNext("1")
+        
+        // 添加一个.error事件
+        observer.onError(MyError.anError)
+        
+        // 添加一个.completed事件到observer
+        observer.onCompleted()
+        
+        // 再添加一个.next事件到observer
+        // 因为上面有一个.completed事件，所以
+        // 这个.next事件永远都不会发生
+        observer.onNext("?")
+        
+        // 最后返回一个disposable
+        // Disposables.create()是一个空的disposable
+        // 这一步看起来或许有些奇怪，但是请记住，订阅(subscribe)
+        // 操作返回一个disposable来表示订阅
+        //
+        return Disposables.create()
+    })
+    .subscribe(  // 订阅observable
+        onNext: { print($0) },
+        onError: { print($0) },
+        onCompleted: { print("Completed") },
+        onDisposed: { print("Disposed") }
+    )
+    .disposed(by: disposeBag)  // 将订阅的返回值添加到disposeBag
+    
+}
