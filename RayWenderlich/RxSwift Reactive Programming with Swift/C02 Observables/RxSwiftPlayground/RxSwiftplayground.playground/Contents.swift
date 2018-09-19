@@ -25,3 +25,31 @@ example(of: "just, of, from") {
     // from方法使用一个数组作为参数
     let observable4 = Observable.from([one, two, three])
 }
+
+
+
+/// 订阅Observable
+example(of: "Subscribe") {
+    
+    let one = 1
+    let two = 2
+    let three = 3
+    
+    let observable = Observable.of(one, two, three)
+    
+    // 监听observable。我们在这里传入了一个闭包
+    // 作为subscribe()方法的参数。又因为只有一个
+    // 闭包参数(也就是闭包是最后一个参数)，所以，我
+    // 们其实也可以将其写成尾随闭包的形式
+    observable.subscribe({event in
+        
+        if let element = event.element {
+            print(element)
+        }
+    })
+    
+    observable.subscribe(onNext: { (element) in
+        print(element)
+    })
+    
+}
