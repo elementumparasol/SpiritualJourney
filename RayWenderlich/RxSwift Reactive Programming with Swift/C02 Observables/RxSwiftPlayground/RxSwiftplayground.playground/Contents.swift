@@ -53,3 +53,28 @@ example(of: "Subscribe") {
     })
     
 }
+
+
+
+/// 监听empty.
+/// empty Observable的作用主要是: 当你需要返回一个立即
+/// 终止(completed)，或者零值观察者时，就需要使用这个
+example(of: "empty") {
+    
+    // 因为我们要创建一个空的Observable实例，因此它无法
+    // 使用类型推断，为此就必须手动指定它的类型为Void
+    let observable = Observable<Void>.empty()
+    
+    // 订阅这个observable实例
+    observable.subscribe(
+        
+        // 处理.next事件
+        onNext: { (element) in
+        print(element)
+    },
+       
+        // 处理.completed事件
+        onCompleted: {
+            print("Completed")
+    })
+}
