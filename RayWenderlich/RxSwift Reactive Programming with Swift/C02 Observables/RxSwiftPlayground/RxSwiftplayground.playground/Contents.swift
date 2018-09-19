@@ -200,3 +200,38 @@ example(of: "create") {
     .disposed(by: disposeBag)  // 将订阅的返回值添加到disposeBag
     
 }
+
+
+
+/// deferred
+example(of: "deferred") {
+    
+    let disposeBag = DisposeBag()
+    
+    // 创建一个Bool标识符
+    var flip = false
+    
+    // 使用deferred(_: )方法创建一个Int类型的Observable实例
+    let factory: Observable<Int> = Observable.deferred({
+        
+        // 反转(逆置)flip的值
+        flip = !flip
+        
+        // 根据flip的不同值来返回不同的结果
+        if flip {
+            return Observable.of(1, 2, 3)
+        } else {
+            return Observable.of(4, 5, 6)
+        }
+    })
+    
+    // 订阅factory4次
+    for _ in 0...3 {
+        factory.subscribe(onNext: {
+            print($0, terminator: "")
+        })
+        .disposed(by: disposeBag)
+        
+        print()
+    }
+}
