@@ -90,9 +90,8 @@ func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
 }
 
 example(of: "BehaviorSubject") {
-    
     // 创建BehaviorSubject实例
-    // 因为BehaviorSubject实例总是会发出最近的element，因此
+    // 因为BehaviorSubject实例总是会释放最新的element，因此
     // 在创建BehaviorSubject实例时，必须给它提供一个初始化值
     let subject = BehaviorSubject(value: "Initial Value")
     
@@ -100,12 +99,12 @@ example(of: "BehaviorSubject") {
     let disposeBag = DisposeBag()
     
     // 往subject中添加新的.next事件
-    // 这次事件"X"是最近的事件，所以会打印"X"，而不会打印"Initial Value"
+    // 这次事件"X"是最新的事件，所以会打印"X"，而不会打印"Initial Value"
     subject.onNext("X")  // 注意，这句代码是在创建完订阅之后才插入的
     
     // 订阅subject
     // 虽然这个subscription是在subject添加初始element之后
-    // 才订阅的，但是因为BehaviorSubject总是能收到最近的event
+    // 才订阅的，但是因为BehaviorSubject总是能收到最新的event
     // 所以，我们这里依然能打印"Initial Value"事件
     subject
     .subscribe({
@@ -114,9 +113,10 @@ example(of: "BehaviorSubject") {
     .disposed(by: disposeBag)
     
     // 添加一个.error事件到subject
-    // 因为上面一个subscription离这个.error比较近，所以它会被
-    // 打印一次；另外，后面那个subscription也离这个.error事件
-    // 比较近，所以它依然会被再打印一次
+    // 因为对于上面那个subscription来说，这次新添加的.error
+    // 事件是最新的，因为它会在"1)"中被打印一次；另外，对于下面
+    // 新添加的subscription "2)"来说，这个.error事件也是最新
+    // 的，所以，它在"2)"中同样也会被打印
     subject.onError(MyError.anError)
     
     // 再创建一个subscription来订阅subject
@@ -160,7 +160,7 @@ example(of: "ReplaySubject") {
     
     // 因为我们在创建subject的时候，预设它的bufferSize为2
     // 因此，尽管我们连续创建了3个.next事件，但是它只能订阅
-    // 最近的两个。再添加一个.next事件到subject
+    // 最新的两个。再添加一个.next事件到subject
     subject.onNext("D")
     
     // 向subject添加一个.error事件
@@ -181,4 +181,52 @@ example(of: "ReplaySubject") {
         print(label: "3)", event: $0)
     }
     .disposed(by: disposeBag)
+}
+
+
+
+
+
+/// Variable
+example(of: "Variable") {
+    
+    // 创建Variable实例
+    let variable = Variable("Initial Value")
+    
+    let disposeBag = DisposeBag()
+    
+    // 向variable添加一个新的element
+    // 注意，variable跟其它的subject有所不同，我们
+    // 不用通过调用onNext(_: )方法来添加.next事件，
+    // 而是直接通过它的value属性来添加。另外，由于variable
+    // 不会释放错误，因此也不用向它添加.error事件。最后，
+    // variable在即将被释放之前，会自动完成，因此，我们也
+    // 不用手动向它添加.completed事件
+    variable.value = "A new initial value"
+    
+    // 订阅variable
+    // 首先，调用asObervable()方法来访问其底层的BehaviorSubject
+    // 然后再像订阅其它类型的subject一样的订阅variable
+    variable.asObservable()
+    .subscribe {
+        print(label: "1)", event: $0)
+    }
+    .disposed(by: disposeBag)
+    
+    
+    variable.value = "1"
+    
+    variable.asObservable()
+        .subscribe {
+            print(label: "2)", event: $0)
+        }
+        .disposed(by: disposeBag)
+    
+    variable.value = "2"
+    
+    /**
+     必须记住: 任何试图通过手动的方式来添加.error或者
+     .completed事件到Variable实例中的做法，都会引发
+     编译错误!
+     */
 }
