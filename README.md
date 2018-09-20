@@ -16,3 +16,11 @@
 ![展示数据](https://github.com/enricashi/SpiritualJourney/blob/master/Images/MyLocations/MyLocation_03.png)
 
 ![编辑数据](https://github.com/enricashi/SpiritualJourney/blob/master/Images/MyLocations/MyLocation_04.png)
+
+### 项目4 - StoreSearch
+
+![竖屏1](https://github.com/enricashi/SpiritualJourney/blob/master/Images/StoreSearch/StoreSearch_01.png)
+
+![竖屏2](https://github.com/enricashi/SpiritualJourney/blob/master/Images/StoreSearch/StoreSearch_02.png)
+
+![横屏](https://github.com/enricashi/SpiritualJourney/blob/master/Images/StoreSearch/StoreSearch_03.png)
