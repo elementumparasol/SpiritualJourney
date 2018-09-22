@@ -25,6 +25,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="TJQ-kc-fC1"/>
                                 </constraints>
                                 <state key="normal" title="清除"/>
+                                <connections>
+                                    <action selector="actionClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kwX-MO-WhV"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H7J-9s-o3Y">
                                 <rect key="frame" x="16" y="114" width="343" height="220"/>
@@ -40,6 +43,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Luc-C7-QtG"/>
                                 </constraints>
                                 <state key="normal" title="保存"/>
+                                <connections>
+                                    <action selector="actionSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sjp-vc-lPh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +62,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Combinestagram" id="ONd-6Q-ZTK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UIA-iz-U8I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UIA-iz-U8I">
+                            <connections>
+                                <action selector="actionAdd:" destination="BYZ-38-t0r" id="2qv-KZ-GHk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonClear" destination="H5u-A8-4Wx" id="TMF-cs-WCS"/>
