@@ -54,11 +54,12 @@ class MainViewController: UIViewController {
     }
     
     
+    // MARK: - 类自带的方法
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 订阅images
+        // 订阅images，用于设置图片
         images.asObservable()
             .subscribe(onNext: { [weak self] (photos) in
                 guard let preview = self?.imagePreview else {
@@ -69,6 +70,34 @@ class MainViewController: UIViewController {
                 preview.image = UIImage.collage(images: photos, size: preview.frame.size)
             })
             .disposed(by: disposeBag)
+        
+        // 再次添加一个订阅，用于更新其它UI界面
+        images.asObservable()
+            .subscribe(onNext: { [weak self] (photos) in
+                
+                // 更新UI界面(设置相关的按钮和导航栏标题)
+                self?.updateUI(photos: photos)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    
+    // MARK: - 自定义的方法
+    
+    /// 用于更新UI界面
+    private func updateUI(photos: [UIImage]) {
+        
+        // 数组photos中有照片，并且照片的数量为偶数时，buttonSave按钮才能被点击
+        buttonSave.isEnabled = photos.count > 0 && photos.count % 2 == 0
+        
+        // 如果照片的数量大于0，则buttonClear才能被点击
+        buttonClear.isEnabled = photos.count > 0
+        
+        // 最多只能添加6张照片
+        itemAdd.isEnabled = photos.count < 6
+        
+        // 设置导航栏标题
+        title = photos.count > 0 ? "\(photos.count) photoes" : "Collage"
     }
 
 
