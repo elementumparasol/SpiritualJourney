@@ -16,6 +16,7 @@
 		C5F1D4C221543C05004E5D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5F1D4C021543C05004E5D2A /* Main.storyboard */; };
 		C5F1D4C421543C06004E5D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5F1D4C321543C06004E5D2A /* Assets.xcassets */; };
 		C5F1D4C721543C06004E5D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5F1D4C521543C06004E5D2A /* LaunchScreen.storyboard */; };
+		C5F691252158DB0100853762 /* PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F691242158DB0100853762 /* PhotoWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C5F1D4C321543C06004E5D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5F1D4C621543C06004E5D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5F1D4C821543C06004E5D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5F691242158DB0100853762 /* PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				C564810A2156F26300DF102D /* PhotosViewController.swift */,
 				C564810C21583D0F00DF102D /* PhotoCell.swift */,
 				C5648108215445BD00DF102D /* UIImage+Collage.swift */,
+				C5F691242158DB0100853762 /* PhotoWriter.swift */,
 				C5F1D4C021543C05004E5D2A /* Main.storyboard */,
 				C5F1D4C321543C06004E5D2A /* Assets.xcassets */,
 				C5F1D4C521543C06004E5D2A /* LaunchScreen.storyboard */,
@@ -220,6 +223,7 @@
 				C5F1D4BF21543C05004E5D2A /* MainViewController.swift in Sources */,
 				C564810D21583D0F00DF102D /* PhotoCell.swift in Sources */,
 				C5648109215445BD00DF102D /* UIImage+Collage.swift in Sources */,
+				C5F691252158DB0100853762 /* PhotoWriter.swift in Sources */,
 				C564810B2156F26300DF102D /* PhotosViewController.swift in Sources */,
 				C5F1D4BD21543C05004E5D2A /* AppDelegate.swift in Sources */,
 			);

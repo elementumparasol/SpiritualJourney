@@ -73,6 +73,20 @@ class MainViewController: UIViewController {
     
     /// 点击保存按钮调用
     @IBAction func actionSave(_ sender: Any) {
+        
+        // 校验图片是否存在
+        guard let image = imagePreview.image else { return }
+        
+        // 将图片保存到相册
+        PhotoWriter.save(image)
+        .asSingle()
+            .subscribe(onSuccess: { [weak self] (id) in
+                self?.showMessage("已保存id为: \(id)")
+                self?.actionClear(sender)
+            }) { [weak self] (error) in
+                self?.showMessage("Error", description: error.localizedDescription)
+        }
+        .disposed(by: disposeBag)
     }
     
     
@@ -119,9 +133,26 @@ class MainViewController: UIViewController {
         itemAdd.isEnabled = photos.count < 6
         
         // 设置导航栏标题
-        title = photos.count > 0 ? "\(photos.count) photoes" : "Collage"
+        title = photos.count > 0 ? "\(photos.count)张图片" : "Collage"
     }
-
+    
+    /// 显示提示信息
+    func showMessage(_ title: String, description: String?=nil) {
+        
+        // 床架alert控制器
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        
+        // 创建alertAction
+        let action = UIAlertAction(title: "关闭", style: .default) { [weak self] (_) in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
+        // 将action添加到alert控制器
+        alert.addAction(action)
+        
+        // present到alert控制器
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
