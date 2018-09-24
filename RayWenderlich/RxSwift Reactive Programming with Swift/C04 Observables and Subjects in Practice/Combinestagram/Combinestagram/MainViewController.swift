@@ -45,6 +45,22 @@ class MainViewController: UIViewController {
         // 从storyboard初始化PhotosViewController控制器
         let photosViewController = storyboard?.instantiateViewController(withIdentifier: "PhotosViewController") as! PhotosViewController
         
+        // 订阅selectedPhotos
+        photosViewController.selectedPhotos
+            .subscribe(onNext: { [weak self] (newImage) in
+                
+                // 对图片数组images进行校验
+                guard let images = self?.images else { return }
+                
+                // 将newImage添加到数组images中
+                images.value.append(newImage)
+                }, onDisposed: {
+                    
+                    // 订阅完成，释放内存时调用
+                    print("图片选择完成!")
+            })
+            .disposed(by: disposeBag)
+        
         // push到PhotosViewController控制器
         navigationController!.pushViewController(photosViewController, animated: true)
     }

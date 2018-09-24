@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import RxSwift
 
 
 class PhotosViewController: UICollectionViewController {
@@ -32,6 +33,17 @@ class PhotosViewController: UICollectionViewController {
                       height: cellSize.height * UIScreen.main.scale)
     }()
     
+    /// 当我们选中一张图片时，通过observer将其传递给上一级控制器
+    /// PublishSubject用于显示所选的照片，但是我们又不能让它被
+    /// 其它类访问，所以要将其设置为private，然后通过其它属性提供
+    /// 访问接口
+    private let selectedPhotoSubject = PublishSubject<UIImage>()
+    
+    /// 提供外界访问PublishSubject的接口
+    var selectedPhotos: Observable<UIImage> {
+        return selectedPhotoSubject.asObserver()
+    }
+    
     
     // MARK: - 类自带的方法
 
@@ -39,6 +51,14 @@ class PhotosViewController: UICollectionViewController {
         super.viewDidLoad()
         
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // 当照片选择完成时，告诉selectedPhotoSubject
+        // 事件已经完成了，可以不需要再订阅了，可以释放内存
+        selectedPhotoSubject.onCompleted()
     }
     
     
@@ -102,6 +122,8 @@ class PhotosViewController: UICollectionViewController {
         
         // 选中cell时，给cell添加动画
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell {
+            
+            // 给cell添加选中动画
             cell.flash()
         }
         
@@ -111,6 +133,14 @@ class PhotosViewController: UICollectionViewController {
             // 对image和info进行校验
             guard let image = image, let info = info else {
                 return
+            }
+            
+            // 使用info字典来检查图片image是缩略图thumbnail还是完整的asset
+            // 如果image图片是完整的asset，则进入代码块中执行下一个步骤
+            if let isThumbnail = info[PHImageResultIsDegradedKey as NSString] as? Bool, !isThumbnail {
+                
+                // 如果是完整的image，则调用onNext(_ :)方法，将image传递进去
+                self?.selectedPhotoSubject.onNext(image)
             }
         }
         
