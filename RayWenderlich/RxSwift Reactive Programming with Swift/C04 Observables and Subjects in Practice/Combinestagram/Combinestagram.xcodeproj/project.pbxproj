@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		75AE14D2EF07BA22F2AF3433 /* Pods_Combinestagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA616EA7EC0EB34396CA9DD /* Pods_Combinestagram.framework */; };
 		C5648109215445BD00DF102D /* UIImage+Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5648108215445BD00DF102D /* UIImage+Collage.swift */; };
+		C564810B2156F26300DF102D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564810A2156F26300DF102D /* PhotosViewController.swift */; };
+		C564810D21583D0F00DF102D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564810C21583D0F00DF102D /* PhotoCell.swift */; };
 		C5F1D4BD21543C05004E5D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1D4BC21543C05004E5D2A /* AppDelegate.swift */; };
 		C5F1D4BF21543C05004E5D2A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1D4BE21543C05004E5D2A /* MainViewController.swift */; };
 		C5F1D4C221543C05004E5D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5F1D4C021543C05004E5D2A /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		5C3BE20CC87CC1B0A87ABAB9 /* Pods-Combinestagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combinestagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Combinestagram/Pods-Combinestagram.debug.xcconfig"; sourceTree = "<group>"; };
 		9F578B1007C5EF4ADDC12E53 /* Pods-Combinestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Combinestagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Combinestagram/Pods-Combinestagram.release.xcconfig"; sourceTree = "<group>"; };
 		C5648108215445BD00DF102D /* UIImage+Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Collage.swift"; sourceTree = "<group>"; };
+		C564810A2156F26300DF102D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		C564810C21583D0F00DF102D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C5F1D4B921543C05004E5D2A /* Combinestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Combinestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F1D4BC21543C05004E5D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5F1D4BE21543C05004E5D2A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 			children = (
 				C5F1D4BC21543C05004E5D2A /* AppDelegate.swift */,
 				C5F1D4BE21543C05004E5D2A /* MainViewController.swift */,
+				C564810A2156F26300DF102D /* PhotosViewController.swift */,
+				C564810C21583D0F00DF102D /* PhotoCell.swift */,
 				C5648108215445BD00DF102D /* UIImage+Collage.swift */,
 				C5F1D4C021543C05004E5D2A /* Main.storyboard */,
 				C5F1D4C321543C06004E5D2A /* Assets.xcassets */,
@@ -212,7 +218,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5F1D4BF21543C05004E5D2A /* MainViewController.swift in Sources */,
+				C564810D21583D0F00DF102D /* PhotoCell.swift in Sources */,
 				C5648109215445BD00DF102D /* UIImage+Collage.swift in Sources */,
+				C564810B2156F26300DF102D /* PhotosViewController.swift in Sources */,
 				C5F1D4BD21543C05004E5D2A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

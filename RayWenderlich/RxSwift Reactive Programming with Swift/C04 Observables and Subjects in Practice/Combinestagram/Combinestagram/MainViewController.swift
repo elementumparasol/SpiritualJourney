@@ -40,7 +40,13 @@ class MainViewController: UIViewController {
     /// 点击导航栏右边的加号按钮调用
     @IBAction func actionAdd(_ sender: Any) {
         
-        images.value.append(UIImage(named: "IMG_1907")!)
+        // images.value.append(UIImage(named: "IMG_1907")!)
+        
+        // 从storyboard初始化PhotosViewController控制器
+        let photosViewController = storyboard?.instantiateViewController(withIdentifier: "PhotosViewController") as! PhotosViewController
+        
+        // push到PhotosViewController控制器
+        navigationController!.pushViewController(photosViewController, animated: true)
     }
     
     /// 点击清除按钮调用

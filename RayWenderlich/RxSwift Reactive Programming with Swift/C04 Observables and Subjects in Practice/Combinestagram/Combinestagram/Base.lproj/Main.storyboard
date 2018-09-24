@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="-573.46326836581716"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Photos View Controller-->
         <scene sceneID="Joo-lv-emS">
             <objects>
-                <collectionViewController id="5A0-44-sco" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PhotosViewController" id="5A0-44-sco" customClass="PhotosViewController" customModule="Combinestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="f7W-UB-dIO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +103,7 @@
                             <inset key="sectionInset" minX="8" minY="16" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kNt-tz-OO0">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="kNt-tz-OO0" customClass="PhotoCell" customModule="Combinestagram" customModuleProvider="target">
                                 <rect key="frame" x="8" y="16" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -121,6 +121,9 @@
                                     <constraint firstItem="DKJ-AA-Oxg" firstAttribute="top" secondItem="kNt-tz-OO0" secondAttribute="top" id="XVs-M3-O1y"/>
                                     <constraint firstAttribute="trailing" secondItem="DKJ-AA-Oxg" secondAttribute="trailing" id="qYz-VU-U7D"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="DKJ-AA-Oxg" id="L5Q-mP-yU6"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
