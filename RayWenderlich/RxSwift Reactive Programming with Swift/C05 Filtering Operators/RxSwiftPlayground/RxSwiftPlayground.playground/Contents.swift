@@ -120,3 +120,65 @@ example(of: "SkipUntil") {
     subject.onNext("C")
     subject.onNext("D")
 }
+
+
+
+
+/// take
+example(of: "take") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(1, 2, 3, 4, 5, 6)
+        .take(3)  // 获取前三个.next事件
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+}
+
+
+
+/// takeWhile
+example(of: "TakeWhile") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(2, 2, 4, 4, 6, 6)
+        .enumerated()  // 枚举出.next所对应的index和value
+        .takeWhile({ (index, integer) -> Bool in
+            
+            // 获取偶数元素，并且下标要小于3
+            integer % 2 == 0 && index < 3
+        })
+        .map { $0.element }
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+}
+
+
+
+/// takeUntil
+example(of: "TakeUntil") {
+    
+    let disposeBag = DisposeBag()
+    
+    let subject = PublishSubject<String>()
+    let trigger = PublishSubject<String>()
+    
+    subject
+        .takeUntil(trigger)
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    subject.onNext("A")
+    subject.onNext("B")
+    trigger.onNext("X")  // 获取subject中的事件，直到trigger
+    subject.onNext("C")
+    subject.onNext("D")
+}
+
