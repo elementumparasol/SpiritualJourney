@@ -64,3 +64,59 @@ example(of: "filter") {
         })
         .disposed(by: disposeBag)
 }
+
+
+
+/// skip
+example(of: "Skip") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of("A", "B", "C", "D", "E", "F")
+        .skip(3)  // 跳过前三个.next事件
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+}
+
+
+
+/// skipWhile
+example(of: "SkipWhile") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(2, 2, 3, 4, 4)
+        .skipWhile({ integer in  // 跳过所有的偶数，直到
+            integer % 2 == 0  // 遇到奇数为止
+        })
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+}
+
+
+
+/// skipUntil
+example(of: "SkipUntil") {
+    
+    let disposeBag = DisposeBag()
+    
+    let subject = PublishSubject<String>()
+    let trigger = PublishSubject<String>()
+    
+    subject
+        .skipUntil(trigger)  // 一直过滤，直到trigger之后
+        .subscribe(onNext: {  // 就不再跳过了
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    subject.onNext("A")
+    subject.onNext("B")
+    trigger.onNext("X")  // trigger之前的都会被跳过
+    subject.onNext("C")
+    subject.onNext("D")
+}
