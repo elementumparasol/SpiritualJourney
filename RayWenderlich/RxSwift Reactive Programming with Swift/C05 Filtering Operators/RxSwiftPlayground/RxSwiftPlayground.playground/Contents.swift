@@ -68,7 +68,7 @@ example(of: "filter") {
 
 
 /// skip
-example(of: "Skip") {
+example(of: "skip") {
     
     let disposeBag = DisposeBag()
     
@@ -83,7 +83,7 @@ example(of: "Skip") {
 
 
 /// skipWhile
-example(of: "SkipWhile") {
+example(of: "skipWhile") {
     
     let disposeBag = DisposeBag()
     
@@ -100,7 +100,7 @@ example(of: "SkipWhile") {
 
 
 /// skipUntil
-example(of: "SkipUntil") {
+example(of: "skipUntil") {
     
     let disposeBag = DisposeBag()
     
@@ -140,7 +140,7 @@ example(of: "take") {
 
 
 /// takeWhile
-example(of: "TakeWhile") {
+example(of: "takeWhile") {
     
     let disposeBag = DisposeBag()
     
@@ -161,7 +161,7 @@ example(of: "TakeWhile") {
 
 
 /// takeUntil
-example(of: "TakeUntil") {
+example(of: "takeUntil") {
     
     let disposeBag = DisposeBag()
     
@@ -182,3 +182,69 @@ example(of: "TakeUntil") {
     subject.onNext("D")
 }
 
+
+
+
+/// distinctUntilChanged
+example(of: "distinctUntilChanged") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of("A", "A", "B", "B", "A", "B")
+        
+        // 使用distinctUntilChanged()防止连续重复的事件
+        // 第2个A会被阻止，第2个B也会被阻止
+        .distinctUntilChanged()
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    
+}
+
+
+
+
+/// distinctUntilChanged(_ : )
+example(of: "distinctUntilChanged(_: )") {
+
+    let disposeBag = DisposeBag()
+    
+    // 创建数字拼写格式，用于拼写数字
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .spellOut
+    
+    // 创建类型为NSNumber的Observable实例
+    Observable<NSNumber>.of(10, 100, 20, 200, 210, 310)
+    
+        // 调用distinctUntilChanged(_:)方法。该方法返
+        // 回一个可观察序列，并且序列中包含连续的可比较的元素
+        .distinctUntilChanged({ (a, b) -> Bool in
+            
+            // 使用guard来绑定由空格分割的元素组件
+            // 如果绑定失败，则返回false
+            guard let aWords = formatter.string(from: a)?.components(separatedBy: " "),
+                let bWords = formatter.string(from: b)?.components(separatedBy: " ") else {
+                    return false
+            }
+            
+            var containsMatch = false
+            
+            // 分别遍历aWords和bWords
+            for aWord in aWords {
+                for bWord in bWords {
+                    if aWord == bWord {
+                        containsMatch = true
+                        break
+                    }
+                }
+            }
+            
+            return containsMatch
+        })
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+}
