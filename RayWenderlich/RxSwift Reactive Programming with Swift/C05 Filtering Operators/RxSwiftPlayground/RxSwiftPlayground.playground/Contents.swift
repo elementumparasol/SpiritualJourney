@@ -248,3 +248,4 @@ example(of: "distinctUntilChanged(_: )") {
         })
         .disposed(by: disposeBag)
 }
+
