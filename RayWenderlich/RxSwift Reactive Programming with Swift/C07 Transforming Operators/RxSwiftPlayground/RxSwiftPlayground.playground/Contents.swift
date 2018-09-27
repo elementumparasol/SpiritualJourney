@@ -58,3 +58,68 @@ example(of: "enumerated and map") {
         })
         .disposed(by: disposeBag)
 }
+
+
+
+struct Student {
+    var score: BehaviorSubject<Int>
+}
+
+/// flatMap
+example(of: "flatMap") {
+    
+    let disposeBag = DisposeBag()
+    
+    // 创建两个Student实例变量
+    let ryan = Student(score: BehaviorSubject(value: 80))
+    let charlotter = Student(score: BehaviorSubject(value: 90))
+    
+    // 创建一个类型为Student的Source subject
+    let student = PublishSubject<Student>()
+    
+    student
+        .flatMap({
+            $0.score
+        })
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    student.onNext(ryan)
+    ryan.score.onNext(85)
+    student.onNext(charlotter)
+    ryan.score.onNext(95)
+    charlotter.score.onNext(100)
+}
+
+
+
+
+/// flatMapLatest
+example(of: "flatMapLatest") {
+    
+    let disposeBag = DisposeBag()
+    
+    let ryan = Student(score: BehaviorSubject(value: 80))
+    let charlotte = Student(score: BehaviorSubject(value: 90))
+    
+    let student = PublishSubject<Student>()
+    
+    student
+        .flatMapLatest({
+            $0.score
+        })
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    student.onNext(ryan)
+    ryan.score.onNext(85)
+    
+    student.onNext(charlotte)
+
+    ryan.score.onNext(95)
+    charlotte.score.onNext(100)
+}
