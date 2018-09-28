@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C57ABB17215DC337003926DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABB16215DC337003926DA /* AppDelegate.swift */; };
-		C57ABB19215DC337003926DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABB18215DC337003926DA /* ViewController.swift */; };
+		C57ABB19215DC337003926DA /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABB18215DC337003926DA /* ActivityController.swift */; };
 		C57ABB1C215DC337003926DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C57ABB1A215DC337003926DA /* Main.storyboard */; };
 		C57ABB1E215DC339003926DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C57ABB1D215DC339003926DA /* Assets.xcassets */; };
 		C57ABB21215DC339003926DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C57ABB1F215DC339003926DA /* LaunchScreen.storyboard */; };
+		C5F174AF215DCE87004C8BBE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F174AE215DCE87004C8BBE /* Event.swift */; };
 		DE5F086FD0CCC848F5E41AD6 /* Pods_GitFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8535946CF3BF378E3BC5758D /* Pods_GitFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +22,12 @@
 		8535946CF3BF378E3BC5758D /* Pods_GitFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57ABB13215DC337003926DA /* GitFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57ABB16215DC337003926DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C57ABB18215DC337003926DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C57ABB18215DC337003926DA /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		C57ABB1B215DC337003926DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C57ABB1D215DC339003926DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C57ABB20215DC339003926DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C57ABB22215DC339003926DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5F174AE215DCE87004C8BBE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				C57ABB16215DC337003926DA /* AppDelegate.swift */,
-				C57ABB18215DC337003926DA /* ViewController.swift */,
+				C57ABB18215DC337003926DA /* ActivityController.swift */,
+				C5F174AE215DCE87004C8BBE /* Event.swift */,
 				C57ABB1A215DC337003926DA /* Main.storyboard */,
 				C57ABB1D215DC339003926DA /* Assets.xcassets */,
 				C57ABB1F215DC339003926DA /* LaunchScreen.storyboard */,
@@ -212,7 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C57ABB19215DC337003926DA /* ViewController.swift in Sources */,
+				C57ABB19215DC337003926DA /* ActivityController.swift in Sources */,
+				C5F174AF215DCE87004C8BBE /* Event.swift in Sources */,
 				C57ABB17215DC337003926DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
