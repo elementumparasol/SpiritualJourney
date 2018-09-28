@@ -1,0 +1,10 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'GitFeed' do
+
+  pod 'Kingfisher'
+  pod 'RxCocoa'
+  pod 'RxSwift'
+
+end
