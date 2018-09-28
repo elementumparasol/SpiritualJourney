@@ -123,3 +123,59 @@ example(of: "flatMapLatest") {
     ryan.score.onNext(95)
     charlotte.score.onNext(100)
 }
+
+
+
+
+/// materialize and dematerialize
+example(of: "materialize and dematerialize") {
+    
+    // 自定义错误枚举常量
+    enum MyError: Error {
+        
+        /// 发生错误
+        case anError
+    }
+    
+    let disposeBag = DisposeBag()
+    
+    let ryan = Student(score: BehaviorSubject(value: 80))
+    let charlotte = Student(score: BehaviorSubject(value: 100))
+    
+    let student = BehaviorSubject(value: ryan)
+    
+    // 使用flatMapLatest创建studentScore Observable
+    // 以便观察它的score属性
+    let studentScroe = student
+        .flatMapLatest({
+            $0.score.materialize()
+        })
+    
+    // 订阅studentScore，然后打印score
+    studentScroe
+        // 打印并过滤掉error
+        .filter({
+            guard $0.error == nil else {
+                print($0.error!)
+                return false
+            }
+            
+            return true
+        })
+        // 使用dematerialize()返回studentScore这个
+        // Observable的原始形式
+        .dematerialize()
+        .subscribe(onNext: {
+            print($0)
+        })
+        .disposed(by: disposeBag)
+    
+    // 添加score、error和其它score到Student实例ryan中
+    ryan.score.onNext(85)
+    ryan.score.onError(MyError.anError)
+    ryan.score.onNext(90)
+    
+    // 将另外一个Student实例charlotte添加到
+    // 当前的student中
+    student.onNext(charlotte)
+}
