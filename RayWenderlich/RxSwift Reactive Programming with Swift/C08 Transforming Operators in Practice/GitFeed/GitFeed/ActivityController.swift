@@ -50,7 +50,11 @@ class ActivityController: UITableViewController {
     /// 下拉刷新
     @objc func refresh() {
         DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            // 对self进行校验
             guard let strongSelf = self else { return }
+            
+            // 获取数据
             strongSelf.fetchEvents(repo: strongSelf.repo)
         }
     }
