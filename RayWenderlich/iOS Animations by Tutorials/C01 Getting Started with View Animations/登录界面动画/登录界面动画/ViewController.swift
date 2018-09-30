@@ -57,15 +57,15 @@ class ViewController: UIViewController {
             self.titleLabel.center.x += self.view.bounds.width
         }
         
-        // 给用户名输入框添加动画
-        UIView.animate(withDuration: 0.5) {
+        // 给用户名输入框添加动画(延迟0.3s)
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
             self.usernameTextField.center.x += self.view.bounds.width
-        }
+        }, completion: nil)
         
-        // 给密码输入框添加动画
-        UIView.animate(withDuration: 0.5) {
+        // 给密码输入框添加动画(延迟0.4s)
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
             self.passwordTextField.center.x += self.view.bounds.width
-        }
+        }, completion: nil)
     }
 
     override func viewDidLoad() {
