@@ -98,5 +98,22 @@ class ViewController: UIViewController {
     }
     
     
+    // MARK: - @IBAction
+    
+    /// 点击登录按钮时调用
+    @IBAction func login() {
+        
+        // 点击登录按钮之后，整个按钮变宽
+        UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginButton.bounds.size.width += 80
+        }, completion: nil)
+        
+        // 移动登录按钮中心点的y值，以及修改它的背景颜色
+        UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginButton.center.y += 60
+            self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+        }, completion: nil)
+    }
+    
 }
 
