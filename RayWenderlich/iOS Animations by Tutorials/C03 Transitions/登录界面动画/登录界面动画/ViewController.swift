@@ -113,6 +113,10 @@ class ViewController: UIViewController {
             self.animationContainerView.addSubview(bannerView)
         }, completion: nil)
         
+        // 移除bannerView
+        UIView.transition(with: animationContainerView, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
+            bannerView.removeFromSuperview()
+        }, completion: nil)
         
     }
     
