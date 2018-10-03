@@ -45,13 +45,13 @@ class ViewController: UIViewController {
     /// 菊花儿
     let spinner = UIActivityIndicatorView(style: .whiteLarge)
     
-    /// 显示状态的图片
+    /// 点击登录按钮之后，用于模拟登录过程中的各种状态
     let status = UIImageView(image: UIImage(named: "banner"))
     
-    /// 显示状态的文本控件
+    /// 用于显示登陆过程中各种状态的文本控件
     let label = UILabel()
     
-    /// 状态信息
+    /// 用于显示的状态信息
     let messages = ["连接中 ...", "正在获取授权...",
                     "正在认证...", "登陆失败"]
     
@@ -97,6 +97,8 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        /** 给标题控件、用户名文本框和密码文本框设置动画 */
+        
         // 给标题文本添加动画
         UIView.animate(withDuration: 0.5) {
             self.titleLabel.center.x += self.view.bounds.width
@@ -112,6 +114,8 @@ class ViewController: UIViewController {
             self.passwordTextField.center.x += self.view.bounds.width
         }, completion: nil)
         
+        
+        /** 给四朵云彩设置动画 */
         
         // 给左上角的云彩添加动画
         UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
@@ -134,7 +138,7 @@ class ViewController: UIViewController {
         }, completion: nil)
         
         
-        // 给登陆按钮添加动画
+        /** 给登陆按钮添加动画 */
         // 参数usingSpringWithDamping表示弹性系数，它的取值范围是
         // 0.0~1.0，越接近0.0，弹性越强；越接近1.0，弹性越弱(僵硬)
         // 参数initialSpringVelocity表示弹性动画的初始速度，一般情
@@ -161,7 +165,11 @@ class ViewController: UIViewController {
             
             // 点击登录按钮之后，其宽度增加80
             self.loginButton.bounds.size.width += 80
-        }, completion: nil)
+        }, completion: {_ in
+            
+            // 显示消息
+            self.showMessage(index: 0)
+        })
         
         // 移动登录按钮中心点的y值，以及修改它的背景颜色
         UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
@@ -193,7 +201,7 @@ class ViewController: UIViewController {
         
         /** 设置菊花的位置 */
         
-        // 设置菊花的位置和尺寸
+        // 设置菊花spinner的位置和尺寸
         spinner.frame = CGRect(x: -20, y: 6, width: 20, height: 20)
         
         // 开始转菊花
@@ -206,7 +214,7 @@ class ViewController: UIViewController {
         loginButton.addSubview(spinner)
         
         
-        /** 设置登录状态 */
+        /** 设置登录状态status */
         
         // 隐藏登陆状态
         status.isHidden = true
@@ -218,7 +226,7 @@ class ViewController: UIViewController {
         view.addSubview(status)
         
         
-        /** 设置登录提示文字 */
+        /** 设置登录提示label的文字 */
         
         // 设置label的frame
         label.frame = CGRect(x: 0, y: 0, width: status.frame.size.width, height: status.frame.size.height)
@@ -237,6 +245,57 @@ class ViewController: UIViewController {
         
         // 将status中心点的位置赋值给statusPosition
         statusPosition = status.center
+    }
+    
+    /// 显示status和文字提示
+    private func showMessage(index: Int) {
+        
+        // 给label设置文字
+        label.text = messages[index]
+        
+        // 给status添加动画
+        UIView.transition(with: status, duration: 0.33, options: [.curveEaseOut, .transitionCurlDown], animations: {
+            
+            // 显示status
+            self.status.isHidden = false
+        }) { (_) in
+            
+            // 延迟2秒执行下列代码
+            delay(2.0, completion: {
+                
+                // 如果index在合法的边界内
+                if index < self.messages.count - 1 {
+                    
+                    // 移除消息
+                    self.removeMessage(index: index)
+                } else {
+                    
+                    // 继续干其它事
+                }
+            })
+        }
+    }
+    
+    /// 移除status和文字提示
+    private func removeMessage(index: Int) {
+        
+        // 给status添加相应的动画
+        UIView.animate(withDuration: 0.33, delay: 0, options: [], animations: {
+            
+            // 修改status中心点x的坐标
+            self.status.center.x += self.view.frame.size.width
+            
+        }) { (_) in
+            
+            // 隐藏status
+            self.status.isHidden = true
+            
+            // 重新设置status中心点的位置
+            self.status.center = self.statusPosition
+            
+            // 显示相关的消息
+            self.showMessage(index: index + 1)
+        }
     }
     
 }
