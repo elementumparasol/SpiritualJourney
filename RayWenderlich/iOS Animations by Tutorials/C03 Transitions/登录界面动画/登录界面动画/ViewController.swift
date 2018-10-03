@@ -42,6 +42,21 @@ class ViewController: UIViewController {
     /// 容器控件(animation container)
     var animationContainerView: UIView!
     
+    /// 菊花儿
+    let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    
+    /// 显示状态的图片
+    let status = UIImageView(image: UIImage(named: "banner"))
+    
+    /// 显示状态的文本控件
+    let label = UILabel()
+    
+    /// 状态信息
+    let messages = ["连接中 ...", "正在获取授权...", "正在认证...", "登陆失败"]
+    
+    /// 菊花位置
+    var statusPosition = CGPoint.zero
+    
     
     // MARK: - 类自带的方法
     
@@ -50,9 +65,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // 设置容器控件(animation container)
-        animationContainerView = UIView(frame: view.bounds)
-        view.addSubview(animationContainerView)
+//        animationContainerView = UIView(frame: view.bounds)
+//        animationContainerView.backgroundColor = .red
+//        view.addSubview(animationContainerView)
         
+        /**
+         设置菊花的位置
+         */
+        
+        // 设置菊花的位置和尺寸
+        spinner.frame = CGRect(x: -20, y: 6, width: 20, height: 20)
+        
+        // 开始转菊花
+        spinner.startAnimating()
+        
+        // 设置菊花默认为隐藏
+        spinner.alpha = 1
+        
+        // 将菊花添加到登录按钮上
+        loginButton.addSubview(spinner)
         
     }
     
@@ -103,7 +134,7 @@ class ViewController: UIViewController {
             self.loginButton.alpha = 1.0
         }, completion: nil)
         
-        
+        /*
         // 创建bannerView
         let bannerView = UIImageView(image: UIImage(named: "banner"))
         bannerView.center = animationContainerView.center
@@ -117,6 +148,7 @@ class ViewController: UIViewController {
         UIView.transition(with: animationContainerView, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
             bannerView.removeFromSuperview()
         }, completion: nil)
+        */
         
     }
     
