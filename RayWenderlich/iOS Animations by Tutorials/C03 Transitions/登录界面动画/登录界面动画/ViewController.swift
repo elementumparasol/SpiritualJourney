@@ -113,19 +113,22 @@ class ViewController: UIViewController {
         }, completion: nil)
         
         
-        // 给一众云彩添加动画
+        // 给左上角的云彩添加动画
         UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
             self.leftTopCloud.alpha = 1.0
         }, completion: nil)
         
+        // 给右上角的云彩添加动画
         UIView.animate(withDuration: 0.5, delay: 0.7, options: [], animations: {
             self.rightTopCloud.alpha = 1.0
         }, completion: nil)
         
+        // 给左下角的云彩添加动画
         UIView.animate(withDuration: 0.5, delay: 0.9, options: [], animations: {
             self.leftBottomCloud.alpha = 1.0
         }, completion: nil)
         
+        // 给右下角的云彩添加动画
         UIView.animate(withDuration: 0.5, delay: 1.1, options: [], animations: {
             self.rightBottomCloud.alpha = 1.0
         }, completion: nil)
@@ -141,22 +144,6 @@ class ViewController: UIViewController {
             self.loginButton.center.y -= 30
             self.loginButton.alpha = 1.0
         }, completion: nil)
-        
-        /*
-        // 创建bannerView
-        let bannerView = UIImageView(image: UIImage(named: "banner"))
-        bannerView.center = animationContainerView.center
-        
-        // 添加bannerView并设置动画效果
-        UIView.transition(with: animationContainerView, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
-            self.animationContainerView.addSubview(bannerView)
-        }, completion: nil)
-        
-        // 移除bannerView
-        UIView.transition(with: animationContainerView, duration: 0.33, options: [.curveEaseOut, .transitionFlipFromBottom], animations: {
-            bannerView.removeFromSuperview()
-        }, completion: nil)
-        */
         
     }
     
@@ -247,6 +234,9 @@ class ViewController: UIViewController {
         
         // 将label添加到status上面
         status.addSubview(label)
+        
+        // 将status中心点的位置赋值给statusPosition
+        statusPosition = status.center
     }
     
 }
