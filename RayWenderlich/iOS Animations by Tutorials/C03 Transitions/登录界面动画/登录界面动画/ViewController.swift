@@ -52,7 +52,8 @@ class ViewController: UIViewController {
     let label = UILabel()
     
     /// 状态信息
-    let messages = ["连接中 ...", "正在获取授权...", "正在认证...", "登陆失败"]
+    let messages = ["连接中 ...", "正在获取授权...",
+                    "正在认证...", "登陆失败"]
     
     /// 菊花位置
     var statusPosition = CGPoint.zero
@@ -80,6 +81,13 @@ class ViewController: UIViewController {
         passwordTextField.center.x -= view.bounds.width
         
         
+        // 隐藏云彩
+        leftTopCloud.alpha = 0.0
+        rightTopCloud.alpha = 0.0
+        leftBottomCloud.alpha = 0.0
+        rightBottomCloud.alpha = 0.0
+        
+        
         // 修改登录按钮中心点y的坐标，并且修改它的透明度
         loginButton.center.y += 30
         loginButton.alpha = 0.0
@@ -102,6 +110,24 @@ class ViewController: UIViewController {
         // 给密码输入框添加动画(延迟0.4s)
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
             self.passwordTextField.center.x += self.view.bounds.width
+        }, completion: nil)
+        
+        
+        // 给一众云彩添加动画
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
+            self.leftTopCloud.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: [], animations: {
+            self.rightTopCloud.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.9, options: [], animations: {
+            self.leftBottomCloud.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 1.1, options: [], animations: {
+            self.rightBottomCloud.alpha = 1.0
         }, completion: nil)
         
         
@@ -145,13 +171,29 @@ class ViewController: UIViewController {
         
         // 点击登录按钮之后，整个按钮变宽
         UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+            
+            // 点击登录按钮之后，其宽度增加80
             self.loginButton.bounds.size.width += 80
         }, completion: nil)
         
         // 移动登录按钮中心点的y值，以及修改它的背景颜色
         UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+            
+            // 点击登录按钮之后，修改它中心点y的坐标(增加60)
             self.loginButton.center.y += 60
+            
+            // 点击登录按钮之后，修改它的背景颜色
             self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+            
+            // 点击登录按钮之后，修改菊花中心点的位置
+            self.spinner.center = CGPoint(
+                x: 40.0,
+                y: self.loginButton.frame.size.height/2
+            )
+            
+            // 点击登录按钮之后，修改菊花的alpha值
+            self.spinner.alpha = 1.0
+
         }, completion: nil)
     }
     
