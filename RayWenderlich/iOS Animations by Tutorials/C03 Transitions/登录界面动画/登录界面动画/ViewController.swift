@@ -64,26 +64,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 设置容器控件(animation container)
-//        animationContainerView = UIView(frame: view.bounds)
-//        animationContainerView.backgroundColor = .red
-//        view.addSubview(animationContainerView)
-        
-        /**
-         设置菊花的位置
-         */
-        
-        // 设置菊花的位置和尺寸
-        spinner.frame = CGRect(x: -20, y: 6, width: 20, height: 20)
-        
-        // 开始转菊花
-        spinner.startAnimating()
-        
-        // 设置菊花默认为隐藏
-        spinner.alpha = 1
-        
-        // 将菊花添加到登录按钮上
-        loginButton.addSubview(spinner)
+        // 统一设置UI界面
+        setupUI()
         
     }
     
@@ -158,6 +140,9 @@ class ViewController: UIViewController {
     /// 点击登录按钮时调用
     @IBAction func login() {
         
+        // 让控制器的view失去第一响应者
+        view.endEditing(true)
+        
         // 点击登录按钮之后，整个按钮变宽
         UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
             self.loginButton.bounds.size.width += 80
@@ -170,5 +155,62 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
     
+    
+    // MARK: - 自定义方法
+    
+    /// 统一设置UI界面
+    private func setupUI() {
+        
+        
+        /** 设置菊花的位置 */
+        
+        // 设置菊花的位置和尺寸
+        spinner.frame = CGRect(x: -20, y: 6, width: 20, height: 20)
+        
+        // 开始转菊花
+        spinner.startAnimating()
+        
+        // 设置菊花默认为隐藏
+        spinner.alpha = 0.0
+        
+        // 将菊花添加到登录按钮上
+        loginButton.addSubview(spinner)
+        
+        
+        /** 设置登录状态 */
+        
+        // 隐藏登陆状态
+        status.isHidden = true
+        
+        // 设置status的中心点的位置
+        status.center = loginButton.center
+        
+        // 将status添加到控制器的view上面
+        view.addSubview(status)
+        
+        
+        /** 设置登录提示文字 */
+        
+        // 设置label的frame
+        label.frame = CGRect(x: 0, y: 0, width: status.frame.size.width, height: status.frame.size.height)
+        
+        // 设置label的文字大小
+        label.font = UIFont(name: "HelveticaNeue", size: 18.0)
+        
+        // 设置label的文字颜色
+        label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
+        
+        // 设置label的文字居中显示
+        label.textAlignment = .center
+        
+        // 将label添加到status上面
+        status.addSubview(label)
+    }
+    
 }
 
+
+extension ViewController {
+    
+    //
+}
