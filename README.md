@@ -33,3 +33,10 @@
 ![访问相册并选择图片](https://github.com/enricashi/SpiritualJourney/blob/master/Images/Combinestagram/%E8%AE%BF%E9%97%AE%E7%9B%B8%E5%86%8C%E5%B9%B6%E9%80%89%E6%8B%A9%E5%9B%BE%E7%89%87.png)
 
 ![拼接图片并保存到相册](https://github.com/enricashi/SpiritualJourney/blob/master/Images/Combinestagram/%E6%8B%BC%E6%8E%A5%E5%9B%BE%E7%89%87%E5%B9%B6%E4%BF%9D%E5%AD%98%E5%88%B0%E7%9B%B8%E5%86%8C.png)
+
+
+## 三、[《iOS Animations by Tutorials》](https://store.raywenderlich.com/products/ios-animations-by-tutorials)
+
+### 项目1 - 模拟用户登录
+
+![模拟用户登录界面](https://github.com/enricashi/SpiritualJourney/blob/master/Images/Animations/%E6%A8%A1%E6%8B%9F%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95.gif)
