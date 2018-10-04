@@ -14,6 +14,7 @@
 		C594EC1521651C750061A44C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C594EC1321651C750061A44C /* LaunchScreen.storyboard */; };
 		C5E6B1F6216638E5003F99CE /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6B1F5216638E5003F99CE /* Functions.swift */; };
 		C5E6B1F821663B4D003F99CE /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6B1F721663B4D003F99CE /* SnowView.swift */; };
+		C5E6B1FA21664D48003F99CE /* FlightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6B1F921664D48003F99CE /* FlightData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C594EC1621651C750061A44C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5E6B1F5216638E5003F99CE /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C5E6B1F721663B4D003F99CE /* SnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
+		C5E6B1F921664D48003F99CE /* FlightData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				C594EC0A21651C710061A44C /* AppDelegate.swift */,
 				C594EC0C21651C710061A44C /* ViewController.swift */,
 				C5E6B1F721663B4D003F99CE /* SnowView.swift */,
+				C5E6B1F921664D48003F99CE /* FlightData.swift */,
 				C5E6B1F5216638E5003F99CE /* Functions.swift */,
 				C594EC0E21651C710061A44C /* Main.storyboard */,
 				C594EC1121651C750061A44C /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C594EC0D21651C710061A44C /* ViewController.swift in Sources */,
+				C5E6B1FA21664D48003F99CE /* FlightData.swift in Sources */,
 				C594EC0B21651C710061A44C /* AppDelegate.swift in Sources */,
 				C5E6B1F6216638E5003F99CE /* Functions.swift in Sources */,
 				C5E6B1F821663B4D003F99CE /* SnowView.swift in Sources */,
