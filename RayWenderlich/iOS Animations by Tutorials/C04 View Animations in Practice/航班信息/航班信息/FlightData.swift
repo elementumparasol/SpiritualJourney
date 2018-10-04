@@ -53,4 +53,12 @@ let shanghaiToHaerbin = FlightData(summary: "2018年10月4日 06: 40",
 
 
 /// 哈尔滨飞三亚
-let HaerbinToSanya = FlightData(summary: "2018年10月4日 07: 45", flightNr: "国航CA3547", gateNr: "凤凰T2", departingFrom: "哈尔滨", arrivingTo: "三亚", weatherImageName: "bg-sunny", showWeatherEffects: false, isTakingOff: false, flightStatus: "延误")
+let haerbinToSanya = FlightData(summary: "2018年10月4日 07: 45",
+                                flightNr: "国航CA3547",
+                                gateNr: "凤凰T2",
+                                departingFrom: "哈尔滨",
+                                arrivingTo: "三亚",
+                                weatherImageName: "bg-sunny",
+                                showWeatherEffects: false,
+                                isTakingOff: false,
+                                flightStatus: "延误")
