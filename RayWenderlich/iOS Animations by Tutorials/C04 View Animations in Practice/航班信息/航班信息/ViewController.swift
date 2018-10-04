@@ -9,12 +9,54 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - @IBOutlet
+    
+    /// 背景图片
+    @IBOutlet weak var bgImageView: UIImageView!
+    
+    /// summaryIcon
+    @IBOutlet weak var summaryIcon: UIImageView!
+    
+    /// summaryLabel
+    @IBOutlet weak var summaryLabel: UILabel!
+    
+    /// flightNr
+    @IBOutlet weak var flightNr: UILabel!
+    
+    /// gateNr
+    @IBOutlet weak var gateNr: UILabel!
+    
+    /// 出发地
+    @IBOutlet weak var departingFrom: UILabel!
+    
+    /// 目的地
+    @IBOutlet weak var arrivingTo: UILabel!
+    
+    /// planeImage
+    @IBOutlet weak var planeImage: UIImageView!
+    
+    /// statusBanner
+    @IBOutlet weak var statusImage: UIImageView!
+    
+    /// flightStatus
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    
+    // MARK: - 自定义属性
+    
+    
+    
+    // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    
+    // MARK: - 自定义方法
+    
 
 }
 
