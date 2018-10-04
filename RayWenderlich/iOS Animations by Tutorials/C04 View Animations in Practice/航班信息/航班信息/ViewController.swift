@@ -45,13 +45,15 @@ class ViewController: UIViewController {
     
     // MARK: - 自定义属性
     
-    
+    /// 雪花
+    var snowView: SnowView!
     
     // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
     }
 
     
