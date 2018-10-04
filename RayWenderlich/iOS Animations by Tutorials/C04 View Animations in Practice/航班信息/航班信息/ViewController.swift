@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     
     // MARK: - 自定义属性
     
-    /// 雪花
+    /// 雪花发射器
     var snowView: SnowView!
     
     
@@ -53,6 +53,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 设置UI界面
+        setupUI()
+        
+        // 接入航班数据(默认是从上海飞哈尔滨)
+        changeFlight(to: shanghaiToHaerbin)
+    }
+
+    
+    // MARK: - 自定义方法
+    
+    /// 统一设置UI界面
+    private func setupUI() {
         
         /** 1、处理顶部航班起飞信息 */
         
@@ -81,10 +94,44 @@ class ViewController: UIViewController {
         // 将容器控件snowClipView添加到控制器的view上面
         view.addSubview(snowClipView)
     }
-
     
-    // MARK: - 自定义方法
-    
+    /// 改变航班
+    private func changeFlight(to data: FlightData) {
+        
+        // 航班的起飞信息
+        summaryLabel.text = data.summary
+        
+        // 航班号
+        flightNr.text = data.flightNr
+        
+        // 登机口信息
+        gateNr.text = data.gateNr
+        
+        // 起飞地信息
+        departingFrom.text = data.departingFrom
+        
+        // 目的地信息
+        arrivingTo.text = data.arrivingTo
+        
+        // 航班状态
+        statusLabel.text = data.flightStatus
+        
+        // 切换背景图片
+        bgImageView.image = UIImage(named: data.weatherImageName)
+        
+        // 隐藏雪花发射器
+        snowView.isHidden = !data.showWeatherEffects
+        
+        
+        // 切换到下一个航班
+        delay(seconds: 3.0) {
+            
+            // 通过判断飞机是否起飞来切换数据
+            // 如果飞机起飞，就接入哈尔滨飞三亚的数据
+            // 如果延误，就接入上海飞哈尔滨的数据
+            self.changeFlight(to: data.isTakingOff ? haerbinToSanya : shanghaiToHaerbin)
+        }
+    }
 
 }
 

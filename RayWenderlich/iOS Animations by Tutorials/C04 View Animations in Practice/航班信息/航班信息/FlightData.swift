@@ -49,7 +49,7 @@ let shanghaiToHaerbin = FlightData(summary: "2018年10月4日 06: 40",
                                    weatherImageName: "bg-snowy",
                                    showWeatherEffects: true,
                                    isTakingOff: true,
-                                   flightStatus: "已经起飞")
+                                   flightStatus: "延误")
 
 
 /// 哈尔滨飞三亚
@@ -61,4 +61,4 @@ let haerbinToSanya = FlightData(summary: "2018年10月4日 07: 45",
                                 weatherImageName: "bg-sunny",
                                 showWeatherEffects: false,
                                 isTakingOff: false,
-                                flightStatus: "延误")
+                                flightStatus: "已经起飞")
