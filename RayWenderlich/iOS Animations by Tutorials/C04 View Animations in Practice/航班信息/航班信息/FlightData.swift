@@ -17,7 +17,7 @@ struct FlightData {
     /// 航班号
     let flightNr: String
     
-    /// 登机口信息
+    /// 出站口信息
     let gateNr: String
     
     /// 起飞地点

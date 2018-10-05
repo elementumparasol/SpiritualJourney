@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     /// 航班号
     @IBOutlet weak var flightNr: UILabel!
     
-    /// 登机口
+    /// 出站口
     @IBOutlet weak var gateNr: UILabel!
     
     /// 出发地
@@ -69,7 +69,8 @@ class ViewController: UIViewController {
         // 设置UI界面
         setupUI()
         
-        // 接入航班数据(默认是从上海飞哈尔滨)
+        // 接入航班数据，默认是从上海飞哈尔滨
+        // 并且第一次进入界面不需要执行动画
         changeFlight(to: shanghaiToHaerbin)
     }
 
@@ -120,13 +121,28 @@ class ViewController: UIViewController {
         
         // 是否需要执行动画
         if animated {
+            
+            /**
+             过了一定的时间之后，界面需要切换到另一个场景，
+             所以，在切换数据场景的同时，还需要执行动画
+             */
            
             // 切换背景图片，并且添加淡入淡出动画，同时
             // 根据实际情况来决定是否需要显示雪花发射器
             fade(imageView: bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
             
+            // 切换航班号和出站口数据，执行动画
+            
+            
+            // 切换起飞地和目的地数据，执行动画
+            
             
         } else {
+            
+            /**
+             程序第一次运行时，显示的是上海飞哈尔滨，
+             不需要执行切换动画，直接显示相应的数据
+             */
             
             // 切换背景图片
             bgImageView.image = UIImage(named: data.weatherImageName)
@@ -137,7 +153,7 @@ class ViewController: UIViewController {
             // 航班号
             flightNr.text = data.flightNr
             
-            // 登机口信息
+            // 出站口信息
             gateNr.text = data.gateNr
             
             // 起飞地信息
@@ -151,7 +167,7 @@ class ViewController: UIViewController {
 
         }
         
-        // 切换到下一个航班
+        // 切换到下一个航班，需要执行相应的动画
         delay(seconds: 3.0) {
             
             // 通过判断飞机是否起飞来切换数据
@@ -187,5 +203,38 @@ extension ViewController {
         }, completion: nil)
     }
     
+    /// 切换航班号和出站口数据，并且执行立方体动画
+    ///
+    /// - Parameters:
+    ///   - label: 用于展示航班号或者出站口
+    ///   - text: 航班号或者出站口信息
+    ///   - direction: 立方体动画执行的方向
+    func cubeTransition(label: UILabel, text: String, direction: AnimationDirection) {
+        
+        //
+        let auxLabel = UILabel(frame: label.frame)
+        auxLabel.text = text
+        auxLabel.font = label.font
+        auxLabel.textAlignment = label.textAlignment
+        auxLabel.textColor = label.textColor
+        auxLabel.backgroundColor = label.backgroundColor
+        
+        let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height/2.0
+        
+        auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
+            .scaledBy(x: 1.0, y: 0.1)
+        label.superview?.addSubview(auxLabel)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            auxLabel.transform = .identity
+            label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
+                .scaledBy(x: 1.0, y: 0.1)
+        }, completion: { _ in
+            label.text = auxLabel.text
+            label.transform = .identity
+            
+            auxLabel.removeFromSuperview()
+        })
+    }
     
 }
