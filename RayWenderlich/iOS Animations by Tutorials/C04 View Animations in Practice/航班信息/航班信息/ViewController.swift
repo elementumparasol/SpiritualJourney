@@ -126,12 +126,26 @@ class ViewController: UIViewController {
              过了一定的时间之后，界面需要切换到另一个场景，
              所以，在切换数据场景的同时，还需要执行动画
              */
+            
+            /** 1、给背景图片添加淡入淡出动画 */
            
             // 切换背景图片，并且添加淡入淡出动画，同时
             // 根据实际情况来决定是否需要显示雪花发射器
             fade(imageView: bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
             
-            // 切换航班号和出站口数据，执行动画
+            
+            /** 2、给航班号和出站口添加cube动画 */
+            
+            // 创建动画执行的方向
+            let direction: AnimationDirection = data.isTakingOff ? .positive : .negative
+            
+            // 给航班号添加cube动画
+            cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
+            
+            // 给出站口添加cube动画
+            cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
+            
+            
             
             
             // 切换起飞地和目的地数据，执行动画
@@ -211,28 +225,36 @@ extension ViewController {
     ///   - direction: 立方体动画执行的方向
     func cubeTransition(label: UILabel, text: String, direction: AnimationDirection) {
         
-        //
+        // 创建辅助的label，并且设置它的各种属性
         let auxLabel = UILabel(frame: label.frame)
         auxLabel.text = text
         auxLabel.font = label.font
         auxLabel.textAlignment = label.textAlignment
         auxLabel.textColor = label.textColor
         auxLabel.backgroundColor = label.backgroundColor
-        
-        let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height/2.0
-        
+
+        // 就算翻滚的偏移量
+        let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height / 2.0
+
+        // 对辅助的label在x和y轴上执行相应的缩放
         auxLabel.transform = CGAffineTransform(translationX: 0.0, y: auxLabelOffset)
             .scaledBy(x: 1.0, y: 0.1)
+        
+        // 将辅助的label添加到label的父控件上面
         label.superview?.addSubview(auxLabel)
         
+        // 添加cube动画
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            
             auxLabel.transform = .identity
             label.transform = CGAffineTransform(translationX: 0.0, y: -auxLabelOffset)
                 .scaledBy(x: 1.0, y: 0.1)
+            
         }, completion: { _ in
             label.text = auxLabel.text
             label.transform = .identity
-            
+
+            // 动画执行完成之后，将辅助的label移除
             auxLabel.removeFromSuperview()
         })
     }
