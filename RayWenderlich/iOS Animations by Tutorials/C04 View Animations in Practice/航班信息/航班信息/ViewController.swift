@@ -146,9 +146,19 @@ class ViewController: UIViewController {
             cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
             
             
+            /** 3、给起飞地和目的地label添加动画 */
             
+            // 计算起飞地label的偏移量
+            let offsetDeparting = CGPoint(x: CGFloat(direction.rawValue * 80), y: 0.0)
             
-            // 切换起飞地和目的地数据，执行动画
+            // 给起飞地label添加动画
+            moveLabel(label: departingFrom, text: data.departingFrom, offset: offsetDeparting)
+            
+            // 计算目的地label的偏移量
+            let offsetArriving = CGPoint(x: 0.0, y: CGFloat(direction.rawValue * 50))
+            
+            // 给目的地label添加动画
+            moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
             
             
         } else {
@@ -256,6 +266,42 @@ extension ViewController {
 
             // 动画执行完成之后，将辅助的label移除
             auxLabel.removeFromSuperview()
+        })
+    }
+    
+    /// 给起飞地和目的地label添加动画
+    ///
+    /// - Parameters:
+    ///   - label: 用于显示起飞地或者目的地数据的label
+    ///   - text: 起飞地或者目的地数据
+    ///   - offset: 动画执行时的偏移量
+    func moveLabel(label: UILabel, text: String, offset: CGPoint) {
+        
+        let auxLabel = UILabel(frame: label.frame)
+        auxLabel.text = text
+        auxLabel.font = label.font
+        auxLabel.textAlignment = label.textAlignment
+        auxLabel.textColor = label.textColor
+        auxLabel.backgroundColor = .clear
+        
+        auxLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+        auxLabel.alpha = 0
+        view.addSubview(auxLabel)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+            label.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
+            label.alpha = 0.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseIn, animations: {
+            auxLabel.transform = .identity
+            auxLabel.alpha = 1.0
+        }, completion: {_ in
+            
+            auxLabel.removeFromSuperview()
+            label.text = text
+            label.alpha = 1.0
+            label.transform = .identity
         })
     }
     
