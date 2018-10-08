@@ -369,15 +369,15 @@ extension ViewController {
         
         UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.45) {
-                self.statusLabel.center.y -= 100.0
+                self.summaryLabel.center.y -= 100.0
             }
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45) {
-                self.statusLabel.center.y += 100.0
+                self.summaryLabel.center.y += 100.0
             }
         }, completion: nil)
         
         delay(seconds: 0.5) {
-            self.statusLabel.text = summaryText
+            self.summaryLabel.text = summaryText
         }
     }
 
