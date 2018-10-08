@@ -161,6 +161,10 @@ class ViewController: UIViewController {
             moveLabel(label: arrivingTo, text: data.arrivingTo, offset: offsetArriving)
             
             
+            /** 4、给航班状态添加动画 */
+            
+            cubeTransition(label: statusLabel, text: data.flightStatus, direction: direction)
+            
         } else {
             
             /**
