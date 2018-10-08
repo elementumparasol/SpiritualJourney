@@ -169,6 +169,10 @@ class ViewController: UIViewController {
             /** 5、给飞机图片添加关键帧动画 */
             planeDepart()
             
+            
+            /** 6、修改顶部的航班信息数据 */
+            summarySwitch(to: data.summary)
+            
         } else {
             
             /**
@@ -360,5 +364,22 @@ extension ViewController {
         }, completion: nil)
     }
     
+    /// 给顶部的航班时间信息label添加动画
+    private func summarySwitch(to summaryText: String) {
+        
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.45) {
+                self.statusLabel.center.y -= 100.0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45) {
+                self.statusLabel.center.y += 100.0
+            }
+        }, completion: nil)
+        
+        delay(seconds: 0.5) {
+            self.statusLabel.text = summaryText
+        }
+    }
+
     
 }
