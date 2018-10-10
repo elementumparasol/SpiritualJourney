@@ -35,6 +35,8 @@ extension Node: CustomStringConvertible {
             return "\(value)"
         }
         
+        // init(describing:) 用给定的值创建一个字符串
+        // (Creates a string representing the given value)
         return "\(value) -> " + String(describing: next) + " "
     }
 }
