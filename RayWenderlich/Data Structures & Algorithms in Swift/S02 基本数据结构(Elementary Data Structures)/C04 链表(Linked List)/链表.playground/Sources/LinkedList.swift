@@ -64,8 +64,43 @@ public struct LinkedList<T> {
         // tail!.next = nil
     }
     
+    /// 根据指定的下标值在链表中寻找特定的结点
+    ///
+    /// - Parameter index: 指定的下标值
+    /// - Returns: 返回该下标值在链表中对应的结点
+    public func node(at index: Int) -> Node<T>? {
+        
+        // currentNode用来保存需要寻找的结点，其默认值为头结点
+        var currentNode = head
+        
+        // currentIndex用来保存需要寻找结点的下标值，其默认值为头结点的下标值
+        var currentIndex = 0
+        
+        // 如果链表不为空，并且下标值合法
+        while currentNode != nil && currentIndex < index {
+            
+            // 将指定下标值所对应的结点保存到currentNode中
+            currentNode = currentNode!.next
+            currentIndex += 1
+        }
+        
+        // 如果找到该结点，则将其返回
+        return currentNode
+    }
     
-    
+    @discardableResult
+    public mutating func inset(_ value: T, after node: Node<T>) -> Node<T> {
+        
+        //
+        guard tail !== node else {
+            append(value)
+            return tail!
+        }
+        
+        node.next = Node(value: value, next: node.next)
+        
+        return node.next!
+    }
 }
 
 
