@@ -1,3 +1,7 @@
+/**
+ 功能函数
+ */
+
 import Foundation
 
 

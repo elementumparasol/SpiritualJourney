@@ -14,3 +14,19 @@ example(of: "输出链表的结点") {
     // 打印node1
     print(node1)
 }
+
+
+
+example(of: "采用头插法，在链表头部插入一个新的结点") {
+    
+    // 创建一个空的链表
+    var list = LinkedList<Int>()
+    
+    // 依次插入新的结点
+    list.push(1)
+    list.push(3)
+    list.push(5)
+    
+    // 打印链表list
+    print(list)
+}

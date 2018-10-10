@@ -1,13 +1,16 @@
-import Foundation
+/**
+ 定义链表的结点
+ */
 
-// 定义链表的结点
+
+import Foundation
 
 public class Node<T> {
     
-    /// 结点的数据域
+    /// 结点的数据域，用于保存当前结点的值
     public var value: T
     
-    /// 指向下一个结点的指针域，有可能为空
+    /// 结点的指针域，用于保存指向下一个结点的指针
     public var next: Node?
     
     /// 创建一个结点，并且对结点的属性进行初始化
