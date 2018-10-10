@@ -39,6 +39,33 @@ public struct LinkedList<T> {
             tail = head
         }
     }
+    
+    /// 在链表的尾部添加一个新的结点(尾插法)
+    ///
+    /// - Parameter value: 新结点的值
+    public mutating func append(_ value: T) {
+        
+        // 校验链表是否为空
+        guard !isEmpty else {
+            
+            // 如果链表为空，则采用头插法将新
+            // 结点插入到链表中作为第一个结点
+            push(value)
+            return
+        }
+        
+        // 如果链表不为空，则将新结点作为尾结点
+        // 指针tail的下一个结点
+        tail!.next = Node(value: value)
+        
+        // 让尾结点指针tail重新指向新的尾结点
+        tail = tail!.next
+        
+        // tail!.next = nil
+    }
+    
+    
+    
 }
 
 

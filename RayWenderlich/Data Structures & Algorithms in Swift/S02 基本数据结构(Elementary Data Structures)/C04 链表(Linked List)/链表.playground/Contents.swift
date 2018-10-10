@@ -17,15 +17,31 @@ example(of: "输出链表的结点") {
 
 
 
-example(of: "采用头插法，在链表头部插入一个新的结点") {
+example(of: "采用头插法，在链表头部插入新的结点") {
     
     // 创建一个空的链表
     var list = LinkedList<Int>()
     
-    // 依次插入新的结点
+    // 采用头插法，依次插入新的结点
     list.push(1)
     list.push(3)
     list.push(5)
+    
+    // 打印链表list
+    print(list)
+}
+
+
+
+example(of: "采用尾插法，在链表的尾部插入新的结点") {
+    
+    // 创建一个空的链表
+    var list = LinkedList<Int>()
+    
+    // 采用尾插法，依次插入新的结点
+    list.append(1)
+    list.append(3)
+    list.append(5)
     
     // 打印链表list
     print(list)
