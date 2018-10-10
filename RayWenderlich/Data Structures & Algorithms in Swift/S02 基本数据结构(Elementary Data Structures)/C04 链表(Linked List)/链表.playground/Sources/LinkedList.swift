@@ -64,23 +64,26 @@ public struct LinkedList<T> {
         // tail!.next = nil
     }
     
-    /// 根据指定的下标值在链表中寻找特定的结点
+    /// 根据指定的下标值在链表中寻找与之对应的结点
     ///
     /// - Parameter index: 指定的下标值
-    /// - Returns: 返回该下标值在链表中对应的结点
+    /// - Returns: 如果找到该下标值所对应的结点，则将该结点返回；否则，返回nil
     public func node(at index: Int) -> Node<T>? {
         
-        // currentNode用来保存需要寻找的结点，其默认值为头结点
+        // currentNode用来保存查找结果，其默认值为头结点
         var currentNode = head
         
-        // currentIndex用来保存需要寻找结点的下标值，其默认值为头结点的下标值
+        // currentIndex作为计数器，其默认值为头结点所对应的下标值
         var currentIndex = 0
         
-        // 如果链表不为空，并且下标值合法
+        // 当链表不为空，并且计数器currentIndex没有越界时，遍历链表
+        // 如果列表为空，或者计数器currentIndex越界，则返回值为nil
         while currentNode != nil && currentIndex < index {
             
-            // 将指定下标值所对应的结点保存到currentNode中
+            // 将下一个结点保存到currentNode中
             currentNode = currentNode!.next
+            
+            // 计数器currentIndex加一
             currentIndex += 1
         }
         
@@ -88,19 +91,32 @@ public struct LinkedList<T> {
         return currentNode
     }
     
+    /// 在指定的结点后面插入新的结点
+    ///
+    /// - Parameters:
+    ///   - value: 待插入新结点的值
+    ///   - node: 指定的结点，需要在该结点后面插入新的结点
+    /// - Returns: 返回新插入的结点
     @discardableResult
     public mutating func inset(_ value: T, after node: Node<T>) -> Node<T> {
         
-        //
+        // 校验指定的结点node是否为尾结点
         guard tail !== node else {
+            
+            // 如果node是尾结点，则采用尾插法，直接将新结点插入到链表的尾部
             append(value)
             return tail!
         }
         
+        // 根据value的值创建新的结点，并且让新结点的next指向指定结点的下一个结点
+        // 最后，再将新结点插入到指定结点的后面
         node.next = Node(value: value, next: node.next)
         
+        // 返回新插入的结点
         return node.next!
     }
+    
+    
 }
 
 
