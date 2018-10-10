@@ -85,7 +85,17 @@ public struct LinkedList<T> {
             
             // 计数器currentIndex加一
             currentIndex += 1
+            
+            // 因为当链表不为空，也就是currentNode不等于nil时，
+            // 才进入到while循环体中。当出现currentNode的值为
+            // nil时，也就是链表中所有的结点都遍历完毕，currentIndex
+            // 的值仍然未达到指定的索引值index，那就说明index已
+            // 经超出了链表的最大边界，此时给一个提醒
+            if currentNode == nil {
+                print("下标值越界!链表中最大的索引值不能超过\(currentIndex - 1)")
+            }
         }
+        
         
         // 如果找到该结点，则将其返回
         return currentNode

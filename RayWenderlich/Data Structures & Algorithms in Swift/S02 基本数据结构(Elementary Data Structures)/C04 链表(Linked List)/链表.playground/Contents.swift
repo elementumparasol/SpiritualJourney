@@ -62,10 +62,10 @@ example(of: "根据给定的索引在链表中查找与之对应的结点，并�
     print("在插入新结点之前，链表list中的元素为: \(list)")
     
     // 查找下标值为1的结点，并且将它的值保存到tmpNode中
-    guard let tmpNode = list.node(at: 3) else { return }
+    guard let tmpNode = list.node(at: 1) else { return }
     
     // 在tmpNode后面插入新的结点(-1)
-    list.inset(-1, after: tmpNode)
+    list.inset(-100, after: tmpNode)
     
     print("在插入新结点之后，链表list中的元素为: \(list)")
 }
