@@ -29,8 +29,8 @@ class ViewController: UIViewController {
     
     // MARK: - 自定义属性
     
-    ///
-    var items: [Int] = [5, 6, 7]
+    /// itemTitles中部分标题所对应的下标值
+    var items = [5, 6, 7]
     
     
     // MARK: - 类自带的方法
@@ -59,8 +59,10 @@ extension ViewController: UITableViewDataSource {
     // 返回tableView中的cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        // 根据可重用标识符取出cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as UITableViewCell
         
+        // 设置cell上面的数据
         cell.accessoryType = .none
         cell.textLabel?.text = itemTitles[items[indexPath.row]]
         cell.imageView?.image = UIImage(named: "summericons_100px_0\(items[indexPath.row]).png")
