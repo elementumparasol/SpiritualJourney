@@ -69,3 +69,23 @@ example(of: "根据给定的索引在链表中查找与之对应的结点，并�
     
     print("在插入新结点之后，链表list中的元素为: \(list)")
 }
+
+
+
+example(of: "如果链表不为空，则删除链表的头结点，并且返回该结点的值") {
+    
+    // 创建空的链表
+    var list = LinkedList<Int>()
+    
+    // 采用头插法，依次插入新的结点
+    list.push(1)
+    list.push(3)
+    list.push(5)
+    
+    print("在删除链表头结点之前，链表中的元素为: \(list)")
+    
+    // 删除链表中的头结点
+    list.pop()
+    
+    print("在删除链表头结点之后，链表中的元素为: \(list)")
+}

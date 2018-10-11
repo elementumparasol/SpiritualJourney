@@ -12,7 +12,7 @@ public struct LinkedList<T> {
     /// 指向尾结点的指针，当链表为空时，它的值为nil
     public var tail: Node<T>?
     
-    /// 构造函数
+    /// 构造方法
     public init() {}
     
     /// 判断链表是否为空
@@ -21,9 +21,9 @@ public struct LinkedList<T> {
     }
     
     
-    // MARK: - 链表的一些基本操作
+    // MARK: - 往链表中插入新的结点
     
-    /// 在链表的头部添加一个新的结点(头插法)
+    /// 在链表的头部添加一个新的结点(头插法)，其时间复杂度为O(1)
     ///
     /// - Parameter value: 新结点的值
     public mutating func push(_ value: T) {
@@ -40,7 +40,7 @@ public struct LinkedList<T> {
         }
     }
     
-    /// 在链表的尾部添加一个新的结点(尾插法)
+    /// 在链表的尾部添加一个新的结点(尾插法)，其时间复杂度为O(1)
     ///
     /// - Parameter value: 新结点的值
     public mutating func append(_ value: T) {
@@ -64,7 +64,7 @@ public struct LinkedList<T> {
         // tail!.next = nil
     }
     
-    /// 根据指定的下标值在链表中寻找与之对应的结点
+    /// 根据指定的下标值在链表中寻找与之对应的结点，其时间复杂度为O(i)，其中i表示index的值
     ///
     /// - Parameter index: 指定的下标值
     /// - Returns: 如果找到该下标值所对应的结点，则将该结点返回；否则，返回nil
@@ -101,13 +101,13 @@ public struct LinkedList<T> {
         return currentNode
     }
     
-    /// 在指定的结点后面插入新的结点
+    /// 在指定的结点后面插入新的结点，其时间复杂度为O(1)
     ///
     /// - Parameters:
     ///   - value: 待插入新结点的值
     ///   - node: 指定的结点，需要在该结点后面插入新的结点
     /// - Returns: 返回新插入的结点
-    @discardableResult
+    @discardableResult  // @discardableResult属性用于忽略该方法的返回值(消除编译器警告)
     public mutating func inset(_ value: T, after node: Node<T>) -> Node<T> {
         
         // 校验指定的结点node是否为尾结点
@@ -125,6 +125,34 @@ public struct LinkedList<T> {
         // 返回新插入的结点
         return node.next!
     }
+    
+    
+    // MARK: - 从链表中删除指定的结点
+    
+    /// 从链表头部删除一个结点，并且将该结点的值返回，其时间复杂度为O(1)
+    ///
+    /// - Returns: 如果链表不为空，则返回该结点的值；如果链表为空，则返回nil
+    @discardableResult
+    public mutating func pop() -> T? {
+        
+        // defer常用于延迟执行一段代码
+        // 通常是在函数返回之前执行
+        defer {
+            
+            // 删除头结点，并且原来指向头结点的指针head往后移一个位置
+            head = head?.next
+            
+            // 如果链表为空，则让指向尾结点的指针tail指向nil
+            if isEmpty {
+                tail = nil
+            }
+        }
+        
+        // 返回链表头结点的值
+        return head?.value
+    }
+    
+    
     
     
 }
