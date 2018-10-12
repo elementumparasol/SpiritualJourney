@@ -228,6 +228,7 @@ public struct LinkedList<T> {
 }
 
 
+// MARK: - CustomStringConvertible
 extension LinkedList: CustomStringConvertible {
     
     public var description: String {
@@ -238,4 +239,65 @@ extension LinkedList: CustomStringConvertible {
         
         return String(describing: head)
     }
+}
+
+
+// MARK: - Collection
+extension LinkedList: Collection {
+    
+    // 自定义一个Index，以便于对链表中各个结点进行索引
+    public struct Index: Comparable {
+        
+        public var node: Node<T>?
+        
+        static public func ==(lhs: Index, rhs: Index) -> Bool {
+            
+            switch (lhs.node, rhs.node) {
+                
+            case let (left?, right?):
+                return left.next === right.next
+            case (nil, nil):
+                return true
+            default:
+                return false
+            }
+        }
+        
+        static public func <(lhs: Index, rhs: Index) -> Bool {
+            
+            guard lhs != rhs else { return false }
+            
+            let nodes = sequence(first: lhs.node) { $0?.next }
+            
+            return nodes.contains { $0 === rhs.node }
+        }
+        
+        
+    }
+    
+    /**
+     要遵守Collection协议，必须实现下列4个属性:
+     - startIndex
+     - endIndex
+     - index(afer: )
+     - subscript
+     */
+    
+    public var startIndex: Index {
+        return Index(node: head)
+    }
+    
+    public var endIndex: Index {
+        return Index(node: tail?.next)
+    }
+    
+    public func index(after i: Index) -> Index {
+        return Index(node: i.node?.next)
+    }
+    
+    public subscript(position: Index) -> T {
+        return position.node!.value
+    }
+    
+    
 }
