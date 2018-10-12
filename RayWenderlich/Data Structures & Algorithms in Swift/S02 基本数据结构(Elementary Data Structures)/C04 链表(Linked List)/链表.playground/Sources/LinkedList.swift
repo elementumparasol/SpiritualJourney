@@ -152,6 +152,48 @@ public struct LinkedList<T> {
         return head?.value
     }
     
+    @discardableResult
+    public mutating func removeLast() -> T? {
+        
+        // 对链表头结点进行校验。如果头结点为nil，
+        // 说明链表为空，此时直接返回nil
+        guard let head = head else {
+            return nil
+        }
+        
+        // 对链表头结点后面的结点进行校验。如果头结点后面的结点
+        // 为空，则说明链表中只有一个结点，直接删除该头结点
+        guard head.next != nil else {
+            return pop()
+        }
+        
+        // pre用来保存尾结点前面的结点，其初始值为头结点
+        var pre = head
+        
+        // current用来保存尾结点，其初始值为头结点
+        var current = head
+        
+        // 使用while循环获取current的下一个结点，并且将该结点
+        // 保存到next中。当next(也就是current的next)结点为nil
+        // 时，退出while循环。此时pre存储的是链表中倒数第二个结
+        // 点，而current中存储的是链表中最后一个结点
+        while let next = current.next {
+            
+            // 将current保存到pre中
+            pre = current
+            
+            // 将next(也就是current的next结点)赋值给current
+            current = next
+        }
+        
+        // 删除链表中最后一个结点
+        pre.next = nil
+        
+        // 让指向链表尾结点的指针tail指向pre
+        tail = pre
+        
+        return current.value
+    }
     
     
     
