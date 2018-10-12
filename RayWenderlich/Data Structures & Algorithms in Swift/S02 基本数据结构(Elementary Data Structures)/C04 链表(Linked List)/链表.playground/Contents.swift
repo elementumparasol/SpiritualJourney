@@ -137,3 +137,23 @@ example(of: "如果链表不为空，删除指定结点后面的某个结点") {
     print("在删除指定结点后面的结点之后，链表中的元素依次为: \(list)")
     print("被删除结点的值为:" + String(describing: removedValue))
 }
+
+
+
+example(of: "遵守Collection协议之后") {
+    
+    // 创建空的链表
+    var list = LinkedList<Int>()
+    
+    // 采用尾插法，依次插入新的结点
+    for i in 0..<10 {
+        list.append(i)
+    }
+    
+    // 打印链表list
+    print(list)
+    print("链表第一个结点: \(list[list.startIndex])")
+    print("链表中前3个结点的值所组成的数组为: \(Array(list.prefix(3)))")
+    print("链表中后3个结点的值所组成的数组为: \(Array(list.suffix(3)))")
+    print("链表中所有结点值的和为: \(list.reduce(0, +))")
+}

@@ -283,18 +283,22 @@ extension LinkedList: Collection {
      - subscript
      */
     
+    /// 链表第一个结点的索引
     public var startIndex: Index {
         return Index(node: head)
     }
     
+    /// 链表最后一个结点的索引
     public var endIndex: Index {
         return Index(node: tail?.next)
     }
     
+    /// 链表中下标为i的结点后面结点的索引
     public func index(after i: Index) -> Index {
         return Index(node: i.node?.next)
     }
     
+    /// 链表中某个结点的下标值
     public subscript(position: Index) -> T {
         return position.node!.value
     }
