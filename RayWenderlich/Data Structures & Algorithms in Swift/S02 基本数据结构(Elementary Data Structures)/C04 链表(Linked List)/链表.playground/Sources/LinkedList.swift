@@ -152,6 +152,9 @@ public struct LinkedList<T> {
         return head?.value
     }
     
+    /// 如果链表不为空，则删除链表中最后一个结点，并且返回该结点的值，其时间复杂度为O(n)
+    ///
+    /// - Returns: 如果链表不为空，则返回尾结点的值；如果连表为空，则返回nil
     @discardableResult
     public mutating func removeLast() -> T? {
         
@@ -193,6 +196,31 @@ public struct LinkedList<T> {
         tail = pre
         
         return current.value
+    }
+    
+    /// 如果链表不为空，并且指定结点后面的结点存在，则删除指定结点后面的结点，其时间复杂度为O(1)
+    ///
+    /// - Parameter node: 链表中的某个结点
+    /// - Returns: 如果链表中指定结点后面的结点存在，则删除该结点后面的结点，并且返回被删除结点的值；否则，返回nil
+    @discardableResult
+    public mutating func remove(after node: Node<T>) -> T? {
+        
+        defer {
+            
+            // 如果指定结点后面的结点刚好是链表的尾结点
+            if node.next === tail {
+                
+                // 则删除node后面的结点，并且让链表中指向链表尾结点
+                // 的指针tail重新指向node
+                tail = node
+            }
+            
+            // 删除指定结点node后面的结点
+            node.next = node.next?.next
+        }
+        
+        // 返回被删除结点的值
+        return node.next?.value
     }
     
     
