@@ -8,6 +8,13 @@ public struct Stack<Element> {
     /// 构造方法
     public init() {}
     
+    /// 将一个已经存在的数组初始化为一个受限制的栈
+    ///
+    /// - Parameter elements: 一个已经存在的数组
+    public init(_ elements: [Element]) {
+        storage = elements
+    }
+    
     /// 将元素压入栈顶，其时间复杂度为O(1)
     ///
     /// - Parameter element: 被压入栈顶的元素
@@ -27,9 +34,23 @@ public struct Stack<Element> {
         // 将被删除的数组元素进行返回
         return storage.popLast()
     }
+    
+    /// 返回栈顶元素，其时间复杂度为O(1)
+    ///
+    /// - Returns: 如果栈不为空，则返回栈顶元素；如果栈为空，则返回nil
+    public func peek() -> Element? {
+        return storage.last
+    }
+    
+    /// 判断栈是否为空，如果是，则返回true；否则，返回false
+    public var isEmpty: Bool {
+        return peek() == nil
+    }
+    
 }
 
 
+// MARK: - CustomStringConvertible
 extension Stack: CustomStringConvertible {
     
     public var description: String {
@@ -46,5 +67,17 @@ extension Stack: CustomStringConvertible {
             .joined(separator: "\n")
         
         return topDivider + stackElements + bottomDivider
+    }
+}
+
+
+// MARK: - ExpressibleByArrayLiteral
+extension Stack: ExpressibleByArrayLiteral {
+    
+    /// 使用字面量初始化方法创建栈
+    ///
+    /// - Parameter elements: 可变参数
+    public init(arrayLiteral elements: Element...) {
+        storage = elements
     }
 }
