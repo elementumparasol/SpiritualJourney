@@ -180,3 +180,26 @@ example(of: "数组的\"写时复制\"") {
     print("array1: \(array1)")
     print("array2: \(array2)")
 }
+
+
+
+example(of: "链表的\"写时复制\"") {
+    
+    // 创建空的链表list1，并且依次往里面添加新的结点
+    var list1 = LinkedList<Int>()
+    list1.append(1)
+    list1.append(3)
+    list1.append(5)
+    
+    // 创建链表list2，并且将链表list1赋值给它
+    var list2 = list1
+    
+    print(list1)
+    print(list2)
+    
+    print("\n--- 往链表list2中添加新的结点 ---\n")
+    list2.append(7)
+    
+    print(list1)
+    print(list2)
+}

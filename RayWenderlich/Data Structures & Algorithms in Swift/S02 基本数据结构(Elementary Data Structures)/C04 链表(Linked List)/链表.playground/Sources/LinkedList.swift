@@ -28,6 +28,9 @@ public struct LinkedList<T> {
     /// - Parameter value: 新结点的值
     public mutating func push(_ value: T) {
         
+        // 实现"写时复制"
+        copyNodes()
+        
         // 利用值value创建一个新的结点
         // 并且将该结点作为链表的头结点
         head = Node(value: value, next: head)
@@ -44,6 +47,9 @@ public struct LinkedList<T> {
     ///
     /// - Parameter value: 新结点的值
     public mutating func append(_ value: T) {
+        
+        // 实现"写时复制"
+        copyNodes()
         
         // 校验链表是否为空
         guard !isEmpty else {
@@ -110,6 +116,9 @@ public struct LinkedList<T> {
     @discardableResult  // @discardableResult属性用于忽略该方法的返回值(消除编译器警告)
     public mutating func inset(_ value: T, after node: Node<T>) -> Node<T> {
         
+        // 实现"写时复制"
+        copyNodes()
+        
         // 校验指定的结点node是否为尾结点
         guard tail !== node else {
             
@@ -135,6 +144,9 @@ public struct LinkedList<T> {
     @discardableResult
     public mutating func pop() -> T? {
         
+        // 实现"写时复制"
+        copyNodes()
+        
         // defer常用于延迟执行一段代码
         // 通常是在函数返回之前执行
         defer {
@@ -157,6 +169,9 @@ public struct LinkedList<T> {
     /// - Returns: 如果链表不为空，则返回尾结点的值；如果连表为空，则返回nil
     @discardableResult
     public mutating func removeLast() -> T? {
+        
+        // 实现"写时复制"
+        copyNodes()
         
         // 对链表头结点进行校验。如果头结点为nil，
         // 说明链表为空，此时直接返回nil
@@ -205,6 +220,9 @@ public struct LinkedList<T> {
     @discardableResult
     public mutating func remove(after node: Node<T>) -> T? {
         
+        // 实现"写时复制"
+        copyNodes()
+        
         defer {
             
             // 如果指定结点后面的结点刚好是链表的尾结点
@@ -223,6 +241,24 @@ public struct LinkedList<T> {
         return node.next?.value
     }
     
+    /// 实现链表的"写时复制"技术
+    private mutating func copyNodes() {
+        
+        guard var oldNode = head else { return }
+        
+        head = Node(value: oldNode.value)
+        var newNode = head
+        
+        while let nextOldNode = oldNode.next {
+            
+            newNode!.next = Node(value: nextOldNode.value)
+            newNode = newNode!.next
+            
+            oldNode = nextOldNode
+        }
+        
+        tail = newNode
+    }
     
     
 }
