@@ -157,3 +157,26 @@ example(of: "遵守Collection协议之后") {
     print("链表中后3个结点的值所组成的数组为: \(Array(list.suffix(3)))")
     print("链表中所有结点值的和为: \(list.reduce(0, +))")
 }
+
+
+
+example(of: "数组的\"写时复制\"") {
+    
+    // 创建数组
+    let array1 = [1, 2]
+    var array2 = array1
+    
+    // 在往array2中添加新的元素之前
+    // array1和array2引用的是同一段内存
+    print("array1: \(array1)")
+    print("array2: \(array2)")
+    
+    print("\n--- 往array2中添加新的数组元素: 3 ---\n")
+    array2.append(3)
+    
+    // 在往array2中添加新的元素之后
+    // array2会拷贝array1，然后再将
+    // 新的数据元素添加到自己的内存中
+    print("array1: \(array1)")
+    print("array2: \(array2)")
+}
