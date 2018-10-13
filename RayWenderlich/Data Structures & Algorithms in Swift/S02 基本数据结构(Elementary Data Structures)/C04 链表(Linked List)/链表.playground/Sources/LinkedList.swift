@@ -244,6 +244,8 @@ public struct LinkedList<T> {
     /// 实现链表的"写时复制"技术
     private mutating func copyNodes() {
         
+        guard !isKnownUniquelyReferenced(&head) else { return }
+        
         guard var oldNode = head else { return }
         
         head = Node(value: oldNode.value)
