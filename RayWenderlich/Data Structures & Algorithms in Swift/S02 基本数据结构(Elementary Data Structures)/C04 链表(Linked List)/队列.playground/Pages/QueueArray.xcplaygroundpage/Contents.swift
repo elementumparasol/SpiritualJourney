@@ -38,3 +38,33 @@ public struct QueueArray<T>: Queue {
         return isEmpty ? nil : array.removeFirst()  // 后面的元素会往前移动
     }
 }
+
+
+
+// MARK: - CustomStringConvertible
+extension QueueArray: CustomStringConvertible {
+
+    public var description: String {
+        return String(describing: array)
+    }
+}
+
+
+
+example(of: "队列的基本操作") {
+    
+    // 创建一个空的队列
+    var queue = QueueArray<String>()
+    
+    // 入队列操作(在队尾进行)
+    queue.enqueue("刘备")
+    queue.enqueue("关羽")
+    queue.enqueue("张飞")
+    
+    print(queue)
+    
+    // 出队列操作(在队首进行)
+    queue.dequeue()
+    
+    print(queue)
+}
