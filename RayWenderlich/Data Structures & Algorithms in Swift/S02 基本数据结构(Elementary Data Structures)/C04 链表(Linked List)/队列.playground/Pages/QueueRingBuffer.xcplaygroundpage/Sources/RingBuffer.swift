@@ -87,3 +87,13 @@ public struct RingBuffer<T> {
         return availableSpaceForWriting == 0
     }
 }
+
+// MARK: - CustomStringConvertible
+extension RingBuffer: CustomStringConvertible {
+    public var description: String {
+        let values = (0..<availableSpaceForReading).map {
+            String(describing: array[($0 + readIndex) % array.count]!)
+        }
+        return "[" + values.joined(separator: ", ") + "]"
+    }
+}
