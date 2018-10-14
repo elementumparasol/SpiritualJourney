@@ -40,3 +40,11 @@
 ### 项目1 - 模拟用户登录
 
 ![模拟用户登录界面](https://github.com/enricashi/SpiritualJourney/blob/master/Images/Animations/%E6%A8%A1%E6%8B%9F%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95.gif)
+
+
+## 四、[《Data Structures and Algorithms in Swift》](https://store.raywenderlich.com/products/data-structures-and-algorithms-in-swift)
+
+&emsp;&emsp;非常好的数据结构和算法相关的教材，目前官网已经更新到了Swift 4.2，推荐大家购买学习。我的练习代码也已经同步更新到最新版本，
+并且都做了详细的中文注释。
+
+
