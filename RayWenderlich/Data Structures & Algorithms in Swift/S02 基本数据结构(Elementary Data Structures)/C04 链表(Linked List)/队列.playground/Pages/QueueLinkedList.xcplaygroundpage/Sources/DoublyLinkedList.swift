@@ -117,7 +117,7 @@ extension DoublyLinkedList: CustomStringConvertible {
             string.append("\(node.value) -> ")
             current = node.next
         }
-        return string + "end"
+        return string + "队尾"
     }
 }
 

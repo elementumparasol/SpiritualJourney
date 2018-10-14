@@ -45,3 +45,32 @@ public class QueueLinkedList<T>: Queue {
         return list.isEmpty
     }
 }
+
+// MARK: - CustomStringConvertible
+extension QueueLinkedList: CustomStringConvertible {
+    
+    public var description: String {
+        return String(describing: list)
+    }
+}
+
+
+
+example(of: "双链表队列的测试") {
+    
+    // 创建一个空的双链表队列
+    let queue = QueueLinkedList<String>()
+    
+    // 往队列中添加新的元素
+    queue.enqueue("刘备")
+    queue.enqueue("关羽")
+    queue.enqueue("张飞")
+    
+    print(queue)
+    print("队首元素为: \(queue.peek!)")
+    
+    // 删除队首元素
+    queue.dequeue()
+    
+    print("删除队首元素后，队列为: \(queue)")
+}
