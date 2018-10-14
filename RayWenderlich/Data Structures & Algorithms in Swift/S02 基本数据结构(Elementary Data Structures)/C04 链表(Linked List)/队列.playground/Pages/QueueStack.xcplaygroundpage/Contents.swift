@@ -74,3 +74,20 @@ extension QueueStack: CustomStringConvertible {
 
 
 
+example(of: "双栈队列的演示") {
+    
+    // 创建队列
+    var queue = QueueStack<String>()
+    
+    // 入队列操作
+    queue.enqueue("刘备")
+    queue.enqueue("关羽")
+    queue.enqueue("张飞")
+    
+    print(queue)
+    
+    // 出队列操作
+    queue.dequeue()
+    
+    print(queue)
+}
