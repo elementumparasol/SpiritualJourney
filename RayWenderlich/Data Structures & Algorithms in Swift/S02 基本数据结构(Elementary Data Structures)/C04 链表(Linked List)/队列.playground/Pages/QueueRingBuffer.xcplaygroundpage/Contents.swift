@@ -39,3 +39,32 @@ public struct QueueRingBuffer<T>: Queue {
         return isEmpty ? nil : ringBuffer.read()
     }
 }
+
+// MARK: - CustomStringConvertible
+extension QueueRingBuffer: CustomStringConvertible {
+    
+    public var description: String {
+        return String(describing: ringBuffer)
+    }
+}
+
+
+
+
+example(of: "QueueRingBuffer的演示实例") {
+    
+    // 创建空的queue
+    var queue = QueueRingBuffer<String>(cout: 10)
+    
+    // 入队列操作
+    queue.enqueue("刘备")
+    queue.enqueue("关羽")
+    queue.enqueue("张飞")
+    
+    print(queue)
+    
+    // 出队列操作
+    queue.dequeue()
+    
+    print(queue)
+}
