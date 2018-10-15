@@ -20,3 +20,30 @@ public class BinaryNode<Element> {
         self.value = value
     }
 }
+
+// MARK: - CustomStringConvertible
+extension BinaryNode: CustomStringConvertible {
+    
+    public var description: String {
+        
+        return diagram(for: self)
+    }
+    
+    /// 自定义输出格式
+    private func diagram(for node: BinaryNode?,
+                         _ top: String = "",
+                         _ root: String = "",
+                         _ bottom: String = "") -> String {
+        guard let node = node else {
+            return root + "nil\n"
+        }
+        if node.leftChild == nil && node.rightChild == nil {
+            return root + "\(node.value)\n"
+        }
+        return diagram(for: node.rightChild, top + " ", top + "┌──", top + "│ ")
+            + root + "\(node.value)\n"
+            + diagram(for: node.leftChild, bottom + "│ ", bottom + "└──", bottom + " ")
+    }
+
+    
+}
