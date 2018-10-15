@@ -28,7 +28,7 @@ public class TreeNode<T> {
 // MARK: - 树的遍历
 extension TreeNode {
     
-    /// 深度优先搜索
+    /// 深度优先遍历
     ///
     /// - Parameter visit: 函数(或者说闭包)参数，用来遍历整个树的结点
     public func forEachDepthFirst(visit: (TreeNode) -> Void) {
@@ -41,10 +41,17 @@ extension TreeNode {
         }
     }
     
+    /// 按层序遍历
+    ///
+    /// - Parameter visit: 函数(或者闭包)参数，用来遍历整个树的结点
     public func forEachLevelOrder(visit: (TreeNode) -> Void) {
         
         visit(self)
-        
-        
+        var queue = Queue<TreeNode>()
+        children.forEach { queue.enqueue($0) }
+        while let node = queue.dequeue() {
+            visit(node)
+            node.children.forEach { queue.enqueue($0) }
+        }
     }
 }

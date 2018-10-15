@@ -44,6 +44,8 @@ func makeBeverageTree() -> TreeNode<String> {
     return tree
 }
 
+
+
 example(of: "深度优先遍历") {
     
     // 创建树
@@ -51,4 +53,12 @@ example(of: "深度优先遍历") {
     
     // 遍历树
     tree.forEachDepthFirst(visit: { print($0.value) })
+}
+
+
+
+example(of: "按层序遍历") {
+    
+    let tree = makeBeverageTree()
+    tree.forEachLevelOrder(visit: { print($0.value) })
 }
