@@ -60,4 +60,15 @@ extension BinaryNode {
         visit(value)
         rightChild?.traverseInOrder(visit: visit)
     }
+    
+    /// 先序遍历二叉树
+    ///
+    /// - Parameter visit: 函数(或者闭包)参数，用于访问二叉树的结点
+    public func traversePreOrder(visit: (Element) -> Void) {
+        
+        visit(value)
+        leftChild?.traversePreOrder(visit: visit)
+        rightChild?.traversePreOrder(visit: visit)
+    }
+    
 }
