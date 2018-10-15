@@ -40,4 +40,11 @@ extension TreeNode {
             $0.forEachDepthFirst(visit: visit)
         }
     }
+    
+    public func forEachLevelOrder(visit: (TreeNode) -> Void) {
+        
+        visit(self)
+        
+        
+    }
 }
