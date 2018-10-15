@@ -24,3 +24,20 @@ public class TreeNode<T> {
         children.append(child)
     }
 }
+
+// MARK: - 树的遍历
+extension TreeNode {
+    
+    /// 深度优先搜索
+    ///
+    /// - Parameter visit: 函数(或者说闭包)参数，用来遍历整个树的结点
+    public func forEachDepthFirst(visit: (TreeNode) -> Void) {
+        
+        visit(self)
+        children.forEach {
+            
+            // 递归下一个结点
+            $0.forEachDepthFirst(visit: visit)
+        }
+    }
+}
