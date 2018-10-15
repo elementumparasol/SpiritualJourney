@@ -26,3 +26,10 @@ var tree: BinaryNode<String> = {
 example(of: "打印二叉树示意图") {
     print(tree)
 }
+
+
+
+example(of: "中序遍历一棵二叉树") {
+    
+    tree.traverseInOrder(visit: { print($0)} )
+}
