@@ -40,3 +40,10 @@ example(of: "先序遍历一棵二叉树") {
     
     tree.traversePreOrder(visit: { print($0) })
 }
+
+
+
+example(of: "后序遍历一棵二叉树") {
+    
+    tree.traversePostOrder(visit: { print($0) })
+}
