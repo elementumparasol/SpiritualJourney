@@ -55,3 +55,32 @@ extension TreeNode {
         }
     }
 }
+
+// MARK: - Equatable
+extension TreeNode where T: Equatable {
+    
+    /// 搜索树中的某个结点
+    ///
+    /// - Parameter value: 待搜索结点的值
+    /// - Returns: 如果搜索成功，则返回该结点的值；否则，返回nil
+    public func search(_ value: T) -> TreeNode? {
+        
+        // 用于保存搜索结果
+        var result: TreeNode?
+        
+        // 按照层次，对树进行遍历
+        forEachLevelOrder(visit: { node in
+            
+            // 比对搜索结果
+            if node.value == value {
+                
+                // 如果搜索成功，则将结果保存到result中
+                result = node
+            }
+        })
+        
+        // 返回搜索结果
+        return result
+    }
+    
+}

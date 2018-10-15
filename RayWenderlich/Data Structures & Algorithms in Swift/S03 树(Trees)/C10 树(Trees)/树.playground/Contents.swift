@@ -62,3 +62,22 @@ example(of: "按层序遍历") {
     let tree = makeBeverageTree()
     tree.forEachLevelOrder(visit: { print($0.value) })
 }
+
+
+
+example(of: "在树中搜索指定的结果，如果搜索成功，则将其返回") {
+    
+    let tree = makeBeverageTree()
+    
+    if let searchResult1 = tree.search("Ginger ale") {
+        print("查找结果: \(searchResult1.value)")
+    } else {
+        print("没有找到指定的结点")
+    }
+    
+    if let searchResult2 = tree.search("WKD Blue") {
+        print("查找结果: \(searchResult2.value)")
+    } else {
+        print("没有找到指定的结点")
+    }
+}
