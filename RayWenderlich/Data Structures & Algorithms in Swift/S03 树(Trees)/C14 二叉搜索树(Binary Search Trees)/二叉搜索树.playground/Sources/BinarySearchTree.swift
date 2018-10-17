@@ -37,6 +37,7 @@ extension BinarySearchTree {
     /// - Parameter value: 待插入新结点的值
     public mutating func insert(_ value: Element) {
         
+        // 创建二叉搜索树的根结点(或者子树的根结点)
         root = insert(from: root, value: value)
     }
     
