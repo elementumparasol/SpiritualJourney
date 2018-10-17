@@ -40,3 +40,24 @@ example(of: "创建一棵BST二叉树") {
 example(of: "打印二叉搜索树") {
     print(exampleTree)
 }
+
+
+
+example(of: "在二叉搜索树中查找指定的结点") {
+    
+    if exampleTree.contains(5) {
+        print("找到指定的结点: 5")
+    } else {
+        print("没有找到指定的结点: 5")
+    }
+}
+
+
+
+example(of: "删除二叉搜索树中的某个结点") {
+    
+    var bst = exampleTree
+    print("删除结点之前，二叉搜索树bst中元素的情况: \n\(bst)")
+    bst.remove(3)
+    print("删除结点之后，二叉搜索树bst中元素的情况: \n\(bst)")
+}
