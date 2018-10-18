@@ -18,13 +18,19 @@ public class AVLNode<Element> {
     /// 平衡二叉树的高度
     public var height = 0
     
-    /// 左子树的高度
+    /// 计算该结点左子树的高度
     public var leftHeight: Int {
+        
+        // 计算该结点的左子树高度；如果该结点
+        // 的左子树为空，则计该结点的高度为-1
         return leftChild?.height ?? -1
     }
     
-    /// 右子树的高度
+    /// 计算该结点右子树的高度
     public var rightHeight: Int {
+        
+        // 计算该结点的右子树高度；如果该结点
+        // 的右子树为空，则计该结点的高度为-1
         return rightChild?.height ?? -1
     }
     
