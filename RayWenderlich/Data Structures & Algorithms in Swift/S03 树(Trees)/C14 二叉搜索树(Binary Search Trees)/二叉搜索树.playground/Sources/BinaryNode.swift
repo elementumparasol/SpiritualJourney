@@ -49,26 +49,47 @@ extension BinaryNode: CustomStringConvertible {
 extension BinaryNode {
     
     /// 二叉树的中序遍历
+    ///
+    /// - Parameter visit: 函数(或者闭包)参数，用于访问二叉树的结点
     public func traverseInOrder(visit: (Element) -> Void) {
         
+        // 递归遍历结点的左子树
         leftChild?.traverseInOrder(visit: visit)
+        
+        // 访问结点
         visit(value)
+        
+        // 递归遍历结点的右子树
         rightChild?.traverseInOrder(visit: visit)
     }
     
     /// 二叉树的先序遍历
+    ///
+    /// - Parameter visit: 函数(或者闭包)参数，用于访问二叉树的结点
     public func traversePreOrder(visit: (Element) -> Void) {
         
+        // 访问结点
         visit(value)
+        
+        // 递归遍历结点的左子树
         leftChild?.traversePreOrder(visit: visit)
+        
+        // 递归遍历结点的右子树
         rightChild?.traversePreOrder(visit: visit)
     }
     
     /// 二叉树的后序遍历
+    ///
+    /// - Parameter visit: 函数(或者闭包)参数，用于访问二叉树的结点
     public func traversePostOrder(visit: (Element) -> Void) {
         
+        // 递归遍历结点的左子树
         leftChild?.traversePostOrder(visit: visit)
+        
+        // 递归遍历结点的右子树
         rightChild?.traversePostOrder(visit: visit)
+        
+        // 访问结点
         visit(value)
     }
 }
