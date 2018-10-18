@@ -31,4 +31,53 @@ struct Heap<Element: Equatable> {
     init(sort: @escaping (Element, Element) -> Bool) {
         self.sort = sort
     }
+    
+    /// 判断堆是否为空
+    var isEmpty: Bool {
+        return elements.isEmpty
+    }
+    
+    /// 计算堆中元素的个数
+    var count: Int {
+        return elements.count
+    }
+    
+    /// 取出堆的根结点
+    ///
+    /// - Returns: 如果堆不为空，则返回根结点；否则，返回nil
+    func peek() -> Element? {
+        return elements.first
+    }
+    
+    /// 根据当前结点的索引来计算其左子树结点的索引
+    ///
+    /// - Parameter index: 当前结点的索引
+    /// - Returns: 返回当前结点左子树结点的索引
+    func leftChildIndex(ofParentAt index: Int) -> Int {
+        
+        // 当前结点左子树结点的索引值为(2 * i) + 1
+        return (2 * index) + 1
+    }
+    
+    /// 根据当前结点的索引来计算其右子树结点的索引
+    ///
+    /// - Parameter index: 当前结点的所以
+    /// - Returns: 返回当前结点右子树结点的索引
+    func rightChildIndex(ofParentAt index: Int) -> Int {
+        
+        // 当前结点右子树结点的索引值为(2 * i) + 2
+        return (2 * index) + 2
+    }
+    
+    /// 根据当前结点的索引来计算其父结点的索引
+    ///
+    /// - Parameter index: 当前结点的索引
+    /// - Returns: 返回当前结点父结点的所以
+    func parentIndex(ofChildAt index: Int) -> Int {
+        
+        // 当前结点父结点的索引值为floor((i - 1) / 2)
+        return (index - 1) / 2
+    }
+    
+    
 }
