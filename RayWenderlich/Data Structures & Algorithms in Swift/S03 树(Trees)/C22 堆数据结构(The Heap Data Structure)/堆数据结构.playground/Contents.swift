@@ -28,8 +28,15 @@ struct Heap<Element: Equatable> {
     /// 构造方法，用于创建一个堆数据结构
     ///
     /// - Parameter sort: 外界传递进来的函数(闭包)参数，用于确定堆中的元素如何排序
-    init(sort: @escaping (Element, Element) -> Bool) {
+    init(sort: @escaping (Element, Element) -> Bool, elements: [Element] = []) {
         self.sort = sort
+        self.elements = elements
+        
+        if !elements.isEmpty {
+            for i in stride(from: elements.count / 2 - 1, through: 0, by: -1) {
+                shiftDown(from: i)
+            }
+        }
     }
     
     /// 判断堆是否为空
@@ -188,4 +195,27 @@ struct Heap<Element: Equatable> {
         }
     }
     
+    func index(of element: Element, startingAt i: Int) -> Int? {
+        
+        if i >= count { return nil }
+        
+        if sort(element, elements[i]) { return nil }
+        
+        if element == elements[i] { return i }
+        
+        if let j = index(of: element, startingAt: leftChildIndex(ofParentAt: i)) {
+            return j
+        }
+        
+        if let j = index(of: element, startingAt: rightChildIndex(ofParentAt: i)) {
+            return j
+        }
+        
+        return nil
+    }
+    
+    
 }
+
+
+
