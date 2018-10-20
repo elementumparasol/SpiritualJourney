@@ -25,6 +25,11 @@ class ActivityController: UITableViewController {
     private let disposeBag = DisposeBag()
     
     
+    private let eventsFileURL = cachedFileURL("events.plist")
+    private let modifiedFileURL = cachedFileURL("modified.txt")
+    private let lastModified = Variable<NSString?>(nil)
+    
+    
     // MARK: - 类自带的方法
 
     override func viewDidLoad() {
@@ -36,18 +41,27 @@ class ActivityController: UITableViewController {
         // 设置刷新控件
         self.refreshControl = UIRefreshControl()
         let refreshControl = self.refreshControl!
-        refreshControl.backgroundColor = UIColor(white: 0.98, alpha: 1)
-        refreshControl.tintColor = .darkGray
-        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
+        refreshControl.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
+        refreshControl.tintColor = UIColor.darkGray
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        
+        let eventsArray = (NSArray(contentsOf: eventsFileURL) as? [[String: Any]]) ?? []
+        events.value = eventsArray.compactMap(Event.init)
+        
+        lastModified.value = try? NSString(contentsOf: modifiedFileURL, usedEncoding: nil)
+        
+        
+        
+        // 程序启动以后，自动获取数据
         refresh()
     }
 
     
     // MARK: - 自定义方法
     
-    /// 下拉刷新
+    /// 下拉刷新(加载新的数据)
     @objc func refresh() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             
@@ -62,8 +76,92 @@ class ActivityController: UITableViewController {
     /// 获取数据
     func fetchEvents(repo: String) {
         
-        //
+        
+        let response = Observable.from([repo])
+            .map { urlString -> URL in
+                return URL(string: "https://api.github.com/repos/\(urlString)/events")!
+            }
+            .map { [weak self] url -> URLRequest in
+                var request = URLRequest(url: url)
+                if let modifiedHeader = self?.lastModified.value {
+                    request.addValue(modifiedHeader as String,
+                                     forHTTPHeaderField: "Last-Modified")
+                }
+                return request
+            }
+            .flatMap { request -> Observable<(response: HTTPURLResponse, data: Data)> in
+                return URLSession.shared.rx.response(request: request)
+            }
+            .share(replay: 1, scope: .whileConnected)
+        
+        
+        
+        response
+            .filter { response, _ in
+                return 200..<300 ~= response.statusCode
+            }
+            .map { _, data -> [[String: Any]] in
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+                    let result = jsonObject as? [[String: Any]] else {
+                        return []
+                }
+                return result
+            }
+            .filter { objects in
+                return objects.count > 0
+            }
+            .map { objects in
+                return objects.compactMap(Event.init)
+            }
+            .subscribe(onNext: { [weak self] newEvents in
+                self?.processEvents(newEvents)
+            })
+            .disposed(by: disposeBag)
+        
+        
+        
+        response
+            .filter {response, _ in
+                return 200..<400 ~= response.statusCode
+            }
+            .flatMap { response, _ -> Observable<NSString> in
+                guard let value = response.allHeaderFields["Last-Modified"]  as? NSString else {
+                    return Observable.empty()
+                }
+                return Observable.just(value)
+            }
+            .subscribe(onNext: { [weak self] modifiedHeader in
+                guard let strongSelf = self else { return }
+                strongSelf.lastModified.value = modifiedHeader
+                try? modifiedHeader.write(to: strongSelf.modifiedFileURL, atomically: true,
+                                          encoding: String.Encoding.utf8.rawValue)
+            })
+            .disposed(by: disposeBag)
+        
+        
+        
+        
     }
+    
+    func processEvents(_ newEvents: [Event]) {
+        var updatedEvents = newEvents + events.value
+        if updatedEvents.count > 50 {
+            updatedEvents = Array<Event>(updatedEvents.prefix(upTo: 50))
+        }
+        
+        events.value = updatedEvents
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+        
+        let eventsArray = updatedEvents.map{ $0.dict } as NSArray
+        eventsArray.write(to: eventsFileURL, atomically: true)
+        
+    }
+    
+    
 
 }
 
