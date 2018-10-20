@@ -9,3 +9,13 @@ example(of: "冒泡儿排序") {
     print("对数组进行排序之后的顺序为: \(array)")
 }
 
+
+
+example(of: "选择排序") {
+    
+    var array = [9, 4, 10, 3]
+    print("数组的原始顺序为: \(array)")
+    
+    selectionSort(&array)
+    print("经过选择排序之后，数组的顺序为: \(array)")
+}
