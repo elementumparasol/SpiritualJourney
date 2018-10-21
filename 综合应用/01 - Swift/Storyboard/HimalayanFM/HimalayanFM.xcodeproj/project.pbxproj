@@ -17,6 +17,10 @@
 		C5351F56217CDDCA0078525E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5351F55217CDDCA0078525E /* Me.storyboard */; };
 		C5351F58217CE2720078525E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351F57217CE2720078525E /* UIColor+Extension.swift */; };
 		C5351F5A217CE6B00078525E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351F59217CE6AF0078525E /* UIImage+Extension.swift */; };
+		C5351FD8217D35060078525E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD7217D35060078525E /* HomeViewController.swift */; };
+		C5351FDA217D35350078525E /* HearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD9217D35350078525E /* HearViewController.swift */; };
+		C5351FDC217D35570078525E /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FDB217D35570078525E /* FindViewController.swift */; };
+		C5351FDE217D35790078525E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FDD217D35790078525E /* MeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		C5351F55217CDDCA0078525E /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		C5351F57217CE2720078525E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C5351F59217CE6AF0078525E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C5351FD7217D35060078525E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C5351FD9217D35350078525E /* HearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearViewController.swift; sourceTree = "<group>"; };
+		C5351FDB217D35570078525E /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		C5351FDD217D35790078525E /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C5351F4F217CDCE50078525E /* Home.storyboard */,
+				C5351FD7217D35060078525E /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				C5351F53217CDD980078525E /* Find.storyboard */,
+				C5351FDB217D35570078525E /* FindViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				C5351F55217CDDCA0078525E /* Me.storyboard */,
+				C5351FDD217D35790078525E /* MeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				C5351F51217CDD2B0078525E /* Hear.storyboard */,
+				C5351FD9217D35350078525E /* HearViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -361,9 +373,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5351FD8217D35060078525E /* HomeViewController.swift in Sources */,
 				C5351F58217CE2720078525E /* UIColor+Extension.swift in Sources */,
+				C5351FDE217D35790078525E /* MeViewController.swift in Sources */,
+				C5351FDA217D35350078525E /* HearViewController.swift in Sources */,
 				C5351F20217CD96F0078525E /* AppDelegate.swift in Sources */,
 				C5351F4E217CDB840078525E /* MainViewController.swift in Sources */,
+				C5351FDC217D35570078525E /* FindViewController.swift in Sources */,
 				C5351F5A217CE6B00078525E /* UIImage+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,11 +12,10 @@
         <!--首页-->
         <scene sceneID="tNp-5b-5Bl">
             <objects>
-                <viewController id="ejB-j1-BOX" sceneMemberID="viewController">
+                <viewController id="ejB-j1-BOX" customClass="HomeViewController" customModule="HimalayanFM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7r-5E-DTr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="7rL-YT-8ey"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="首页" image="tab_home_1_33x25_" selectedImage="tab_home_2_33x25_" id="1Ah-2t-pru"/>
