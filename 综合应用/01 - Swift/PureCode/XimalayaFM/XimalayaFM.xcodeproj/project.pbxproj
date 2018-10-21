@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		C5351F99217D29FA0078525E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351F98217D29FA0078525E /* AppDelegate.swift */; };
 		C5351FA0217D29FC0078525E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5351F9F217D29FC0078525E /* Assets.xcassets */; };
+		C5351FC8217D2CB90078525E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FC7217D2CB90078525E /* MainViewController.swift */; };
+		C5351FCA217D2CDB0078525E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FC9217D2CDB0078525E /* NavigationController.swift */; };
+		C5351FCC217D2CF00078525E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FCB217D2CF00078525E /* HomeViewController.swift */; };
+		C5351FCE217D2CFF0078525E /* HearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FCD217D2CFF0078525E /* HearViewController.swift */; };
+		C5351FD0217D2D0A0078525E /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FCF217D2D0A0078525E /* FindViewController.swift */; };
+		C5351FD2217D2D180078525E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD1217D2D180078525E /* MeViewController.swift */; };
+		C5351FD4217D2D370078525E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD3217D2D370078525E /* UIColor+Extension.swift */; };
+		C5351FD6217D2D700078525E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD5217D2D700078525E /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +24,14 @@
 		C5351F98217D29FA0078525E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5351F9F217D29FC0078525E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5351FA4217D29FC0078525E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5351FC7217D2CB90078525E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C5351FC9217D2CDB0078525E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C5351FCB217D2CF00078525E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C5351FCD217D2CFF0078525E /* HearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearViewController.swift; sourceTree = "<group>"; };
+		C5351FCF217D2D0A0078525E /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		C5351FD1217D2D180078525E /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		C5351FD3217D2D370078525E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C5351FD5217D2D700078525E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +104,8 @@
 		C5351FAD217D2A500078525E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FD3217D2D370078525E /* UIColor+Extension.swift */,
+				C5351FD5217D2D700078525E /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +145,7 @@
 		C5351FB2217D2AB00078525E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FD1217D2D180078525E /* MeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +185,7 @@
 		C5351FB7217D2AEF0078525E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FCF217D2D0A0078525E /* FindViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +225,7 @@
 		C5351FBC217D2B190078525E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FCD217D2CFF0078525E /* HearViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,6 +265,7 @@
 		C5351FC1217D2B430078525E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FCB217D2CF00078525E /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +305,8 @@
 		C5351FC6217D2B9D0078525E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FC7217D2CB90078525E /* MainViewController.swift */,
+				C5351FC9217D2CDB0078525E /* NavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -357,6 +381,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5351F99217D29FA0078525E /* AppDelegate.swift in Sources */,
+				C5351FD2217D2D180078525E /* MeViewController.swift in Sources */,
+				C5351FCA217D2CDB0078525E /* NavigationController.swift in Sources */,
+				C5351FD6217D2D700078525E /* UIImage+Extension.swift in Sources */,
+				C5351FC8217D2CB90078525E /* MainViewController.swift in Sources */,
+				C5351FCE217D2CFF0078525E /* HearViewController.swift in Sources */,
+				C5351FCC217D2CF00078525E /* HomeViewController.swift in Sources */,
+				C5351FD0217D2D0A0078525E /* FindViewController.swift in Sources */,
+				C5351FD4217D2D370078525E /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
