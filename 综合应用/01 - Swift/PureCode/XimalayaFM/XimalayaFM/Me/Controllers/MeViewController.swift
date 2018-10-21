@@ -10,11 +10,21 @@ import UIKit
 
 class MeViewController: UIViewController {
 
+    // MARK: - 类自带的方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 统一设置UI界面
+        setupUI()
+    }
+    
+    // MARK: - 自定义方法
+    
+    /// 统一设置UI界面
+    private func setupUI() {
+        
         view.backgroundColor = UIColor.randomColor()
-        // Do any additional setup after loading the view.
     }
     
 

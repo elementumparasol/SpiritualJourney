@@ -48,7 +48,8 @@ class MainViewController: UITabBarController {
         
         // 设置tabBarItem的title
         if title != "" {
-            childController.title = title
+            // childController.title = title (tabBar和navBar标题)
+            childController.tabBarItem.title = title
         }
         
         // 设置tabBarItem的image
