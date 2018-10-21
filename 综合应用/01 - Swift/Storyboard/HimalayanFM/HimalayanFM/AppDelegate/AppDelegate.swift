@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)], for: .normal)
         
         // 调整tabBarItem上面title和image的间距
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 0)
     }
     
     private func customizeNavigationBar() {

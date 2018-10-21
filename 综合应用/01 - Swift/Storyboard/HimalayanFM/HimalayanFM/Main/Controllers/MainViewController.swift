@@ -10,12 +10,16 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
+    // MARK: - 类自带的方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // 统一设置UI界面
         setupUI()
     }
+    
+    // MARK: - 自定义方法
     
     /// 统一设置UI界面
     private func setupUI() {

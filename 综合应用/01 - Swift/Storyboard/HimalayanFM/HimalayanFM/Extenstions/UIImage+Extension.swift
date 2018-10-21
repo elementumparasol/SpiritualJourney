@@ -18,6 +18,7 @@ extension UIImage {
         
         // 加载原始图片
         guard let image = UIImage(named: imageName) else {
+            print("图片名称: \(imageName)拼写错误，请检查!")
             fatalError("图片名称拼写错误!")
         }
         
@@ -36,6 +37,7 @@ extension UIImage {
         
         // 加载原始图片
         guard let image = UIImage(named: imageName) else {
+            print("图片名称: \(imageName)拼写错误，请检查!")
             fatalError("图片名称拼写错误!")
         }
         
