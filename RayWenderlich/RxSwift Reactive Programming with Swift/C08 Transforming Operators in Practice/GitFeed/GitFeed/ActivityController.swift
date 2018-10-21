@@ -43,7 +43,7 @@ class ActivityController: UITableViewController {
         let refreshControl = self.refreshControl!
         refreshControl.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         refreshControl.tintColor = UIColor.darkGray
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         
