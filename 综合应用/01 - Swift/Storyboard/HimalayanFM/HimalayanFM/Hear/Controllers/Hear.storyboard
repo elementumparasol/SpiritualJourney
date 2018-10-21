@@ -29,7 +29,7 @@
         <scene sceneID="Th0-B8-ua4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJx-nV-4ML" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我听" id="GEQ-2Z-UrH"/>
+                    <tabBarItem key="tabBarItem" title="我听" image="tab_hear_1_33x25_" selectedImage="tab_hear_2_33x25_" id="GEQ-2Z-UrH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPb-O3-5mF">
@@ -46,4 +46,8 @@
             <point key="canvasLocation" x="-271.19999999999999" y="-27.436281859070466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_hear_1_33x25_" width="33" height="25"/>
+        <image name="tab_hear_2_33x25_" width="33" height="25"/>
+    </resources>
 </document>

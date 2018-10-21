@@ -29,7 +29,7 @@
         <scene sceneID="iga-iO-dBR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xbT-de-1FH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" id="cZs-8G-kw0"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="tab_find_1_33x25_" selectedImage="tab_find_2_33x25_" id="cZs-8G-kw0"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QWH-da-Zz9">
@@ -46,4 +46,8 @@
             <point key="canvasLocation" x="204" y="-274.81259370314842"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_find_1_33x25_" width="33" height="25"/>
+        <image name="tab_find_2_33x25_" width="33" height="25"/>
+    </resources>
 </document>

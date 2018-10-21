@@ -29,7 +29,7 @@
         <scene sceneID="lDb-Mz-v4Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qgm-uJ-6dq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="未登录" id="z6d-Tx-Fic"/>
+                    <tabBarItem key="tabBarItem" title="未登录" image="tab_me_1_33x25_" selectedImage="tab_me_2_33x25_" id="z6d-Tx-Fic"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rDZ-m4-pjg">
@@ -46,4 +46,8 @@
             <point key="canvasLocation" x="173.59999999999999" y="-258.62068965517244"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_me_1_33x25_" width="33" height="25"/>
+        <image name="tab_me_2_33x25_" width="33" height="25"/>
+    </resources>
 </document>
