@@ -13,15 +13,97 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="QuestionViewController" customModule="RabbleWabble" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="QuestionView" customModule="RabbleWabble" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prompt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-Gz-xyl">
+                                <rect key="frame" x="0.0" y="80" width="375" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFU-aa-BQa">
+                                <rect key="frame" x="9" y="148" width="357" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIw-0b-yLE">
+                                <rect key="frame" x="293" y="604" width="20" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" red="0.078431372549019607" green="0.59607843137254901" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phO-ll-fsa">
+                                <rect key="frame" x="62" y="604" width="20" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" red="0.9882352941176471" green="0.050980392156862744" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEk-06-59j">
+                                <rect key="frame" x="32" y="516" width="80" height="80"/>
+                                <state key="normal" image="ic_circle_x"/>
+                                <connections>
+                                    <action selector="handleIncorrect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U5P-ez-TZN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfh-XY-4SR">
+                                <rect key="frame" x="263" y="516" width="80" height="80"/>
+                                <state key="normal" image="ic_circle_check"/>
+                                <connections>
+                                    <action selector="handleCorrect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HMM-Vo-XLn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtd-kc-KpS">
+                                <rect key="frame" x="0.0" y="227" width="375" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FVU-Gz-xyl" secondAttribute="trailing" id="8DQ-YX-ecD"/>
+                            <constraint firstItem="mEk-06-59j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="AXA-Qd-z4L"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZIw-0b-yLE" secondAttribute="bottom" constant="24" id="BW6-G1-Myd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="phO-ll-fsa" secondAttribute="bottom" constant="24" id="Bpb-xh-bVL"/>
+                            <constraint firstItem="phO-ll-fsa" firstAttribute="centerX" secondItem="mEk-06-59j" secondAttribute="centerX" id="Dzz-aF-wGT"/>
+                            <constraint firstItem="aFU-aa-BQa" firstAttribute="top" secondItem="FVU-Gz-xyl" secondAttribute="bottom" constant="8" id="LEP-Aa-mPs"/>
+                            <constraint firstItem="Jtd-kc-KpS" firstAttribute="top" secondItem="aFU-aa-BQa" secondAttribute="bottom" constant="50" id="M8k-Nm-FhL"/>
+                            <constraint firstItem="FVU-Gz-xyl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="XjV-oU-eTM"/>
+                            <constraint firstItem="phO-ll-fsa" firstAttribute="top" secondItem="mEk-06-59j" secondAttribute="bottom" constant="8" id="Zdo-wV-rIz"/>
+                            <constraint firstItem="aFU-aa-BQa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="bH2-WC-eoX"/>
+                            <constraint firstItem="ZIw-0b-yLE" firstAttribute="top" secondItem="qfh-XY-4SR" secondAttribute="bottom" constant="8" id="cjJ-SZ-rSd"/>
+                            <constraint firstItem="ZIw-0b-yLE" firstAttribute="centerX" secondItem="qfh-XY-4SR" secondAttribute="centerX" id="cvJ-sp-wdr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jtd-kc-KpS" secondAttribute="trailing" id="oWV-1e-TdP"/>
+                            <constraint firstItem="FVU-Gz-xyl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oZV-3P-DEI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qfh-XY-4SR" secondAttribute="trailing" constant="32" id="psi-8c-V87"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aFU-aa-BQa" secondAttribute="trailing" constant="9" id="y9s-mt-b9K"/>
+                            <constraint firstItem="Jtd-kc-KpS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yLS-Qt-vft"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outlet property="answerLabel" destination="Jtd-kc-KpS" id="Jtg-lU-Aw5"/>
+                            <outlet property="correctCountLabel" destination="ZIw-0b-yLE" id="dCr-nk-97F"/>
+                            <outlet property="hintLabel" destination="aFU-aa-BQa" id="9Jc-1T-UNg"/>
+                            <outlet property="incorrectCountLabel" destination="phO-ll-fsa" id="lia-my-qo0"/>
+                            <outlet property="promptLabel" destination="FVU-Gz-xyl" id="QQ0-zO-aVW"/>
+                            <outletCollection property="gestureRecognizers" destination="MNw-Go-dJF" appends="YES" id="3yP-Wj-ROH"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MNw-Go-dJF">
+                    <connections>
+                        <action selector="toggleAnswerLabels:" destination="BYZ-38-t0r" id="lFO-lE-mfY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_circle_check" width="80" height="80"/>
+        <image name="ic_circle_x" width="80" height="80"/>
+    </resources>
 </document>

@@ -15,6 +15,7 @@
 		C58FE577217C9ACB00C936CA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58FE576217C9ACB00C936CA /* Question.swift */; };
 		C58FE579217C9B8500C936CA /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58FE578217C9B8500C936CA /* QuestionGroup.swift */; };
 		C58FE57B217C9C1D00C936CA /* QuestionGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58FE57A217C9C1D00C936CA /* QuestionGroupData.swift */; };
+		C58FE57D217C9EA900C936CA /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58FE57C217C9EA900C936CA /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C58FE576217C9ACB00C936CA /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C58FE578217C9B8500C936CA /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
 		C58FE57A217C9C1D00C936CA /* QuestionGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupData.swift; sourceTree = "<group>"; };
+		C58FE57C217C9EA900C936CA /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				C58FE566217C984000C936CA /* LaunchScreen.storyboard */,
 				C58FE561217C983E00C936CA /* Main.storyboard */,
+				C58FE57C217C9EA900C936CA /* QuestionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				C58FE560217C983E00C936CA /* QuestionViewController.swift in Sources */,
 				C58FE55E217C983E00C936CA /* AppDelegate.swift in Sources */,
 				C58FE579217C9B8500C936CA /* QuestionGroup.swift in Sources */,
+				C58FE57D217C9EA900C936CA /* QuestionView.swift in Sources */,
 				C58FE57B217C9C1D00C936CA /* QuestionGroupData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
