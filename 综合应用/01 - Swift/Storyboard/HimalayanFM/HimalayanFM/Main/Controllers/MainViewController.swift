@@ -26,6 +26,10 @@ class MainViewController: UITabBarController {
         
         // 添加所有的tabBar子控制器
         addChildControllers()
+        
+        // 自定义tabBar
+        let tabBar = TabBar()
+        setValue(tabBar, forKeyPath: "tabBar")
     }
     
     /// 添加所有的tabBar子控制器

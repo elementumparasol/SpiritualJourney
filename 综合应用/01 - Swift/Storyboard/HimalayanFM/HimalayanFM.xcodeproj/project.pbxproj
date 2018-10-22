@@ -21,6 +21,8 @@
 		C5351FDA217D35350078525E /* HearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FD9217D35350078525E /* HearViewController.swift */; };
 		C5351FDC217D35570078525E /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FDB217D35570078525E /* FindViewController.swift */; };
 		C5351FDE217D35790078525E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FDD217D35790078525E /* MeViewController.swift */; };
+		C5351FE0217D3B6A0078525E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FDF217D3B6A0078525E /* Constant.swift */; };
+		C5351FE7217D51EB0078525E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5351FE6217D51EB0078525E /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		C5351FD9217D35350078525E /* HearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearViewController.swift; sourceTree = "<group>"; };
 		C5351FDB217D35570078525E /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		C5351FDD217D35790078525E /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		C5351FDF217D3B6A0078525E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C5351FE6217D51EB0078525E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,8 @@
 				C5351F37217CDA0D0078525E /* Find */,
 				C5351F38217CDA170078525E /* Me */,
 				C5351F34217CD9E70078525E /* Extenstions */,
-				C5351F33217CD9D90078525E /* Functions */,
 				C5351F32217CD9A60078525E /* Resources */,
+				C5351F33217CD9D90078525E /* SupportFiles */,
 			);
 			path = HimalayanFM;
 			sourceTree = "<group>";
@@ -102,11 +106,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		C5351F33217CD9D90078525E /* Functions */ = {
+		C5351F33217CD9D90078525E /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C5351FDF217D3B6A0078525E /* Constant.swift */,
 			);
-			path = Functions;
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		C5351F34217CD9E70078525E /* Extenstions */ = {
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				C5351F39217CDA480078525E /* Controllers */,
+				C5351FE5217D51960078525E /* Views */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -152,9 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				C5351F45217CDACE0078525E /* Controllers */,
-				C5351F44217CDAC80078525E /* Views */,
-				C5351F43217CDAC00078525E /* ViewModels */,
 				C5351F42217CDAB90078525E /* Models */,
+				C5351F43217CDAC00078525E /* ViewModels */,
+				C5351F44217CDAC80078525E /* Views */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -299,6 +305,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		C5351FE5217D51960078525E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5351FE6217D51EB0078525E /* TabBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -375,12 +389,14 @@
 			files = (
 				C5351FD8217D35060078525E /* HomeViewController.swift in Sources */,
 				C5351F58217CE2720078525E /* UIColor+Extension.swift in Sources */,
+				C5351FE0217D3B6A0078525E /* Constant.swift in Sources */,
 				C5351FDE217D35790078525E /* MeViewController.swift in Sources */,
 				C5351FDA217D35350078525E /* HearViewController.swift in Sources */,
 				C5351F20217CD96F0078525E /* AppDelegate.swift in Sources */,
 				C5351F4E217CDB840078525E /* MainViewController.swift in Sources */,
 				C5351FDC217D35570078525E /* FindViewController.swift in Sources */,
 				C5351F5A217CE6B00078525E /* UIImage+Extension.swift in Sources */,
+				C5351FE7217D51EB0078525E /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

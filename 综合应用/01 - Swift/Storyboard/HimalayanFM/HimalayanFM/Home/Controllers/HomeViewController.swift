@@ -25,7 +25,6 @@ class HomeViewController: UIViewController {
     private func setupUI() {
         
         view.backgroundColor = UIColor.randomColor()
-        
     }
     
 
