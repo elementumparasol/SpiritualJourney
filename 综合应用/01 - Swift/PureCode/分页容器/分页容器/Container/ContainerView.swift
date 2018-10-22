@@ -95,7 +95,7 @@ class ContainerView: UIView {
     private func setupTitleView() {
         
         // 设置titleView的frame(导航条的高度如果由外界决定可能会更好)
-        let titleViewFrame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavigationBarHeight)
+        let titleViewFrame = CGRect(x: 0, y: 0, width: kScreenWidth, height: settings.titleViewHeight)
         
         titleView = TitleView(frame: titleViewFrame, titles: titles, settings: settings)
         
@@ -110,7 +110,7 @@ class ContainerView: UIView {
     private func setupContentView() {
         
         // 设置contentView的frame
-        let contentViewFrame = CGRect(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: bounds.size.height - kNavigationBarHeight)
+        let contentViewFrame = CGRect(x: 0, y: settings.titleViewHeight, width: kScreenWidth, height: bounds.size.height - settings.titleViewHeight)
         
         // 创建contentView
         contentView = ContentView(frame: contentViewFrame, childControllers: childControllers, parentController: parentController!, settings: settings)
