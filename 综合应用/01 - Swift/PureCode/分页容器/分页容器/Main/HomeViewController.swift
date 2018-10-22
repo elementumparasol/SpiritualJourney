@@ -56,10 +56,8 @@ class HomeViewController: UIViewController {
          * 2、按钮的标题或者图片的URL字符串
          */
         
-        // 可以滚动的标题
-        //let titles = ["推荐", "VIP", "小说", "直播", "儿童", "广播", "精品", "相声", "人文", "历史", "段子", "音乐"]
         // 不可滚动的标题
-        let titles2 = ["关注", "推荐", "附近", "活动", "游戏"]
+        let titles = ["关注", "推荐", "附近", "活动", "游戏"]
         
         // 标题图片的URL字符串
         //let imageURLStrings: [String] = []
@@ -80,7 +78,7 @@ class HomeViewController: UIViewController {
         var childVcs: [UIViewController] = []
         
         // 子控制器
-        for _ in 0..<titles2.count {
+        for _ in 0..<titles.count {
             
             let vc = UIViewController()
             
@@ -94,11 +92,11 @@ class HomeViewController: UIViewController {
          * 5、创建ContainerView实例
          */
         
-        let containerView = ContainerView(frame: containerFrame, titles: titles2, settings: settings, childControllers: childVcs, parentController: self)
+        let containerView = ContainerView(frame: containerFrame, titles: titles, settings: settings, childControllers: childVcs, parentController: self)
         
         
         // FIXME: - 调试颜色
-        containerView.backgroundColor = .blue
+        containerView.backgroundColor = UIColor.randomColor()
         
         
         // 将containerView添加到当前控制器的view上面
