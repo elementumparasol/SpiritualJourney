@@ -14,7 +14,7 @@ import UIKit
 
 class ContainerView: UIView {
 
-    // MARK: - 私有属性
+    // MARK: - 保存由父控制器传递进来的数据
     
     /// 导航栏上面按钮的标题
     private var titles: [String]
@@ -30,6 +30,15 @@ class ContainerView: UIView {
     
     /// 对标题等内容进行其它设置
     private var settings: Settings
+    
+    
+    // MARK: - 子控件属性
+    
+    /// 导航条的父控件
+    private var titleView: TitleView!
+    
+    /// 子控制器的父控件
+    private var contentView: ContentView!
     
     
     
@@ -56,8 +65,8 @@ class ContainerView: UIView {
         // 初始化父类的属性
         super.init(frame: frame)
         
-        // 开展其它工作
-        
+        // 设置UI界面
+        setupUI()
         
     }
     
@@ -65,9 +74,51 @@ class ContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     deinit {
         print("ContainerView --- 被销毁")
     }
     
+    
+    // MARK: - 自定义方法
+    
+    /// 设置UI界面
+    private func setupUI() {
+        
+        // 设置titleView
+        setupTitleView()
+        
+        // 设置contentView
+        setupContentView()
+    }
+    
+    /// 创建titleView
+    private func setupTitleView() {
+        
+        // 设置titleView的frame(导航条的高度如果由外界决定可能会更好)
+        let titleViewFrame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavigationBarHeight)
+        
+        titleView = TitleView(frame: titleViewFrame, titles: titles, settings: settings)
+        
+        // FIXME: - 调试背景颜色
+        titleView.backgroundColor = UIColor.randomColor()
+        
+        // 将titleView添加到containerView中
+        addSubview(titleView)
+    }
+    
+    /// 创建contentView
+    private func setupContentView() {
+        
+        // 设置contentView的frame
+        let contentViewFrame = CGRect(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: bounds.size.height - kNavigationBarHeight)
+        
+        // 创建contentView
+        contentView = ContentView(frame: contentViewFrame, childControllers: childControllers, parentController: parentController!, settings: settings)
+        
+        // FIXME: - 调试背景颜色
+        contentView.backgroundColor = UIColor.randomColor()
+        
+        // 将contentView添加到containerView中
+        addSubview(contentView)
+    }
 }

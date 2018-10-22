@@ -20,6 +20,8 @@
 		C5352082217E06130078525E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5352081217E06130078525E /* Constant.swift */; };
 		C5352084217E1AAF0078525E /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5352083217E1AAF0078525E /* ContainerView.swift */; };
 		C5352086217E1DB90078525E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5352085217E1DB90078525E /* Settings.swift */; };
+		C5352088217E6CA30078525E /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5352087217E6CA30078525E /* TitleView.swift */; };
+		C535208A217E6D2B0078525E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5352089217E6D2B0078525E /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		C5352081217E06130078525E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C5352083217E1AAF0078525E /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C5352085217E1DB90078525E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C5352087217E6CA30078525E /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		C5352089217E6D2B0078525E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				C535207F217E035A0078525E /* UIImage+Extension.swift */,
 				C5352081217E06130078525E /* Constant.swift */,
 				C5352083217E1AAF0078525E /* ContainerView.swift */,
+				C5352087217E6CA30078525E /* TitleView.swift */,
+				C5352089217E6D2B0078525E /* ContentView.swift */,
 				C5352085217E1DB90078525E /* Settings.swift */,
 			);
 			path = Container;
@@ -191,6 +197,7 @@
 			files = (
 				C535205C217DFDF20078525E /* AppDelegate.swift in Sources */,
 				C535207B217DFF8A0078525E /* MeViewController.swift in Sources */,
+				C535208A217E6D2B0078525E /* ContentView.swift in Sources */,
 				C5352073217DFF4D0078525E /* NavigationController.swift in Sources */,
 				C5352080217E035A0078525E /* UIImage+Extension.swift in Sources */,
 				C5352071217DFE6E0078525E /* MainViewController.swift in Sources */,
@@ -200,6 +207,7 @@
 				C5352082217E06130078525E /* Constant.swift in Sources */,
 				C5352079217DFF830078525E /* FindViewController.swift in Sources */,
 				C5352084217E1AAF0078525E /* ContainerView.swift in Sources */,
+				C5352088217E6CA30078525E /* TitleView.swift in Sources */,
 				C535207E217E01950078525E /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
