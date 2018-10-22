@@ -39,3 +39,6 @@ class HomeViewController: UIViewController {
     */
 
 }
+
+
+// http://114.80.170.74/discovery-category/customCategories/1540172273533?channel=ios-b1&code=43_310000_3100&customCategories=%5B%22recommend%22%2C%22vip%22%2C%22single_category-49%22%2C%22lamia%22%2C%22single_category-6%22%2C%22live%22%2C%22paid%22%2C%22single_category-12%22%2C%22single_category-39%22%2C%22single_category-9%22%2C%22single_category-48%22%2C%22single_category-2%22%5D&device=iPhone&version=6.5.24
