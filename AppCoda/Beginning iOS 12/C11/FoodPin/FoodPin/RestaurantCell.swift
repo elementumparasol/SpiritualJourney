@@ -32,6 +32,9 @@ class RestaurantCell: UITableViewCell {
     /// 类型
     @IBOutlet var typeLabel: UILabel!
     
+    /// cell标记图片
+    @IBOutlet var heartImageView: UIImageView!
+    
     
     // MARK: - 类自带的方法
 

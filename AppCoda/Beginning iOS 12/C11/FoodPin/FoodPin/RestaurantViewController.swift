@@ -62,9 +62,7 @@ class RestaurantViewController: UITableViewController {
         cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         cell.locationLabel.text = restaurantLocations[indexPath.row]
         cell.typeLabel.text = restaurantTypes[indexPath.row]
-        
-        // 根据cell是否被标记来决定是否要显示checkmark
-        cell.accessoryType = isRestaurantVisited[indexPath.row] ? .checkmark : .none
+        cell.heartImageView.isHidden = isRestaurantVisited[indexPath.row] ? false : true
 
         return cell
     }
@@ -134,14 +132,20 @@ class RestaurantViewController: UITableViewController {
          * 第三个UIAlertAction
          */
         
+        // 创建标题
+        let checkActionTitle = isRestaurantVisited[indexPath.row] ? "Undo Check in" : "Check in"
+        
         // 创建UIAlertAction
-        let checkinAction = UIAlertAction(title: "Check in", style: .default) { (action) in
+        let checkinAction = UIAlertAction(title: checkActionTitle, style: .default) { (action) in
             
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .checkmark
+            // 取出cell
+            let cell = tableView.cellForRow(at: indexPath) as! RestaurantCell
             
-            // 如果被访问了，则将其标记为false
-            self.isRestaurantVisited[indexPath.row] = true
+            // 取出cell中是否标记数据
+            self.isRestaurantVisited[indexPath.row] = (self.isRestaurantVisited[indexPath.row]) ? false : true
+            
+            // 设置cell的标记图片是否隐藏
+            cell.heartImageView.isHidden = (self.isRestaurantVisited[indexPath.row]) ? false : true
         }
         
         // 将UIAlertAction添加到alertController中
@@ -189,6 +193,14 @@ class RestaurantViewController: UITableViewController {
                 activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
             }
             
+            // 对UIActivityViewController在iPad上面的表现进行适配
+            if let popoverController = activityController.popoverPresentationController {
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            
             // 显示activityController
             self.present(activityController, animated: true, completion: nil)
             
@@ -197,12 +209,48 @@ class RestaurantViewController: UITableViewController {
             completionHandler(true)
         }
         
+        // 自定义UIContextualAction的外观
+        deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        deleteAction.image = UIImage(named: "delete")
+        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        shareAction.image = UIImage(named: "share")
+        
         // 创建UISwipeActionsConfiguration实例
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
         
         return swipeConfiguration
     }
 
+    // 从左往右滑动cell时调用
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // 创建UIContextualAction实例
+        let checkinAction = UIContextualAction(style: .normal, title: "Check-in") { (action, sourceView, completionHandle) in
+            
+            // 取出cell
+            let cell = tableView.cellForRow(at: indexPath) as! RestaurantCell
+            
+            // 获取cell是否标记的数据
+            self.isRestaurantVisited[indexPath.row] = (self.isRestaurantVisited[indexPath.row]) ? false : true
+            
+            // 设置cell的标记图片是否隐藏
+            cell.heartImageView.isHidden = self.isRestaurantVisited[indexPath.row] ? false : true
+            
+            // 当前的action执行完毕之后，执行关闭动作
+            completionHandle(true)
+        }
+        
+        // 自定义action的外观
+        let checkIcon = self.isRestaurantVisited[indexPath.row] ? "undo" : "tick"
+        checkinAction.image = UIImage(named: checkIcon)
+        checkinAction.backgroundColor = UIColor(red: 38.0/255.0, green: 162.0/255.0, blue: 78.0/255.0, alpha: 1.0)
+        
+        // UISwipeActionsConfiguration
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkinAction])
+        
+        return swipeConfiguration
+    }
+    
 }
 
 

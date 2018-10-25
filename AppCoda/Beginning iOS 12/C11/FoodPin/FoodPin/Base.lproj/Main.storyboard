@@ -35,7 +35,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="xx3-Mz-Lg0">
-                                                    <rect key="frame" x="75" y="0.0" width="268" height="58.5"/>
+                                                    <rect key="frame" x="75" y="0.0" width="233" height="58.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tg-JO-IWA">
                                                             <rect key="frame" x="0.0" y="0.0" width="47" height="20.5"/>
@@ -57,6 +57,13 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-tick" translatesAutoresizingMaskIntoConstraints="NO" id="rfu-qu-IfK">
+                                                    <rect key="frame" x="323" y="0.0" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="V2b-2R-Tp8"/>
+                                                        <constraint firstAttribute="height" constant="20" id="eTZ-2D-PTF"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -68,6 +75,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="heartImageView" destination="rfu-qu-IfK" id="Yz8-El-DsI"/>
                                     <outlet property="locationLabel" destination="7eG-vZ-vFb" id="dP4-ZE-OhH"/>
                                     <outlet property="nameLabel" destination="8tg-JO-IWA" id="q0B-yg-2vv"/>
                                     <outlet property="thumbnailImageView" destination="Bsh-8f-j0F" id="2jn-hv-elz"/>
@@ -86,4 +94,7 @@
             <point key="canvasLocation" x="-210.40000000000001" y="-39.130434782608695"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart-tick" width="22" height="21"/>
+    </resources>
 </document>
