@@ -12,6 +12,7 @@
 		C5B8A19C218188790039DFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A19B218188790039DFFA /* Assets.xcassets */; };
 		C5B8A19F218188790039DFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A19D218188790039DFFA /* LaunchScreen.storyboard */; };
 		C5B8A1A7218189520039DFFA /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */; };
+		C5B8A1A92181933B0039DFFA /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C5B8A19E218188790039DFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5B8A1A0218188790039DFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				C5B8A194218188750039DFFA /* AppDelegate.swift */,
 				C5B8A198218188750039DFFA /* Main.storyboard */,
 				C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */,
+				C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */,
 				C5B8A19B218188790039DFFA /* Assets.xcassets */,
 				C5B8A19D218188790039DFFA /* LaunchScreen.storyboard */,
 				C5B8A1A0218188790039DFFA /* Info.plist */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5B8A1A92181933B0039DFFA /* RestaurantCell.swift in Sources */,
 				C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */,
 				C5B8A1A7218189520039DFFA /* RestaurantViewController.swift in Sources */,
 			);
