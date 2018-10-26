@@ -16,6 +16,7 @@
 		C5B8A1B421826EF30039DFFA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1B321826EF30039DFFA /* DetailViewController.swift */; };
 		C5B8A1B621827FF10039DFFA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1B521827FF10039DFFA /* Restaurant.swift */; };
 		C5B8A1CA21829ECC0039DFFA /* RestaurantDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1C921829ECC0039DFFA /* RestaurantDetailHeaderView.swift */; };
+		C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1CB2182B1070039DFFA /* TypeLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C5B8A1C7218296BB0039DFFA /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		C5B8A1C8218296BB0039DFFA /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
 		C5B8A1C921829ECC0039DFFA /* RestaurantDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailHeaderView.swift; sourceTree = "<group>"; };
+		C5B8A1CB2182B1070039DFFA /* TypeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */,
 				C5B8A1C921829ECC0039DFFA /* RestaurantDetailHeaderView.swift */,
+				C5B8A1CB2182B1070039DFFA /* TypeLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B8A1CA21829ECC0039DFFA /* RestaurantDetailHeaderView.swift in Sources */,
+				C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */,
 				C5B8A1B621827FF10039DFFA /* Restaurant.swift in Sources */,
 				C5B8A1A92181933B0039DFFA /* RestaurantCell.swift in Sources */,
 				C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */,

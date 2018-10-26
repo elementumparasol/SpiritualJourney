@@ -29,6 +29,7 @@ class RestaurantDetailHeaderView: UIView {
         didSet {
             typeLabel.layer.cornerRadius = 5.0
             typeLabel.layer.masksToBounds = true
+
         }
     }
     
