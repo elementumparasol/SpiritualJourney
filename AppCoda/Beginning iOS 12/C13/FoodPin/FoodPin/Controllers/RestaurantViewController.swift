@@ -12,7 +12,7 @@ class RestaurantViewController: UITableViewController {
     
     // MARK: - 自定义属性
     
-    /// 餐馆名称
+    /// 餐厅数据(可以将其存放在plist文件中，然后在从plist文件中加载)
     var restaurants:[Restaurant] = [
         
         Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", imageName: "cafedeadend", isVisited: false),

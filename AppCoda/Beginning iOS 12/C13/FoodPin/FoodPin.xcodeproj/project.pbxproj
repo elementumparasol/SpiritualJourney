@@ -60,17 +60,73 @@
 		C5B8A193218188750039DFFA /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
-				C5B8A194218188750039DFFA /* AppDelegate.swift */,
-				C5B8A198218188750039DFFA /* Main.storyboard */,
-				C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */,
-				C5B8A1B321826EF30039DFFA /* DetailViewController.swift */,
-				C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */,
-				C5B8A1B521827FF10039DFFA /* Restaurant.swift */,
-				C5B8A19B218188790039DFFA /* Assets.xcassets */,
-				C5B8A19D218188790039DFFA /* LaunchScreen.storyboard */,
-				C5B8A1A0218188790039DFFA /* Info.plist */,
+				C5B8A1B72182908A0039DFFA /* AppDelegate */,
+				C5B8A1BA218290C80039DFFA /* Models */,
+				C5B8A1B9218290B90039DFFA /* Views */,
+				C5B8A1B82182909A0039DFFA /* Controllers */,
+				C5B8A1BD2182915F0039DFFA /* Storyboard */,
+				C5B8A1BB218290E20039DFFA /* Resources */,
+				C5B8A1BC218291220039DFFA /* Extensions */,
 			);
 			path = FoodPin;
+			sourceTree = "<group>";
+		};
+		C5B8A1B72182908A0039DFFA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A194218188750039DFFA /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C5B8A1B82182909A0039DFFA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */,
+				C5B8A1B321826EF30039DFFA /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C5B8A1B9218290B90039DFFA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A1A82181933B0039DFFA /* RestaurantCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C5B8A1BA218290C80039DFFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A1B521827FF10039DFFA /* Restaurant.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C5B8A1BB218290E20039DFFA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A19B218188790039DFFA /* Assets.xcassets */,
+				C5B8A1A0218188790039DFFA /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C5B8A1BC218291220039DFFA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C5B8A1BD2182915F0039DFFA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C5B8A198218188750039DFFA /* Main.storyboard */,
+				C5B8A19D218188790039DFFA /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DVFNW8928B;
-				INFOPLIST_FILE = FoodPin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FoodPin/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DVFNW8928B;
-				INFOPLIST_FILE = FoodPin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FoodPin/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
