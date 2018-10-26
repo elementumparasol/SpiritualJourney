@@ -82,7 +82,7 @@ class RestaurantViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 
                 // 获取目标控制器
-                let destinationController = segue.destination as! DetailViewController
+                let destinationController = segue.destination as! RestaurantDetailViewController
                 
                 // 将数据传递给目标控制器
                 destinationController.restaurant = restaurants[indexPath.row]

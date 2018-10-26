@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  RestaurantDetailViewController.swift
 //  FoodPin
 //
 //  Created by Enrica on 2018/10/26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class RestaurantDetailViewController: UIViewController {
     
     // MARK: - 自定义属性
     

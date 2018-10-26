@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Rubik-Light.ttf">
+            <string>Rubik-Light</string>
+        </array>
         <array key="Rubik-Medium.ttf">
             <string>Rubik-Medium</string>
         </array>
@@ -104,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="728.79999999999995" y="-39.130434782608695"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Restaurant Detail View Controller-->
         <scene sceneID="YhD-rZ-biT">
             <objects>
-                <viewController id="VYP-tj-6R5" customClass="DetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VYP-tj-6R5" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yei-KE-VrR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,21 +187,68 @@
                                     </connections>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bdJ-ga-f7D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailIconTextCell" rowHeight="44" id="bdJ-ga-f7D" customClass="RestaurantDetailIconTextCell" customModule="FoodPin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="378" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bdJ-ga-f7D" id="Pth-xK-Fhb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Wh-ECC">
+                                                    <rect key="frame" x="18" y="8" width="339" height="35.5"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HmB-lm-a7T">
+                                                            <rect key="frame" x="0.0" y="8" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="fA2-t3-Bdx"/>
+                                                                <constraint firstAttribute="width" constant="20" id="viI-Mq-piK"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWq-x5-x1D">
+                                                            <rect key="frame" x="30" y="9.5" width="309" height="17"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="K9r-Wh-ECC" secondAttribute="trailing" constant="18" id="17S-RJ-xbG"/>
+                                                <constraint firstAttribute="bottom" secondItem="K9r-Wh-ECC" secondAttribute="bottom" id="Hre-Cb-Myk"/>
+                                                <constraint firstItem="K9r-Wh-ECC" firstAttribute="leading" secondItem="Pth-xK-Fhb" secondAttribute="leading" constant="18" id="LOi-S5-dKK"/>
+                                                <constraint firstItem="K9r-Wh-ECC" firstAttribute="top" secondItem="Pth-xK-Fhb" secondAttribute="top" constant="8" id="Nh3-db-9Kt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="HmB-lm-a7T" id="HsB-EY-vLJ"/>
+                                            <outlet property="shortTextLabel" destination="oWq-x5-x1D" id="ixg-r5-1cj"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="s7w-Du-lMm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailTextCell" rowHeight="44" id="s7w-Du-lMm" customClass="RestaurantDetailTextCell" customModule="FoodPin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="422" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s7w-Du-lMm" id="i8a-qq-myD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl7-Dn-yQD">
+                                                    <rect key="frame" x="18" y="8" width="339" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wl7-Dn-yQD" firstAttribute="top" secondItem="i8a-qq-myD" secondAttribute="top" constant="8" id="2NS-DA-9oU"/>
+                                                <constraint firstAttribute="trailing" secondItem="wl7-Dn-yQD" secondAttribute="trailing" constant="18" id="euM-Be-zoa"/>
+                                                <constraint firstAttribute="bottom" secondItem="wl7-Dn-yQD" secondAttribute="bottom" constant="8" id="jlH-IS-rWa"/>
+                                                <constraint firstItem="wl7-Dn-yQD" firstAttribute="leading" secondItem="i8a-qq-myD" secondAttribute="leading" constant="18" id="mfH-eo-IfH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="wl7-Dn-yQD" id="2YY-BW-DCR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
