@@ -20,6 +20,7 @@
 		C5B8A1CE2182CC6E0039DFFA /* RestaurantDetailIconTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1CD2182CC6E0039DFFA /* RestaurantDetailIconTextCell.swift */; };
 		C5B8A1D02182CEAE0039DFFA /* RestaurantDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1CF2182CEAE0039DFFA /* RestaurantDetailTextCell.swift */; };
 		C5B8A1D2218325EE0039DFFA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1D1218325EE0039DFFA /* UIColor+Extension.swift */; };
+		C5B8A1D521834F3B0039DFFA /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1D421834F3B0039DFFA /* UINavigationController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C5B8A1CD2182CC6E0039DFFA /* RestaurantDetailIconTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailIconTextCell.swift; sourceTree = "<group>"; };
 		C5B8A1CF2182CEAE0039DFFA /* RestaurantDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTextCell.swift; sourceTree = "<group>"; };
 		C5B8A1D1218325EE0039DFFA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C5B8A1D421834F3B0039DFFA /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C5B8A1D1218325EE0039DFFA /* UIColor+Extension.swift */,
+				C5B8A1D421834F3B0039DFFA /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				C5B8A1CA21829ECC0039DFFA /* RestaurantDetailHeaderView.swift in Sources */,
 				C5B8A1D02182CEAE0039DFFA /* RestaurantDetailTextCell.swift in Sources */,
+				C5B8A1D521834F3B0039DFFA /* UINavigationController+Extension.swift in Sources */,
 				C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */,
 				C5B8A1B621827FF10039DFFA /* Restaurant.swift in Sources */,
 				C5B8A1CE2182CC6E0039DFFA /* RestaurantDetailIconTextCell.swift in Sources */,

@@ -16,6 +16,14 @@ class RestaurantDetailViewController: UIViewController {
     var restaurant = Restaurant()
     
     
+    // MARK: - 类自带的属性
+    
+    // 重写当前控制器的preferredStatusBarStyle属性，改变状态栏样式
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
     // MARK: - @IBOutlet
     
     /// headerView
@@ -26,6 +34,15 @@ class RestaurantDetailViewController: UIViewController {
     
     
     // MARK: - 类自带的方法
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.hidesBarsOnSwipe = false
+        
+        // 如果上一级控制器中恰好隐藏了导航栏，我们在这里让其重新出现
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +82,10 @@ class RestaurantDetailViewController: UIViewController {
         // 便是设置了contentInsetAdjustmentBehavior的值为.never，最
         // 后iOS依然会自动调整tableView的内容边距
         tableView.contentInsetAdjustmentBehavior = .never
+        
+        // 因为它的上级控制器设置了在执行滑动手势时，隐藏导航栏
+        // 所以当前控制器在执行滑动手势时，也会隐藏导航栏
+        navigationController?.hidesBarsOnSwipe = false
     }
     
     

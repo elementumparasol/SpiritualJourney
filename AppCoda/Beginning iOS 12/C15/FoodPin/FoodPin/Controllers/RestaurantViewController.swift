@@ -61,6 +61,22 @@ class RestaurantViewController: UITableViewController {
     
     // MARK: - 类自带的方法
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 因为我们在当前控制器中设置hidesBarsOnSwipe为true
+        // 而在它的下一级控制器中设置hidesBarsOnSwipe为false
+        // 当我们在当前控制器中滑动tableView时，导航栏会被自动
+        // 隐藏，在这种情况下，如果点击某一行cell跳转到下一级控制
+        // 器时，下一级控制器的导航条会被隐藏，此时不管我们怎会滑
+        // 动下一级控制器，下一级控制器的导航条不会再出现，也就是
+        // 说我们没办法再回到当前控制器了。为了解决这个bug，需要
+        // 在当前控制器和下一级控制器中分别重写viewWillAppear方
+        // 法，重新设置hidesBarsOnSwipe属性的值。这个主要是因为
+        // viewDidLoad方法只会被执行一次造成的
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -117,6 +133,9 @@ class RestaurantViewController: UITableViewController {
         // 设置导航条的字体
         navigationController?.navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor(r: 231, g: 76, b: 60)]
+        
+        // 在执行滑动手势时，隐藏导航栏
+        navigationController?.hidesBarsOnSwipe = true
     }
     
 
