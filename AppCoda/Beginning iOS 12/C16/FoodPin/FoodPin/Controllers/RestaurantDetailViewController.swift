@@ -91,7 +91,16 @@ class RestaurantDetailViewController: UIViewController {
         navigationController?.hidesBarsOnSwipe = false
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap" {
+            
+            // 获取跳转的目标控制器
+            let destinationController = segue.destination as! MapViewController
+            
+            // 将被选中cell的数据传递给目标控制器
+            destinationController.restaurant = restaurant
+        }
+    }
 
 }
 

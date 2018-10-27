@@ -16,6 +16,9 @@ class RestaurantDetailMapCell: UITableViewCell {
     /// mapView
     @IBOutlet weak var mapView: MKMapView!
 
+    
+    // MARK: - 类自带的方法
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,6 +61,9 @@ class RestaurantDetailMapCell: UITableViewCell {
             if let placemarks = placemarks {
                 
                 // 获取所有返回的placemark数据中的第一个
+                // 在多数情况下，placemarks数组中只会包含
+                // 一个条目，只有在地理位置的文本描述不够精
+                // 确的时候才会包含多个，因此，我们取第一个就好
                 let placemark = placemarks[0]
                 
                 // 创建annotation实例对象
@@ -65,20 +71,21 @@ class RestaurantDetailMapCell: UITableViewCell {
                 
                 if let location = placemark.location {
                     
-                    // 添加annotation标记(俗称大头针)
+                    // 将placemark中包含的位置信息转换为地理坐标
                     annotation.coordinate = location.coordinate
+                    
+                    // 通过地理坐标来添加annotation标记
                     self.mapView.addAnnotation(annotation)
                     
-                    // 设置范围精度
+                    // 设置地图的出事缩放级别(250m级)
                     let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 250, longitudinalMeters: 250)
                     self.mapView.setRegion(region, animated: true)
                 }
             }
             
         }
-        
-        
-        
     }
+    
+    
 
 }
