@@ -42,6 +42,9 @@ class RestaurantDetailViewController: UIViewController {
         
         // 如果上一级控制器中恰好隐藏了导航栏，我们在这里让其重新出现
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        // 当控制器的view再次出现之前，恢复导航栏的tintColor
+        navigationController?.navigationBar.tintColor = .white
     }
 
     override func viewDidLoad() {
@@ -155,6 +158,9 @@ extension RestaurantDetailViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
             
             cell.selectionStyle = .none
+            
+            // 在地图上面显示annotation位置标记
+            cell.configure(location: restaurant.location)
             
             return cell
             
