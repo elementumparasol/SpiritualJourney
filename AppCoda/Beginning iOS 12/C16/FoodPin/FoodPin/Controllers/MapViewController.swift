@@ -41,6 +41,9 @@ class MapViewController: UIViewController {
         
         // 在地图上面显示大头针标记
         showAnnotationsOnMap()
+        
+        // 让当前控制器成为mapView的代理
+        mapView.delegate = self
     }
     
     
@@ -90,6 +93,45 @@ class MapViewController: UIViewController {
     
     
     
-    
+}
 
+
+// MARK: - MKMapViewDelegate
+extension MapViewController: MKMapViewDelegate {
+    
+    // 自定义mapView上面annotation的外观
+    // 每次在地图上面显示annotation时都会调用这个方法
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        // 设置annotationView的可重用标识符
+        let identifier = "MyMarker"
+        
+        // MKUserLocation反映的使用户当前自动定位的位置，并不是用户
+        // 标记的位置，我们只需要自定义用户标记的位置
+        if annotation.isKind(of: MKUserLocation.self) { return nil }
+        
+        // 根据可重用标识符取出annotationView
+        var annotationView: MKMarkerAnnotationView? = mapView
+        .dequeueReusableAnnotationView(withIdentifier: identifier)
+        as? MKMarkerAnnotationView
+        
+        // 如果annotationView为空，则创建新的annotationView
+        // 并且给它绑定可重用标识符
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        
+        // 设置annotationView气球上面的文字
+        annotationView?.glyphText = "🐶"
+        
+        // 设置annotationView的背景颜色
+        annotationView?.markerTintColor = .green
+        
+        // 设置annotationView气球中的图片
+        // annotationView?.glyphImage = UIImage(named: "heart-tick")
+        
+        return annotationView
+    }
+    
+    
 }
