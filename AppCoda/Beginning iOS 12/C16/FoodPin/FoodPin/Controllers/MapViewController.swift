@@ -44,6 +44,15 @@ class MapViewController: UIViewController {
         
         // 让当前控制器成为mapView的代理
         mapView.delegate = self
+        
+        // 显示交通信息
+        mapView.showsTraffic = true
+        
+        // 显示缩放比例尺(地图缩放时显示)
+        mapView.showsScale = true
+        
+        // 显示指南针(地图旋转时显示)
+        mapView.showsCompass = true
     }
     
     
