@@ -107,12 +107,12 @@ class RatingViewController: UIViewController {
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
         
-        // 给评价按钮添加动画
-        buttonAnimations()
+        // 给评价按钮添加Transform形变
+        buttonTransform()
     }
     
-    /// 按钮动画
-    private func buttonAnimations() {
+    /// 给按钮添加形变(等按钮即将显示时，再将其还原)
+    private func buttonTransform() {
         
         // 创建一个偏移量
         let moveRightTransform = CGAffineTransform.init(translationX: UIScreen.main.bounds.width, y: 0)

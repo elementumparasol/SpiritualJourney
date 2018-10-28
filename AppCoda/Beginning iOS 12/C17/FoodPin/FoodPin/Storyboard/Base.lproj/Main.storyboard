@@ -183,7 +183,7 @@
                                         <outlet property="typeLabel" destination="ByK-pV-zwo" id="4p7-qx-9j2"/>
                                     </connections>
                                 </view>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="uDb-Ae-zcu">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="uDb-Ae-zcu" userLabel="Footer View">
                                     <rect key="frame" x="0.0" y="725" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
