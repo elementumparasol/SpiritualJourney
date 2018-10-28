@@ -91,6 +91,10 @@ class RestaurantDetailViewController: UIViewController {
         navigationController?.hidesBarsOnSwipe = false
     }
     
+    deinit {
+        print("RestaurantDetailViewController --- 被销毁了")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showMap" {

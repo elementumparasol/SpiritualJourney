@@ -31,6 +31,7 @@ class MapViewController: UIViewController {
         return .default
     }
     
+    
     // MARK: - 类自带的方法
 
     override func viewDidLoad() {
@@ -53,6 +54,10 @@ class MapViewController: UIViewController {
         
         // 显示指南针(地图旋转时显示)
         mapView.showsCompass = true
+    }
+    
+    deinit {
+        print("MapViewController --- 被销毁了")
     }
     
     
