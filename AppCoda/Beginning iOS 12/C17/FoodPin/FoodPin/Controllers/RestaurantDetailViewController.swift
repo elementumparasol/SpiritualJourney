@@ -92,6 +92,7 @@ class RestaurantDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "showMap" {
             
             // 获取跳转的目标控制器
@@ -99,6 +100,10 @@ class RestaurantDetailViewController: UIViewController {
             
             // 将被选中cell的数据传递给目标控制器
             destinationController.restaurant = restaurant
+        } else if segue.identifier == "showRating" {
+            
+            let destinationgController = segue.destination as! RatingViewController
+            destinationgController.restaurant = restaurant
         }
     }
 

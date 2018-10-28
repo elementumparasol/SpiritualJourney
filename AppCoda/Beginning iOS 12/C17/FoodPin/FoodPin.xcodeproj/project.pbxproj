@@ -25,6 +25,7 @@
 		C5B8A1DA21846EB10039DFFA /* RestaurantDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1D921846EB10039DFFA /* RestaurantDetailSeparatorCell.swift */; };
 		C5B8A1DC21846F8B0039DFFA /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1DB21846F8B0039DFFA /* RestaurantDetailMapCell.swift */; };
 		C5B8A1DE218474DC0039DFFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1DD218474DC0039DFFA /* MapViewController.swift */; };
+		C5B8A1E02185E4B00039DFFA /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		C5B8A1D921846EB10039DFFA /* RestaurantDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		C5B8A1DB21846F8B0039DFFA /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		C5B8A1DD218474DC0039DFFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				C5B8A1A6218189520039DFFA /* RestaurantViewController.swift */,
 				C5B8A1B321826EF30039DFFA /* RestaurantDetailViewController.swift */,
 				C5B8A1DD218474DC0039DFFA /* MapViewController.swift */,
+				C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */,
 				C5B8A1B621827FF10039DFFA /* Restaurant.swift in Sources */,
 				C5B8A1CE2182CC6E0039DFFA /* RestaurantDetailIconTextCell.swift in Sources */,
+				C5B8A1E02185E4B00039DFFA /* RatingViewController.swift in Sources */,
 				C5B8A1A92181933B0039DFFA /* RestaurantCell.swift in Sources */,
 				C5B8A1DA21846EB10039DFFA /* RestaurantDetailSeparatorCell.swift in Sources */,
 				C5B8A1DC21846F8B0039DFFA /* RestaurantDetailMapCell.swift in Sources */,
