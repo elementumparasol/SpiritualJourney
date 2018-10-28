@@ -65,6 +65,11 @@ class RatingViewController: UIViewController {
             self.rateButtons[4].transform = .identity
         }, completion: nil)
         
+        UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
+            self.closeButton.transform = .identity
+            self.closeButton.alpha = 1.0
+        }, completion: nil)
+        
     }
 
     // viewDidLoad方法在首次加载视图控件时会
@@ -130,6 +135,21 @@ class RatingViewController: UIViewController {
             // 设置按钮的偏移量和放大效果
             rateButton.transform = moveScaleTransform
         }
+        
+        // 给关闭按钮添加旋转形变
+        let closeButtonRoation = CGAffineTransform.init(rotationAngle: CGFloat.pi / 2.0)
+        
+        // 给关闭按钮添加偏移量形变
+        let closeButtonTranslation = CGAffineTransform.init(translationX: 0, y: -150)
+        
+        // 将两种形变结合起来
+        let closeButtonTransform = closeButtonRoation.concatenating(closeButtonTranslation)
+        
+        // 设置关闭按钮的形变
+        closeButton.transform = closeButtonTransform
+        
+        // 设置关闭按钮为完全透明
+        closeButton.alpha = 0
     }
 
 }
