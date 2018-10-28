@@ -33,6 +33,55 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
+    // MARK: - @IBAction
+    
+    /// 通过Unwind Segue的方式从下一级控制器返回到当前控制器
+    ///
+    /// - Parameter segue: Unwind Segue
+    @IBAction func close(with segue: UIStoryboardSegue) {
+        
+        // dismiss控制器。其实这句代码是多余的
+        // Unwind Segue本身就会自动dismiss
+        dismiss(animated: true, completion: nil)
+    }
+    
+    /// 通过Unwind Segue的方式逆向传递评价数据
+    ///
+    /// - Parameter segue: Unwind Segue
+    @IBAction func rateRestaurant(with segue: UIStoryboardSegue) {
+        
+        dismiss(animated: true) {
+            
+            // 通过segue获取Unwind Segue的标识符
+            if let rating = segue.identifier {
+                
+                // 将标识符存储到模型中
+                self.restaurant.rating = rating
+                
+                // 因为我们的标识符中有大写字母，而图片全部是小写
+                // 所以先把我们的标识符转换为全部小写字母，然后再
+                // 将其设置到rateImageView控件上面去
+                self.headerView.rateImageView.image = UIImage(named: rating.lowercased())
+                
+                // 创建Transform
+                let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+                
+                // 给headerView添加Transform动画
+                self.headerView.rateImageView.transform = scaleTransform
+                self.headerView.rateImageView.alpha = 0
+                
+                // 添加还原动画
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations: {
+                    
+                    // 将headerView还原
+                    self.headerView.rateImageView.transform = .identity
+                    self.headerView.rateImageView.alpha = 1.0
+                }, completion: nil)
+            }
+        }
+    }
+    
+    
     // MARK: - 类自带的方法
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +115,18 @@ class RestaurantDetailViewController: UIViewController {
         // 取消tableView的分割线
         tableView.separatorStyle = .none
         
-        // 设置导航条UI界面
+        // 修改导航条的背景图片(这里设置为空的图片，不是nil)
         navigationController?.navigationBar
             .setBackgroundImage(UIImage(), for: .default)
+        
+        // 修改导航条阴影图片(这里设置为空的图片，不是nil)
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // 修改导航条的tintColor
         navigationController?.navigationBar.tintColor = .white
+        
+        // 修改导航栏返回按钮的文字
+        navigationController?.navigationBar.topItem?.title = "Back"
         
         // contentInsetAdjustmentBehavior这个属性是UIScrollView
         // 的，因此只要是继承自UIScrollView的类都自动拥有这个属性，当然z

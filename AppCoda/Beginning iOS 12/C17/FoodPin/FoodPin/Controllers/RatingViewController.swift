@@ -15,6 +15,9 @@ class RatingViewController: UIViewController {
     /// imageView
     @IBOutlet weak var backgroundImageView: UIImageView!
     
+    /// 关闭按钮
+    @IBOutlet weak var closeButton: UIButton!
+    
     /// 评价按钮
     @IBOutlet var rateButtons: [UIButton]!
     
@@ -83,12 +86,6 @@ class RatingViewController: UIViewController {
     
     
     // MARK: - @IBAction
-    
-    /// 点击关闭按钮，dismiss当前控制器
-    @IBAction func close(_ segue: UIStoryboardSegue) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     // MARK: - 自定义方法
     

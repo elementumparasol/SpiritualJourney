@@ -45,5 +45,11 @@ class RestaurantDetailHeaderView: UIView {
             heartImageView.tintColor = .white
         }
     }
+    
+    /// 餐厅评价图片
+    @IBOutlet weak var rateImageView: UIImageView!
+    
+    
+    
 
 }

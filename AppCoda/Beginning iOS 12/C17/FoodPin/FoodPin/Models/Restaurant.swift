@@ -33,6 +33,9 @@ class Restaurant: NSObject {
     /// 标记餐厅是否已经访问过
     var isVisited: Bool
     
+    /// 存储用户对餐厅的评价
+    var rating: String
+    
     
     // MARK: - 构造方法
     
@@ -46,7 +49,8 @@ class Restaurant: NSObject {
     ///   - details: 餐厅描述
     ///   - imageName: 餐厅图片名称
     ///   - isVisited: 是否访问过餐厅
-    init(name: String, type: String, location: String, phone: String, details: String, imageName: String, isVisited: Bool) {
+    ///   - rating: 用户对餐厅进行评价
+    init(name: String, type: String, location: String, phone: String, details: String, imageName: String, isVisited: Bool, rating: String = "") {
         
         // 利用参数给对象的各属性赋值(初始化)
         self.name = name
@@ -56,6 +60,7 @@ class Restaurant: NSObject {
         self.details = details
         self.imageName = imageName
         self.isVisited = isVisited
+        self.rating = rating
     }
     
     /// 便利构造方法，在创建对象时，使用默认的参数给各属性赋值
