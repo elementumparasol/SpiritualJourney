@@ -35,36 +35,21 @@ class RatingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // 重新设置按钮的alpha值为1
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+        // 遍历数组rateButtons，取出里面的按钮
+        for (idx, rateButton) in rateButtons.enumerated() {
             
-            // 重新显示按钮(设置按钮不透明)
-            self.rateButtons[0].alpha = 1.0
-            
-            // 重新将按钮回归到原始位置
-            self.rateButtons[0].transform = .identity
-        }, completion: nil)
+            // 给按钮rateButton添加UIView动画
+            UIView.animate(withDuration: 0.4, delay: 0.1 + 0.05 * TimeInterval(idx), options: [], animations: {
+                
+                // 设置按钮rateButton的透明度为1.0
+                rateButton.alpha = 1.0
+                
+                // 将按钮rateButton的transform复原
+                rateButton.transform = .identity
+            }, completion: nil)
+        }
         
-        UIView.animate(withDuration: 0.4, delay: 0.15, options: [], animations: {
-            self.rateButtons[1].alpha = 1.0
-            self.rateButtons[1].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
-            self.rateButtons[2].alpha = 1.0
-            self.rateButtons[2].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.25, options: [], animations: {
-            self.rateButtons[3].alpha = 1.0
-            self.rateButtons[3].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
-            self.rateButtons[4].alpha = 1.0
-            self.rateButtons[4].transform = .identity
-        }, completion: nil)
-        
+        // 给关闭按钮添加UIView动画
         UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
             self.closeButton.transform = .identity
             self.closeButton.alpha = 1.0
