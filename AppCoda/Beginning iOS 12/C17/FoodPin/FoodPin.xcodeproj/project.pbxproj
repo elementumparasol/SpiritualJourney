@@ -27,6 +27,7 @@
 		C5B8A1DE218474DC0039DFFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1DD218474DC0039DFFA /* MapViewController.swift */; };
 		C5B8A1E02185E4B00039DFFA /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */; };
 		C5B8A1E22186A7E60039DFFA /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1E12186A7E60039DFFA /* RoundedTextField.swift */; };
+		C5B8A1E421875A350039DFFA /* NewRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A1E321875A350039DFFA /* NewRestaurantController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C5B8A1DD218474DC0039DFFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		C5B8A1E12186A7E60039DFFA /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		C5B8A1E321875A350039DFFA /* NewRestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				C5B8A1B321826EF30039DFFA /* RestaurantDetailViewController.swift */,
 				C5B8A1DD218474DC0039DFFA /* MapViewController.swift */,
 				C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */,
+				C5B8A1E321875A350039DFFA /* NewRestaurantController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			files = (
 				C5B8A1CA21829ECC0039DFFA /* RestaurantDetailHeaderView.swift in Sources */,
 				C5B8A1D02182CEAE0039DFFA /* RestaurantDetailTextCell.swift in Sources */,
+				C5B8A1E421875A350039DFFA /* NewRestaurantController.swift in Sources */,
 				C5B8A1D521834F3B0039DFFA /* UINavigationController+Extension.swift in Sources */,
 				C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */,
 				C5B8A1B621827FF10039DFFA /* Restaurant.swift in Sources */,

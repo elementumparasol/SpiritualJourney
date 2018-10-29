@@ -381,7 +381,7 @@
         <!--New Restaurant-->
         <scene sceneID="Su0-Cg-82F">
             <objects>
-                <tableViewController id="F1y-QD-ySG" sceneMemberID="viewController">
+                <tableViewController id="F1y-QD-ySG" customClass="NewRestaurantController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x16-Dp-BZ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -533,7 +533,7 @@
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.95294117647058818" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -553,7 +553,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MqV-f9-znj">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GgQ-PU-6d7">
                                                     <rect key="frame" x="18" y="16" width="339" height="97"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqa-3y-aUW">
@@ -562,21 +562,20 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="A really nice restaurant" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9Y-gp-6c5" customClass="RoundedTextField" customModule="FoodPin" customModuleProvider="target">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="A really nice restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="sxS-WD-qXS">
                                                             <rect key="frame" x="0.0" y="25.5" width="339" height="71.5"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.95294117647058818" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="MqV-f9-znj" secondAttribute="trailing" constant="2" id="GdR-zd-WMY"/>
-                                                <constraint firstItem="MqV-f9-znj" firstAttribute="leading" secondItem="uGB-WO-Dyr" secondAttribute="leadingMargin" constant="2" id="VcC-uw-iqL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MqV-f9-znj" secondAttribute="bottom" constant="1" id="iAY-4U-Muh"/>
-                                                <constraint firstItem="MqV-f9-znj" firstAttribute="top" secondItem="uGB-WO-Dyr" secondAttribute="topMargin" constant="5" id="nn0-3d-ogP"/>
+                                                <constraint firstItem="GgQ-PU-6d7" firstAttribute="leading" secondItem="uGB-WO-Dyr" secondAttribute="leadingMargin" constant="2" id="Mrc-Iw-q0x"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GgQ-PU-6d7" secondAttribute="bottom" constant="1" id="lM0-dk-5Xa"/>
+                                                <constraint firstItem="GgQ-PU-6d7" firstAttribute="top" secondItem="uGB-WO-Dyr" secondAttribute="topMargin" constant="5" id="uVs-gh-n3x"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GgQ-PU-6d7" secondAttribute="trailing" constant="2" id="viN-Bt-A7z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -600,11 +599,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="9st-dg-M0v" id="YPn-KX-N61"/>
+                        <outlet property="descriptionTextView" destination="sxS-WD-qXS" id="ipL-AG-9SH"/>
+                        <outlet property="nameTextField" destination="KpM-qm-I60" id="Pwv-Ul-a6b"/>
+                        <outlet property="phoneTextField" destination="Ecf-kU-mEr" id="hrc-a7-hsF"/>
+                        <outlet property="typeTextField" destination="d2p-ho-8RU" id="Vsi-NS-s3m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15h-JY-CKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Xb-lS-U8u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="-951"/>
+            <point key="canvasLocation" x="1469.5999999999999" y="-951.72413793103453"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="yyL-re-Wfm">
