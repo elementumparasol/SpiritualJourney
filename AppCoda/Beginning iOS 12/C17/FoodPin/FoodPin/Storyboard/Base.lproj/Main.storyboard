@@ -398,10 +398,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="rhd-GW-rc6">
                                                     <rect key="frame" x="175.5" y="91" width="24" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="YMF-BI-Mb9"/>
-                                                        <constraint firstAttribute="width" constant="24" id="aV0-up-awg"/>
-                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -604,6 +600,7 @@
                         <outlet property="descriptionTextView" destination="sxS-WD-qXS" id="ipL-AG-9SH"/>
                         <outlet property="nameTextField" destination="KpM-qm-I60" id="Pwv-Ul-a6b"/>
                         <outlet property="phoneTextField" destination="Ecf-kU-mEr" id="hrc-a7-hsF"/>
+                        <outlet property="photoImageView" destination="rhd-GW-rc6" id="Uvo-Us-At0"/>
                         <outlet property="typeTextField" destination="d2p-ho-8RU" id="Vsi-NS-s3m"/>
                     </connections>
                 </tableViewController>

@@ -12,6 +12,9 @@ class NewRestaurantController: UITableViewController {
     
     // MARK: - @IBOutlet
     
+    /// photoImageView
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     /// nameTextField
     @IBOutlet weak var nameTextField: UITextField! {
         
@@ -131,6 +134,9 @@ extension NewRestaurantController {
                     // 设置从相机中获取图片
                     imagePicker.sourceType = .camera
                     
+                    // 设置imagePicker的代理
+                    imagePicker.delegate = self
+                    
                     // 弹出相机
                     self.present(imagePicker, animated: true, completion: nil)
                 }
@@ -147,6 +153,7 @@ extension NewRestaurantController {
                     let imagePicker = UIImagePickerController()
                     imagePicker.isEditing = false
                     imagePicker.sourceType = .photoLibrary
+                    imagePicker.delegate = self
                     
                     // 弹出相册选择控制器
                     self.present(imagePicker, animated: true, completion: nil)
@@ -177,13 +184,30 @@ extension NewRestaurantController {
             // 弹出UIAlertController控制器
             present(photoSourceRequestController, animated: true, completion: nil)
         }
-        
-        
-        
-        
-        
     }
     
     
     
+}
+
+
+// MARK: - UIImagePickerController, UINavigationController
+extension NewRestaurantController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // 用户从相册中选择照片或者图片时调用
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // 获取用户从相册中选中的照片
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage]
+            as? UIImage {
+            
+            // 将照片设置到photoImageView控件上去
+            photoImageView.image = selectedImage
+            photoImageView.contentMode = .scaleAspectFill
+            photoImageView.clipsToBounds = true
+        }
+        
+        // 照片选择完毕，退出控制器
+        dismiss(animated: true, completion: nil)
+    }
 }
