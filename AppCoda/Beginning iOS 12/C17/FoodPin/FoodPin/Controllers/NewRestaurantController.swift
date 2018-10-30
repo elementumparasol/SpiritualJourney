@@ -59,13 +59,30 @@ class NewRestaurantController: UITableViewController {
         }
     }
     
+    
+    // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 设置UI界面
+        setupUI()
     }
 
 
+    // MARK: - 自定义方法
+    
+    /// 统一设置UI界面
+    private func setupUI() {
+        
+        // 自定义导航条
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar
+        .setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar
+            .largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(r: 231, g: 76, b: 60)]
+    }
     
 }
 
