@@ -78,6 +78,9 @@ class NewRestaurantController: UITableViewController {
     /// 统一设置UI界面
     private func setupUI() {
         
+        // 去掉分割线
+        tableView.separatorStyle = .none
+        
         // 自定义导航条
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -197,6 +200,10 @@ extension NewRestaurantController: UIImagePickerControllerDelegate, UINavigation
     // 用户从相册中选择照片或者图片时调用
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        /**
+         * 1、从相册中选择照片
+         */
+        
         // 获取用户从相册中选中的照片
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage]
             as? UIImage {
@@ -206,6 +213,31 @@ extension NewRestaurantController: UIImagePickerControllerDelegate, UINavigation
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
         }
+        
+        /**
+         * 2、设置照片的NSLayoutConstraint约束
+         */
+        
+        // 左边约束
+        let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
+        leadingConstraint.isActive = true
+        
+        // 右边约束
+        let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
+        trailingConstraint.isActive = true
+        
+        // 顶部约束
+        let topConstraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
+        topConstraint.isActive = true
+        
+        // 底部约束
+        let bottomConstraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
+        bottomConstraint.isActive = true
+        
+        
+        /**
+         * 3、照片选择完毕，退出照片库控制器
+         */
         
         // 照片选择完毕，退出控制器
         dismiss(animated: true, completion: nil)
