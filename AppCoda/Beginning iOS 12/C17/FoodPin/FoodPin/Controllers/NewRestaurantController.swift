@@ -101,3 +101,89 @@ extension NewRestaurantController: UITextFieldDelegate {
         return true
     }
 }
+
+
+// MARK: - UITableViewDelegate
+extension NewRestaurantController {
+    
+    // 点击某一行cell的时候调用
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 如果用户选择第0行cell，则执行下面的操作
+        if indexPath.row == 0 {
+            
+            // 创建UIAlertController控制器
+            let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
+            
+            // 相机action
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                
+                // 通过isSourceTypeAvailable方法判断相机是否可用
+                if UIImagePickerController
+                    .isSourceTypeAvailable(.camera) {
+                    
+                    // 创建UIImagePickerController实例
+                    let imagePicker = UIImagePickerController()
+                    
+                    // 禁用编辑
+                    imagePicker.allowsEditing = false
+                    
+                    // 设置从相机中获取图片
+                    imagePicker.sourceType = .camera
+                    
+                    // 弹出相机
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+            }
+            
+            // 相册action
+            let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default) { (action) in
+                
+                // 判断相册是否可用
+                if UIImagePickerController
+                    .isSourceTypeAvailable(.photoLibrary) {
+                    
+                    // 如果相册可用，则创建UIImagePickerController实例
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.isEditing = false
+                    imagePicker.sourceType = .photoLibrary
+                    
+                    // 弹出相册选择控制器
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+            }
+            
+            // 取消操作action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            // 将action添加到alertController中
+            photoSourceRequestController.addAction(cameraAction)
+            photoSourceRequestController.addAction(photoLibraryAction)
+            photoSourceRequestController.addAction(cancelAction)
+            
+            // 适配iPad屏幕
+            if let popoverController = photoSourceRequestController
+                .popoverPresentationController {
+                
+                // 获取cell
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    
+                    // 设置popoverController的sourceView和sourceRect
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            
+            // 弹出UIAlertController控制器
+            present(photoSourceRequestController, animated: true, completion: nil)
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+}
