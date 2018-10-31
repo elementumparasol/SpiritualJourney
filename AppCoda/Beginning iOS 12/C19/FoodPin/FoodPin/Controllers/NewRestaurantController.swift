@@ -84,14 +84,15 @@ class NewRestaurantController: UITableViewController {
     /// 保存新餐厅数据
     @IBAction func saveNewRestaurant(_ sender: Any) {
         
-        //
+        // 拿到AppDelegate
         if let appDelegate = UIApplication.shared
             .delegate as? AppDelegate {
             
-            //
+            // 创建RestaurantMO实例(也就是Restaurant Managed Object)
             restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
             
-            //
+            // 获取从UITextField中输入的文本，然后
+            // 将其存储到模型restaurant中
             restaurant.name = nameTextField.text
             restaurant.type = typeTextField.text
             restaurant.location = addressTextField.text
@@ -99,15 +100,15 @@ class NewRestaurantController: UITableViewController {
             restaurant.details = descriptionTextView.text
             restaurant.isVisited = false
             
-            //
+            // 将图片数据转换为二进制数据(Binary Data)，然后
+            // 存储到模型restaurant中
             if let restaurantImage = photoImageView.image {
                 restaurant.image = restaurantImage.pngData()
             }
             
-            //
             print("Save data to context...")
             
-            //
+            // 将模型数据保存到Core Data中
             appDelegate.saveContext()
         }
         

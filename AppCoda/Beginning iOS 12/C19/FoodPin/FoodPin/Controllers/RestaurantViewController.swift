@@ -23,7 +23,9 @@ class RestaurantViewController: UITableViewController {
     /// 和餐厅有关的数据
     var restaurants: [RestaurantMO] = []
     
-    /// fetchedResultsController，用于从Core Data中取出数据
+    /// 我们从Core Data中请求数据以后，Core Data会返回
+    /// 一系列结果，而NSFetchedResultsController就是
+    /// 专门用来管理这些请求结果的
     var fetchedResultsController: NSFetchedResultsController<RestaurantMO>!
 
     
@@ -56,7 +58,7 @@ class RestaurantViewController: UITableViewController {
         setupUI()
         
         // 从Core Data中取出数据
-        fetchedResults()
+        fetchedResultsFromCoreData()
     }
     
     // 通过重写prepare(for：sender :)方法，
@@ -129,19 +131,25 @@ class RestaurantViewController: UITableViewController {
     
     
     /// 从CoreData中取出数据
-    private func fetchedResults() {
+    private func fetchedResultsFromCoreData() {
         
+        // 首先从RestaurantMO中获取NSFetchRequest对象
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+        
+        // 使用NSSortDescriptor指定排序顺序
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let appDelegate = UIApplication.shared.delegate
             as? AppDelegate {
             
+            // 通过persistentContainer获取viewContext
             let context = appDelegate.persistentContainer.viewContext
             
+            // 初始化NSFetchedResultsController
             fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             
+            // 设置fetchedResultsController的代理，监听数据变化
             fetchedResultsController.delegate = self
             
             do {
@@ -306,14 +314,14 @@ extension RestaurantViewController: NSFetchedResultsControllerDelegate {
      * 只要是Content发生任何改变，下面这三个代理方法都会被调用
      */
     
-    //
+    // context即将发生改变的时候调用，比如说添加、移动、删除或者更新数据
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        //
+        // tableView中的数据即将发生变化时调用
         tableView.beginUpdates()
     }
     
-    //
+    // context中的数据发生变化时调用
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
@@ -342,10 +350,10 @@ extension RestaurantViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
-    //
+    // context中的数据已经变化完成之后调用
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        //
+        // tableView中的数据变化已经完成之后调用
         tableView.endUpdates()
     }
 }
