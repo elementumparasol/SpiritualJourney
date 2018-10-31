@@ -108,17 +108,6 @@ class RestaurantViewController: UITableViewController {
     }
     
     
-    // MARK: - @IBAction
-    
-    /// 点击添加新餐馆控制器导航条上面的关闭按钮，通过Unwind的方式返回到当前控制器
-    ///
-    /// - Parameter segue: Unwind segue
-    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
     // MARK: - 自定义方法
     
     /// 统一设置UI界面
