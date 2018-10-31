@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewRestaurantController: UITableViewController {
     
@@ -63,6 +64,11 @@ class NewRestaurantController: UITableViewController {
     }
     
     
+    // MARK: - 自定义属性
+    
+    /// 用于保存新餐厅的数据
+    var restaurant: RestaurantMO!    
+    
     // MARK: - 类自带的方法
 
     override func viewDidLoad() {
@@ -71,7 +77,43 @@ class NewRestaurantController: UITableViewController {
         // 设置UI界面
         setupUI()
     }
-
+    
+    
+    // MARK: - @IBAction
+    
+    /// 保存新餐厅数据
+    @IBAction func saveNewRestaurant(_ sender: Any) {
+        
+        //
+        if let appDelegate = UIApplication.shared
+            .delegate as? AppDelegate {
+            
+            //
+            restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+            
+            //
+            restaurant.name = nameTextField.text
+            restaurant.type = typeTextField.text
+            restaurant.location = addressTextField.text
+            restaurant.phone = phoneTextField.text
+            restaurant.details = descriptionTextView.text
+            restaurant.isVisited = false
+            
+            //
+            if let restaurantImage = photoImageView.image {
+                restaurant.image = restaurantImage.pngData()
+            }
+            
+            //
+            print("Save data to context...")
+            
+            //
+            appDelegate.saveContext()
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     // MARK: - 自定义方法
     
@@ -89,6 +131,10 @@ class NewRestaurantController: UITableViewController {
         navigationController?.navigationBar
             .largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(r: 231, g: 76, b: 60)]
     }
+    
+    
+    
+    
     
 }
 

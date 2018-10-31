@@ -25,7 +25,7 @@ class RatingViewController: UIViewController {
     // MARKK: - 自定义属性
     
     /// 用于存储有外部控制器传递过来的restaurant模型数据
-    var restaurant = Restaurant()
+    var restaurant: RestaurantMO!
     
     
     // MARK: - 类自带的方法
@@ -83,7 +83,10 @@ class RatingViewController: UIViewController {
     private func setupUI() {
         
         // 设置背景图片
-        backgroundImageView.image = UIImage(named: restaurant.imageName)
+        if let restaurantImage = restaurant.image {
+            backgroundImageView
+                .image = UIImage(data: restaurantImage as Data)
+        }
         
         // 设置图片的填充模式
         backgroundImageView.contentMode = .scaleAspectFill

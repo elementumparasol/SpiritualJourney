@@ -13,7 +13,7 @@ class RestaurantDetailViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// 餐厅图片数据
-    var restaurant = Restaurant()
+    var restaurant: RestaurantMO!
     
     
     // MARK: - 类自带的属性
@@ -103,7 +103,10 @@ class RestaurantDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         
         // 设置和餐厅相关的数据
-        headerView.headerImageView.image = UIImage(named: restaurant.imageName)
+        if let restaurantImage = restaurant.image {
+            headerView.headerImageView
+                .image = UIImage(data: restaurantImage as Data)
+        }
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
         headerView.heartImageView.isHidden = restaurant.isVisited ? false : true
@@ -234,7 +237,9 @@ extension RestaurantDetailViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             
             // 在地图上面显示annotation位置标记
-            cell.configure(location: restaurant.location)
+            if let restaurantLocation = restaurant.location {
+                cell.configure(location: restaurantLocation)
+            }
             
             return cell
             

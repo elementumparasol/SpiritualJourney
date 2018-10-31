@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     // MARK: - 自定义属性
     
     /// 用于存储餐厅模型数据(控制器跳转时会被传递过来)
-    var restaurant = Restaurant()  // var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
     
     
     // MARK: - 类自带的属性
@@ -67,7 +67,7 @@ class MapViewController: UIViewController {
     private func showAnnotationsOnMap() {
         
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
+        geocoder.geocodeAddressString(restaurant.location ?? "") { (placemarks, error) in
             
             if let error = error {
                 print(error.localizedDescription)
