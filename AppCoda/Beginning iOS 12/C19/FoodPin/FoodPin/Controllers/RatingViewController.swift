@@ -77,6 +77,9 @@ class RatingViewController: UIViewController {
     
     // MARK: - @IBAction
     
+    /// 点击评价按钮之后的操作
+    
+    
     // MARK: - 自定义方法
     
     /// 统一设置UI界面

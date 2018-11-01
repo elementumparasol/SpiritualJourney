@@ -63,6 +63,13 @@ class RestaurantDetailViewController: UIViewController {
                 // 将其设置到rateImageView控件上面去
                 self.headerView.rateImageView.image = UIImage(named: rating.lowercased())
                 
+                
+                if let appDelegate = UIApplication.shared
+                    .delegate as? AppDelegate {
+                    appDelegate.saveContext()
+                }
+                
+                
                 // 创建Transform
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 
@@ -129,7 +136,7 @@ class RestaurantDetailViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         
         // 修改导航栏返回按钮的文字
-        navigationController?.navigationBar.topItem?.title = "Back"
+//        navigationController?.navigationBar.topItem?.title = "Back"
         
         // contentInsetAdjustmentBehavior这个属性是UIScrollView
         // 的，因此只要是继承自UIScrollView的类都自动拥有这个属性，当然z
@@ -148,6 +155,12 @@ class RestaurantDetailViewController: UIViewController {
         // 因为它的上级控制器设置了在执行滑动手势时，隐藏导航栏
         // 所以当前控制器在执行滑动手势时，也会隐藏导航栏
         navigationController?.hidesBarsOnSwipe = false
+        
+        
+        // 如果用户对餐厅有做出评价，那么就加载用户评价
+        if let rating = restaurant.rating?.lowercased() {
+            headerView.rateImageView.image = UIImage(named: rating)
+        }
     }
     
     deinit {

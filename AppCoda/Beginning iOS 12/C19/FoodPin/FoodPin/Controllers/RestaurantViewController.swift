@@ -46,6 +46,8 @@ class RestaurantViewController: UITableViewController {
         // 法，重新设置hidesBarsOnSwipe属性的值。这个主要是因为
         // viewDidLoad方法只会被执行一次造成的
         navigationController?.hidesBarsOnSwipe = true
+        
+//        navigationController?.navigationBar.topItem?.title = "Food Pin"
     }
     
     override func viewDidLoad() {
@@ -219,11 +221,26 @@ class RestaurantViewController: UITableViewController {
         // 其使用和UIAlertAction非常的像
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             
-            // 删除数据
-            self.restaurants.remove(at: indexPath.row)
+            // MARK: - 从Core Data中删除数据
             
-            // 刷新指定的cell
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            if let appDelegate = UIApplication.shared
+                .delegate as? AppDelegate {
+                
+                // 获取viewContext
+                let context = appDelegate.persistentContainer
+                    .viewContext
+                
+                // 获取即将要被删除的那一行数据
+                let restaurantToDelete = self.fetchedResultsController
+                .object(at: indexPath)
+                
+                // 从context中删除数据
+                context.delete(restaurantToDelete)
+                
+                // 保存context
+                appDelegate.saveContext()
+            }
+            
             
             // 成功完成这个action之后，调用闭包来关闭action按钮
             // 其中参数true表示当前action已经被执行完毕了
