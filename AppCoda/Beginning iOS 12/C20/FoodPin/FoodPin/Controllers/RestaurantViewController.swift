@@ -31,6 +31,9 @@ class RestaurantViewController: UITableViewController {
     /// 搜索框
     var searchController: UISearchController!
     
+    /// 搜索结果
+    var searchResults: [RestaurantMO] = []
+    
     
     // MARK: - 类自带的方法
     
@@ -79,7 +82,9 @@ class RestaurantViewController: UITableViewController {
                 let destinationController = segue.destination as! RestaurantDetailViewController
                 
                 // 将数据传递给目标控制器
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = searchController
+                    .isActive ? searchResults[indexPath.row] :
+                restaurants[indexPath.row]
             }
         }
             
@@ -174,8 +179,37 @@ class RestaurantViewController: UITableViewController {
     /// 添加搜索框
     private func addSearchBar() {
         
+        // 创建searchController
         searchController = UISearchController(searchResultsController: nil)
+        
+        // 将searchController添加到导航条上
         self.navigationItem.searchController = searchController
+        
+        // 设置searchController的更新源(updater)
+        searchController.searchResultsUpdater = self
+        
+        // 设置用户在搜索框中搜索时，底层的内容是否要变暗
+        // 因为我们是在同一个控制器中显示搜索内容，所以这里设置为false
+        searchController.dimsBackgroundDuringPresentation = false
+    }
+    
+    /// 通过名称来搜索餐厅
+    ///
+    /// - Parameter searchText: 餐厅的名称
+    private func filterContent(for searchText: String) {
+        
+        searchResults = restaurants.filter { restaurant -> Bool in
+            
+            if let name = restaurant.name {
+                
+                let isMatch = name
+                    .localizedCaseInsensitiveContains(searchText)
+                
+                return isMatch
+            }
+            
+            return false
+        }
     }
     
 
@@ -191,15 +225,26 @@ class RestaurantViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // 处理tableView的backgroundView和分割线
-        if restaurants.count > 0 {
-            tableView.backgroundView?.isHidden = true
-            tableView.separatorStyle = .singleLine
-        } else {
-            tableView.backgroundView?.isHidden = false
+//        if restaurants.count > 0 {
+//            tableView.backgroundView?.isHidden = true
+//            tableView.separatorStyle = .singleLine
+//        } else {
+//            tableView.backgroundView?.isHidden = false
+//            tableView.separatorStyle = .none
+//        }
+        
+        // 当用户点击搜索框时，搜索界面将会
+        // 启动，然后isActive会被设置为true
+        if searchController.isActive {
+            
+            // 当搜索框变成活跃时，隐藏分割线
             tableView.separatorStyle = .none
+            return searchResults.count
+        } else {
+            return restaurants.count
         }
         
-        return restaurants.count
+//        return restaurants.count
     }
 
     // 返回tableView中的cell
@@ -208,19 +253,27 @@ class RestaurantViewController: UITableViewController {
         // 根据可重用标识符取出cell
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantCell
+        
+        // 如果searchController的isActive结果为true，
+        // 那么我们就在tableView中显示搜索结果；否则，我
+        // 们就在tableView中展示原始数据
+        let restaurant = searchController
+            .isActive ?
+            searchResults[indexPath.row] : restaurants[indexPath.row]
 
         // 设置cell数据
-        cell.nameLabel.text = restaurants[indexPath.row].name
+        cell.nameLabel.text = restaurant.name
         
         // 因为我们不再是通过图片名称来加载图片了，而是直接
         // 加载图片的二进制数据，因此这里需要修改
-        if let restaurantImage = restaurants[indexPath.row].image {
+        if let restaurantImage = restaurant.image {
             cell.thumbnailImageView
                 .image = UIImage(data: restaurantImage as Data)
         }
-        cell.locationLabel.text = restaurants[indexPath.row].location
-        cell.typeLabel.text = restaurants[indexPath.row].type
-        cell.heartImageView.isHidden = restaurants[indexPath.row].isVisited ? false : true
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
+        cell.heartImageView.isHidden = restaurant
+            .isVisited ? false : true
 
         return cell
     }
@@ -384,5 +437,27 @@ extension RestaurantViewController: NSFetchedResultsControllerDelegate {
         
         // tableView中的数据变化已经完成之后调用
         tableView.endUpdates()
+    }
+}
+
+
+// MARK: - UISearchResultsUpdating
+extension RestaurantViewController: UISearchResultsUpdating {
+    
+    // 这是一个必须实现的协议方法。当搜索框成为第一响应者
+    // 或者用户在搜索框中做出更改时调用
+    func updateSearchResults(for searchController: UISearchController) {
+
+        // 获取搜索框中的内容
+        if let searchText = searchController.searchBar.text {
+            
+            // 调用我们上面定义的搜索方法，判断
+            // 搜索内容是否在我们的数组中
+            filterContent(for: searchText)
+            
+            // 因为我们使用当前控制器来展示数据的，
+            // 因此，我们这里要调用tableView的reloadData()
+            tableView.reloadData()
+        }
     }
 }
