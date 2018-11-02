@@ -183,7 +183,15 @@ class RestaurantViewController: UITableViewController {
         searchController = UISearchController(searchResultsController: nil)
         
         // 将searchController添加到导航条上
-        self.navigationItem.searchController = searchController
+        // self.navigationItem.searchController = searchController
+        
+        // 将导航栏添加到tableView的headerView上面
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar
+            .tintColor = UIColor(r: 231, g: 76, b: 60)
         
         // 设置searchController的更新源(updater)
         searchController.searchResultsUpdater = self
@@ -200,10 +208,14 @@ class RestaurantViewController: UITableViewController {
         
         searchResults = restaurants.filter { restaurant -> Bool in
             
-            if let name = restaurant.name {
+            if let name = restaurant.name,
+               let type = restaurant.type,
+               let location = restaurant.location {
                 
                 let isMatch = name
-                    .localizedCaseInsensitiveContains(searchText)
+                    .localizedCaseInsensitiveContains(searchText) ||
+                type.localizedCaseInsensitiveContains(searchText) ||
+                location.localizedCaseInsensitiveContains(searchText)
                 
                 return isMatch
             }
@@ -278,6 +290,19 @@ class RestaurantViewController: UITableViewController {
         return cell
     }
     
+    // 询问数据源，是否可以对选定的行进行编辑
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        // 搜索的时候不能进入编辑状态
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    
+    // MARK: - table view delegate
 
     // 从右边往左边滑动cell时调用
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -385,7 +410,6 @@ class RestaurantViewController: UITableViewController {
         
         return swipeConfiguration
     }
-    
 }
 
 
