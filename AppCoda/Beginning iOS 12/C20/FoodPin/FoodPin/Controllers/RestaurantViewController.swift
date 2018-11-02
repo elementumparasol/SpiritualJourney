@@ -201,9 +201,9 @@ class RestaurantViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
     }
     
-    /// 通过名称来搜索餐厅
+    /// 通过名称、餐厅类型，或者餐厅地址来搜索餐厅
     ///
-    /// - Parameter searchText: 餐厅的名称
+    /// - Parameter searchText: 餐厅的名称，类型，或者地址
     private func filterContent(for searchText: String) {
         
         searchResults = restaurants.filter { restaurant -> Bool in
