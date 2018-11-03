@@ -37,6 +37,19 @@ class RestaurantViewController: UITableViewController {
     
     // MARK: - 类自带的方法
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 适配iPad横屏(让横屏效果更好)
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        
+        // 设置UI界面
+        setupUI()
+        
+        // 从Core Data中取出数据
+        fetchedResultsFromCoreData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -52,20 +65,22 @@ class RestaurantViewController: UITableViewController {
         // viewDidLoad方法只会被执行一次造成的
         navigationController?.hidesBarsOnSwipe = true
         
-//        navigationController?.navigationBar.topItem?.title = "Food Pin"
+        // navigationController?.navigationBar
+        // .topItem?.title = "Food Pin"
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // 适配iPad横屏(让横屏效果更好)
-        tableView.cellLayoutMarginsFollowReadableWidth = true
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // 设置UI界面
-        setupUI()
+        // 通过指定的名称从Bundle中加载控制器
+        let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
         
-        // 从Core Data中取出数据
-        fetchedResultsFromCoreData()
+        // 通过指定的ID初始化控制器
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+            
+            // 显示指定的控制器
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
     }
     
     // 通过重写prepare(for：sender :)方法，

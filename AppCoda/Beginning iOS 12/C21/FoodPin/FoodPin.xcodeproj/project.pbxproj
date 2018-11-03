@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C580613C2189B56A001A5F77 /* FoodPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C580613A2189B56A001A5F77 /* FoodPin.xcdatamodeld */; };
 		C580619E218D8333001A5F77 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C580619D218D8333001A5F77 /* Walkthrough.storyboard */; };
+		C58061A0218E3590001A5F77 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C580619F218E3590001A5F77 /* WalkthroughContentViewController.swift */; };
+		C58061A2218E426C001A5F77 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58061A1218E426C001A5F77 /* WalkthroughPageViewController.swift */; };
+		C58061A4218E4A0E001A5F77 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58061A3218E4A0E001A5F77 /* WalkthroughViewController.swift */; };
 		C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A194218188750039DFFA /* AppDelegate.swift */; };
 		C5B8A19A218188750039DFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A198218188750039DFFA /* Main.storyboard */; };
 		C5B8A19C218188790039DFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A19B218188790039DFFA /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 /* Begin PBXFileReference section */
 		C580613B2189B56A001A5F77 /* FoodPin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodPin.xcdatamodel; sourceTree = "<group>"; };
 		C580619D218D8333001A5F77 /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		C580619F218E3590001A5F77 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		C58061A1218E426C001A5F77 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		C58061A3218E4A0E001A5F77 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		C5B8A191218188750039DFFA /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8A194218188750039DFFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5B8A199218188750039DFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 				C5B8A1DD218474DC0039DFFA /* MapViewController.swift */,
 				C5B8A1DF2185E4B00039DFFA /* RatingViewController.swift */,
 				C5B8A1E321875A350039DFFA /* NewRestaurantController.swift */,
+				C580619F218E3590001A5F77 /* WalkthroughContentViewController.swift */,
+				C58061A1218E426C001A5F77 /* WalkthroughPageViewController.swift */,
+				C58061A3218E4A0E001A5F77 /* WalkthroughViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 			files = (
 				C5B8A1CA21829ECC0039DFFA /* RestaurantDetailHeaderView.swift in Sources */,
 				C5B8A1D02182CEAE0039DFFA /* RestaurantDetailTextCell.swift in Sources */,
+				C58061A2218E426C001A5F77 /* WalkthroughPageViewController.swift in Sources */,
 				C5B8A1E421875A350039DFFA /* NewRestaurantController.swift in Sources */,
 				C5B8A1D521834F3B0039DFFA /* UINavigationController+Extension.swift in Sources */,
 				C5B8A1CC2182B1070039DFFA /* TypeLabel.swift in Sources */,
@@ -300,7 +310,9 @@
 				C5B8A1DA21846EB10039DFFA /* RestaurantDetailSeparatorCell.swift in Sources */,
 				C5B8A1DC21846F8B0039DFFA /* RestaurantDetailMapCell.swift in Sources */,
 				C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */,
+				C58061A0218E3590001A5F77 /* WalkthroughContentViewController.swift in Sources */,
 				C5B8A1E22186A7E60039DFFA /* RoundedTextField.swift in Sources */,
+				C58061A4218E4A0E001A5F77 /* WalkthroughViewController.swift in Sources */,
 				C5B8A1A7218189520039DFFA /* RestaurantViewController.swift in Sources */,
 				C5B8A1B421826EF30039DFFA /* RestaurantDetailViewController.swift in Sources */,
 				C5B8A1D2218325EE0039DFFA /* UIColor+Extension.swift in Sources */,

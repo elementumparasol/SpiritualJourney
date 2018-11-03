@@ -17,18 +17,18 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Page View Controller-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="STO-U5-OWa">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ChZ-Go-4D4" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ChZ-Go-4D4" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gx-yZ-ASv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="-548"/>
+            <point key="canvasLocation" x="-1028" y="-585"/>
         </scene>
-        <!--View Controller-->
+        <!--Walkthrough Content View Controller-->
         <scene sceneID="oyZ-BG-8mP">
             <objects>
-                <viewController id="m7M-aQ-6Kw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="m7M-aQ-6Kw" customClass="WalkthroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ktq-FJ-8J9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="451"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,15 +72,20 @@
                         <viewLayoutGuide key="safeArea" id="zC6-2x-49C"/>
                     </view>
                     <size key="freeformSize" width="375" height="451"/>
+                    <connections>
+                        <outlet property="contentImageView" destination="Yex-IG-EPL" id="5lI-yR-P5j"/>
+                        <outlet property="headingLabel" destination="Lks-Sw-OV9" id="hdh-p2-oby"/>
+                        <outlet property="subHeadingLabel" destination="pBM-VU-zy9" id="qzo-Fk-pRG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiF-li-msm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="-549"/>
+            <point key="canvasLocation" x="420" y="-586"/>
         </scene>
-        <!--View Controller-->
+        <!--Walkthrough View Controller-->
         <scene sceneID="fce-Dl-eu5">
             <objects>
-                <viewController id="hb9-Jn-7vD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" id="hb9-Jn-7vD" customClass="WalkthroughViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ujJ-m0-eYn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,10 +149,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oGA-EU-FfO"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="n6a-H8-SDX" id="byP-sH-eoP"/>
+                        <outlet property="pageControl" destination="RCc-d3-y0K" id="ul6-vX-p3d"/>
+                        <outlet property="skipButton" destination="ctQ-WS-jg7" id="Qsq-fV-ZgC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzT-yz-mHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753" y="-504"/>
+            <point key="canvasLocation" x="-310" y="-585"/>
         </scene>
     </scenes>
 </document>
