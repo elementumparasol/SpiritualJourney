@@ -76,6 +76,20 @@ class WalkthroughPageViewController: UIPageViewController {
         return nil
     }
     
+    /// 切换到下一个控制器页面
+    func forwardPage() {
+        
+        // 获取下一个控制器对应的index
+        currentIndex += 1
+        
+        // 根据指定的index获取下一个控制器
+        if let nextViewController = contentViewController(at: currentIndex) {
+            
+            // 显示指定的控制器
+            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 

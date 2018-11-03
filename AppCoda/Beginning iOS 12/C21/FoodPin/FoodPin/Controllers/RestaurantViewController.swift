@@ -71,7 +71,7 @@ class RestaurantViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        print("RestaurantViewController --- viewDidAppear")
         // 通过指定的名称从Bundle中加载控制器
         let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
         
