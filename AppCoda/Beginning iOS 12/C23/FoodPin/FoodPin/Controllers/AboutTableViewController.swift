@@ -32,6 +32,23 @@ class AboutTableViewController: UITableViewController {
         setupUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 判断是否为指定的segue标识符
+        if segue.identifier == "showWebView" {
+            
+            // 获取目标控制器和选中cell的indexPath
+            if let destinationController = segue
+                .destination as? WebViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                
+                // 将url字符串传递给目标控制器
+                destinationController
+                    .targetURL = sectionContent[indexPath.section][indexPath.row].link
+            }
+        }
+    }
+    
     
     // MARK: - 自定义方法
     
@@ -62,7 +79,7 @@ class AboutTableViewController: UITableViewController {
     }
 
     
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
     // 返回分组数
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,7 +117,7 @@ class AboutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 取出链接地址
-        let link = sectionContent[indexPath.row][indexPath.row].link
+        let link = sectionContent[indexPath.section][indexPath.row].link
         
         switch indexPath.section {
             
@@ -113,6 +130,10 @@ class AboutTableViewController: UITableViewController {
                     // 通过Safari浏览器打开这个链接
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
+            } else if indexPath.row == 1 {
+                
+                // 跳转到指定的控制器
+                performSegue(withIdentifier: "showWebView", sender: self)
             }
             
         default:

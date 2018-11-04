@@ -15,6 +15,7 @@
 		C58061A7218F07CB001A5F77 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58061A5218F07CB001A5F77 /* About.storyboard */; };
 		C58061AA218F089F001A5F77 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58061A8218F089F001A5F77 /* Discover.storyboard */; };
 		C58061AC218F9D51001A5F77 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58061AB218F9D51001A5F77 /* AboutTableViewController.swift */; };
+		C58061AE218FB3B8001A5F77 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58061AD218FB3B8001A5F77 /* WebViewController.swift */; };
 		C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B8A194218188750039DFFA /* AppDelegate.swift */; };
 		C5B8A19A218188750039DFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A198218188750039DFFA /* Main.storyboard */; };
 		C5B8A19C218188790039DFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B8A19B218188790039DFFA /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		C58061A6218F07CB001A5F77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FoodPin/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		C58061A9218F089F001A5F77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FoodPin/Storyboard/Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
 		C58061AB218F9D51001A5F77 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		C58061AD218FB3B8001A5F77 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C5B8A191218188750039DFFA /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8A194218188750039DFFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5B8A199218188750039DFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				C58061A1218E426C001A5F77 /* WalkthroughPageViewController.swift */,
 				C58061A3218E4A0E001A5F77 /* WalkthroughViewController.swift */,
 				C58061AB218F9D51001A5F77 /* AboutTableViewController.swift */,
+				C58061AD218FB3B8001A5F77 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				C5B8A1DA21846EB10039DFFA /* RestaurantDetailSeparatorCell.swift in Sources */,
 				C5B8A1DC21846F8B0039DFFA /* RestaurantDetailMapCell.swift in Sources */,
 				C5B8A195218188750039DFFA /* AppDelegate.swift in Sources */,
+				C58061AE218FB3B8001A5F77 /* WebViewController.swift in Sources */,
 				C58061A0218E3590001A5F77 /* WalkthroughContentViewController.swift in Sources */,
 				C5B8A1E22186A7E60039DFFA /* RoundedTextField.swift in Sources */,
 				C58061A4218E4A0E001A5F77 /* WalkthroughViewController.swift in Sources */,
