@@ -23,7 +23,7 @@
                 <pageViewController storyboardIdentifier="WalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ChZ-Go-4D4" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gx-yZ-ASv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1028" y="-585"/>
+            <point key="canvasLocation" x="87" y="-587"/>
         </scene>
         <!--Walkthrough Content View Controller-->
         <scene sceneID="oyZ-BG-8mP">
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiF-li-msm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-586"/>
+            <point key="canvasLocation" x="809" y="-588"/>
         </scene>
         <!--Walkthrough View Controller-->
         <scene sceneID="fce-Dl-eu5">
@@ -163,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzT-yz-mHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310" y="-585"/>
+            <point key="canvasLocation" x="-670" y="-586"/>
         </scene>
     </scenes>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalkthroughViewController: UIViewController {
+class WalkthroughViewController: UIViewController, WalkthroughPageViewControllerDelegate {
     
     // MARK: - @IBOutlet
     
@@ -30,7 +30,7 @@ class WalkthroughViewController: UIViewController {
     
     // MARK: - 自定义属性
     
-    ///
+    /// walkthroughPageViewController
     var walkthroughPageViewController: WalkthroughPageViewController?
     
     
@@ -50,6 +50,9 @@ class WalkthroughViewController: UIViewController {
         // 给目标控制器中的walkthroughPageViewController属性赋值
         if let pageViewController = destination as? WalkthroughPageViewController {
             walkthroughPageViewController = pageViewController
+            
+            // 设置代理(成为WalkthroughPageViewController的代理)
+            walkthroughPageViewController?.walkthroughDelegate = self
         }
     }
     
@@ -92,7 +95,7 @@ class WalkthroughViewController: UIViewController {
     
     // MARK: - 自定义方法
     
-    /// 更新NEXT按钮和Skip按钮的UI界面
+    /// 更新NEXT按钮、Skip按钮，以及pageControl的UI界面
     private func updateUI() {
         
         // 获取当前控制器的index
@@ -119,6 +122,12 @@ class WalkthroughViewController: UIViewController {
         }
     }
     
-    
-    
+    // MARK: - WalkthroughPageViewControllerDelegate
+    func didUpdatePageIndex(currentIndex: Int) {
+        
+        // 更新UI界面
+        updateUI()
+    }
 }
+
+

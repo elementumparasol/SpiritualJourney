@@ -8,6 +8,15 @@
 
 import UIKit
 
+/// 自定义WalkthroughPageViewController的代理协议
+protocol WalkthroughPageViewControllerDelegate: class {
+    
+    /// 告诉代理当前控制器的index
+    ///
+    /// - Parameter currentIndex: 当前控制器的index
+    func didUpdatePageIndex(currentIndex: Int)
+}
+
 class WalkthroughPageViewController: UIPageViewController {
     
     // MARK: - 自定义属性
@@ -24,6 +33,9 @@ class WalkthroughPageViewController: UIPageViewController {
     /// 当前页的下标值
     var currentIndex = 0
     
+    /// 代理属性
+    weak var walkthroughDelegate: WalkthroughPageViewControllerDelegate?
+    
     
     // MARK: - 类自带的方法
 
@@ -39,6 +51,9 @@ class WalkthroughPageViewController: UIPageViewController {
             // 设置要显示的视图控制器
             setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
         }
+        
+        // 设置自己成为自己的代理
+        delegate = self
     }
 
     
@@ -120,6 +135,33 @@ extension WalkthroughPageViewController: UIPageViewControllerDataSource {
         
         // 根据给定的索引返回当前控制器后面一个控制器
         return contentViewController(at: index)
+    }
+    
+    
+}
+
+// MARK: - UIPageViewControllerDelegate
+extension WalkthroughPageViewController: UIPageViewControllerDelegate {
+    
+    // 在手势驱动完成以后调用(通过手势滑动切换控制器以后调用)
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        // 判断控制器转场是否已经完成
+        if completed {
+            
+            // 获取ContentViewController
+            if let contentViewController = pageViewController
+                .viewControllers?.first as? WalkthroughContentViewController {
+                
+                // 获取当前控制器所对应的下标值
+                currentIndex = contentViewController.index
+                
+                // 调用协议方法didUpdatePageIndex(currentIndex:)
+                // 方法，将当前控制器所对应的index传递给代理控制器
+                walkthroughDelegate?
+                    .didUpdatePageIndex(currentIndex: contentViewController.index)
+            }
+        }
     }
     
     
