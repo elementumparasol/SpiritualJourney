@@ -69,9 +69,14 @@ class RestaurantViewController: UITableViewController {
         // .topItem?.title = "Food Pin"
     }
     
+    // 每一次主屏幕出现时都会调用这个方法
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("RestaurantViewController --- viewDidAppear")
+        
+        // 如果用户已经访问过Walkthrough界面，那么就不再弹出该控制器
+        if UserDefaults.standard
+            .bool(forKey: "hasViewedWalkthrough") { return }
+        
         // 通过指定的名称从Bundle中加载控制器
         let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
         
@@ -252,15 +257,6 @@ class RestaurantViewController: UITableViewController {
 
     // 返回tableView中每一组cell的行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // 处理tableView的backgroundView和分割线
-//        if restaurants.count > 0 {
-//            tableView.backgroundView?.isHidden = true
-//            tableView.separatorStyle = .singleLine
-//        } else {
-//            tableView.backgroundView?.isHidden = false
-//            tableView.separatorStyle = .none
-//        }
         
         // 当用户点击搜索框时，搜索界面将会
         // 启动，然后isActive会被设置为true

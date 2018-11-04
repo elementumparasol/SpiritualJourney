@@ -75,6 +75,9 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
                 
             case 2:
                 
+                // 如果用户已经完成了walkthrough，就将状态存储起来
+                UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
+                
                 // 移除当前控制器
                 dismiss(animated: true, completion: nil)
                 
@@ -89,6 +92,11 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
     
     /// 点击skipButton之后需要执行的代码
     @IBAction func skipButtonTapped(_ sender: Any) {
+        
+        // 如果用户已经完成了walkthrough，就将状态存储起来
+        UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
+        
+        // 退出当前控制器
         dismiss(animated: true, completion: nil)
     }
 
