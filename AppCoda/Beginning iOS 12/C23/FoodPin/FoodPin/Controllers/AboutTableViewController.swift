@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableViewController: UITableViewController {
     
@@ -134,6 +135,18 @@ class AboutTableViewController: UITableViewController {
                 
                 // 跳转到指定的控制器
                 performSegue(withIdentifier: "showWebView", sender: self)
+            }
+            
+        case 1:
+            
+            // 获取url地址
+            if let url = URL(string: link) {
+                
+                // 创建safariController
+                let safariController = SFSafariViewController(url: url)
+                
+                // 显示safariController
+                present(safariController, animated: true, completion: nil)
             }
             
         default:
