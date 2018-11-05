@@ -105,7 +105,11 @@ class DiscoverTableViewController: UITableViewController {
         
         // 通过desiredKeys指定提取字段(只检索应用程序所需的的字段)
         // 我们这里告诉查询操作对象，我们只需要records的name和image字段
-        queryOperation.desiredKeys = ["name", "image"]
+        // queryOperation.desiredKeys = ["name", "image"]
+        
+        // 因为从iCloud下载图片需要占据大量的时间，所以我们
+        // 这里先只下载name，图片放在后面再下载
+        queryOperation.desiredKeys = ["name"]
         
         // 通过queuePriority属性来指定查询操作的优先级
         queryOperation.queuePriority = .veryHigh
@@ -176,20 +180,60 @@ class DiscoverTableViewController: UITableViewController {
         cell.textLabel?.text = restaurant
             .object(forKey: "name") as? String
         
-        // 通过键值对取出图片数据。因为我们之前在CloudKit中存储
-        // 图片时，用的类型是Asset，所以我们这里要将其转换为CKAsset
-        if let image = restaurant.object(forKey: "image"),
-            let imageAsset = image as? CKAsset {
+        // 设置cell的本地占位图片
+        cell.imageView?.image = UIImage(named: "photo")
+        
+        
+        /** 在后台从iCloud中取出图片 */
+        
+        // 获取应用程序默认的CloudKit容器和公共数据库
+        let publicDatabase = CKContainer.default()
+            .publicCloudDatabase
+        
+        // 初始化并返回一个带有特定recordID的查询操作
+        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+        
+        // 通过desiredKeys指定查询字段
+        fetchRecordsImageOperation.desiredKeys = ["image"]
+        
+        // 通过queuePriority指定查询优先级
+        fetchRecordsImageOperation.queuePriority = .veryHigh
+        
+        // 跟queryCompletionBlock批量查询不同，这个是单个查询 [unowned self]
+        fetchRecordsImageOperation.perRecordCompletionBlock = { (record, recordID, error) -> Void in
             
-            // 通过imageAsset.fileURL访问下载到本地的Asset数据
-            // 然后再将其转换为二进制数据，最后再将其展示出来
-            if let imageData = try? Data
-                .init(contentsOf: imageAsset.fileURL) {
+            // 校验下载图片是否出错
+            if let error = error {
                 
-                // 设置cell的图片
-                cell.imageView?.image = UIImage(data: imageData)
+                // 如果获取数据出错，则打印错误信息，并且直接退出
+                print("Faild to get restaurant image from iCloud - \(error.localizedDescription)")
+                
+                return
+            }
+            
+            // 先对record数据进行校验，如果record查询成功，则通过
+            // 键值取出图片数据，然后再将图片数据转换为CKAsset类型
+            if let record = record, let image = record.object(forKey: "image"), let imageAsset = image as? CKAsset {
+                
+                // 通过imageAsset.fileURL访问下载到本地的Asset数据
+                // 然后再将其转换为二进制数据
+                if let imageData = try? Data.init(contentsOf: imageAsset.fileURL) {
+                    
+                    // 回到主线程中去刷新UI
+                    DispatchQueue.main.async {
+                        
+                        // 设置cell的网络图片
+                        cell.imageView?.image = UIImage(data: imageData)
+                        
+                        // 重新布局当前cell，以便刷新数据
+                        cell.setNeedsLayout()
+                    }
+                }
             }
         }
+        
+        // 执行数据查询操作
+        publicDatabase.add(fetchRecordsImageOperation)
         
         return cell
     }
