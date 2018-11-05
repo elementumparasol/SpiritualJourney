@@ -16,6 +16,9 @@ class DiscoverTableViewController: UITableViewController {
     /// 用于存储CKRecord对象
     var restaurants: [CKRecord] = []
     
+    /// 菊花标
+    var spinner = UIActivityIndicatorView()
+    
     
     // MARK: - 类自带的方法
 
@@ -51,6 +54,32 @@ class DiscoverTableViewController: UITableViewController {
         navigationController?.navigationBar
             .largeTitleTextAttributes = [NSAttributedString.Key
                 .foregroundColor: UIColor(r: 231, g: 76, b: 60)]
+        
+        // 设置菊花标
+        setActivityIndicatorView()
+    }
+    
+    /// 设置菊花(用户等待时，用户显示正在操作)
+    private func setActivityIndicatorView() {
+        
+        // 设置spinner的样式
+        spinner.style = .gray
+        
+        // 动画停止时，隐藏spinner
+        spinner.hidesWhenStopped = true
+        
+        // 添加spinner到view上面
+        view.addSubview(spinner)
+        
+        // 禁止将spinner的AutoresizingMask转换为自动布局
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 对spinner进行手动约束
+        NSLayoutConstraint.activate([spinner.topAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)])
+        
+        // 开启spinner
+        spinner.startAnimating()
     }
     
     /// 从iCloud中取出数据
@@ -108,6 +137,9 @@ class DiscoverTableViewController: UITableViewController {
                 
                 // 回到主线程中去刷新tableView
                 DispatchQueue.main.async {
+                    
+                    // 数据出来以后，停止spinner
+                    self.spinner.stopAnimating()
                     self.tableView.reloadData()
                 }
         }
