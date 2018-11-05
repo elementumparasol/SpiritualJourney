@@ -71,33 +71,33 @@ class DiscoverTableViewController: UITableViewController {
         // 描述在搜索数据库中的记录时所应用的查询条件
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
         
-        // 异步查询指定的区域，以便找到符合查询条件的记录(records)
-        publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+        // 创建queryOperation
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.queuePriority = .veryHigh
+        queryOperation.resultsLimit = 50
+        queryOperation.recordFetchedBlock = { (record) -> Void in
             
-            // 判断是否出错，如果出错就直接退出
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            // 获取records
-            if let records = records {
-                print("Completed the download of Restaurant data")
+            self.restaurants.append(record)
+        }
+        queryOperation
+            .queryCompletionBlock = { [unowned self] (cursor, error) -> Void in
                 
-                // 将records存储到数组restaurant中
-                self.restaurants = records
+                if let error = error {
+                    print("Faild to get data from iCloud - \(error.localizedDescription)")
+                    return
+                }
                 
-                // 因为我们这个方法是异步查询，也就是不是在主线程
-                // 中执行。而刷新UI必须回到主线程中去执行
+                print("Successfully retrieve the data from iCloud")
+                
+                // 回到主线程中去刷新tableView
                 DispatchQueue.main.async {
-                    
-                    // 刷新tableView
                     self.tableView.reloadData()
                 }
-            }
-            
         }
         
+        // 执行query查询
+        publicDatabase.add(queryOperation)
     }
     
 
