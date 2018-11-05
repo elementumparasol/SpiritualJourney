@@ -71,23 +71,39 @@ class DiscoverTableViewController: UITableViewController {
         // 描述在搜索数据库中的记录时所应用的查询条件
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
         
-        // 创建queryOperation
+        // 创建查询操作对象queryOperation
         let queryOperation = CKQueryOperation(query: query)
+        
+        // 通过desiredKeys指定提取字段(只检索应用程序所需的的字段)
+        // 我们这里告诉查询操作对象，我们只需要records的name和image字段
         queryOperation.desiredKeys = ["name", "image"]
+        
+        // 通过queuePriority属性来指定查询操作的优先级
         queryOperation.queuePriority = .veryHigh
+        
+        // 通过resultsLimit属性来设置任何时候执行一次查询的最大数量
         queryOperation.resultsLimit = 50
+        
+        // 每次只要有record返回，就会执行这个闭包
         queryOperation.recordFetchedBlock = { (record) -> Void in
             
+            // 将返回的record存储到数组restaurants中
             self.restaurants.append(record)
         }
+        
+        // 在获取完所有的records之后，执行相应的闭包
+        // 其中参数cursor的类型是CKQueryCursor，它
+        // 用于标记查询的停止点和检索剩余结果的起点
         queryOperation
             .queryCompletionBlock = { [unowned self] (cursor, error) -> Void in
                 
+                // 如果发生错误，就打印相关信息，并且直接返回
                 if let error = error {
                     print("Faild to get data from iCloud - \(error.localizedDescription)")
                     return
                 }
                 
+                // 打印执行成功的消息
                 print("Successfully retrieve the data from iCloud")
                 
                 // 回到主线程中去刷新tableView
