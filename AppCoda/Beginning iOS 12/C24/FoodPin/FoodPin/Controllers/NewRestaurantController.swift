@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class NewRestaurantController: UITableViewController {
     
@@ -112,6 +113,9 @@ class NewRestaurantController: UITableViewController {
             appDelegate.saveContext()
         }
         
+        // 将新的restaurant保存到iCloud
+        saveRecordToCloud(restaurant: restaurant)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -133,8 +137,50 @@ class NewRestaurantController: UITableViewController {
             .largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(r: 231, g: 76, b: 60)]
     }
     
-    
-    
+    /// 将新的record存储到iCloud
+    private func saveRecordToCloud(restaurant: RestaurantMO!) -> Void {
+        
+        // 创建record，并且设置相关的字段
+        let record = CKRecord(recordType: "Restaurant")
+        record.setValue(restaurant.name, forKey: "name")
+        record.setValue(restaurant.type, forKey: "type")
+        record.setValue(restaurant.location, forKey: "location")
+        record.setValue(restaurant.phone, forKey: "phone")
+        record.setValue(restaurant.details, forKey: "description")
+        
+        let imageData = restaurant.image! as Data
+        
+        // 调整图片的大小
+        let originalImage = UIImage(data: imageData)!
+        let scalingFactor = (originalImage.size.width > 1024) ? 1024 / originalImage.size.width : 1.0
+        let scaledImage = UIImage(data: imageData, scale: scalingFactor)!
+        
+        // 将图片写入本地文件以供临时使用
+        let imageFilePath = NSTemporaryDirectory() + restaurant.name!
+        let imageFileURL = URL(fileURLWithPath: imageFilePath)
+        try? scaledImage.jpegData(compressionQuality: 0.8)?
+            .write(to: imageFileURL)
+        
+        // 创建imageAsset，以便上传到iCloud
+        let imageAsset = CKAsset(fileURL: imageFileURL)
+        record.setValue(imageAsset, forKey: "image")
+        
+        // 获取应用程序所对应的CloudKit容器和公开的数据库
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        
+        // 将图片保存到iCloud
+        publicDatabase.save(record) { (record, error) in
+            
+            // 对error进行校验
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            // 删除临时文件
+            try? FileManager.default.removeItem(at: imageFileURL)
+        }
+    }
     
     
 }
