@@ -118,6 +118,9 @@ class DiscoverTableViewController: UITableViewController {
         // 描述在搜索数据库中的记录时所应用的查询条件
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
         
+        // 按照创建时间对record进行排序
+        // query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
         // 创建查询操作对象queryOperation
         let queryOperation = CKQueryOperation(query: query)
         
@@ -127,7 +130,7 @@ class DiscoverTableViewController: UITableViewController {
         
         // 因为从iCloud下载图片需要占据大量的时间，所以我们
         // 这里先只下载name，图片放在后面再下载
-        queryOperation.desiredKeys = ["name"]
+        queryOperation.desiredKeys = ["name", "type", "phone", "location", "description"]
         
         // 通过queuePriority属性来指定查询操作的优先级
         queryOperation.queuePriority = .veryHigh
@@ -185,7 +188,7 @@ class DiscoverTableViewController: UITableViewController {
     /// - Parameters:
     ///   - record: 缓存到本地的record，或者从CloudKit中下载的record
     ///   - cell: tableView的cell
-    private func fetchImage(from record: CKRecord, for cell: UITableViewCell) {
+    private func fetchImage(from record: CKRecord, for cell: DiscoverTableViewCell) {
         
         /**
          * 使用NSCache来缓存图片:
@@ -204,7 +207,7 @@ class DiscoverTableViewController: UITableViewController {
                 .init(contentsOf: imageFileURL as URL) {
                 
                 // 使用图片的二进制数据将其设置到cell上面去
-                cell.imageView?.image = UIImage(data: imageData)
+                cell.myImageView?.image = UIImage(data: imageData)
             }
         } else {
             
@@ -251,7 +254,7 @@ class DiscoverTableViewController: UITableViewController {
                         DispatchQueue.main.async {
                             
                             // 设置cell的图片
-                            cell.imageView?.image = UIImage(data: imageData)
+                            cell.myImageView?.image = UIImage(data: imageData)
                             
                             // 由于占位图片和网络图片的尺寸可能会不一样，所以
                             // 这里需要调用setNeedsLayout()重新布局
@@ -298,18 +301,21 @@ class DiscoverTableViewController: UITableViewController {
     // 返回tableView的cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
         
         // 取出数据(record)
         let restaurant = restaurants[indexPath.row]
         
         // 设置cell的文字。一个record就是一个键值对
         // 我们使用键值对保存或者取出应用程序中的数据
-        cell.textLabel?.text = restaurant
-            .object(forKey: "name") as? String
+        cell.nameLabel?.text = restaurant.object(forKey: "name") as? String
+        cell.typeLabel.text = restaurant.object(forKey: "type") as? String
+        cell.phoneLabel.text = restaurant.object(forKey: "phone") as? String
+        cell.addressLabel.text = restaurant.object(forKey: "location") as? String
+        cell.descriptionLabel.text = restaurant.object(forKey: "description") as? String
         
         // 先设置cell的本地占位图片
-        cell.imageView?.image = UIImage(named: "photo")
+        cell.myImageView?.image = UIImage(named: "photo")
         
         // 再从restaurant中取出图片，并且将其设置到cell上面
         fetchImage(from: restaurant, for: cell)
@@ -318,6 +324,10 @@ class DiscoverTableViewController: UITableViewController {
     }
     
     
+    // MARK: - UITableViewDelegate
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
