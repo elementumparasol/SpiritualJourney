@@ -19,6 +19,13 @@ class DiscoverTableViewController: UITableViewController {
     /// 菊花标
     var spinner = UIActivityIndicatorView()
     
+    /// 用于缓存图片。NSCache是一个泛型，它可以缓存多种类型的
+    /// 对象。初始化的时候，只需要在尖括号中提供键值对的类型即可
+    /// 在我们这个程序中，key的类型为CKRecord.ID，value的类
+    /// 型为NSURL。也就是说，在我们这里，NSCache被设计为，使用
+    /// CKRecord.ID类型的键来缓存NSURL对象
+    private var imageCache = NSCache<CKRecord.ID, NSURL>()
+    
     
     // MARK: - 类自带的方法
 
@@ -155,66 +162,92 @@ class DiscoverTableViewController: UITableViewController {
         publicDatabase.add(queryOperation)
     }
     
-    /// 根据指定的recordID取出cell所对应record的图片
+    /// 从本地或者CloudKit中的record里面取出图片数据
     ///
     /// - Parameters:
-    ///   - recordIDs: 它是一个数组，是iCloud中所有record所对应的ID
+    ///   - record: 缓存到本地的record，或者从CloudKit中下载的record
     ///   - cell: tableView的cell
-    private func fetchRecordsImage(with recordIDs: [CKRecord.ID], for cell: UITableViewCell) {
+    private func fetchImage(from record: CKRecord, for cell: UITableViewCell) {
         
-        // 获取应用程序默认的CloudKit容器和公共数据库
-        let publicDatabase = CKContainer.default()
-            .publicCloudDatabase
+        /**
+         * 使用NSCache来缓存图片:
+         * - 首先，先检查图片有没有缓存到本地，如果有，则直接去本地取出缓存图片；
+         * - 如果图片没有缓存到本地，那么就从网络下载，然后再将其缓存到本地
+         */
         
-        // 初始化并返回一个带有特定recordID的查询操作
-        // iCloud中的每一条record都有自己独有的ID。要
-        // 获取特定record的图像，只需创建一个
-        // CKFetchRecordsOperation对象，然后将该
-        // record的的ID传递过去就可以
-        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
-        
-        // 通过desiredKeys指定查询字段
-        fetchRecordsImageOperation.desiredKeys = ["image"]
-        
-        // 通过queuePriority指定查询优先级
-        fetchRecordsImageOperation.queuePriority = .veryHigh
-        
-        // 跟queryCompletionBlock批量查询不同，这个是单个查询 [unowned self]
-        fetchRecordsImageOperation.perRecordCompletionBlock = { (record, recordID, error) -> Void in
+        // 使用缓存图片时使用的key取出value值，也就是imageFileURL
+        if let imageFileURL = imageCache.object(forKey: record.recordID) {
             
-            // 校验下载图片是否出错
-            if let error = error {
+            // 第一步: 先去缓存中查看有没有图片缓存到本地
+            print("Get image from cache...")
+            
+            // 通过图片的URL路径取出图片以后，将其转换为二进制数据
+            if let imageData = try? Data
+                .init(contentsOf: imageFileURL as URL) {
                 
-                // 如果获取数据出错，则打印错误信息，并且直接退出
-                print("Faild to get restaurant image from iCloud - \(error.localizedDescription)")
-                
-                return
+                // 使用图片的二进制数据将其设置到cell上面去
+                cell.imageView?.image = UIImage(data: imageData)
             }
+        } else {
             
-            // 先对record数据进行校验，如果record查询成功，则通过
-            // 键值取出图片数据，然后再将图片数据转换为CKAsset类型
-            if let record = record, let image = record.object(forKey: "image"), let imageAsset = image as? CKAsset {
+            // 第二步: 如果图片没有缓存到本地，才回去网络下载
+            print("Get image from CloudKit...")
+            
+            // 获取应用程序默认的CloudKit容器和公共数据库
+            let publicDatabase = CKContainer.default()
+                .publicCloudDatabase
+            
+            // 每一个record在CloudKit中都有一个独一无二的recordID
+            // 我们可以创建带有recordID的CKFetchRecordsOperation
+            // 来获取record中特定的数据
+            let fetchImageOperation = CKFetchRecordsOperation(recordIDs: [record.recordID])
+            
+            // 设置操作字段
+            fetchImageOperation.desiredKeys = ["image"]
+            
+            // 设置优先级
+            fetchImageOperation.queuePriority = .veryHigh
+            
+            // 创建block，执行数据查询
+            fetchImageOperation.perRecordCompletionBlock = { [unowned self] (record, recordID, error) -> Void in
                 
-                // 通过imageAsset.fileURL访问下载到本地的Asset数据
-                // 然后再将其转换为二进制数据
-                if let imageData = try? Data.init(contentsOf: imageAsset.fileURL) {
+                // 对error进行校验，如果error有值，则说明发生错误，直接退出
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                // 对record进行校验，如果record有值，则说明查询成功
+                // 通过字段"image"取出record中的image。由于在CloudKit
+                // 中存储图片时，使用的是Asset类型，所以这里需要将取出
+                // 的图片转换为CKAsset类型
+                if let record = record, let image = record.object(forKey: "image"), let imageAsset = image as? CKAsset {
                     
-                    // 回到主线程中去刷新UI
-                    DispatchQueue.main.async {
+                    // 将图片缓存到本地
+                    self.imageCache.setObject(imageAsset.fileURL as NSURL, forKey: record.recordID)
+                    
+                    // 将CKAsset类型的图片数据转换为二进制数据
+                    if let imageData = try? Data.init(contentsOf: imageAsset.fileURL) {
                         
-                        // 设置cell的网络图片
-                        cell.imageView?.image = UIImage(data: imageData)
-                        
-                        // 因为占位图片和下载的图片尺寸不同，所有需要调用
-                        // setNeedsLayout()重新布局当前cell，以便刷新数据
-                        cell.setNeedsLayout()
+                        // 回到主线程中去刷新UI界面
+                        DispatchQueue.main.async {
+                            
+                            // 设置cell的图片
+                            cell.imageView?.image = UIImage(data: imageData)
+                            
+                            // 由于占位图片和网络图片的尺寸可能会不一样，所以
+                            // 这里需要调用setNeedsLayout()重新布局
+                            cell.setNeedsLayout()
+                        }
                     }
+                    
                 }
             }
+            
+            // 对publicDatabase异步执行当前指定的操作
+            publicDatabase.add(fetchImageOperation)
         }
         
-        // 执行数据查询操作
-        publicDatabase.add(fetchRecordsImageOperation)
     }
     
 
@@ -245,13 +278,16 @@ class DiscoverTableViewController: UITableViewController {
         cell.textLabel?.text = restaurant
             .object(forKey: "name") as? String
         
-        // 设置cell的本地占位图片
+        // 先设置cell的本地占位图片
         cell.imageView?.image = UIImage(named: "photo")
         
-        
-        // 取出iCloud中record所对应的图片，并且将其设置到cell上面
-        fetchRecordsImage(with: [restaurant.recordID], for: cell)
+        // 再从restaurant中取出图片，并且将其设置到cell上面
+        fetchImage(from: restaurant, for: cell)
         
         return cell
     }
+    
+    
+    
+    
 }
