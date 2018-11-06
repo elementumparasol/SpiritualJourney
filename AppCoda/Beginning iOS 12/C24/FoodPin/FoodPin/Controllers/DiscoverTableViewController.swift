@@ -37,6 +37,9 @@ class DiscoverTableViewController: UITableViewController {
         
         // 从iCloud中取出数据
         fetchRecordsFromCloud()
+        
+        // 下拉刷新
+        pullToRefresh()
     }
     
     
@@ -93,7 +96,12 @@ class DiscoverTableViewController: UITableViewController {
     }
     
     /// 从iCloud中取出数据
+    @objc
     private func fetchRecordsFromCloud() {
+        
+        // 在刷新数据之前，先移除旧的数据，并且刷新tableView
+        restaurants.removeAll()
+        tableView.reloadData()
         
         // 获取应用程序的默认CloudKit容器
         let cloudContainer = CKContainer.default()
@@ -155,6 +163,16 @@ class DiscoverTableViewController: UITableViewController {
                     // 数据出来以后，停止spinner
                     self.spinner.stopAnimating()
                     self.tableView.reloadData()
+                    
+                    // 当数据已经下载完成以后，调用endRefreshing()
+                    // 方法。显然，在回到主线程中刷新数据时是最合适的
+                    if let refreshControl = self.refreshControl {
+                        
+                        // 如果refreshControl还在刷新，就停止刷新
+                        if refreshControl.isRefreshing {
+                            refreshControl.endRefreshing()
+                        }
+                    }
                 }
         }
         
@@ -248,6 +266,18 @@ class DiscoverTableViewController: UITableViewController {
             publicDatabase.add(fetchImageOperation)
         }
         
+    }
+    
+    /// 下拉刷新数据
+    private func pullToRefresh() {
+        
+        // refreshControl是tableViewController自带的属性
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = .white
+        refreshControl?.tintColor = .gray
+        refreshControl?
+            .attributedTitle = NSAttributedString(string: "下拉刷新")
+        refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: .valueChanged)
     }
     
 
