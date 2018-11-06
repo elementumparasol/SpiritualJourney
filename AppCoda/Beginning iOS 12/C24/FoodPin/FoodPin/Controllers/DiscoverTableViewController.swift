@@ -55,6 +55,9 @@ class DiscoverTableViewController: UITableViewController {
             .largeTitleTextAttributes = [NSAttributedString.Key
                 .foregroundColor: UIColor(r: 231, g: 76, b: 60)]
         
+        // 设置footerView，一般去掉多余cell的分割线
+        tableView.tableFooterView = UIView()
+        
         // 设置菊花标
         setActivityIndicatorView()
     }
@@ -152,46 +155,23 @@ class DiscoverTableViewController: UITableViewController {
         publicDatabase.add(queryOperation)
     }
     
-
-    // MARK: - UITableViewDataSource
-
-    // 返回tableView中的分组数
-    override func numberOfSections(in tableView: UITableView) -> Int {
-
-        return 1
-    }
-
-    // 返回tableView中每一组cell的行数
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return restaurants.count
-    }
-
-    // 返回tableView的cell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath)
-        
-        // 取出数据(record)
-        let restaurant = restaurants[indexPath.row]
-        
-        // 设置cell的文字。一个record就是一个键值对
-        // 我们使用键值对保存或者取出应用程序中的数据
-        cell.textLabel?.text = restaurant
-            .object(forKey: "name") as? String
-        
-        // 设置cell的本地占位图片
-        cell.imageView?.image = UIImage(named: "photo")
-        
-        
-        /** 在后台从iCloud中取出图片 */
+    /// 根据指定的recordID取出cell所对应record的图片
+    ///
+    /// - Parameters:
+    ///   - recordIDs: 它是一个数组，是iCloud中所有record所对应的ID
+    ///   - cell: tableView的cell
+    private func fetchRecordsImage(with recordIDs: [CKRecord.ID], for cell: UITableViewCell) {
         
         // 获取应用程序默认的CloudKit容器和公共数据库
         let publicDatabase = CKContainer.default()
             .publicCloudDatabase
         
         // 初始化并返回一个带有特定recordID的查询操作
-        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+        // iCloud中的每一条record都有自己独有的ID。要
+        // 获取特定record的图像，只需创建一个
+        // CKFetchRecordsOperation对象，然后将该
+        // record的的ID传递过去就可以
+        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
         
         // 通过desiredKeys指定查询字段
         fetchRecordsImageOperation.desiredKeys = ["image"]
@@ -225,7 +205,8 @@ class DiscoverTableViewController: UITableViewController {
                         // 设置cell的网络图片
                         cell.imageView?.image = UIImage(data: imageData)
                         
-                        // 重新布局当前cell，以便刷新数据
+                        // 因为占位图片和下载的图片尺寸不同，所有需要调用
+                        // setNeedsLayout()重新布局当前cell，以便刷新数据
                         cell.setNeedsLayout()
                     }
                 }
@@ -234,8 +215,43 @@ class DiscoverTableViewController: UITableViewController {
         
         // 执行数据查询操作
         publicDatabase.add(fetchRecordsImageOperation)
+    }
+    
+
+    // MARK: - UITableViewDataSource
+
+    // 返回tableView中的分组数
+    override func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 1
+    }
+
+    // 返回tableView中每一组cell的行数
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return restaurants.count
+    }
+
+    // 返回tableView的cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath)
+        
+        // 取出数据(record)
+        let restaurant = restaurants[indexPath.row]
+        
+        // 设置cell的文字。一个record就是一个键值对
+        // 我们使用键值对保存或者取出应用程序中的数据
+        cell.textLabel?.text = restaurant
+            .object(forKey: "name") as? String
+        
+        // 设置cell的本地占位图片
+        cell.imageView?.image = UIImage(named: "photo")
+        
+        
+        // 取出iCloud中record所对应的图片，并且将其设置到cell上面
+        fetchRecordsImage(with: [restaurant.recordID], for: cell)
         
         return cell
     }
-
 }
