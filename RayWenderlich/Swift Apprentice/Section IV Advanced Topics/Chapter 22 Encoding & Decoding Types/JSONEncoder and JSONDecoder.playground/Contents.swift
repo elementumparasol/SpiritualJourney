@@ -25,6 +25,8 @@ struct Toy: Codable {
  * 1、使用JSONEncoder进行编码(转化为JSONData的形式)
  */
 
+print("--- 1、使用JSONEncoder进行编码(转化为JSONData的形式) ---")
+
 let toy1 = Toy(name: "Teddy Bear")
 let employee1 = Employee(name: "John Appleseed", id: 7, favoriteToy: toy1)
 
@@ -43,3 +45,17 @@ let jsonString = String(data: jsonData, encoding: .utf8)!
 print(jsonString)
 
 
+
+/**
+ * 2、使用JSONDecoder进行解码(将JSONData转换为字符串)
+ */
+
+print("\n--- 2、使用JSONDecoder进行解码(将JSONData转换为字符串) ---")
+
+let jsonDecoder = JSONDecoder()
+
+// 使用Employee.self告诉decode(_ :, from:)要解码什么类型
+// 即，我们这里告诉它要解码Employee这个类型
+let employee2 = try jsonDecoder.decode(Employee.self, from: jsonData)
+
+print(employee2)
