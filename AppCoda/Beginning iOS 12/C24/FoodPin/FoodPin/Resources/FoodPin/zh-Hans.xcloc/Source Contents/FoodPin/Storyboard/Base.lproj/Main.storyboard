@@ -816,7 +816,7 @@
         <scene sceneID="5gW-io-Gil">
             <objects>
                 <viewControllerPlaceholder storyboardName="About" id="Qlf-8J-df1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="dfk-lZ-5cK"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="dfk-lZ-5cK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUy-gU-c8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -826,7 +826,7 @@
         <scene sceneID="qQp-wd-mdj">
             <objects>
                 <viewControllerPlaceholder storyboardName="Discover" id="dVZ-eN-olu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" id="Nxn-Y9-zb6"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="Nxn-Y9-zb6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrG-Dc-fm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

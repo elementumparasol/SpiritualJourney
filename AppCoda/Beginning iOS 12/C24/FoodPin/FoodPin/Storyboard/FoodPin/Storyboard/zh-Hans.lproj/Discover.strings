@@ -1,0 +1,21 @@
+
+/* Class = "UITabBarItem"; title = "Discover"; ObjectID = "16b-XL-VEm"; */
+"16b-XL-VEm.title" = "发现";
+
+/* Class = "UILabel"; text = "description"; ObjectID = "1kB-EM-L1S"; */
+"1kB-EM-L1S.text" = "餐厅描述";
+
+/* Class = "UILabel"; text = "Phone number"; ObjectID = "Hzh-Pb-hcs"; */
+"Hzh-Pb-hcs.text" = "电话";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "NIZ-RG-tlJ"; */
+"NIZ-RG-tlJ.text" = "类型";
+
+/* Class = "UINavigationItem"; title = "Discover"; ObjectID = "e9u-VJ-oQ5"; */
+"e9u-VJ-oQ5.title" = "发现";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "gMg-lf-uxq"; */
+"gMg-lf-uxq.text" = "名称";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "v0i-qn-UYa"; */
+"v0i-qn-UYa.text" = "地址";
