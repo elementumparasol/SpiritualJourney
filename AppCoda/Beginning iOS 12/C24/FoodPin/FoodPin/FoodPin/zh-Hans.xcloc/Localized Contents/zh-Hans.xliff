@@ -50,17 +50,17 @@
     <body>
       <trans-unit id="4rj-hH-gDz.normalTitle">
         <source>Rating it</source>
-        <target>Rating it</target>
+        <target>评价</target>
         <note>Class = "UIButton"; normalTitle = "Rating it"; ObjectID = "4rj-hH-gDz";</note>
       </trans-unit>
       <trans-unit id="6TZ-Ob-orF.text">
         <source>TYPE</source>
-        <target>TYPE</target>
+        <target>类型</target>
         <note>Class = "UILabel"; text = "TYPE"; ObjectID = "6TZ-Ob-orF";</note>
       </trans-unit>
       <trans-unit id="7eG-vZ-vFb.text">
         <source>Location</source>
-        <target>Location</target>
+        <target>位置</target>
         <note>Class = "UILabel"; text = "Location"; ObjectID = "7eG-vZ-vFb";</note>
       </trans-unit>
       <trans-unit id="8tg-JO-IWA.text">
@@ -70,17 +70,17 @@
       </trans-unit>
       <trans-unit id="8wq-7g-LeG.title">
         <source>Favorites</source>
-        <target>Favorites</target>
+        <target>喜欢</target>
         <note>Class = "UITabBarItem"; title = "Favorites"; ObjectID = "8wq-7g-LeG";</note>
       </trans-unit>
       <trans-unit id="9st-dg-M0v.placeholder">
         <source>Fill the restaurant address</source>
-        <target>Fill the restaurant address</target>
+        <target>填写餐厅地址</target>
         <note>Class = "UITextField"; placeholder = "Fill the restaurant address"; ObjectID = "9st-dg-M0v";</note>
       </trans-unit>
       <trans-unit id="AyJ-mz-Vwr.text">
         <source>Type</source>
-        <target>Type</target>
+        <target>类型</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "AyJ-mz-Vwr";</note>
       </trans-unit>
       <trans-unit id="ByK-pV-zwo.text">
@@ -90,12 +90,12 @@
       </trans-unit>
       <trans-unit id="Ecf-kU-mEr.placeholder">
         <source>Fill the restaurant phone</source>
-        <target>Fill the restaurant phone</target>
+        <target>填写餐厅电话</target>
         <note>Class = "UITextField"; placeholder = "Fill the restaurant phone"; ObjectID = "Ecf-kU-mEr";</note>
       </trans-unit>
       <trans-unit id="KpM-qm-I60.placeholder">
         <source>Fill in the restaurant name</source>
-        <target>Fill in the restaurant name</target>
+        <target>填写餐厅名称</target>
         <note>Class = "UITextField"; placeholder = "Fill in the restaurant name"; ObjectID = "KpM-qm-I60";</note>
       </trans-unit>
       <trans-unit id="McF-lJ-FA6.title">
@@ -104,48 +104,48 @@
         <note>Class = "UINavigationItem"; title = "FoodPin"; ObjectID = "McF-lJ-FA6";</note>
       </trans-unit>
       <trans-unit id="Nxn-Y9-zb6.title">
-        <source>Item</source>
-        <target>Item</target>
-        <note>Class = "UITabBarItem"; title = "Item"; ObjectID = "Nxn-Y9-zb6";</note>
+        <source>Discover</source>
+        <target>发现</target>
+        <note>Class = "UITabBarItem"; title = "Discover"; ObjectID = "Nxn-Y9-zb6";</note>
       </trans-unit>
       <trans-unit id="T69-mJ-DTU.text">
         <source>Name</source>
-        <target>Name</target>
+        <target>名称</target>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "T69-mJ-DTU";</note>
       </trans-unit>
       <trans-unit id="Zmu-BF-yh3.normalTitle">
         <source>Sad</source>
-        <target>Sad</target>
+        <target>悲伤</target>
         <note>Class = "UIButton"; normalTitle = "Sad"; ObjectID = "Zmu-BF-yh3";</note>
       </trans-unit>
       <trans-unit id="c78-1V-fys.title">
         <source>New Restaurant</source>
-        <target>New Restaurant</target>
+        <target>新餐厅</target>
         <note>Class = "UINavigationItem"; title = "New Restaurant"; ObjectID = "c78-1V-fys";</note>
       </trans-unit>
       <trans-unit id="d2p-ho-8RU.placeholder">
         <source>Fill the restaurant type</source>
-        <target>Fill the restaurant type</target>
+        <target>填写餐厅类型</target>
         <note>Class = "UITextField"; placeholder = "Fill the restaurant type"; ObjectID = "d2p-ho-8RU";</note>
       </trans-unit>
       <trans-unit id="dfk-lZ-5cK.title">
-        <source>Item</source>
-        <target>Item</target>
-        <note>Class = "UITabBarItem"; title = "Item"; ObjectID = "dfk-lZ-5cK";</note>
+        <source>About</source>
+        <target>关于</target>
+        <note>Class = "UITabBarItem"; title = "About"; ObjectID = "dfk-lZ-5cK";</note>
       </trans-unit>
       <trans-unit id="k5K-Yj-ckD.text">
         <source>PHONE</source>
-        <target>PHONE</target>
+        <target>电话</target>
         <note>Class = "UILabel"; text = "PHONE"; ObjectID = "k5K-Yj-ckD";</note>
       </trans-unit>
       <trans-unit id="kte-DE-2uK.text">
         <source>NAME</source>
-        <target>NAME</target>
+        <target>名称</target>
         <note>Class = "UILabel"; text = "NAME"; ObjectID = "kte-DE-2uK";</note>
       </trans-unit>
       <trans-unit id="mx8-0s-oWu.text">
         <source>ADDRESS</source>
-        <target>ADDRESS</target>
+        <target>地址</target>
         <note>Class = "UILabel"; text = "ADDRESS"; ObjectID = "mx8-0s-oWu";</note>
       </trans-unit>
       <trans-unit id="oWq-x5-x1D.text">
@@ -155,27 +155,27 @@
       </trans-unit>
       <trans-unit id="pCl-vZ-gFY.normalTitle">
         <source>Cool</source>
-        <target>Cool</target>
+        <target>很酷</target>
         <note>Class = "UIButton"; normalTitle = "Cool"; ObjectID = "pCl-vZ-gFY";</note>
       </trans-unit>
       <trans-unit id="sSR-Mf-n2m.normalTitle">
         <source>Love</source>
-        <target>Love</target>
+        <target>最爱</target>
         <note>Class = "UIButton"; normalTitle = "Love"; ObjectID = "sSR-Mf-n2m";</note>
       </trans-unit>
       <trans-unit id="sxS-WD-qXS.text">
         <source>A really nice restaurant</source>
-        <target>A really nice restaurant</target>
+        <target>一家非常不错的餐厅</target>
         <note>Class = "UITextView"; text = "A really nice restaurant"; ObjectID = "sxS-WD-qXS";</note>
       </trans-unit>
       <trans-unit id="tqa-3y-aUW.text">
         <source>DESCRIPTION</source>
-        <target>DESCRIPTION</target>
+        <target>餐厅描述</target>
         <note>Class = "UILabel"; text = "DESCRIPTION"; ObjectID = "tqa-3y-aUW";</note>
       </trans-unit>
       <trans-unit id="vli-vw-VDl.normalTitle">
         <source>Angry</source>
-        <target>Angry</target>
+        <target>生气</target>
         <note>Class = "UIButton"; normalTitle = "Angry"; ObjectID = "vli-vw-VDl";</note>
       </trans-unit>
       <trans-unit id="wl7-Dn-yQD.text">
@@ -185,12 +185,12 @@
       </trans-unit>
       <trans-unit id="yxB-jy-Qy1.normalTitle">
         <source>Happy</source>
-        <target>Happy</target>
+        <target>高兴</target>
         <note>Class = "UIButton"; normalTitle = "Happy"; ObjectID = "yxB-jy-Qy1";</note>
       </trans-unit>
       <trans-unit id="zhZ-Dh-nBa.text">
         <source>Subsection title</source>
-        <target>Subsection title</target>
+        <target>子标题</target>
         <note>Class = "UILabel"; text = "Subsection title"; ObjectID = "zhZ-Dh-nBa";</note>
       </trans-unit>
     </body>
@@ -202,17 +202,17 @@
     <body>
       <trans-unit id="HIO-7h-uNb.title">
         <source>About</source>
-        <target>About</target>
+        <target>关于</target>
         <note>Class = "UINavigationItem"; title = "About"; ObjectID = "HIO-7h-uNb";</note>
       </trans-unit>
       <trans-unit id="OQ9-OY-yRk.text">
         <source>Title</source>
-        <target>Title</target>
+        <target>标题</target>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "OQ9-OY-yRk";</note>
       </trans-unit>
       <trans-unit id="Oho-KQ-6p6.title">
         <source>About</source>
-        <target>About</target>
+        <target>关于</target>
         <note>Class = "UITabBarItem"; title = "About"; ObjectID = "Oho-KQ-6p6";</note>
       </trans-unit>
     </body>
@@ -224,37 +224,37 @@
     <body>
       <trans-unit id="1kB-EM-L1S.text">
         <source>description</source>
-        <target>description</target>
+        <target>餐厅描述</target>
         <note>Class = "UILabel"; text = "description"; ObjectID = "1kB-EM-L1S";</note>
       </trans-unit>
       <trans-unit id="16b-XL-VEm.title">
         <source>Discover</source>
-        <target>Discover</target>
+        <target>发现</target>
         <note>Class = "UITabBarItem"; title = "Discover"; ObjectID = "16b-XL-VEm";</note>
       </trans-unit>
       <trans-unit id="Hzh-Pb-hcs.text">
         <source>Phone number</source>
-        <target>Phone number</target>
+        <target>电话</target>
         <note>Class = "UILabel"; text = "Phone number"; ObjectID = "Hzh-Pb-hcs";</note>
       </trans-unit>
       <trans-unit id="NIZ-RG-tlJ.text">
         <source>Type</source>
-        <target>Type</target>
+        <target>类型</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "NIZ-RG-tlJ";</note>
       </trans-unit>
       <trans-unit id="e9u-VJ-oQ5.title">
         <source>Discover</source>
-        <target>Discover</target>
+        <target>发现</target>
         <note>Class = "UINavigationItem"; title = "Discover"; ObjectID = "e9u-VJ-oQ5";</note>
       </trans-unit>
       <trans-unit id="gMg-lf-uxq.text">
         <source>Name</source>
-        <target>Name</target>
+        <target>名称</target>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "gMg-lf-uxq";</note>
       </trans-unit>
       <trans-unit id="v0i-qn-UYa.text">
         <source>address</source>
-        <target>address</target>
+        <target>地址</target>
         <note>Class = "UILabel"; text = "address"; ObjectID = "v0i-qn-UYa";</note>
       </trans-unit>
     </body>

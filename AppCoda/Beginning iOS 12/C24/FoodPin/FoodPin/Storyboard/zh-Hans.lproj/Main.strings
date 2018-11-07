@@ -9,7 +9,7 @@
 "7eG-vZ-vFb.text" = "位置";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "8tg-JO-IWA"; */
-"8tg-JO-IWA.text" = "Name";
+"8tg-JO-IWA.text" = "名称";
 
 /* Class = "UITabBarItem"; title = "Favorites"; ObjectID = "8wq-7g-LeG"; */
 "8wq-7g-LeG.title" = "喜欢";
@@ -36,10 +36,10 @@
 "Nxn-Y9-zb6.title" = "发现";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "T69-mJ-DTU"; */
-"T69-mJ-DTU.text" = "Name";
+"T69-mJ-DTU.text" = "名称";
 
 /* Class = "UIButton"; normalTitle = "Sad"; ObjectID = "Zmu-BF-yh3"; */
-"Zmu-BF-yh3.normalTitle" = "Sad";
+"Zmu-BF-yh3.normalTitle" = "失望";
 
 /* Class = "UINavigationItem"; title = "New Restaurant"; ObjectID = "c78-1V-fys"; */
 "c78-1V-fys.title" = "新餐厅";
@@ -75,13 +75,13 @@
 "tqa-3y-aUW.text" = "餐厅描述";
 
 /* Class = "UIButton"; normalTitle = "Angry"; ObjectID = "vli-vw-VDl"; */
-"vli-vw-VDl.normalTitle" = "Angry";
+"vli-vw-VDl.normalTitle" = "生气";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "wl7-Dn-yQD"; */
 "wl7-Dn-yQD.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Happy"; ObjectID = "yxB-jy-Qy1"; */
-"yxB-jy-Qy1.normalTitle" = "Happy";
+"yxB-jy-Qy1.normalTitle" = "不错";
 
 /* Class = "UILabel"; text = "Subsection title"; ObjectID = "zhZ-Dh-nBa"; */
-"zhZ-Dh-nBa.text" = "Subsection title";
+"zhZ-Dh-nBa.text" = "子标题";
