@@ -13,13 +13,28 @@ class TableViewCell: UITableViewCell {
     // MARK: - @IBOutlet
     
     /// nameLabel
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel! {
+        
+        didSet {
+            nameLabel.numberOfLines = 0
+        }
+    }
     
     /// countryLabel
-    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel! {
+        
+        didSet {
+            countryLabel.numberOfLines = 0
+        }
+    }
     
     /// useLabel
-    @IBOutlet weak var useLabel: UILabel!
+    @IBOutlet weak var useLabel: UILabel! {
+        
+        didSet {
+            useLabel.numberOfLines = 0
+        }
+    }
     
     /// amountLabel
     @IBOutlet weak var amountLabel: UILabel!

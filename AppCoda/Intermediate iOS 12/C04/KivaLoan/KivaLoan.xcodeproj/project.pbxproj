@@ -13,6 +13,7 @@
 		C5F41E322192C483006E8009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5F41E312192C483006E8009 /* Assets.xcassets */; };
 		C5F41E352192C483006E8009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5F41E332192C483006E8009 /* LaunchScreen.storyboard */; };
 		C5F41E3D2192C8B2006E8009 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F41E3C2192C8B2006E8009 /* TableViewCell.swift */; };
+		C5F41E3F21943903006E8009 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F41E3E21943903006E8009 /* Loan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C5F41E342192C483006E8009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5F41E362192C483006E8009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5F41E3C2192C8B2006E8009 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		C5F41E3E21943903006E8009 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				C5F41E2A2192C47F006E8009 /* AppDelegate.swift */,
 				C5F41E2C2192C47F006E8009 /* ViewController.swift */,
 				C5F41E3C2192C8B2006E8009 /* TableViewCell.swift */,
+				C5F41E3E21943903006E8009 /* Loan.swift */,
 				C5F41E2E2192C47F006E8009 /* Main.storyboard */,
 				C5F41E312192C483006E8009 /* Assets.xcassets */,
 				C5F41E332192C483006E8009 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				C5F41E3D2192C8B2006E8009 /* TableViewCell.swift in Sources */,
 				C5F41E2D2192C47F006E8009 /* ViewController.swift in Sources */,
 				C5F41E2B2192C47F006E8009 /* AppDelegate.swift in Sources */,
+				C5F41E3F21943903006E8009 /* Loan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
