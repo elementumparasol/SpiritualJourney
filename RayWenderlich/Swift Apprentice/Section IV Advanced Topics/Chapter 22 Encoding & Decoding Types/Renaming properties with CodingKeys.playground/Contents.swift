@@ -58,3 +58,6 @@ let jsonDecoder = JSONDecoder()
 let employee2 = try jsonDecoder.decode(Employee.self, from: jsonData)
 
 print(employee2)
+// Employee(name: "Jim Green", id: 7,
+// favoriteToy: Optional(__lldb_expr_29.Toy(name: "Teddy Bear")))
+
