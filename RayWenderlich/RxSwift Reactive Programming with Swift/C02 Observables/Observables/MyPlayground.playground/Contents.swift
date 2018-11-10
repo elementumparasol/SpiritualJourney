@@ -138,3 +138,73 @@ example(of: "range") {
         print("i = \(i), fibonacci = \(fibonacci)")
     })
 }
+
+
+example(of: "dispose") {
+    
+    // 创建一个String类型的Observable实例
+    let observable = Observable.of("A", "B", "C")
+    
+    // 订阅observable，并且将返回结果保存到subscription中
+    let subscription = observable.subscribe({ event in
+        print(event)
+    })
+    
+    // 调用dispose()手动终止订阅
+    // 当我们手动终止订阅以后，observable会立即停止抛出任何事件
+    subscription.dispose()
+}
+
+
+example(of: "disposeBag") {
+    
+    // 创建disposeBag，用来统一管理订阅完成之后
+    // 的内存释放(自动调用dispose()方法)
+    let disposeBag = DisposeBag()
+    
+    // 创建Observable
+    let observable = Observable.of(1, 2, 3)
+    
+    // 订阅Observable
+    let subscription = observable.subscribe({
+        print($0)
+    })
+    
+    // 将subscription添加到disposeBag中
+    subscription.disposed(by: disposeBag)
+    
+    // 简化上面的代码。这种方式会很常用，也就是创建Observable
+    // 然后订阅Observable，并且立即将它添加到disposeBag中
+    Observable.of("A", "B", "C")
+        .subscribe({ print($0) })
+        .disposed(by: disposeBag)
+}
+
+
+example(of: "create") {
+    
+    enum MyError: Error {
+        case anError
+    }
+    
+    let disposeBag = DisposeBag()
+    
+    // 使用create方法创建一个Observable可观察序列
+    // create方法接收一个名为subscribe的闭包参数，
+    // 该参数的主要作用是，定义所有将要发送给订阅者的事件
+    Observable<String>.create({ (observer) -> Disposable in
+        
+        // 定义将要发送给订阅者的事件
+        observer.onNext("A")
+        observer.onCompleted()
+        observer.onNext("B")  // 不会发出，因为事件已终止
+        
+        // 返回一个空的disposable
+        return Disposables.create()
+    })
+        .subscribe(onNext: { print($0) },
+                 onError: { print($0) },
+                 onCompleted: { print("Completed") },
+                 onDisposed: { print("onDisposed")} )
+        .disposed(by: disposeBag)
+}
