@@ -208,3 +208,33 @@ example(of: "create") {
                  onDisposed: { print("onDisposed")} )
         .disposed(by: disposeBag)
 }
+
+
+example(of: "deferred") {
+    
+    let disposeBag = DisposeBag()
+    
+    // 创建一个flip用于决定最后返回哪一个Observable
+    var flip = false
+    
+    // 使用deferred方法创建一个Int类型的Observable
+    let factory: Observable<Int> = Observable.deferred({
+        
+        flip = !flip
+        
+        if flip {
+            return Observable.of(1, 2, 3)
+        } else {
+            return Observable.of(4, 5, 6)
+        }
+    })
+    
+    // 订阅4次factory
+    for _ in 0...3 {
+        factory
+            .subscribe(onNext: { print($0, terminator: "") })
+            .disposed(by: disposeBag)
+        
+        print()  // 用于换行
+    }
+}
