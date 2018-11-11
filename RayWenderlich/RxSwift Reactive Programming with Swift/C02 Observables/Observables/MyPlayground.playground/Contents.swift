@@ -238,3 +238,59 @@ example(of: "deferred") {
         print()  // 用于换行
     }
 }
+
+
+example(of: "Single") {
+    
+    let disposeBag = DisposeBag()
+    
+    enum FileReadError: Error {
+        
+        case fileNotFound, unreadable, encodingFailed
+    }
+    
+    // 根据指定的名称从磁盘中加载一个text文件，并且返回一个Single
+    func loadText(for name: String) -> Single<String> {
+        
+        // 使用create方法创建并返回一个Single
+        return Single.create { single in
+            
+            // 创建一个空的disposable
+            let disposable = Disposables.create()
+            
+            // 获取txt文件的路径
+            guard let path = Bundle.main
+                .path(forResource: name, ofType: "txt") else {
+                single(.error(FileReadError.fileNotFound))
+                return disposable
+            }
+            
+            // 读取txt文件中是数据
+            guard let data = FileManager.default
+                .contents(atPath: path) else {
+                single(.error(FileReadError.unreadable))
+                return disposable
+            }
+            
+            // 将txt文件中的数据转换为String类型
+            guard let contents = String(data: data, encoding: .utf8) else {
+                single(.error(FileReadError.encodingFailed))
+                return disposable
+            }
+            
+            // 操作成功，返回.success事件
+            single(.success(contents))
+            
+            return disposable
+        }
+    }
+    
+    loadText(for: "将进酒").subscribe {
+        switch $0 {
+        case .success(let string):
+            print(string)
+        case .error(let error):
+            print(error)
+        }
+    }.disposed(by: disposeBag)
+}
