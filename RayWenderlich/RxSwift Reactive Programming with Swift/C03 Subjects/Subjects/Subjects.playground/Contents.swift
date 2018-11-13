@@ -122,4 +122,27 @@ example(of: "BehaviorSubject") {
     }).disposed(by: disposeBag)
     
     // 事件3
-    subject.onNext(3)}
+    subject.onNext(3)
+}
+
+
+example(of: "ReplaySubject") {
+    
+    // 创建一个大小为2的Int类型的ReplaySubject实例
+    let subject = ReplaySubject<Int>.create(bufferSize: 2)
+    let disposeBag = DisposeBag()
+    
+    subject.subscribe {
+        print(description: "第一个订阅者:", event: $0)
+        }.disposed(by: disposeBag)
+    
+    // 发送事件
+    subject.onNext(1)
+    subject.onNext(2)
+    
+    subject.subscribe({
+        print(description: "第二个订阅者:", event: $0)
+    }).disposed(by: disposeBag)
+    
+    subject.onNext(3)
+}
