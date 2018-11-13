@@ -146,3 +146,32 @@ example(of: "ReplaySubject") {
     
     subject.onNext(3)
 }
+
+
+example(of: "Variable") {
+    
+    // 创建Variable实例，并且给它一个初始值
+    let variable = Variable("Variable的初始值")
+    let disposeBag = DisposeBag()
+    
+    // 设置新的值。Variable和其它Subject有所不同
+    // Variable是通过属性value来访问和设置当前值的
+    variable.value = "通过value属性设置一个新的值"
+    
+    // 创建新的订阅者
+    variable.asObservable().subscribe({
+        print(description: "第一个订阅者:", event: $0)
+    }).disposed(by: disposeBag)
+    
+    variable.value = "再来一个事件"
+    variable.asObservable().subscribe({
+        print(description: "第二个订阅者:", event: $0)
+    }).disposed(by: disposeBag)
+    
+    variable.value = "最后再追加一个事件"
+}
+
+
+// 由于Variable是对BehaviorSubject
+// 做了一层封装，要完成订阅，必须先调用asObservable()
+// 方法来访问底层的BehaviorSubject，然后才可以订阅
