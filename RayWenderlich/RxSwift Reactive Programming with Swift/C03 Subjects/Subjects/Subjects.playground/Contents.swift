@@ -89,29 +89,37 @@ enum MyError: Error {
     case anError
 }
 
-/// 自定义一个print函数
-func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
+/// 自定义print函数，用来打印相关描述信息和event
+///
+/// - Parameters:
+///   - description: 用于描述的信息
+///   - event: Subject的event事件
+func print<T: CustomStringConvertible>(description: String, event: Event<T>) {
     
     // 如果element存在，则打印element；
     // 如果element不存在，但是error存在，则打印error；
     // 如果element和error都不存在，则打印event
-    print(label, (event.element ?? event.error) ?? event)
+    print(description, (event.element ?? event.error) ?? event)
 }
 
 example(of: "BehaviorSubject") {
     
-    let subject = BehaviorSubject(value: "Initial value")
+    // 创建BehaviorSubject实例，并且设置初始值
+    let subject = BehaviorSubject(value: 1)
     let disposeBag = DisposeBag()
     
-    subject.onNext("X")
-    
+    // 第一个订阅者从subject发出事件1之后开始订阅
     subject.subscribe({
-        print(label: "1)", event: $0)
+        print(description: "第一个订阅者:", event: $0)
     }).disposed(by: disposeBag)
     
-    subject.onError(MyError.anError)
+    // 事件2
+    subject.onNext(2)
     
+    // 第二个订阅者是从事件2之后才开始订阅
     subject.subscribe({
-        print(label: "2)", event: $0)
+        print(description: "第二个订阅者:", event: $0)
     }).disposed(by: disposeBag)
-}
+    
+    // 事件3
+    subject.onNext(3)}
