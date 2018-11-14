@@ -28,7 +28,8 @@ class MainViewController: UIViewController {
         
         didSet {
             clearButton.layer.masksToBounds = true
-            clearButton.layer.cornerRadius = 10.0
+            clearButton.layer.cornerRadius = clearButton
+                .bounds.size.width * 0.5
         }
     }
     
@@ -37,7 +38,8 @@ class MainViewController: UIViewController {
         
         didSet {
             saveButton.layer.masksToBounds = true
-            saveButton.layer.cornerRadius = 10.0
+            saveButton.layer.cornerRadius = saveButton
+                .bounds.size.width * 0.5
         }
     }
     
