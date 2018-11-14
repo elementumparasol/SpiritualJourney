@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B0F8A840F8E7F257ECD678C1 /* Pods_Collages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F554F86DCA900A76DF3A36D /* Pods_Collages.framework */; };
+		C57C9A67219C0DAA005AB8D3 /* 喵jio.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C57C9A66219C0DAA005AB8D3 /* 喵jio.jpeg */; };
 		C595F5EE219B1892004B7E87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F5ED219B1892004B7E87 /* AppDelegate.swift */; };
 		C595F5F0219B1892004B7E87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F5EF219B1892004B7E87 /* MainViewController.swift */; };
 		C595F5F3219B1892004B7E87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C595F5F1219B1892004B7E87 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		1F554F86DCA900A76DF3A36D /* Pods_Collages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		612257319F475E0B8596D5AB /* Pods-Collages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collages/Pods-Collages.debug.xcconfig"; sourceTree = "<group>"; };
+		C57C9A66219C0DAA005AB8D3 /* 喵jio.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "喵jio.jpeg"; sourceTree = "<group>"; };
 		C595F5EA219B1892004B7E87 /* Collages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C595F5ED219B1892004B7E87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C595F5EF219B1892004B7E87 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				C595F5F4219B1893004B7E87 /* Assets.xcassets */,
 				C595F5F6219B1893004B7E87 /* LaunchScreen.storyboard */,
 				C595F5F9219B1893004B7E87 /* Info.plist */,
+				C57C9A66219C0DAA005AB8D3 /* 喵jio.jpeg */,
 			);
 			path = Collages;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C57C9A67219C0DAA005AB8D3 /* 喵jio.jpeg in Resources */,
 				C595F5F8219B1893004B7E87 /* LaunchScreen.storyboard in Resources */,
 				C595F5F5219B1893004B7E87 /* Assets.xcassets in Resources */,
 				C595F5F3219B1892004B7E87 /* Main.storyboard in Resources */,

@@ -7,83 +7,101 @@
 //
 
 import UIKit
+import Photos
 
+/// UICollectionViewCell的可重用标识符
 private let reuseIdentifier = "Cell"
 
 class PhotosCollectionViewController: UICollectionViewController {
+    
+    // MARK: - 自定义属性
+    
+    /// 加载相册中的照片资源
+    private lazy var photos = PhotosCollectionViewController.loadPhotos()
+    
+    /// imageManager缓存图片资源管理器
+    private lazy var imageManager = PHCachingImageManager()
+    
+    /// UICollectionViewCell的itemSize
+    private lazy var thumbnailSize: CGSize = {
+        
+        // 设置cell的size(通过流水布局来获取)
+        let cellSize = (self.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+        
+        // 返回thumbnail的尺寸
+        return CGSize(width: cellSize.width * UIScreen.main.scale,
+                      height: cellSize.height * UIScreen.main.scale)
+    }()
+    
+    // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    
+    // MARK: - 自定义方法
+    
+    
+    /// 加载系统相册中的资源(照片，视频)
+    ///
+    /// - Returns: 从相册中返回的资源
+    static func loadPhotos() -> PHFetchResult<PHAsset> {
+        
+        // PHFetchOptions是用来获取相册资源的参数，比如说过滤、排序
+        // 和管理获取结果等
+        let allPhotosOptions = PHFetchOptions()
+        
+        // sortDescriptors表示用来描述排序的一个列表，这个
+        // 列表是用来指定相册获取结果如何排序的
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        // PHAsset: 它表示照片库中的图像、视频或实时照片这些对象
+        // fetchAssets(with: ): 这个方法用来检索与指定选项相匹
+        // 配的所有PHAsset
+        return PHAsset.fetchAssets(with: allPhotosOptions)
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
+    /// 返回每一组中UICollectionViewCell的个数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        
+        return photos.count
     }
 
+    /// 返回UICollectionViewCell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        // 根据可重用标识符取出cell
+        let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        
+        // 根据指定的索引从photos中取出asset
+        let asset = photos.object(at: indexPath.item)
     
-        // Configure the cell
+        // 取出照片对应的标识符
+        cell.representedAssetIdentifier = asset.localIdentifier
+        
+        // 通过imageManage来请求指定的图片资源
+        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { (image, _) in
+            
+            // 因为我们声明representedAssetIdentifier为
+            // 可选类型，所以这里需要做可选绑定
+            if cell.representedAssetIdentifier == asset.localIdentifier {
+                
+                // 设置cell的图片
+                cell.cellImageView.image = image
+            }
+        }
     
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
 
 }
