@@ -33,4 +33,16 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     
+    // MARK: - 自定义动画
+    
+    /// 闪烁动画
+    func flash() {
+        
+        cellImageView.alpha = 0
+        setNeedsDisplay()
+        
+        UIView.animate(withDuration: 0.5) {
+            self.cellImageView.alpha = 1.0
+        }
+    }
 }

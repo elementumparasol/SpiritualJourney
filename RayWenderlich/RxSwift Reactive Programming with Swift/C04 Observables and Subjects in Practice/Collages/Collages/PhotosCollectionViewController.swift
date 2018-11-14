@@ -66,7 +66,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     /// 返回每一组中UICollectionViewCell的个数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,5 +103,16 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
 
     
-
+    // MARK: - UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // 取出cell
+        if let cell = collectionView
+            .cellForItem(at: indexPath) as? PhotoCollectionViewCell {
+            
+            // 添加cell闪烁动画
+            cell.flash()
+        }
+    }
 }
