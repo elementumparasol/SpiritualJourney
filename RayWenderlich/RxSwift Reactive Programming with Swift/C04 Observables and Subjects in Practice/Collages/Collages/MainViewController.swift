@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
         // 我们将订阅时所产生的内存交给disposeBag管理，而disposeBag
         // 是当前控制器的属性，所以理论上讲，当控制器被操作系统回收时，
         // disposeBag也会跟着控制器一起被操作系统回收。但是，当前控制器
-        // 是根控制器，也就是所在程序退出之前是一直存在的。那么，这样一来
+        // 是根控制器，也就是说在程序退出之前是一直存在的。那么，这样一来
         // 就会产生一个问题，就是订阅任务完成以后，disposeBag并不会被及
         // 时回收，因此就会产生内存泄漏问题。为了解决这个矛盾，在闭包中捕获
         // 当前控制器时，使用[weak self]
@@ -82,6 +82,11 @@ class MainViewController: UIViewController {
             // 将选中的图片设置到imageView上面
             imageView.image = UIImage
                 .collage(images: photos, size: imageView.frame.size)
+        }).disposed(by: disposeBag)
+        
+        // 设置UI界面(开始新的订阅)
+        images.asObservable().subscribe(onNext: { [weak self] (photos) in
+            self?.updateUI(photos: photos)
         }).disposed(by: disposeBag)
     }
 
@@ -124,6 +129,25 @@ class MainViewController: UIViewController {
     
     
     // MARK: - 自定义方法
-
+    
+    /// 设置UI界面
+    ///
+    /// - Parameter photos: 从相册中选中的图片
+    private func updateUI(photos: [UIImage]) {
+        
+        // 照片的数量要大于0，并且必须是偶数
+        saveButton.isEnabled = photos
+            .count > 0 && photos.count % 2 == 0
+        
+        // 照片的数量必须大于0
+        clearButton.isEnabled = photos.count > 0
+        
+        // 最多只能添加6张照片
+        addButton.isEnabled = photos.count < 6
+        
+        // 照片的数量大于0时，修改导航栏标题
+        title = photos
+            .count > 0 ? "\(photos.count) photos" : "Collage"
+    }
 }
 
