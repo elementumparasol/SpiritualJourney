@@ -97,7 +97,7 @@ class MainViewController: UIViewController {
     @IBAction func addPhotos(_ sender: Any) {
         
         // 将图片添加到数组images中(通过value来添加.next事件)
-        images.value.append(UIImage(named: "吸猫.jpg")!)
+//        images.value.append(UIImage(named: "吸猫.jpg")!)
         
         // 获取storyboardId，用于加载指定的storyboard
         // 因为我们的storyboardId设置为类名相同，因此只需
@@ -112,6 +112,19 @@ class MainViewController: UIViewController {
         
         // push到指定的控制器
         navigationController?.pushViewController(photosViewController, animated: true)
+        
+        // 选中图片，并且将其添加到数组images中
+        photosViewController.selectedPhotos.subscribe(onNext: { [weak self] (image) in
+            
+            // 对数组images进行校验
+            guard let images = self?.images else { return }
+            
+            // 将选中的图片添加到数组images中
+            images.value.append(image)
+            
+        }, onDisposed: {
+            print("Completed photo selection.")
+        }).disposed(by: disposeBag)
     }
     
     /// 点击clear按钮，情况照片

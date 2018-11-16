@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import RxSwift
 
 /// UICollectionViewCell的可重用标识符
 private let reuseIdentifier = "Cell"
@@ -32,6 +33,15 @@ class PhotosCollectionViewController: UICollectionViewController {
         return CGSize(width: cellSize.width * UIScreen.main.scale,
                       height: cellSize.height * UIScreen.main.scale)
     }()
+    
+    
+    // 点击并相册中的图片(使用PublishSubject来添加.next事件)
+    private let selectedPhotosSubject = PublishSubject<UIImage>()
+    var selectedPhotos: Observable<UIImage> {
+        return selectedPhotosSubject.asObserver()
+    }
+    
+    
     
     // MARK: - 类自带的方法
 
@@ -113,6 +123,23 @@ class PhotosCollectionViewController: UICollectionViewController {
             
             // 添加cell闪烁动画
             cell.flash()
+        }
+        
+        // 获取相册中图片所表示的asset
+        let asset = photos.object(at: indexPath.item)
+        
+        // 从相册中选择照片
+        imageManager.requestImage(for: asset, targetSize: view.frame.size, contentMode: .aspectFill, options: nil) { [weak self] (image, info) in
+            
+            // 对image和info进行校验
+            guard let image = image, let info = info else { return }
+            
+            // 检查image是缩略图还是完整的asset
+            if let isThumbnail = info[PHImageResultIsDegradedKey as NSString] as? Bool, !isThumbnail {
+                
+                // 将图片添加到selectedPhotosSubject
+                self?.selectedPhotosSubject.onNext(image)
+            }
         }
     }
 }
