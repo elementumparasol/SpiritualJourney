@@ -96,9 +96,6 @@ class MainViewController: UIViewController {
     /// 点击导航栏右边按钮添加照片
     @IBAction func addPhotos(_ sender: Any) {
         
-        // 将图片添加到数组images中(通过value来添加.next事件)
-//        images.value.append(UIImage(named: "吸猫.jpg")!)
-        
         // 获取storyboardId，用于加载指定的storyboard
         // 因为我们的storyboardId设置为类名相同，因此只需
         // 要获取类名字符串就可以了。不过，在Swift里面获取
@@ -128,7 +125,7 @@ class MainViewController: UIViewController {
     }
     
     /// 点击clear按钮，情况照片
-    @IBAction func clearButtonTapClick(_ sender: Any) {
+    @IBAction func clearButtonTapClick() {
         
         // 清空图片数组images
         images.value = []
@@ -137,7 +134,25 @@ class MainViewController: UIViewController {
     /// 点击save按钮保存照片
     @IBAction func saveButtonClick(_ sender: Any) {
         
-        print("点击Save按钮保存照片")
+        // 对图片进行校验
+        guard let image = imageView.image else { return }
+        
+        // 将图片保存到系统相册(订阅Observable)。在订阅Observable
+        // 的时候，可以通过.asSingle()方法来将任何Observable转换
+        // 为Single。但是，有一点需要记住，不能将Observable可观察序
+        // 列转换为Completable
+        PhotoWriter.save(image).asSingle().subscribe(onSuccess: { [weak self] (id) in
+            
+            // 弹出保存成功的消息提示
+            self?.showMessage("Successfully saved!")
+            
+            // 图片保存成功以后清空图片
+            self?.clearButtonTapClick()
+            }, onError: { [weak self] (error) in
+                
+                // 弹出错误消息
+                self?.showMessage("Error", message: error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
     
     
@@ -161,6 +176,29 @@ class MainViewController: UIViewController {
         // 照片的数量大于0时，修改导航栏标题
         title = photos
             .count > 0 ? "\(photos.count) photos" : "Collage"
+    }
+    
+    /// 显示一个Alert弹窗信息
+    ///
+    /// - Parameters:
+    ///   - title: 弹窗标题
+    ///   - message: 弹窗描述信息
+    private func showMessage(_ title: String, message: String?=nil) {
+        
+        // 创建alertController
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // 创建alertAction
+        let alertAction = UIAlertAction(title: "Close", style: .default) { [weak self] (_) in
+            
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
+        // 将alertAction添加到alertController中
+        alertController.addAction(alertAction)
+        
+        // 弹出alertController
+        present(alertController, animated: true, completion: nil)
     }
 }
 

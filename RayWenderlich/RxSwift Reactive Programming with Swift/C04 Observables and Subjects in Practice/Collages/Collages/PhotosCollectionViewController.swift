@@ -52,6 +52,12 @@ class PhotosCollectionViewController: UICollectionViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 添加一个.completed事件以结束订阅
+        selectedPhotosSubject.onCompleted()
+    }
     
     // MARK: - 自定义方法
     
