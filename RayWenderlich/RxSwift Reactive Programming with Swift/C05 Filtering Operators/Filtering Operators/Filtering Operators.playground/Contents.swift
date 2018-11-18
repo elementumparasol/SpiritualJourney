@@ -16,3 +16,19 @@ example(of: "igonreElements") {
     
     strikes.onCompleted()
 }
+
+
+example(of: "elementAt") {
+    
+    let strikes = PublishSubject<String>()
+    let disposeBag = DisposeBag()
+    
+    strikes.elementAt(2).subscribe(onNext: { (_) in
+        print("You're out!")
+    }).disposed(by: disposeBag)
+    
+    strikes.onNext("A")
+    strikes.onNext("B")
+    strikes.onNext("C")
+    strikes.onNext("D")
+}
