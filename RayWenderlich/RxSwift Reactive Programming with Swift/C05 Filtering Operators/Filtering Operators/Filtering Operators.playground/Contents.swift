@@ -60,3 +60,15 @@ example(of: "filter") {
             print($0)
         }).disposed(by: disposeBag)
 }
+
+
+example(of: "skip") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(1, 2, 3, 4, 5)
+        .skip(2)  // 过滤掉前面的2个事件元素，然后再订阅
+        .subscribe(onNext: {
+            print($0)
+        }).disposed(by: disposeBag)
+}
