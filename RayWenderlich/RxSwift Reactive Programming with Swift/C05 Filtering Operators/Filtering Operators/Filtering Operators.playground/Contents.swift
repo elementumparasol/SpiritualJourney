@@ -163,3 +163,28 @@ example(of: "takeWhile") {
             print($0)
         }).disposed(by: disposeBag)
 }
+
+
+example(of: "takeUntil") {
+    
+    let disposeBag = DisposeBag()
+    
+    let subject = PublishSubject<String>()
+    let trigger = PublishSubject<String>()
+    
+    subject.takeUntil(trigger)
+        .subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
+    
+    subject.onNext("A")
+    subject.onNext("B")
+    
+    // 订阅者会接收subject发出的所有事件元素
+    // 一直到trigger发出一个.next事件元素以
+    // 后，订阅者就不再接收subject发出的任何事件元素
+    trigger.onNext("X")
+    
+    subject.onNext("C")
+    subject.onNext("D")
+}
