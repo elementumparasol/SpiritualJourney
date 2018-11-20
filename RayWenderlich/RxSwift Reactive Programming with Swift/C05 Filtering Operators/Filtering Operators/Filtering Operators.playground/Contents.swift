@@ -89,10 +89,34 @@ example(of: "skipWhile") {
     // 滤条件，skipWhile到此就停止了，即便是后面的事件元
     // 素3和5都满足过滤条件，但是因为skipWhile已经停止了
     // 所以就不再继续过滤了
-    Observable.of(1, 2, 3, 4, 5)
+    Observable.of(1, 1, 2, 3, 5, 8)
         .skipWhile({ (integer) -> Bool in
         integer % 2 == 1
     }).subscribe(onNext: {
         print($0)
     }).disposed(by: disposeBag)
+}
+
+
+example(of: "skipUntil") {
+    
+    let disposeBag = DisposeBag()
+    
+    let subject = PublishSubject<String>()
+    let trigger = PublishSubject<String>()
+    
+    subject.skipUntil(trigger)
+        .subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
+    
+    subject.onNext("A")
+    subject.onNext("B")
+    
+    // 直到trigger有.next事件之后
+    // subject才会接收后面的.next事件
+    trigger.onNext("X")
+    
+    subject.onNext("C")
+    subject.onNext("D")
 }
