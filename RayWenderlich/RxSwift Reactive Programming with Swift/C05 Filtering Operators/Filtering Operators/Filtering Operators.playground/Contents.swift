@@ -120,3 +120,16 @@ example(of: "skipUntil") {
     subject.onNext("C")
     subject.onNext("D")
 }
+
+
+example(of: "take") {
+    
+    let disposeBag = DisposeBag()
+    
+    // take是和skip相反的操作，也就是说，它
+    // 会接收前n个事件元素，跳过后面的所有元素
+    Observable.of(1, 2, 3, 4, 5, 6)
+        .take(3).subscribe(onNext: {
+            print($0)
+        }).disposed(by: disposeBag)
+}
