@@ -102,7 +102,10 @@ example(of: "skipUntil") {
     
     let disposeBag = DisposeBag()
     
+    // 第一个Observable，也就是被订阅的那个
     let subject = PublishSubject<String>()
+    
+    // 第二个Observable，不会被订阅
     let trigger = PublishSubject<String>()
     
     subject.skipUntil(trigger)
@@ -113,8 +116,7 @@ example(of: "skipUntil") {
     subject.onNext("A")
     subject.onNext("B")
     
-    // 直到trigger有.next事件之后
-    // subject才会接收后面的.next事件
+    // subject在这之后发出的事件元素会被订阅者接收到
     trigger.onNext("X")
     
     subject.onNext("C")
@@ -123,13 +125,41 @@ example(of: "skipUntil") {
 
 
 example(of: "take") {
-    
+
     let disposeBag = DisposeBag()
-    
+
     // take是和skip相反的操作，也就是说，它
     // 会接收前n个事件元素，跳过后面的所有元素
     Observable.of(1, 2, 3, 4, 5, 6)
         .take(3).subscribe(onNext: {
+            print($0)
+        }).disposed(by: disposeBag)
+}
+
+
+example(of: "takeWhile") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(1, 2, 3, 4, 5, 6)
+        .takeWhile({ (integer) -> Bool in
+        integer < 3
+    }).subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
+}
+
+
+example(of: "takeWhile") {
+    
+    let disposeBag = DisposeBag()
+    
+    Observable.of(2, 2, 4, 4, 6, 6)
+        .enumerated().takeWhile({ (index, integer) -> Bool in
+            integer % 2 == 0 && index < 3
+        }).map({ (_, element) -> Int in
+            return element
+        }).subscribe(onNext: {
             print($0)
         }).disposed(by: disposeBag)
 }
