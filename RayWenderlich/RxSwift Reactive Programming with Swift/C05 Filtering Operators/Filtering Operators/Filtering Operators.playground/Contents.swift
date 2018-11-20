@@ -66,9 +66,33 @@ example(of: "skip") {
     
     let disposeBag = DisposeBag()
     
+    // 过滤掉Observable可观察序列中前面n个事件
+    // 元素，然后再来订阅它后面的所有.next事件
     Observable.of(1, 2, 3, 4, 5)
         .skip(2)  // 过滤掉前面的2个事件元素，然后再订阅
         .subscribe(onNext: {
             print($0)
         }).disposed(by: disposeBag)
+}
+
+
+example(of: "skipWhile") {
+    
+    let disposeBag = DisposeBag()
+    
+    // 与skip跳过前面的n个事件元素有所不同，skipWhile
+    // 会过滤掉所有满足条件的事件元素，直到有一个事件元素
+    // 不满足过滤条件，它就不再继续过滤。即便是该不满足过
+    // 滤条件的事件元素后面又有满足过滤条件的事件元素，它
+    // 都不再继续过滤。比如说，下面的事件元素1满足过滤条件
+    // 所以，它会被过滤掉。但是，它后面的事件元素2不满足过
+    // 滤条件，skipWhile到此就停止了，即便是后面的事件元
+    // 素3和5都满足过滤条件，但是因为skipWhile已经停止了
+    // 所以就不再继续过滤了
+    Observable.of(1, 2, 3, 4, 5)
+        .skipWhile({ (integer) -> Bool in
+        integer % 2 == 1
+    }).subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
 }
