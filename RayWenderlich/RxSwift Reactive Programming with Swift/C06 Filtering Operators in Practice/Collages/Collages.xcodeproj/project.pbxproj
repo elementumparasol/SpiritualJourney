@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B0F8A840F8E7F257ECD678C1 /* Pods_Collages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F554F86DCA900A76DF3A36D /* Pods_Collages.framework */; };
+		C50B711121A6D31D0018EF2D /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B711021A6D31D0018EF2D /* UIViewController+Rx.swift */; };
 		C57C9A67219C0DAA005AB8D3 /* 喵jio.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C57C9A66219C0DAA005AB8D3 /* 喵jio.jpeg */; };
 		C57C9A69219D68F7005AB8D3 /* UIImage+Collages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C9A68219D68F7005AB8D3 /* UIImage+Collages.swift */; };
 		C57C9A6B219EADB2005AB8D3 /* PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C9A6A219EADB2005AB8D3 /* PhotoWriter.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		1F554F86DCA900A76DF3A36D /* Pods_Collages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		612257319F475E0B8596D5AB /* Pods-Collages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collages/Pods-Collages.debug.xcconfig"; sourceTree = "<group>"; };
+		C50B711021A6D31D0018EF2D /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		C57C9A66219C0DAA005AB8D3 /* 喵jio.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "喵jio.jpeg"; sourceTree = "<group>"; };
 		C57C9A68219D68F7005AB8D3 /* UIImage+Collages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Collages.swift"; sourceTree = "<group>"; };
 		C57C9A6A219EADB2005AB8D3 /* PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWriter.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				C595F601219BFEF8004B7E87 /* PhotoCollectionViewCell.swift */,
 				C57C9A68219D68F7005AB8D3 /* UIImage+Collages.swift */,
 				C57C9A6A219EADB2005AB8D3 /* PhotoWriter.swift */,
+				C50B711021A6D31D0018EF2D /* UIViewController+Rx.swift */,
 				C595F5F1219B1892004B7E87 /* Main.storyboard */,
 				C595F5F4219B1893004B7E87 /* Assets.xcassets */,
 				C595F5F6219B1893004B7E87 /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 				C57C9A6B219EADB2005AB8D3 /* PhotoWriter.swift in Sources */,
 				C57C9A69219D68F7005AB8D3 /* UIImage+Collages.swift in Sources */,
 				C595F5EE219B1892004B7E87 /* AppDelegate.swift in Sources */,
+				C50B711121A6D31D0018EF2D /* UIViewController+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
