@@ -116,6 +116,13 @@ class MainViewController: UIViewController {
         // 选中图片，并且将其添加到数组images中
         let newPhotos = photosViewController.selectedPhotos.share()
         newPhotos
+            .takeWhile({ [weak self] image in
+                
+                // 让数组images中图片的数量小于6张
+                // 在self为nil时，使用空合运算符设置默认值
+                // 为0，这样可以避免强制解包
+                return (self?.images.value.count ?? 0) < 6
+            })
             .filter({ newImage in
             return newImage.size.width > newImage.size.height
         })  // 只需要宽度大于高度的图片，将宽度小于高度的图片过滤掉
