@@ -25,6 +25,7 @@
 		C50B712521A701E20018EF2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C50B712821A701E20018EF2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C50B712A21A701E20018EF2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C50B713021A708710018EF2D /* Share subscriptions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Share subscriptions.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F9361C75789938AD55482740 /* Pods-Share subscriptions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Share subscriptions.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Share subscriptions/Pods-Share subscriptions.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +61,7 @@
 		C50B711221A701DF0018EF2D = {
 			isa = PBXGroup;
 			children = (
+				C50B713021A708710018EF2D /* Share subscriptions.playground */,
 				C50B711D21A701DF0018EF2D /* Share subscriptions */,
 				C50B711C21A701DF0018EF2D /* Products */,
 				061842F1068402728366AC8E /* Pods */,
