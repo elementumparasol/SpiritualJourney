@@ -111,7 +111,8 @@ class MainViewController: UIViewController {
         navigationController?.pushViewController(photosViewController, animated: true)
         
         // 选中图片，并且将其添加到数组images中
-        photosViewController.selectedPhotos.subscribe(onNext: { [weak self] (image) in
+        let newPhotos = photosViewController.selectedPhotos.share()
+        newPhotos.subscribe(onNext: { [weak self] (image) in
             
             // 对数组images进行校验
             guard let images = self?.images else { return }
@@ -121,6 +122,15 @@ class MainViewController: UIViewController {
             
         }, onDisposed: {
             print("Completed photo selection.")
+        }).disposed(by: disposeBag)
+        
+        // 设置导航栏左边的item。因为只需要显示最终的结果
+        // 而选择图片的过程可以忽略，因此使用ignoreElements进行过滤
+        newPhotos.ignoreElements()
+            .subscribe(onCompleted: { [weak self] in
+            
+                // 设置导航栏的leftBarButtonItem
+                self?.updateNavigationIcon()
         }).disposed(by: disposeBag)
     }
     
@@ -199,6 +209,16 @@ class MainViewController: UIViewController {
         
         // 弹出alertController
         present(alertController, animated: true, completion: nil)
+    }
+    
+    /// 设置导航栏的leftBarButtonItem
+    private func updateNavigationIcon() {
+        
+        // 提取imageView中的图片
+        let icon = imageView.image?.scaled(CGSize(width: 22, height: 22)).withRenderingMode(.alwaysOriginal)
+        
+        // 将icon设置到导航栏左边的item中
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: icon, style: .done, target: nil, action: nil)
     }
 }
 

@@ -67,7 +67,7 @@ extension UIImage {
     ///
     /// - Parameter newSize: 图片新的尺寸
     /// - Returns: 返回一张经过缩放之后的图片
-    private func scaled(_ newSize: CGSize) -> UIImage {
+    func scaled(_ newSize: CGSize) -> UIImage {
         
         // 对指定的尺寸进行校验，如果不需要缩放，则直接返回原始图片
         guard size != newSize else {
