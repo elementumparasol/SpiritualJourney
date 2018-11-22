@@ -116,7 +116,9 @@ class PhotosCollectionViewController: UICollectionViewController {
         
         // 弹出alert提示
         alert(title: "No access to Camera Roll", message: "You can grant access to Collage from the Settings app")
-            .subscribe(onCompleted: { [weak self] in
+            .asObservable()
+            .take(3.0, scheduler: MainScheduler.instance)
+            .subscribe(onCompleted: { [weak self] in  // onCompleted
                 
                 // 移除alert提示
                 self?.dismiss(animated: true, completion: nil)

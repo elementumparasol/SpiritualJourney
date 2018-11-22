@@ -69,6 +69,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let newImages = images.asObservable().share()
+        
         // 将图片设置到imageView上面去(订阅Observable)。
         // 我们将订阅时所产生的内存交给disposeBag管理，而disposeBag
         // 是当前控制器的属性，所以理论上讲，当控制器被操作系统回收时，
@@ -77,7 +79,12 @@ class MainViewController: UIViewController {
         // 就会产生一个问题，就是订阅任务完成以后，disposeBag并不会被及
         // 时回收，因此就会产生内存泄漏问题。为了解决这个矛盾，在闭包中捕获
         // 当前控制器时，使用[weak self]
-        images.asObservable().subscribe(onNext: { [weak self] photos in
+        newImages
+            // 如果是连续的选择多张图片，出于性能考虑，不用每选择
+            // 一张图片就绘制一张图片，最好是等所有图片都选择完毕
+            // 之后，再来绘制拼图
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] photos in
             
             // 对imageView控件进行校验
             guard let imageView = self?.imageView else { return }
@@ -88,7 +95,7 @@ class MainViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         // 设置UI界面(开始新的订阅)
-        images.asObservable().subscribe(onNext: { [weak self] (photos) in
+        newImages.subscribe(onNext: { [weak self] (photos) in
             self?.updateUI(photos: photos)
         }).disposed(by: disposeBag)
     }
