@@ -23,6 +23,9 @@ class MainViewController: UIViewController {
     /// 用于存储选中的图片(创建Observable)
     private let images = Variable<[UIImage]>([])
     
+    /// 将图片的字节长度存储到数组中，以方便后续查找对应的图片
+    private var imageCache = [Int]()
+    
     
     // MARK: - @IBOutlet
     
@@ -116,6 +119,22 @@ class MainViewController: UIViewController {
             .filter({ newImage in
             return newImage.size.width > newImage.size.height
         })  // 只需要宽度大于高度的图片，将宽度小于高度的图片过滤掉
+            .filter({ [weak self] newImage in
+                
+                // 以PNG格式返回指定图片的数据，然后在求它的长度
+                let length = newImage.pngData()?.count ?? 0
+                
+                // 如果imageCache中包含相同的长度值，则说明数组中
+                // 已经添加过该图片，通过返回false将重复的图片丢弃
+                guard self?.imageCache.contains(length) == false else {
+                    return false
+                }
+                
+                // 将图片的长度存储到数组imageCache中
+                self?.imageCache.append(length)
+                
+                return true
+            })  // 同一张图片只能添加一次，多次添加的会被过滤掉
             .subscribe(onNext: { [weak self] (image) in
             
             // 对数组images进行校验
@@ -143,6 +162,7 @@ class MainViewController: UIViewController {
         
         // 清空图片数组images
         images.value = []
+        imageCache = []
     }
     
     /// 点击save按钮保存照片
