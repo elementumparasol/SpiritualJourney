@@ -19,6 +19,7 @@
 		C595F5F8219B1893004B7E87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C595F5F6219B1893004B7E87 /* LaunchScreen.storyboard */; };
 		C595F600219BFEA4004B7E87 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F5FF219BFEA4004B7E87 /* PhotosCollectionViewController.swift */; };
 		C595F602219BFEF8004B7E87 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C595F601219BFEF8004B7E87 /* PhotoCollectionViewCell.swift */; };
+		C5D8F12B21A748B60031F6B3 /* PHPhotoLibrary+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8F12A21A748B60031F6B3 /* PHPhotoLibrary+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		C595F5F9219B1893004B7E87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C595F5FF219BFEA4004B7E87 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		C595F601219BFEF8004B7E87 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		C5D8F12A21A748B60031F6B3 /* PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
 		D30FBD1D5CF379C10BE01DB7 /* Pods-Collages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collages.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collages/Pods-Collages.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				C57C9A68219D68F7005AB8D3 /* UIImage+Collages.swift */,
 				C57C9A6A219EADB2005AB8D3 /* PhotoWriter.swift */,
 				C50B711021A6D31D0018EF2D /* UIViewController+Rx.swift */,
+				C5D8F12A21A748B60031F6B3 /* PHPhotoLibrary+Rx.swift */,
 				C595F5F1219B1892004B7E87 /* Main.storyboard */,
 				C595F5F4219B1893004B7E87 /* Assets.xcassets */,
 				C595F5F6219B1893004B7E87 /* LaunchScreen.storyboard */,
@@ -235,6 +238,7 @@
 				C57C9A6B219EADB2005AB8D3 /* PhotoWriter.swift in Sources */,
 				C57C9A69219D68F7005AB8D3 /* UIImage+Collages.swift in Sources */,
 				C595F5EE219B1892004B7E87 /* AppDelegate.swift in Sources */,
+				C5D8F12B21A748B60031F6B3 /* PHPhotoLibrary+Rx.swift in Sources */,
 				C50B711121A6D31D0018EF2D /* UIViewController+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

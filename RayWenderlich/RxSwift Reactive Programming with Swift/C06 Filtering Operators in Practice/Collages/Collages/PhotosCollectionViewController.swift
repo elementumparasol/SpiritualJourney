@@ -41,6 +41,8 @@ class PhotosCollectionViewController: UICollectionViewController {
         return selectedPhotosSubject.asObserver()
     }
     
+    /// 用于管理订阅内存
+    private let disposeBag = DisposeBag()
     
     
     // MARK: - 类自带的方法
@@ -48,8 +50,36 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        // 通过share()获取Observable
+        let authorized = PHPhotoLibrary.authorized.share()
         
+        // 订阅Observable
+        authorized
+            .skipWhile({ $0 == false })  // 如果未授权，则跳过不订阅
+            .take(1)  // 如果获得用户授权，则第一个事件元素(其实只有一个)
+            .subscribe(onNext: { [weak self] _ in
+                
+                // 加载相册中的图片
+                self?.photos = PhotosCollectionViewController
+                    .loadPhotos()
+                
+                // 回到主线程中去刷新UI
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }).disposed(by: disposeBag)
+        
+        // 处理用户未授权访问相册的情况
+        authorized
+            .skip(1)
+            .takeLast(1)
+            .filter({ $0 == false })
+            .subscribe(onNext: { [weak self] _ in
+                guard let errorMessage = self?.errorMessage else { return }
+                
+                // 回到主线程中执行errorMessage方法
+                DispatchQueue.main.async(execute: errorMessage)
+            }).disposed(by: disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +109,22 @@ class PhotosCollectionViewController: UICollectionViewController {
         // fetchAssets(with: ): 这个方法用来检索与指定选项相匹
         // 配的所有PHAsset
         return PHAsset.fetchAssets(with: allPhotosOptions)
+    }
+    
+    /// 弹出错误提示
+    private func errorMessage() {
+        
+        // 弹出alert提示
+        alert(title: "No access to Camera Roll", message: "You can grant access to Collage from the Settings app")
+            .subscribe(onCompleted: { [weak self] in
+                
+                // 移除alert提示
+                self?.dismiss(animated: true, completion: nil)
+                
+                // 返回上一级界面
+                _ = self?.navigationController?
+                    .popViewController(animated: true)
+            }).disposed(by: disposeBag)
     }
     
 
