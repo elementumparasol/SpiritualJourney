@@ -112,7 +112,11 @@ class MainViewController: UIViewController {
         
         // 选中图片，并且将其添加到数组images中
         let newPhotos = photosViewController.selectedPhotos.share()
-        newPhotos.subscribe(onNext: { [weak self] (image) in
+        newPhotos
+            .filter({ newImage in
+            return newImage.size.width > newImage.size.height
+        })  // 只需要宽度大于高度的图片，将宽度小于高度的图片过滤掉
+            .subscribe(onNext: { [weak self] (image) in
             
             // 对数组images进行校验
             guard let images = self?.images else { return }
