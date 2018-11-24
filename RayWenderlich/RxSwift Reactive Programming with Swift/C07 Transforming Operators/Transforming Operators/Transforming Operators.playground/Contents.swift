@@ -40,3 +40,31 @@ example(of: "enumerated and map") {
         print($0)
     }).disposed(by: disposeBag)
 }
+
+
+struct Student {
+    var score: BehaviorSubject<Int>
+}
+
+example(of: "flatMap") {
+    
+    let disposeBag = DisposeBag()
+    let ryan = Student(score: BehaviorSubject(value: 80))
+    let Jim = Student(score: BehaviorSubject(value: 90))
+    
+    let student = PublishSubject<Student>()
+    
+    student.flatMap({
+        $0.score  // 仅仅只是访问，不做任何的修改
+    }).subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
+    
+    student.onNext(ryan)
+    ryan.score.onNext(85)  // 修改ryan的分数
+    student.onNext(Jim)
+    ryan.score.onNext(95)
+    Jim.score.onNext(100)
+}
+
+
