@@ -116,66 +116,44 @@ example(of: "Unowned Reference") {
 
 example(of: "Capture lists") {
     
-    class Tutorial {
-        let title: String
-        unowned let author: Author
-        weak var editor: Editor?
-        
-        init(title: String, author: Author) {
-            self.title = title
-            self.author = author
-        }
-        
-        deinit {
-            print("Goodbye Tutorial \(title)!")
-        }
-        
-        // 在这个闭包中，我们使用self.author.name捕获了
-        // Tutorial实例对象。也就是说，我们在Tutorial实
-        // 例对象和闭包之间创建了一个循环引用，因此Tutorial
-        // 的deinit方法不会被调用
-        lazy var createDescription: () -> String = {
-            
-            return "\(self.title) by \(self.author.name)"
-        }
-    }
+    var counter = 0
     
-    class Editor {
-        let name: String
-        var tutorials: [Tutorial] = []
-        
-        init(name: String) {
-            self.name = name
-        }
-        
-        deinit {
-            print("Goodbye Editor \(name)!")
-        }
-    }
+    // 注意，此时闭包有一个指向变量counter的引用
+    var f = { print("counter = \(counter)") }
     
-    class Author {
-        let name: String
-        var tutorials: [Tutorial] = []
-        
-        init(name: String) {
-            self.name = name
-        }
-        
-        deinit {
-            print("Goodbye Author \(name)!")
-        }
-    }
+    // 更新变量counter的值为1
+    counter = 1
+    f()  // 打印 counter = 1
     
-    do {
-        let author = Author(name: "Cosmin")
-        let tutorial = Tutorial(title: "Memory management", author: author)
-        
-        // 在这里调用了createDescription()方法
-        print(tutorial.createDescription())
-        
-        let editor = Editor(name: "Ray")
-        author.tutorials.append(tutorial)
-        tutorial.editor = editor
-        editor.tutorials.append(tutorial)
+    // 总结：此时闭包f()之所以会打印变量counter更新以后的值
+    // 主要是因为，闭包有一个指向变量counter的引用
+    
+    
+    /**
+     * 使用捕获列表，创建新的变量c
+     */
+    counter = 0
+    
+    // 在闭包中添加一个捕获列表[c = counter]
+    f = { [c = counter] in
+        print("c = \(c)")
     }
+    counter = 1
+    f()  // 打印 c = 0
+    
+    
+    /**
+     * 在多数情况下，我们不用去创建一个类似于上面那样的
+     * 新的变量c，只需要使用简写的捕获列表[counter]即
+     * 可。其中，捕获列表中的变量counter是一个局部变量
+     * 它用来表示原始的变量counter。在这种情况下，闭包
+     * f()依旧打印0值，主要是因为捕获的变量counter只是
+     * 原始变量的副本
+     */
+    counter = 0
+    f = { [counter] in
+        print("counter = \(counter)")
+    }
+    counter = 1
+    f()  // 打印 counter = 0
 }
