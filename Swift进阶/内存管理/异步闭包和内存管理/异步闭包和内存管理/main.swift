@@ -110,3 +110,24 @@ example(of: "Unowned Reference") {
         editor.tutorials.append(tutorial)
     }
 }
+
+
+// MARK: - 闭包的循环引用
+
+example(of: "Capture lists") {
+    
+    var counter = 0
+    var f = { print(counter) }
+    counter = 1
+    f()
+    
+    counter = 0
+    f = { [c = counter ] in print(c) }
+    counter = 1
+    f()
+    
+    counter = 0
+    f = { [counter] in print(counter) }
+    counter = 1
+    f()
+}
