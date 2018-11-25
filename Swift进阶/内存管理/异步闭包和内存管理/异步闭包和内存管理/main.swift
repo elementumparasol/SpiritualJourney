@@ -52,3 +52,61 @@ example(of: "Weak Reference") {
         editor.tutorials.append(tutorial)
     }
 }
+
+
+example(of: "Unowned Reference") {
+    
+    class Tutorial {
+        let title: String
+        
+        // Tutorial一定是有作者的，因此不能将其声明为
+        // 弱引用，可以将其声明为无主引用
+        unowned let author: Author
+        weak var editor: Editor?
+        
+        init(title: String, author: Author) {
+            self.title = title
+            self.author = author
+        }
+        
+        deinit {
+            print("Goodbye Tutorial \(title)!")
+        }
+    }
+    
+    class Editor {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodbye Editor \(name)!")
+        }
+    }
+    
+    class Author {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodby Author \(name)!")
+        }
+    }
+    
+    do {
+        let editor = Editor(name: "Ray")
+        let author = Author(name: "Cosmin")
+        let tutorial = Tutorial(title: "Memory management",
+                                author: author)
+        author.tutorials.append(tutorial)
+        tutorial.editor = editor
+        editor.tutorials.append(tutorial)
+    }
+}
