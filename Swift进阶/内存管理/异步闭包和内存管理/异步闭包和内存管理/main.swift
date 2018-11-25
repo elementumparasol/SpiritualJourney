@@ -116,13 +116,69 @@ example(of: "Unowned Reference") {
 
 example(of: "Capture lists") {
     
+    class Tutorial {
+        let title: String
+        unowned let author: Author
+        weak var editor: Editor?
+        
+        init(title: String, author: Author) {
+            self.title = title
+            self.author = author
+        }
+        
+        deinit {
+            print("Goodbye Tutorial \(title)!")
+        }
+        
+        lazy var createDescription: () -> String = {
+            [unowned self] in
+            return "\(self.title) by \(self.author.name)"
+        }
+    }
+    
+    class Editor {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodbye Editor \(name)!")
+        }
+    }
+    
+    class Author {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodby Author \(name)!")
+        }
+    }
+    
+    do {
+        let editor = Editor(name: "Ray")
+        let author = Author(name: "Cosmin")
+        let tutorial = Tutorial(title: "Memory management",
+                                author: author)
+        author.tutorials.append(tutorial)
+        tutorial.editor = editor
+        editor.tutorials.append(tutorial)
+    }
+    
     var counter = 0
     var f = { print(counter) }
     counter = 1
     f()
     
     counter = 0
-    f = { [c = counter ] in print(c) }
+    f = { [c = counter] in print(c) }
     counter = 1
     f()
     
@@ -131,3 +187,4 @@ example(of: "Capture lists") {
     counter = 1
     f()
 }
+
