@@ -157,3 +157,70 @@ example(of: "Capture lists") {
     counter = 1
     f()  // 打印 counter = 0
 }
+
+
+example(of: "Unowned self") {
+    
+    class Tutorial {
+        let title: String
+        unowned let author: Author
+        weak var editor: Editor?
+        
+        init(title: String, author: Author) {
+            self.title = title
+            self.author = author
+        }
+        
+        deinit {
+            print("Goodbye Tutorial \(title)!")
+        }
+        
+        // 在这个闭包中，我们使用self.author.name捕获了
+        // Tutorial实例对象。也就是说，我们在Tutorial实
+        // 例对象和闭包之间创建了一个循环引用，因此Tutorial
+        // 的deinit方法不会被调用
+        lazy var createDescription: () -> String = {
+            
+            return "\(self.title) by \(self.author.name)"
+        }
+    }
+    
+    class Editor {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodbye Editor \(name)!")
+        }
+    }
+    
+    class Author {
+        let name: String
+        var tutorials: [Tutorial] = []
+        
+        init(name: String) {
+            self.name = name
+        }
+        
+        deinit {
+            print("Goodbye Author \(name)!")
+        }
+    }
+    
+    do {
+        let author = Author(name: "Cosmin")
+        let tutorial = Tutorial(title: "Memory management", author: author)
+        
+        // 在这里调用了createDescription()方法
+        print(tutorial.createDescription())
+        
+        let editor = Editor(name: "Ray")
+        author.tutorials.append(tutorial)
+        tutorial.editor = editor
+        editor.tutorials.append(tutorial)
+    }
+}
