@@ -224,3 +224,52 @@ example(of: "Unowned self") {
         editor.tutorials.append(tutorial)
     }
 }
+
+
+// MARK: - 逃逸闭包
+
+example(of: "GCD") {
+    
+    func log(message: String) {
+        let thread = Thread.current.isMainThread ? "Main" : "Background"
+        print("\(thread) thread: \(message)")
+    }
+    
+    func addNumbers(upTo range: Int) -> Int {
+        log(message: "Adding numbers...")
+        return (1...range).reduce(0, +)
+    }
+    
+    // 创建一个串行队列
+    let queue = DispatchQueue(label: "queue")
+    
+    
+    /// 调度函数execute在后台闭包中执行，然后再将结果传递给主队列上的闭包
+    ///
+    /// - Parameters:
+    ///   - backgroundWork: 在后台执行的闭包，无参数，有返回值
+    ///   - mainWork: 在主队列中执行的闭包，有一个参数，无返回值
+    func execute<Result>(backgroundWork: @escaping () -> Result, mainWork: @escaping (Result) -> ()) {
+        
+        // 异步执行串行队列
+        queue.async {
+            print("当前线程1为: \(Thread.current)")
+            // 在之前定义的串行队列上异步执行backgroundWork闭包，
+            // 然后将其返回值存储起来
+            let result = backgroundWork()
+            
+            // 回到主线程执行
+            DispatchQueue.main.async {
+                print("当前线程2为: \(Thread.current)")
+                // 在主队列上异步执行mainWork，然后再将
+                // backgroundWork的结果作为参数传递给它
+                mainWork(result)
+            }
+        }
+    }
+    
+    // 调用函数execute(backgroundWork: mainWork: )
+    execute(backgroundWork: { addNumbers(upTo: 100) }, mainWork: { log(message: "The sum is \($0)") })
+}
+
+
