@@ -9,9 +9,20 @@
 import UIKit
 
 class ViewController: UITableViewController {
+    
+    // MARK: - 自定义属性
+    
+    /// 导航栏标题
+    private let titleString = "ReactiveX/RxSwift"
+    
+    ///
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 设置导航栏标题
+        title = titleString
+        
         
     }
 
