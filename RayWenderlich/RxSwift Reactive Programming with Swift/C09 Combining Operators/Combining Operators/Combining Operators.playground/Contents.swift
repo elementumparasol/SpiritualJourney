@@ -1,19 +1,6 @@
 import UIKit
 import RxSwift
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 example(of: "startWith") {
     
     // 创建一个整数类型的可观察序列
@@ -39,4 +26,17 @@ example(of: "Observable.concat") {
     observable.subscribe(onNext: { value in
         print(value)
     })
+}
+
+
+example(of: "concat") {
+    
+    let shu = Observable.of("刘备", "关羽", "张飞", "诸葛亮")
+    let wu = Observable.of("孙权", "周瑜", "鲁肃")
+    let consortium = shu.concat(wu)
+    
+    consortium.subscribe(onNext: { value in
+        print(value)
+    })
+    
 }
