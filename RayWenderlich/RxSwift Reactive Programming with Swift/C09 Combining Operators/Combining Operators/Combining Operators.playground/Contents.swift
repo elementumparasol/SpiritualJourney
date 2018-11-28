@@ -40,3 +40,21 @@ example(of: "concat") {
     })
     
 }
+
+
+example(of: "concatMap") {
+    
+    let sequence = [
+        "shu": Observable.of("刘备", "关羽", "张飞"),
+        "wu": Observable.of("孙权", "周瑜", "鲁肃")
+    ]
+    
+    let observable = Observable.of("shu", "wu")
+        .concatMap({ kingdom in
+            sequence[kingdom] ?? .empty()
+        })
+    
+    _ = observable.subscribe(onNext: { value in
+        print(value)
+    })
+}
