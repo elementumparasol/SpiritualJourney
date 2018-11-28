@@ -89,3 +89,32 @@ example(of: "merge") {
     
     disposable.dispose()
 }
+
+
+example(of: "combineLatest") {
+    
+    let left = PublishSubject<String>()
+    let right = PublishSubject<String>()
+    
+    let observable = Observable.combineLatest(left, right, resultSelector: { lastLeft, lastRight in
+        "\(lastLeft) \(lastRight)"
+    })
+    
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    print("> Sending a value to Left")
+    left.onNext("Hello,")
+    
+    print("> Sending a value to Right")
+    right.onNext("world")
+    
+    print("> Sending a value to Right")
+    right.onNext("RxSwift")
+    
+    print("> Sending a value to Left")
+    left.onNext("Have a good day,")
+    
+    disposable.dispose()
+}
