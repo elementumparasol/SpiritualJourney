@@ -58,3 +58,34 @@ example(of: "concatMap") {
         print(value)
     })
 }
+
+
+example(of: "merge") {
+    
+    let left = PublishSubject<String>()
+    let right = PublishSubject<String>()
+    
+    let source = Observable.of(left.asObserver(),
+                               right.asObserver())
+    
+    let observable = source.merge()
+    
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    var leftValues = ["刘备", "关羽", "张飞"]
+    var rightValues = ["孙权", "周瑜", "鲁肃"]
+    
+    repeat {
+        if arc4random_uniform(2) == 0 {
+            if !leftValues.isEmpty {
+                left.onNext("Left: " + leftValues.removeFirst())
+            }
+        } else if !rightValues.isEmpty {
+            right.onNext("Right: " + rightValues.removeFirst())
+        }
+    } while !leftValues.isEmpty || !rightValues.isEmpty
+    
+    disposable.dispose()
+}
