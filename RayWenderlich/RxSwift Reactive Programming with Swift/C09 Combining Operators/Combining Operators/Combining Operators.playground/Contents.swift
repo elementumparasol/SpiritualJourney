@@ -3,6 +3,8 @@ import RxSwift
 
 example(of: "startWith") {
     
+    let disposeBag = DisposeBag()
+    
     // 创建一个整数类型的可观察序列
     let numbers = Observable.of(2, 3, 4)
     
@@ -12,11 +14,13 @@ example(of: "startWith") {
     let observable = numbers.startWith(1)
     observable.subscribe(onNext: { value in
         print(value)
-    })
+    }).disposed(by: disposeBag)
 }
 
 
 example(of: "Observable.concat") {
+    
+    let disposeBag = DisposeBag()
     
     // 创建两个序列
     let first = Observable.of(1, 2, 3)
@@ -27,11 +31,13 @@ example(of: "Observable.concat") {
     
     observable.subscribe(onNext: { value in
         print(value)
-    })
+    }).disposed(by: disposeBag)
 }
 
 
 example(of: "concat") {
+    
+    let disposeBag = DisposeBag()
     
     let shu = Observable.of("刘备", "关羽", "张飞", "诸葛亮")
     let wu = Observable.of("孙权", "周瑜", "鲁肃")
@@ -39,8 +45,7 @@ example(of: "concat") {
     
     consortium.subscribe(onNext: { value in
         print(value)
-    })
-    
+    }).disposed(by: disposeBag)
 }
 
 
@@ -103,17 +108,22 @@ example(of: "merge") {
 
 example(of: "combineLatest") {
     
+    // 创建两个subject作为内部序列
     let left = PublishSubject<String>()
     let right = PublishSubject<String>()
     
+    // 创建一个新的Observable实例，并且该序列是以上面
+    // 这两个subject为基础合并而来的
     let observable = Observable.combineLatest(left, right, resultSelector: { lastLeft, lastRight in
         "\(lastLeft) \(lastRight)"
     })
     
+    // 订阅上面那个新创建的Observable实例
     let disposable = observable.subscribe(onNext: { value in
-        print(value)
+        print("输出结果: \(value)")
     })
     
+    // left和right分别发出不同的事件元素
     print("> Sending a value to Left")
     left.onNext("Hello,")
     
@@ -127,4 +137,26 @@ example(of: "combineLatest") {
     left.onNext("Have a good day,")
     
     disposable.dispose()
+}
+
+
+example(of: "Zip") {
+    
+    enum Weather {
+        case cloudy
+        case sunny
+    }
+    
+    let disposeBag = DisposeBag()
+    
+    let left: Observable<Weather> = Observable.of(.sunny, .cloudy, .cloudy, .sunny)
+    let right = Observable.of("Shanghai", "Nanjing", "Hangzhou", "Xiamen", "Wuhan")
+    
+    let observable = Observable.zip(left, right, resultSelector: { (weather, city) -> String in
+        return "It's \(weather) in \(city)"
+    })
+    
+    observable.subscribe(onNext: { value in
+        print(value)
+    }).disposed(by: disposeBag)
 }
