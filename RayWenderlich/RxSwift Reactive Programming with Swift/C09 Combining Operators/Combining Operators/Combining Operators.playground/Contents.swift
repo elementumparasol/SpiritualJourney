@@ -18,10 +18,12 @@ example(of: "startWith") {
 
 example(of: "Observable.concat") {
     
+    // 创建两个序列
     let first = Observable.of(1, 2, 3)
     let second = Observable.of(4, 5, 6)
     
-    let observable = Observable.concat([first, second])
+    // 将两个序列进行合并
+    let observable = Observable.concat([second, first])
     
     observable.subscribe(onNext: { value in
         print(value)
@@ -49,8 +51,10 @@ example(of: "concatMap") {
         "wu": Observable.of("孙权", "周瑜", "鲁肃")
     ]
     
-    let observable = Observable.of("shu", "wu")
+    let observable = Observable.of("wu", "shu")
         .concatMap({ kingdom in
+            
+            // 通过键取出字典中的Observable
             sequence[kingdom] ?? .empty()
         })
     
@@ -62,21 +66,27 @@ example(of: "concatMap") {
 
 example(of: "merge") {
     
+    // 创建两个subject
     let left = PublishSubject<String>()
     let right = PublishSubject<String>()
     
+    // 创建一个源Observable
     let source = Observable.of(left.asObserver(),
                                right.asObserver())
     
+    // 以上面那两个subject为基础，创建一个
+    // 合并的Observable，并且订阅它
     let observable = source.merge()
-    
     let disposable = observable.subscribe(onNext: { value in
         print(value)
     })
     
+    // 数组
     var leftValues = ["刘备", "关羽", "张飞"]
     var rightValues = ["孙权", "周瑜", "鲁肃"]
     
+    // 当数组leftValues或者rightValues
+    // 不为空时，循环使用这两个数组里面的值
     repeat {
         if arc4random_uniform(2) == 0 {
             if !leftValues.isEmpty {
