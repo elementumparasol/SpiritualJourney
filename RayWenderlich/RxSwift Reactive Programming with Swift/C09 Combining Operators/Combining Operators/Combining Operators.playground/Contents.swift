@@ -160,3 +160,29 @@ example(of: "Zip") {
         print(value)
     }).disposed(by: disposeBag)
 }
+
+
+example(of: "withLatestFrom") {
+    
+    // 分别创建两个subject，用于模拟按钮点击和textField输入
+    let button = PublishSubject<Void>()
+    let textField = PublishSubject<String>()
+    
+    // 忽略button发出的值，取而代之的是，发
+    // 出从textField中接收到的最新值(将textField的数据作为参数)
+    let observable = button.withLatestFrom(textField)
+    
+    _ = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    // 模拟textField的连续输入，这是通过两
+    // 次连续按下button完成的
+    textField.onNext("Par")
+    textField.onNext("Pari")
+    textField.onNext("Paris")
+    button.onNext(())  // 触发接收textField最新的值
+    button.onNext(())
+}
+
+
