@@ -285,3 +285,14 @@ example(of: "reduce") {
 }
 
 
+example(of: "scan") {
+    
+    let disposeBag = DisposeBag()
+    
+    let source = Observable.of(1, 3, 5, 7, 9)
+    let observable = source.scan(0, accumulator: +)
+    
+    observable.subscribe(onNext: { value in
+        print(value)
+    }).disposed(by: disposeBag)
+}
