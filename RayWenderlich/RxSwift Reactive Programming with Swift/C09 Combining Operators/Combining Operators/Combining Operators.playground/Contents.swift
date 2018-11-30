@@ -229,3 +229,40 @@ example(of: "amb") {
     
     disposable.dispose()
 }
+
+
+example(of: "switchLatest") {
+    
+    // 创建三个subject
+    let one = PublishSubject<String>()
+    let two = PublishSubject<String>()
+    let three = PublishSubject<String>()
+    
+    // 创建一个事件源subject
+    let source = PublishSubject<Observable<String>>()
+    
+    // 使用switchLatest()运算符创建一个observable并打印它的输出
+    let observable = source.switchLatest()
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    // 使用Observable提供事件源，并且使用元素值提供Observable
+    source.onNext(one)
+    one.onNext("Some text from sequence one")  // 输出
+    two.onNext("Some text from sequence two")
+    
+    source.onNext(two)
+    two.onNext("More text from sequence two")  // 输出
+    one.onNext("and also from sequence one")
+    
+    source.onNext(three)
+    two.onNext("Why don't you see me?")
+    one.onNext("I'm alone, help me")
+    three.onNext("Hey it's three. I win.")  // 输出
+    
+    source.onNext(one)
+    one.onNext("Nope. It's me, one!")  // 输出
+    
+    disposable.dispose()
+}
