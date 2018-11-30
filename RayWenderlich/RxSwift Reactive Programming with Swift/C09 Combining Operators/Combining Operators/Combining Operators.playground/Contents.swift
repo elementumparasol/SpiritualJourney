@@ -206,4 +206,26 @@ example(of: "sample") {
 }
 
 
-
+example(of: "amb") {
+    
+    let left = PublishSubject<String>()
+    let right = PublishSubject<String>()
+    
+    // 创建一个Observable实例，通过amb(_ : )
+    // 来决定接收left还是right所发出的事件。通常
+    // 情况下，谁先做出反应就接收谁所发出的事件
+    let observable = left.amb(right)
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    // 让两个序列都发送数据(也就是事件)
+    right.onNext("Beijing")  // right最先发出事件
+    left.onNext("Shanghai")
+    right.onNext("Nanjing")
+    left.onNext("Hangzhou")
+    left.onNext("Xiamen")
+    right.onNext("Wuhan")
+    
+    disposable.dispose()
+}
