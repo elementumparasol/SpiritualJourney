@@ -186,3 +186,24 @@ example(of: "withLatestFrom") {
 }
 
 
+example(of: "sample") {
+    
+    let button = PublishSubject<Void>()
+    let textField = PublishSubject<String>()
+    
+    // 将触发器button当做参数
+    let observable = textField.sample(button)
+    
+    _ = observable.subscribe(onNext: { value in
+        print(value)
+    })
+    
+    textField.onNext("Par")
+    textField.onNext("Pari")
+    textField.onNext("Paris")
+    button.onNext(())  // 触发接收textField最新的值
+    button.onNext(())
+}
+
+
+
