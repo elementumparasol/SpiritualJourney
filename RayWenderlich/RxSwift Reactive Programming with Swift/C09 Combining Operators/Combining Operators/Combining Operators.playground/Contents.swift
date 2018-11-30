@@ -266,3 +266,22 @@ example(of: "switchLatest") {
     
     disposable.dispose()
 }
+
+
+example(of: "reduce") {
+    
+    let disposeBag = DisposeBag()
+    let source = Observable.of(1, 3, 5, 7, 9)
+    
+    // reduce(_ : _ : )的第一个参数表示初始值，第二个
+    // 参数是一个闭包，通常是作为累加器。以我们这个示例为
+    // 例，它表示在0的基础上分别累加1， 3， 5， 7， 9
+    // 最后再将累加的结果进行返回，所以最终的值是25
+    let observable = source.reduce(0, accumulator: +)
+    
+    observable.subscribe(onNext: { value in
+        print(value)
+    }).disposed(by: disposeBag)
+}
+
+
