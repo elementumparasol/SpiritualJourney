@@ -18,13 +18,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="BEf-Mt-gfn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="BEf-Mt-gfn" customClass="ToDoTableViewCell" customModule="MyToDo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BEf-Mt-gfn" id="NMX-hI-qvL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="257" translatesAutoresizingMaskIntoConstraints="NO" id="mte-rn-dAa">
+                                            <rect key="frame" x="23" y="7" width="329" height="30"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVs-kO-5gV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-qI-XcR">
+                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="aye-lw-UR8"/>
+                                                        <constraint firstAttribute="width" constant="30" id="tLE-RV-FQg"/>
+                                                    </constraints>
+                                                    <state key="normal" title="⏺"/>
+                                                    <connections>
+                                                        <action selector="toggleCompleted:" destination="BEf-Mt-gfn" eventType="touchUpInside" id="ubZ-wE-M3y"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mte-rn-dAa" firstAttribute="centerX" secondItem="NMX-hI-qvL" secondAttribute="centerX" id="Cca-EN-RNT"/>
+                                        <constraint firstItem="mte-rn-dAa" firstAttribute="centerY" secondItem="NMX-hI-qvL" secondAttribute="centerY" id="KGO-Ug-S0S"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkmark" destination="wgG-qI-XcR" id="mgT-UR-TRo"/>
+                                    <outlet property="titleLabel" destination="yVs-kO-5gV" id="JKI-tt-7d4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
