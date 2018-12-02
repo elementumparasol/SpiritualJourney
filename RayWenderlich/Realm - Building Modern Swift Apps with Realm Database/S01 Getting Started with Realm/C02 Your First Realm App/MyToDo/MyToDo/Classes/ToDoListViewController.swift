@@ -68,6 +68,17 @@ class ToDoListViewController: UITableViewController {
         }
     }
     
+    
+    // MARK: - 自定义方法
+    
+    /// 切换待办事项的当前状态
+    ///
+    /// - Parameter item: 待办事项
+    func toggleItem(_ item: ToDoItem) {
+        
+        item.toggleCompleted()
+    }
+    
 }
 
 
@@ -95,7 +106,7 @@ extension ToDoListViewController {
         
         cell.configureWith(item) { [weak self] (item) in
             
-            //
+            self?.toggleItem(item)
         }
         
         return cell

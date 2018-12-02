@@ -37,6 +37,7 @@ import RealmSwift
 }
 
 
+// MARK: - CRUD(Create, Retrieve, Update, Delete)
 extension ToDoItem {
     
     /// 静态方法，从默认的Realm文件中获取所有待办事项
@@ -70,5 +71,18 @@ extension ToDoItem {
         }
         
         return item
+    }
+    
+    /// 切换待办事项的状态，从完成切换到未完成。反之亦然
+    func toggleCompleted() {
+        
+        // 每一个Realm对象都存在一个realm属性，可以
+        // 让我们快速访问当前的Realm对象
+        guard let realm = realm else { return }
+        
+        // 将数据写入Realm数据库
+        try! realm.write {
+            isCompleted = !isCompleted
+        }
     }
 }
