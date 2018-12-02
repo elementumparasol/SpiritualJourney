@@ -27,7 +27,9 @@ import RealmSwift
         return ToDoItem.Property.id.rawValue
     }
     
-    // 便利构造方法
+    /// 创建新的待办事项
+    ///
+    /// - Parameter text: 待办事项描述
     convenience init(_ text: String) {
         self.init()
         self.text = text

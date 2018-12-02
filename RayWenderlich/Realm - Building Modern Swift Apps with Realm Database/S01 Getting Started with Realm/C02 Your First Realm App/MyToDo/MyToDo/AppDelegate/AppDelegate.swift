@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // MARK: - 类自带的属性
 
     var window: UIWindow?
 
+    
+    // MARK: - 类自带的方法
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        SyncManager.shared.logLevel = .off
+        initializeRealm()
+        
         return true
     }
 
@@ -41,6 +49,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    // MARK: - 自定义方法
+    
+    /// 初始化Realm数据库
+    private func initializeRealm() {
+        
+        // 获取Realm实例
+        let realm = try! Realm()
+        
+        // 检查realm是否为空，如果是，则直接return
+        guard realm.isEmpty else { return }
+        
+        // 创建测试数据(将数据写入Realm数据库)
+        try! realm.write {
+            
+            // 将数据添加到Realm中
+            realm.add(ToDoItem("Buy Milk"))
+            realm.add(ToDoItem("Finish Book"))
+            realm.add(ToDoItem("Buy Fruit"))
+        }
+    }
 
 }
 

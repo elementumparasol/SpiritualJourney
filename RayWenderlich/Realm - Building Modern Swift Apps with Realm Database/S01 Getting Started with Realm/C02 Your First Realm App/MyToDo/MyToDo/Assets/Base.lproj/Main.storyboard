@@ -25,11 +25,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="257" translatesAutoresizingMaskIntoConstraints="NO" id="mte-rn-dAa">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mte-rn-dAa">
                                             <rect key="frame" x="23" y="7" width="329" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVs-kO-5gV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,8 +49,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="mte-rn-dAa" secondAttribute="trailing" constant="23" id="8so-Pg-moh"/>
                                         <constraint firstItem="mte-rn-dAa" firstAttribute="centerX" secondItem="NMX-hI-qvL" secondAttribute="centerX" id="Cca-EN-RNT"/>
                                         <constraint firstItem="mte-rn-dAa" firstAttribute="centerY" secondItem="NMX-hI-qvL" secondAttribute="centerY" id="KGO-Ug-S0S"/>
+                                        <constraint firstItem="mte-rn-dAa" firstAttribute="leading" secondItem="NMX-hI-qvL" secondAttribute="leading" constant="23" id="OkD-ij-uyZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -67,6 +69,9 @@
                     <navigationItem key="navigationItem" title="My ToDo" id="TCP-J5-al3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5eq-Cm-E3c">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addItem:" destination="vlx-cP-mSI" id="QSz-pP-xRd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>

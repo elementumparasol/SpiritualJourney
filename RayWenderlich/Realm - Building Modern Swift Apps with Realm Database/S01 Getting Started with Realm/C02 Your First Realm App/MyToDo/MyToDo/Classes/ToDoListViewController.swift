@@ -19,6 +19,7 @@ class ToDoListViewController: UITableViewController {
     
     // MARK: - 类自带的方法
 
+    // 控制器view加载到内存以后调用
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,16 +27,27 @@ class ToDoListViewController: UITableViewController {
         items = ToDoItem.all()
     }
 
+    // 通知控制器，view即将添加到视图层次结构中
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
+    // 通知控制器，view已从视图层次结构中删除
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
     }
-
+    
+    
+    // MARK: - @IBAction
+    
+    /// 添加新的待办事项
+    @IBAction func addItem(_ sender: Any) {
+        
+        print("添加新的待办事项")
+    }
+    
 }
 
 
