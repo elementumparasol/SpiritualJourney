@@ -50,4 +50,25 @@ extension ToDoItem {
         return realm.objects(ToDoItem.self)
             .sorted(byKeyPath: ToDoItem.Property.isCompleted.rawValue)
     }
+    
+    
+    /// 添加待办事项
+    ///
+    /// - Parameters:
+    ///   - text: 待办事项文字描述
+    ///   - realm: 默认的Realm文件
+    /// - Returns: 返回ToDoItem实例(也就是待办事项)
+    @discardableResult
+    static func add(text: String, in realm: Realm = try! Realm()) -> ToDoItem {
+        
+        // 创建待办事项
+        let item = ToDoItem(text)
+        
+        // 将新创建的待办事项写入到Realm中
+        try! realm.write {
+            realm.add(item)
+        }
+        
+        return item
+    }
 }

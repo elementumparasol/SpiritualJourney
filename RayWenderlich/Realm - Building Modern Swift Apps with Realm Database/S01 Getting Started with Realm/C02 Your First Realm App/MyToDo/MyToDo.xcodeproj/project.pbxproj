@@ -15,6 +15,8 @@
 		C5798BE521B367410079A772 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5798BE421B367410079A772 /* ToDoListViewController.swift */; };
 		C5798BE821B374AA0079A772 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5798BE721B374AA0079A772 /* ToDoItem.swift */; };
 		C5798BEA21B37ECB0079A772 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5798BE921B37ECB0079A772 /* ToDoTableViewCell.swift */; };
+		C5798BEE21B3A7DD0079A772 /* UserInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5798BED21B3A7DD0079A772 /* UserInputAlert.swift */; };
+		C5798BF021B3B7960079A772 /* UITableView+RealmChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5798BEF21B3B7960079A772 /* UITableView+RealmChanges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		C5798BE421B367410079A772 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		C5798BE721B374AA0079A772 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		C5798BE921B37ECB0079A772 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		C5798BED21B3A7DD0079A772 /* UserInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputAlert.swift; sourceTree = "<group>"; };
+		C5798BEF21B3B7960079A772 /* UITableView+RealmChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RealmChanges.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 		C5798BCE21B361D90079A772 /* MyToDo */ = {
 			isa = PBXGroup;
 			children = (
+				C5798BEC21B3A7BA0079A772 /* Extension */,
+				C5798BEB21B3A7AC0079A772 /* Functions */,
 				C5798BE121B366A40079A772 /* AppDelegate */,
 				C5798BE221B366C70079A772 /* Assets */,
 				C5798BE321B366F60079A772 /* Classes */,
@@ -124,6 +130,22 @@
 				C5798BE721B374AA0079A772 /* ToDoItem.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		C5798BEB21B3A7AC0079A772 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				C5798BED21B3A7DD0079A772 /* UserInputAlert.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		C5798BEC21B3A7BA0079A772 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C5798BEF21B3B7960079A772 /* UITableView+RealmChanges.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5798BE521B367410079A772 /* ToDoListViewController.swift in Sources */,
+				C5798BF021B3B7960079A772 /* UITableView+RealmChanges.swift in Sources */,
 				C5798BD021B361D90079A772 /* AppDelegate.swift in Sources */,
 				C5798BE821B374AA0079A772 /* ToDoItem.swift in Sources */,
+				C5798BEE21B3A7DD0079A772 /* UserInputAlert.swift in Sources */,
 				C5798BEA21B37ECB0079A772 /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

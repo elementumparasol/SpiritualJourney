@@ -16,6 +16,8 @@ class ToDoListViewController: UITableViewController {
     /// 用于存储从Realm中获取的结果
     private var items: Results<ToDoItem>?
     
+    /// 监听Realm更改通知
+    private var itemsToken: NotificationToken?
     
     // MARK: - 类自带的方法
 
@@ -27,16 +29,32 @@ class ToDoListViewController: UITableViewController {
         items = ToDoItem.all()
     }
 
-    // 通知控制器，view即将添加到视图层次结构中
+    // 通知控制器，view即将添加到视图层次结构中(监听Realm的改变)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // 监听Realm的更改(每次有改变时，Realm都会调用这个闭包)
+        itemsToken = items?.observe({ [weak tableView] (changes) in
+            
+            guard let tableView = tableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let updates):
+                tableView.applyChanges(deletions: deletions, insertions: insertions, updates: updates)
+            case .error:
+                break
+            }
+        })
     }
     
-    // 通知控制器，view已从视图层次结构中删除
+    // 通知控制器，view已从视图层次结构中删除(停止监听Realm的改变)
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        // 停止监听Realm改变的通知
+        itemsToken?.invalidate()
     }
     
     
@@ -45,7 +63,9 @@ class ToDoListViewController: UITableViewController {
     /// 添加新的待办事项
     @IBAction func addItem(_ sender: Any) {
         
-        print("添加新的待办事项")
+        userInputAlert("Add Todo Item") { (text) in
+            ToDoItem.add(text: text)
+        }
     }
     
 }
