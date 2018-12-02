@@ -79,6 +79,13 @@ class ToDoListViewController: UITableViewController {
         item.toggleCompleted()
     }
     
+    /// 删除待办事项
+    ///
+    /// - Parameter item: 待办事项
+    func deleteItem(_ item: ToDoItem) {
+        
+        item.delete()
+    }
 }
 
 
@@ -117,11 +124,14 @@ extension ToDoListViewController {
         return true
     }
     
+    // 编辑选中的cell(实现插入或删除cell等操作)
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         guard let item = items?[indexPath.row], editingStyle == .delete else {
             return 
         }
+        
+        deleteItem(item)
     }
 }
 

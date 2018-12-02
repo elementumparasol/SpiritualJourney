@@ -77,12 +77,27 @@ extension ToDoItem {
     func toggleCompleted() {
         
         // 每一个Realm对象都存在一个realm属性，可以
-        // 让我们快速访问当前的Realm对象
+        // 让我们快速访问当前的Realm对象。或者说realm
+        // 属性引用了数据库中的Realm对象，我们可以通过
+        // 这个属性来快速获取存储在Realm中的对象
         guard let realm = realm else { return }
         
         // 将数据写入Realm数据库
         try! realm.write {
             isCompleted = !isCompleted
+        }
+    }
+    
+    func delete() {
+        
+        // 获取存储在Realm中的对象
+        guard let realm = realm else { return }
+        
+        // 将数据写入Realm数据库
+        try! realm.write {
+            
+            // 删除数据
+            realm.delete(self)
         }
     }
 }
