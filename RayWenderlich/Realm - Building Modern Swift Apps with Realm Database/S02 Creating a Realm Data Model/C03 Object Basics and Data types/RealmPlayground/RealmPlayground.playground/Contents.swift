@@ -127,4 +127,21 @@ class Person: Object {
         
         return "\(firstName) \(last)"
     }
+    
+    
+    // 便利初始化方法(有些有默认值的属性在这里就没有再次初始化)
+    convenience init(firstName: String, born: Date, id: Int) {
+        self.init()
+        self.firstName = firstName
+        self.born = born
+        self.id = id
+    }
+    
+    
+    // 设置对象的主键(重写此方法以指定要用作主键的属性的名称)
+    @objc dynamic var key = UUID().uuidString
+    override static func primaryKey() -> String {
+        return "key"
+    }
 }
+
