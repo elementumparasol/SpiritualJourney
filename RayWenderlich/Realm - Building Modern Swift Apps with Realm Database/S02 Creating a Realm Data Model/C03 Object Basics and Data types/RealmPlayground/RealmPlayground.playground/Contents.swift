@@ -143,5 +143,11 @@ class Person: Object {
     override static func primaryKey() -> String {
         return "key"
     }
+    
+    
+    // 设置索引属性
+    override static func indexedProperties() -> [String] {
+        return ["firstName", "lastName"]
+    }
 }
 
