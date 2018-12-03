@@ -149,5 +149,15 @@ class Person: Object {
     override static func indexedProperties() -> [String] {
         return ["firstName", "lastName"]
     }
+    
+    
+    // 忽略属性(Ignored Properties)
+    let idPropertyName = "id"  // let类型无法更改，没有setter
+    var temporaryId = 0  // 有setter，但是没有@objc和dynamic
+    
+    @objc dynamic var temporaryUploadId = 0
+    override static func ignoredProperties() -> [String] {
+        return ["temporaryUploadId"]
+    }
 }
 
