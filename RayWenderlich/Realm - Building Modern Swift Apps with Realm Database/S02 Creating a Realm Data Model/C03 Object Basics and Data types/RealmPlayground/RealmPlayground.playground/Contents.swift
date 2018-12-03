@@ -112,4 +112,19 @@ class Person: Object {
         get { return Department(rawValue: _department)! }
         set { _department = newValue.rawValue }
     }
+    
+    
+    // 计算属性 - 没有setter，Realm不会对其进行管理
+    var isDeceased: Bool {
+        return deceased != nil
+    }
+    
+    var fullName: String {
+        
+        guard let last = lastName else {
+            return firstName
+        }
+        
+        return "\(firstName) \(last)"
+    }
 }
