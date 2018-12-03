@@ -161,3 +161,14 @@ class Person: Object {
     }
 }
 
+
+// Apple建议不要过度使用@objcMembers，因为动态调度会使得在使用
+// Swift类时导致部分性能损失。但是，对于需要使用Objective-C运行
+// 时的Realm来说，适当的使用@objcMembers可以让代码看起来更简洁
+@objcMembers class Article: Object {
+    
+    // 在类前面加上@objcMembers，可以将整个类的成员
+    // 属性都定义为@objc，这种写法更加的简洁
+    dynamic var id = 0
+    dynamic var title: String?
+}
