@@ -1,6 +1,8 @@
 import Foundation
 import RealmSwift
 
+let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "TemporaryRealm"))
+
 class Person: Object {
     
     @objc dynamic var name = ""
@@ -34,11 +36,14 @@ class Car: Object {
     // 用于存储Repair对象信息
     let repairs = List<Repair>()
     
-    // 汽车牌照
+    // 保存汽车牌照
     let plates = List<String>()
     
-    // 年检日期
+    // 保存年检日期
     let checkups = List<Date>()
+    
+    // 用于保存Sticker对象
+    let stickers = List<String>()
     
     convenience init(brand: String, year: Int) {
         self.init()
@@ -167,3 +172,39 @@ example(of: "Adding primitive types to Realm List(s)") {
     print("first: \(car.checkups.first!)")
     print("max: \(car.checkups.max()!)")
 }
+
+
+class Sticker: Object {
+    
+    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var text = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(_ text: String) {
+        self.init()
+        self.text = text
+    }
+}
+
+example(of: "Referencing objects from a different Realm file") {
+    
+    let sticker = Sticker("Swift is my life")
+    let car = Car(brand: "Audi", year: 2018)
+    car.stickers.append(sticker.id)
+    print(car.stickers)
+    
+    // 将car和sticker对象保存到Realm中
+    try! realm.write {
+        realm.add(car)
+        realm.add(sticker)
+    }
+    
+//    print("Linked stickers: ")
+//    print(realm.objects(Sticker.self)
+//        .filter("id IN %@:"), car.stickers)
+}
+
+
