@@ -34,6 +34,12 @@ class Car: Object {
     // 用于存储Repair对象信息
     let repairs = List<Repair>()
     
+    // 汽车牌照
+    let plates = List<String>()
+    
+    // 年检日期
+    let checkups = List<Date>()
+    
     convenience init(brand: String, year: Int) {
         self.init()
         self.brand = brand
@@ -133,5 +139,31 @@ example(of: "Adding pointer to the same objects") {
     car.repairs.append(repair)
     car.repairs.append(repair)
     
+    // 在列表的开头删除指定的对象，但是不会
+    // 从管理它们的Realm数据库中删除
+    car.repairs.removeFirst()
+    
+    // 跟removeFirst()方法一样，只不过这个
+    // 方法可以指定一个索引参数
+    car.repairs.removeFirst(2)
+    
     print(car.repairs)
+}
+
+
+example(of: "Adding primitive types to Realm List(s)") {
+    
+    let car = Car(brand: "Audi", year: 2018)
+    car.plates.append("WYZ 201 Q")
+    car.plates.append("2MNYC0DZ")
+    
+    print(car.plates)
+    print("Current registration: \(car.plates.last!)")
+    
+    car.checkups.append(Date(timeIntervalSinceNow: -31557600))
+    car.checkups.append(Date())
+    
+    print(car.checkups)
+    print("first: \(car.checkups.first!)")
+    print("max: \(car.checkups.max()!)")
 }
