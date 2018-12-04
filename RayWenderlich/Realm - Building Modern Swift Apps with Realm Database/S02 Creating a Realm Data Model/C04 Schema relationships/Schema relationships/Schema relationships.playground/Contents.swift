@@ -31,6 +31,9 @@ class Car: Object {
     @objc dynamic var owner: Person?
     @objc dynamic var shop: RepairShop?
     
+    // 用于存储Repair对象信息
+    let repairs = List<Repair>()
+    
     convenience init(brand: String, year: Int) {
         self.init()
         self.brand = brand
@@ -99,3 +102,36 @@ class Truck: Object {
     }
 }
 
+
+example(of: "To-many relationships(for objects)") {
+    
+    let jack = Person("Jack")
+    let car = Car(brand: "BMW", year: 1980)
+    
+    // 将指定对象添加到列表末尾
+    car.repairs.append(Repair(by: jack))
+    
+    // 将包含指定对象的序列添加到列表末尾
+    car.repairs.append(objectsIn: [
+        Repair(by: jack),
+        Repair(by: jack),
+        Repair(by: jack)
+        ])
+    
+    print("\(car) has \(car.repairs.count) repairs.")
+}
+
+
+example(of: "Adding pointer to the same objects") {
+    
+    let jack = Person("Jack")
+    let repair = Repair(by: jack)
+    
+    let car = Car(brand: "BMW", year: 2018)
+    car.repairs.append(repair)
+    car.repairs.append(repair)
+    car.repairs.append(repair)
+    car.repairs.append(repair)
+    
+    print(car.repairs)
+}
