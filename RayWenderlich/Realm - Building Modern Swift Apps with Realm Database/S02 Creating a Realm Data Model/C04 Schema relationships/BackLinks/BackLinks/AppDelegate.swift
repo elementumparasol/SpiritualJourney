@@ -7,15 +7,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - 类自带的属性
+    
     var window: UIWindow?
-
+    
+    
+    // MARK: - 自定义方法
+    
+    func testBackLinks() {
+        
+        let realm = try! Realm(configuration: Realm.Configuration(deleteRealmIfMigrationNeeded: true))
+        SyncManager.shared.logLevel = .off
+        
+        
+        let myLittleShop = RepairShop("My Little shop")
+        let car = Car(brand: "BMW", year: 1980)
+        car.shop = myLittleShop
+        
+        
+        try! realm.write {
+            realm.add(car)
+            realm.add(myLittleShop)
+        }
+        
+        
+        print("Cars maintained at \(myLittleShop.name)")
+        print(myLittleShop.maintainedCars)
+    }
+    
+    
+    // MARK: - 类自带的方法
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        testBackLinks()
+        
         return true
     }
 

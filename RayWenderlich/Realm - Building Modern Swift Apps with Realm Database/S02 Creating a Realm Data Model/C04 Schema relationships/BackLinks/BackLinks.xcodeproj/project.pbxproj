@@ -13,6 +13,7 @@
 		C5B5DC1121B701B000E72DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B5DC0F21B701B000E72DCC /* Main.storyboard */; };
 		C5B5DC1321B701B300E72DCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B5DC1221B701B300E72DCC /* Assets.xcassets */; };
 		C5B5DC1621B701B300E72DCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B5DC1421B701B300E72DCC /* LaunchScreen.storyboard */; };
+		C5B5DC1E21B72A2900E72DCC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5DC1D21B72A2900E72DCC /* RealmObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C5B5DC1221B701B300E72DCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5B5DC1521B701B300E72DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5B5DC1721B701B300E72DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5B5DC1D21B72A2900E72DCC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		C80D38820D2BF3EFA9AA0B5C /* Pods_BackLinks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackLinks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6EC39948DA423BE8DEC39F /* Pods-BackLinks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackLinks.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackLinks/Pods-BackLinks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 			children = (
 				C5B5DC0B21B701B000E72DCC /* AppDelegate.swift */,
 				C5B5DC0D21B701B000E72DCC /* ViewController.swift */,
+				C5B5DC1D21B72A2900E72DCC /* RealmObjects.swift */,
 				C5B5DC0F21B701B000E72DCC /* Main.storyboard */,
 				C5B5DC1221B701B300E72DCC /* Assets.xcassets */,
 				C5B5DC1421B701B300E72DCC /* LaunchScreen.storyboard */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5B5DC1E21B72A2900E72DCC /* RealmObjects.swift in Sources */,
 				C5B5DC0E21B701B000E72DCC /* ViewController.swift in Sources */,
 				C5B5DC0C21B701B000E72DCC /* AppDelegate.swift in Sources */,
 			);
