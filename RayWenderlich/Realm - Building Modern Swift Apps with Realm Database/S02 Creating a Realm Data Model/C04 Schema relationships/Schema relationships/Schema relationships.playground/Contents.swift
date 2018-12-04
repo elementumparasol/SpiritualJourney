@@ -73,3 +73,29 @@ example(of: "To-one relationships") {
 }
 
 
+class Vehicle: Object {
+    
+    @objc dynamic var year = Date.distantPast
+    @objc dynamic var isDiesel = false
+    
+    convenience init(year: Date, isDiesel: Bool) {
+        self.init()
+        self.year = year
+        self.isDiesel = isDiesel
+    }
+}
+
+class Truck: Object {
+    
+    @objc dynamic var vehicle: Vehicle?
+    @objc dynamic var nrOfGears = 12
+    @objc dynamic var nrOfWheels = 16
+    
+    convenience init(year: Date, isDiesel: Bool, gears: Int, wheels: Int) {
+        self.init()
+        self.vehicle = Vehicle(year: year, isDiesel: isDiesel)
+        nrOfGears = gears
+        nrOfWheels = wheels
+    }
+}
+
