@@ -1,0 +1,6 @@
+framework module Pods_Reading_and_Writing_Objects {
+  umbrella header "Pods-Reading and Writing Objects-umbrella.h"
+
+  export *
+  module * { export * }
+}

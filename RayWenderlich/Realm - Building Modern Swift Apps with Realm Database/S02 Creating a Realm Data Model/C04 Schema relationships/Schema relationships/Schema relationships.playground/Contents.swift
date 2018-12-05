@@ -82,6 +82,8 @@ example(of: "To-one relationships") {
     car.owner = marin
     
     print(myLittleShop.contact?.name ?? "no name")
+    
+    
     print(car.shop == myLittleShop)
     print(car.owner!.name)
 }
