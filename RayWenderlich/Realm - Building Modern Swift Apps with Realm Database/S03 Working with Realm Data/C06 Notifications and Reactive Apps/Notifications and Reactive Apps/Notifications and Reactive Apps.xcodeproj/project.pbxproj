@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68844FFDBAF4ADC0BFB0E637 /* Pods_Notifications_and_Reactive_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5910422AEC685FC9CA4C5804 /* Pods_Notifications_and_Reactive_Apps.framework */; };
+		C575236E21BA16B000C4A188 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C575236D21BA16B000C4A188 /* AppDelegate.swift */; };
+		C575237021BA16B000C4A188 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C575236F21BA16B000C4A188 /* ViewController.swift */; };
+		C575237321BA16B000C4A188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C575237121BA16B000C4A188 /* Main.storyboard */; };
+		C575237521BA16B300C4A188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C575237421BA16B300C4A188 /* Assets.xcassets */; };
+		C575237821BA16B300C4A188 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C575237621BA16B300C4A188 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5910422AEC685FC9CA4C5804 /* Pods_Notifications_and_Reactive_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notifications_and_Reactive_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8B3A989B9267B3245937D4 /* Pods-Notifications and Reactive Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifications and Reactive Apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifications and Reactive Apps/Pods-Notifications and Reactive Apps.release.xcconfig"; sourceTree = "<group>"; };
+		BFDF735F14616471C78DD8DB /* Pods-Notifications and Reactive Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifications and Reactive Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notifications and Reactive Apps/Pods-Notifications and Reactive Apps.debug.xcconfig"; sourceTree = "<group>"; };
+		C575236A21BA16B000C4A188 /* Notifications and Reactive Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notifications and Reactive Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C575236D21BA16B000C4A188 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C575236F21BA16B000C4A188 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C575237221BA16B000C4A188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C575237421BA16B300C4A188 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C575237721BA16B300C4A188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C575237921BA16B300C4A188 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C575237F21BA16C900C4A188 /* Notifications and Reactive Apps.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Notifications and Reactive Apps.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C575236721BA16B000C4A188 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68844FFDBAF4ADC0BFB0E637 /* Pods_Notifications_and_Reactive_Apps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C575236121BA16B000C4A188 = {
+			isa = PBXGroup;
+			children = (
+				C575237F21BA16C900C4A188 /* Notifications and Reactive Apps.playground */,
+				C575236C21BA16B000C4A188 /* Notifications and Reactive Apps */,
+				C575236B21BA16B000C4A188 /* Products */,
+				EAA200F10B282D629A1AD8F6 /* Pods */,
+				DC85AAAC1E0E948897901D29 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C575236B21BA16B000C4A188 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C575236A21BA16B000C4A188 /* Notifications and Reactive Apps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C575236C21BA16B000C4A188 /* Notifications and Reactive Apps */ = {
+			isa = PBXGroup;
+			children = (
+				C575236D21BA16B000C4A188 /* AppDelegate.swift */,
+				C575236F21BA16B000C4A188 /* ViewController.swift */,
+				C575237121BA16B000C4A188 /* Main.storyboard */,
+				C575237421BA16B300C4A188 /* Assets.xcassets */,
+				C575237621BA16B300C4A188 /* LaunchScreen.storyboard */,
+				C575237921BA16B300C4A188 /* Info.plist */,
+			);
+			path = "Notifications and Reactive Apps";
+			sourceTree = "<group>";
+		};
+		DC85AAAC1E0E948897901D29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5910422AEC685FC9CA4C5804 /* Pods_Notifications_and_Reactive_Apps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAA200F10B282D629A1AD8F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BFDF735F14616471C78DD8DB /* Pods-Notifications and Reactive Apps.debug.xcconfig */,
+				AB8B3A989B9267B3245937D4 /* Pods-Notifications and Reactive Apps.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C575236921BA16B000C4A188 /* Notifications and Reactive Apps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C575237C21BA16B300C4A188 /* Build configuration list for PBXNativeTarget "Notifications and Reactive Apps" */;
+			buildPhases = (
+				3B93C593EA241C0321212C98 /* [CP] Check Pods Manifest.lock */,
+				C575236621BA16B000C4A188 /* Sources */,
+				C575236721BA16B000C4A188 /* Frameworks */,
+				C575236821BA16B000C4A188 /* Resources */,
+				C329F4ECA7328D292D2F5A81 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Notifications and Reactive Apps";
+			productName = "Notifications and Reactive Apps";
+			productReference = C575236A21BA16B000C4A188 /* Notifications and Reactive Apps.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C575236221BA16B000C4A188 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Enrica;
+				TargetAttributes = {
+					C575236921BA16B000C4A188 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = C575236521BA16B000C4A188 /* Build configuration list for PBXProject "Notifications and Reactive Apps" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C575236121BA16B000C4A188;
+			productRefGroup = C575236B21BA16B000C4A188 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C575236921BA16B000C4A188 /* Notifications and Reactive Apps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C575236821BA16B000C4A188 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C575237821BA16B300C4A188 /* LaunchScreen.storyboard in Resources */,
+				C575237521BA16B300C4A188 /* Assets.xcassets in Resources */,
+				C575237321BA16B000C4A188 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B93C593EA241C0321212C98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Notifications and Reactive Apps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C329F4ECA7328D292D2F5A81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Notifications and Reactive Apps/Pods-Notifications and Reactive Apps-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Notifications and Reactive Apps/Pods-Notifications and Reactive Apps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C575236621BA16B000C4A188 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C575237021BA16B000C4A188 /* ViewController.swift in Sources */,
+				C575236E21BA16B000C4A188 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C575237121BA16B000C4A188 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C575237221BA16B000C4A188 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C575237621BA16B300C4A188 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C575237721BA16B300C4A188 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C575237A21BA16B300C4A188 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C575237B21BA16B300C4A188 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C575237D21BA16B300C4A188 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFDF735F14616471C78DD8DB /* Pods-Notifications and Reactive Apps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DVFNW8928B;
+				INFOPLIST_FILE = "Notifications and Reactive Apps/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.imemyself.Notifications-and-Reactive-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C575237E21BA16B300C4A188 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB8B3A989B9267B3245937D4 /* Pods-Notifications and Reactive Apps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DVFNW8928B;
+				INFOPLIST_FILE = "Notifications and Reactive Apps/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.imemyself.Notifications-and-Reactive-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C575236521BA16B000C4A188 /* Build configuration list for PBXProject "Notifications and Reactive Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C575237A21BA16B300C4A188 /* Debug */,
+				C575237B21BA16B300C4A188 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C575237C21BA16B300C4A188 /* Build configuration list for PBXNativeTarget "Notifications and Reactive Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C575237D21BA16B300C4A188 /* Debug */,
+				C575237E21BA16B300C4A188 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C575236221BA16B000C4A188 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_Notifications_and_Reactive_Apps {
+  umbrella header "Pods-Notifications and Reactive Apps-umbrella.h"
+
+  export *
+  module * { export * }
+}
