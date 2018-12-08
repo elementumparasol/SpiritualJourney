@@ -47,8 +47,10 @@ public class TestDataSet {
         try! realm.write {
             realm.add(author1)
             realm.add(author2)
+
             realm.add(person1)
             realm.add(person2)
+
             realm.add(article1)
             realm.add(article2)
         }

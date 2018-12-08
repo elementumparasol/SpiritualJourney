@@ -55,3 +55,18 @@ print("Subscription token: \(token)")
 try! realm.write {
     article.title = "Work in progress"
 }
+
+
+DispatchQueue.global(qos: .background).async {
+    
+    // 使用与上面完全相同的配置信息来创建一个Realm实例
+    let realm = try! Realm(configuration: configuration)
+    
+    // 通过指定的primaryKey来取出article它的title和author属性
+    if let article = realm.object(ofType: Article.self, forPrimaryKey: "new-article") {
+        try! realm.write {
+            article.title = "Article title"  // 修改title属性
+            article.author = Person()  // 修改author属性
+        }
+    }
+}
