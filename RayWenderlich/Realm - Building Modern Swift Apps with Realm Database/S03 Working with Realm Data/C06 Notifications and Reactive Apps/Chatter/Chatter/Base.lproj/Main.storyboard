@@ -37,14 +37,50 @@
                     <view key="view" contentMode="scaleToFill" id="sl8-nO-DKI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="cUP-XU-QBm">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9V-PI-dEb">
+                                        <rect key="frame" x="104.5" y="0.0" width="91" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chatter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1Q-Mh-AOA">
+                                        <rect key="frame" x="92" y="89" width="116" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total message: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3w-Rj-gKv">
+                                        <rect key="frame" x="78" y="177" width="144.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Ffh-Hs-jSD"/>
+                                    <constraint firstAttribute="width" constant="300" id="fSH-Gx-dQi"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="0.38039215686274508" green="0.32549019607843138" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cUP-XU-QBm" firstAttribute="centerY" secondItem="sl8-nO-DKI" secondAttribute="centerY" constant="-50" id="Mcf-B2-E3V"/>
+                            <constraint firstItem="cUP-XU-QBm" firstAttribute="centerX" secondItem="sl8-nO-DKI" secondAttribute="centerX" id="Xd0-Wj-am4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U01-Io-j4D"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stats" image="icon-tab-stats" id="Nza-MM-foW"/>
+                    <connections>
+                        <outlet property="statsLabel" destination="g3w-Rj-gKv" id="tZw-rV-5Ee"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MU3-2D-xCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="-619"/>
+            <point key="canvasLocation" x="-294" y="-669"/>
         </scene>
         <!--Messages-->
         <scene sceneID="cEr-5e-aKf">

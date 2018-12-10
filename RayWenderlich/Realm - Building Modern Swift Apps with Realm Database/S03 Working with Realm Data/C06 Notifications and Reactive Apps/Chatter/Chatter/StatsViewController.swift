@@ -9,10 +9,19 @@
 import UIKit
 
 class StatsViewController: UIViewController {
+    
+    // MARK: - @IBOutlet
+    
+    /// 显示消息数量的label
+    @IBOutlet weak var statsLabel: UILabel!
+    
+    
+    // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        statsLabel.text = "Total messages: 10000"
     }
 
 
