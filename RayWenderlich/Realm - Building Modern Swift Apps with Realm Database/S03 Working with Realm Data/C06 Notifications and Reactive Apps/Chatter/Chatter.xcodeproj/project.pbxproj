@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		8A0410DC3E15B8BC3948242D /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8E56D52EBEDE50DC3D99F2 /* Pods_Chatter.framework */; };
 		C541BB4421BE1A2600B032A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB4321BE1A2600B032A9 /* AppDelegate.swift */; };
-		C541BB4621BE1A2600B032A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB4521BE1A2600B032A9 /* ViewController.swift */; };
+		C541BB4621BE1A2600B032A9 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB4521BE1A2600B032A9 /* StatsViewController.swift */; };
 		C541BB4921BE1A2600B032A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C541BB4721BE1A2600B032A9 /* Main.storyboard */; };
 		C541BB4B21BE1A2A00B032A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C541BB4A21BE1A2A00B032A9 /* Assets.xcassets */; };
 		C541BB4E21BE1A2A00B032A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C541BB4C21BE1A2A00B032A9 /* LaunchScreen.storyboard */; };
+		C541BB5621BE472C00B032A9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5521BE472C00B032A9 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +22,12 @@
 		3B5019BE471A2DAE2068190C /* Pods-Chatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.debug.xcconfig"; sourceTree = "<group>"; };
 		C541BB4021BE1A2600B032A9 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C541BB4321BE1A2600B032A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C541BB4521BE1A2600B032A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C541BB4521BE1A2600B032A9 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C541BB4821BE1A2600B032A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C541BB4A21BE1A2A00B032A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C541BB4D21BE1A2A00B032A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C541BB4F21BE1A2A00B032A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C541BB5521BE472C00B032A9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				C541BB4321BE1A2600B032A9 /* AppDelegate.swift */,
-				C541BB4521BE1A2600B032A9 /* ViewController.swift */,
+				C541BB4521BE1A2600B032A9 /* StatsViewController.swift */,
+				C541BB5521BE472C00B032A9 /* ChatViewController.swift */,
 				C541BB4721BE1A2600B032A9 /* Main.storyboard */,
 				C541BB4A21BE1A2A00B032A9 /* Assets.xcassets */,
 				C541BB4C21BE1A2A00B032A9 /* LaunchScreen.storyboard */,
@@ -210,7 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C541BB4621BE1A2600B032A9 /* ViewController.swift in Sources */,
+				C541BB4621BE1A2600B032A9 /* StatsViewController.swift in Sources */,
+				C541BB5621BE472C00B032A9 /* ChatViewController.swift in Sources */,
 				C541BB4421BE1A2600B032A9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
