@@ -28,8 +28,8 @@ import RealmSwift
     /// 标识是否为最新消息
     dynamic var isNew = true
     
-    // MARK: - 便利构造方法
     
+    // MARK: - 便利构造方法
     
     /// 根据指定的参数来创建Message实例
     ///
@@ -46,8 +46,8 @@ import RealmSwift
         self.text = text
     }
     
-    // MARK: - 原信息
     
+    // MARK: - 重写类自带的方法
     
     /// 重写此方法，以指定要用作主键的属性的名称
     ///
@@ -57,9 +57,9 @@ import RealmSwift
     }
 }
 
+
 // MARK: - Message
 extension Message {
-    
     
     /// Message中部分属性的名称(后续用于排序)
     public struct Properties {

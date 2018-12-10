@@ -11,6 +11,15 @@ import UIKit
 
 class ChatAPI {
     
+    // MARK: - 模拟的假数据
+    
+    /// 模拟的消息文本列表
+    private let phrases = ["hello everyone", "hey hey hey", "anyone around?", "Bye", "I'm outta here", "I have a question", "testing testing ... 1, 2, 3", "wubalubadubdub"]
+    
+    /// 模拟的消息发送者列表
+    private let from = ["Josh", "Jane", "Peter", "Sam", "Ray", "Paul", "Adam", "Lana", "Derek", "Patrick"]
+    
+    
     // MARK: - 自定义属性
     
     /// 自定义一个闭包类型，并且为它取一个别名
@@ -66,12 +75,6 @@ class ChatAPI {
             self?.receiveMessages()
         }
     }
-    
-    /// 模拟的消息文本列表
-    private let phrases = ["hello everyone", "hey hey hey", "anyone around?", "Bye", "I'm outta here", "I have a question", "testing testing ... 1, 2, 3", "wubalubadubdub"]
-    
-    /// 模拟的消息发送者列表
-    private let from = ["Josh", "Jane", "Peter", "Sam", "Ray", "Paul", "Adam", "Lana", "Derek", "Patrick"]
 }
 
 
@@ -98,5 +101,3 @@ extension Array {
         return self[random(min: 0, max: UInt32(count-1))]
     }
 }
-
-
