@@ -14,6 +14,8 @@
 		C541BB4B21BE1A2A00B032A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C541BB4A21BE1A2A00B032A9 /* Assets.xcassets */; };
 		C541BB4E21BE1A2A00B032A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C541BB4C21BE1A2A00B032A9 /* LaunchScreen.storyboard */; };
 		C541BB5621BE472C00B032A9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5521BE472C00B032A9 /* ChatViewController.swift */; };
+		C541BB5821BE78E000B032A9 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5721BE78E000B032A9 /* ChatAPI.swift */; };
+		C541BB5A21BE922A00B032A9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5921BE922A00B032A9 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		C541BB4D21BE1A2A00B032A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C541BB4F21BE1A2A00B032A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C541BB5521BE472C00B032A9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C541BB5721BE78E000B032A9 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
+		C541BB5921BE922A00B032A9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				C541BB4321BE1A2600B032A9 /* AppDelegate.swift */,
+				C541BB5921BE922A00B032A9 /* Message.swift */,
+				C541BB5721BE78E000B032A9 /* ChatAPI.swift */,
 				C541BB4521BE1A2600B032A9 /* StatsViewController.swift */,
 				C541BB5521BE472C00B032A9 /* ChatViewController.swift */,
 				C541BB4721BE1A2600B032A9 /* Main.storyboard */,
@@ -215,6 +221,8 @@
 			files = (
 				C541BB4621BE1A2600B032A9 /* StatsViewController.swift in Sources */,
 				C541BB5621BE472C00B032A9 /* ChatViewController.swift in Sources */,
+				C541BB5A21BE922A00B032A9 /* Message.swift in Sources */,
+				C541BB5821BE78E000B032A9 /* ChatAPI.swift in Sources */,
 				C541BB4421BE1A2600B032A9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
