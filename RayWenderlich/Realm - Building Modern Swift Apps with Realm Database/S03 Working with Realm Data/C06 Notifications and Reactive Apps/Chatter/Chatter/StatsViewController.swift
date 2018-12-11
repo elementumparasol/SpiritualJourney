@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class StatsViewController: UIViewController {
     
@@ -16,12 +17,32 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var statsLabel: UILabel!
     
     
+    // MARK: - 自定义属性
+    
+    /// 用于存储监听messages时返回的token
+    private var messagesToken: NotificationToken?
+    
+    
     // MARK: - 类自带的方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statsLabel.text = "Total messages: 10000"
+        // 获取默认的Realm实例
+        let realm = try! Realm()
+        
+        // 从Realm中取出messages
+        let messages = realm.objects(Message.self)
+        
+        // 监听messages
+        messagesToken = messages.observe({ [weak self] (_) in
+            
+            guard let weakSelf = self else { return }
+            
+            UIView.transition(with: weakSelf.statsLabel, duration: 0.33, options: [.transitionFlipFromTop], animations: {
+                weakSelf.statsLabel.text = "Total messages: \(messages.count)"
+            }, completion: nil)
+        })
     }
 
 
