@@ -45,11 +45,33 @@ class ChatViewController: UITableViewController {
         messages = realm.objects(Message.self)
             .sorted(byKeyPath: Message.Properties.date, ascending: false)
         
-        // 订阅messages的更改通知
-        messageToken = messages?.observe({ [weak self] (_) in
+        // 订阅messages的更改通知。当tableView中的cell发生更改
+        // 时，Realm数据库中的数据也相应的要进行处理，主要是删除数据
+        messageToken = messages?.observe({ [weak tableView] (changes) in
             
             // 检测到messages发生更改以后，立即刷新tableView
-            self?.tableView.reloadData()
+            // self?.tableView.reloadData()
+            
+            guard let tableView = tableView else { return }
+            
+            switch changes {
+                
+            // 表示初始化已经完成，集合changes在不执行任何操作就可以使用了
+            case .initial:
+                
+                // 刷新tableView
+                tableView.reloadData()
+                
+            // 表示集合changes发生任何更改就会来到这里
+            case .update(_, let deletions, let insertions, let modifications):
+                
+                // 删除tableView中的数据时，也要同步删除存储在数据库中的数据
+                tableView.applyChanges(deletions: deletions, insertions: insertions, updates: modifications)
+              
+            // 集合changes因发生更改而产生错误时就会来到这里
+            case .error:
+                break
+            }
         })
     }
     
@@ -101,7 +123,11 @@ extension ChatViewController {
 // MARK: - UITableViewDelegate
 extension ChatViewController {
     
+    // 选中当前行之后，将本条消息标记为已读
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 取消cell被选中时的高亮状态
+        tableView.deselectRow(at: indexPath, animated: false)
         
         // 从数组messages中取出当前行的message
         let message = messages![indexPath.row]
@@ -114,6 +140,28 @@ extension ChatViewController {
             
             // 消息阅读之后，标记其为非最新消息
             message.isNew = false
+        }
+    }
+    
+    // 允许对当前行进行编辑
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // 允许删除消息
+        guard editingStyle == .delete else { return }
+        
+        // 从数据库中取出当前行的message
+        let message = messages![indexPath.row]
+        
+        // 获取默认的Realm实例
+        let realm = try! Realm()
+        
+        // 在write(_ : )中删除出当前上的message
+        try! realm.write {
+            realm.delete(message)
         }
     }
 }

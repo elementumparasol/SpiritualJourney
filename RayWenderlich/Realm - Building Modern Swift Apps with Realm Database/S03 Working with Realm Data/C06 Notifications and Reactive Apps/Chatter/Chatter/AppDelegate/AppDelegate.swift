@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func persist(messages: [(String, String)]) {
         
         // 打印messages消息
-        print(messages)
+        // print(messages)
         
         // 关闭Realm中任何与同步相关的调试信息，以保持控制器清爽
         SyncManager.shared.logLevel = .off
