@@ -25,7 +25,7 @@ import RealmSwift
     /// 消息内容
     dynamic var text = ""
     
-    /// 标识是否为最新消息
+    /// 标识是否为最新消息(默认为最新消息)
     dynamic var isNew = true
     
     

@@ -17,6 +17,8 @@
 		C541BB5821BE78E000B032A9 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5721BE78E000B032A9 /* ChatAPI.swift */; };
 		C541BB5A21BE922A00B032A9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541BB5921BE922A00B032A9 /* Message.swift */; };
 		C5FDF69221C0B4D7000616AE /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDF69121C0B4D7000616AE /* DateFormatter+Extension.swift */; };
+		C5FDF69421C0BF82000616AE /* IndexPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDF69321C0BF82000616AE /* IndexPath+Extension.swift */; };
+		C5FDF69621C0BFCE000616AE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDF69521C0BFCE000616AE /* UITableView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		C541BB5721BE78E000B032A9 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		C541BB5921BE922A00B032A9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C5FDF69121C0B4D7000616AE /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		C5FDF69321C0BF82000616AE /* IndexPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Extension.swift"; sourceTree = "<group>"; };
+		C5FDF69521C0BFCE000616AE /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				C5FDF69121C0B4D7000616AE /* DateFormatter+Extension.swift */,
+				C5FDF69321C0BF82000616AE /* IndexPath+Extension.swift */,
+				C5FDF69521C0BFCE000616AE /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,8 +280,10 @@
 				C541BB5621BE472C00B032A9 /* ChatViewController.swift in Sources */,
 				C5FDF69221C0B4D7000616AE /* DateFormatter+Extension.swift in Sources */,
 				C541BB5A21BE922A00B032A9 /* Message.swift in Sources */,
+				C5FDF69421C0BF82000616AE /* IndexPath+Extension.swift in Sources */,
 				C541BB5821BE78E000B032A9 /* ChatAPI.swift in Sources */,
 				C541BB4421BE1A2600B032A9 /* AppDelegate.swift in Sources */,
+				C5FDF69621C0BFCE000616AE /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
