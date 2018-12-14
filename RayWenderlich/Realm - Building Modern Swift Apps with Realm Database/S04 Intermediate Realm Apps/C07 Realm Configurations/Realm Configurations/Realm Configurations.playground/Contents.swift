@@ -71,3 +71,13 @@ Example.of("Documents folder") {
     let documentsConfig = Realm.Configuration(fileURL: documentsURL)
     print("Documents-folder Realm in: \(documentsConfig)")
 }
+
+
+Example.of("Library folder") {
+    
+    let libraryURL = try! FileManager.default
+        .url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        .appendingPathComponent("myRealm.realm")
+    let libraryConfig = Realm.Configuration(fileURL: libraryURL)
+    print("Realm in library folder: \(libraryConfig)")
+}
