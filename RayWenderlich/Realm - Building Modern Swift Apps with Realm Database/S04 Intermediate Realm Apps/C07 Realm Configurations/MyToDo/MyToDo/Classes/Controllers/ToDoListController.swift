@@ -43,6 +43,9 @@ class ToDoListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 设置tableView的行高
+        tableView.rowHeight = 44
+        
         // 从Realm数据库中取出所有的ToDoItem数据
         items = ToDoItem.all()
     }

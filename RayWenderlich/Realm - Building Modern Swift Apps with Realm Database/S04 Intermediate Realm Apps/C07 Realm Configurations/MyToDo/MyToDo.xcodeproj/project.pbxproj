@@ -18,6 +18,7 @@
 		C548C37521C6442700F4B74C /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */; };
 		C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37621C65A9500F4B74C /* UserInputAlert.swift */; };
 		C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37821C6698600F4B74C /* UITableView+Extensions.swift */; };
+		C548C37C21C67BCD00F4B74C /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37B21C67BCD00F4B74C /* SetupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		C548C37621C65A9500F4B74C /* UserInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputAlert.swift; sourceTree = "<group>"; };
 		C548C37821C6698600F4B74C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		C548C37A21C67B6300F4B74C /* toDoItem.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = toDoItem.realm; sourceTree = "<group>"; };
+		C548C37B21C67BCD00F4B74C /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C548C35621C61E1A00F4B74C /* ToDoListController.swift */,
+				C548C37B21C67BCD00F4B74C /* SetupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +141,7 @@
 		C548C36A21C61EAC00F4B74C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C548C37A21C67B6300F4B74C /* toDoItem.realm */,
 				C548C36D21C62DE800F4B74C /* ToDoItem.swift */,
 			);
 			path = Entities;
@@ -293,6 +298,7 @@
 				C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */,
 				C548C35521C61E1A00F4B74C /* AppDelegate.swift in Sources */,
 				C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */,
+				C548C37C21C67BCD00F4B74C /* SetupViewController.swift in Sources */,
 				C548C37221C6336300F4B74C /* LocalizedPath.swift in Sources */,
 				C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */,
 				C548C37521C6442700F4B74C /* ToDoTableViewCell.swift in Sources */,
