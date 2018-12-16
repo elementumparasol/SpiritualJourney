@@ -81,3 +81,30 @@ Example.of("Library folder") {
     let libraryConfig = Realm.Configuration(fileURL: libraryURL)
     print("Realm in library folder: \(libraryConfig)")
 }
+
+
+Example.of("Read-only Realm") {
+    
+    let rwURL = try! FileManager
+        .default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        .appendingPathComponent("new.realm")
+    let rwConfig = Realm.Configuration(fileURL: rwURL)
+    
+    autoreleasepool {
+        let rwRealm = try! Realm(configuration: rwConfig)
+        try! rwRealm.write {
+            rwRealm.add(Person())
+        }
+        print("Regular Realm, is Read Only?: \(rwRealm.configuration.readOnly)")
+        print("Saved objects: \(rwRealm.objects(Person.self).count)\n")
+    }
+    
+    autoreleasepool {
+        
+        // 创建Read-Only配置信息
+        let roConfig = Realm.Configuration(fileURL: rwURL, readOnly: true)
+        let roRealm = try! Realm(configuration: roConfig)
+        print("Regular Realm, is Read Only?: \(roRealm.configuration.readOnly)")
+        print("Saved objects: \(roRealm.objects(Person.self).count)\n")
+    }
+}
