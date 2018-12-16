@@ -108,3 +108,19 @@ Example.of("Read-only Realm") {
         print("Saved objects: \(roRealm.objects(Person.self).count)\n")
     }
 }
+
+
+Example.of("Object-Schema") {
+    
+    let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "inMemoryRealm"))
+    print(realm.schema.objectSchema)
+}
+
+
+Example.of("Object Schema - Specific object") {
+    
+    let config = Realm.Configuration(inMemoryIdentifier: "inMemoryRealm2", objectTypes: [Person.self])
+    
+    let realm = try! Realm(configuration: config)
+    print(realm.schema.objectSchema)
+}
