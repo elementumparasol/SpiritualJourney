@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		A1A4F6B05738E49035A573C6 /* Pods_MyToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF2A219268A942B2F9C3CE6 /* Pods_MyToDo.framework */; };
 		C548C35521C61E1A00F4B74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C35421C61E1A00F4B74C /* AppDelegate.swift */; };
-		C548C35721C61E1A00F4B74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C35621C61E1A00F4B74C /* ViewController.swift */; };
+		C548C35721C61E1A00F4B74C /* ToDoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C35621C61E1A00F4B74C /* ToDoListController.swift */; };
 		C548C35A21C61E1A00F4B74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C548C35821C61E1A00F4B74C /* Main.storyboard */; };
 		C548C35C21C61E1E00F4B74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C548C35B21C61E1E00F4B74C /* Assets.xcassets */; };
 		C548C35F21C61E1E00F4B74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C548C35D21C61E1E00F4B74C /* LaunchScreen.storyboard */; };
+		C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C36D21C62DE800F4B74C /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +22,12 @@
 		A9D408C26C335F3E4FB1D6C9 /* Pods-MyToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyToDo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyToDo/Pods-MyToDo.release.xcconfig"; sourceTree = "<group>"; };
 		C548C35121C61E1A00F4B74C /* MyToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C548C35421C61E1A00F4B74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C548C35621C61E1A00F4B74C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C548C35621C61E1A00F4B74C /* ToDoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListController.swift; sourceTree = "<group>"; };
 		C548C35921C61E1A00F4B74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C548C35B21C61E1E00F4B74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C548C35E21C61E1E00F4B74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C548C36021C61E1E00F4B74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C548C36D21C62DE800F4B74C /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,7 @@
 		C548C36821C61E5500F4B74C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C548C35621C61E1A00F4B74C /* ViewController.swift */,
+				C548C35621C61E1A00F4B74C /* ToDoListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,6 +128,7 @@
 		C548C36A21C61EAC00F4B74C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C548C36D21C62DE800F4B74C /* ToDoItem.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -266,8 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C548C35721C61E1A00F4B74C /* ViewController.swift in Sources */,
+				C548C35721C61E1A00F4B74C /* ToDoListController.swift in Sources */,
 				C548C35521C61E1A00F4B74C /* AppDelegate.swift in Sources */,
+				C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
