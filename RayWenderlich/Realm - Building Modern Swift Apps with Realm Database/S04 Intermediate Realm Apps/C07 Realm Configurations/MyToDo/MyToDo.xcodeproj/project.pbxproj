@@ -19,6 +19,7 @@
 		C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37621C65A9500F4B74C /* UserInputAlert.swift */; };
 		C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37821C6698600F4B74C /* UITableView+Extensions.swift */; };
 		C548C37C21C67BCD00F4B74C /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37B21C67BCD00F4B74C /* SetupViewController.swift */; };
+		C548C38121C6B75E00F4B74C /* bundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = C548C38021C6B75E00F4B74C /* bundled.realm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +38,8 @@
 		C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		C548C37621C65A9500F4B74C /* UserInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputAlert.swift; sourceTree = "<group>"; };
 		C548C37821C6698600F4B74C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
-		C548C37A21C67B6300F4B74C /* toDoItem.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = toDoItem.realm; sourceTree = "<group>"; };
 		C548C37B21C67BCD00F4B74C /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		C548C38021C6B75E00F4B74C /* bundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = bundled.realm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +142,8 @@
 		C548C36A21C61EAC00F4B74C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				C548C37A21C67B6300F4B74C /* toDoItem.realm */,
 				C548C36D21C62DE800F4B74C /* ToDoItem.swift */,
+				C548C38021C6B75E00F4B74C /* bundled.realm */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -235,6 +236,7 @@
 				C548C35F21C61E1E00F4B74C /* LaunchScreen.storyboard in Resources */,
 				C548C35C21C61E1E00F4B74C /* Assets.xcassets in Resources */,
 				C548C35A21C61E1A00F4B74C /* Main.storyboard in Resources */,
+				C548C38121C6B75E00F4B74C /* bundled.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

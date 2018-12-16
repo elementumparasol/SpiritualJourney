@@ -33,7 +33,7 @@ class SetupViewController: UIViewController {
     private func detectConfiguration() {
         
         // 设置默认的配置
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(fileURL: ToDoRealmLocation.plain.fileURL)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(fileURL: RealmLocation.plain.realmUrl)
         
         // 加载指定的导航控制器控制器
         showToDoListController()

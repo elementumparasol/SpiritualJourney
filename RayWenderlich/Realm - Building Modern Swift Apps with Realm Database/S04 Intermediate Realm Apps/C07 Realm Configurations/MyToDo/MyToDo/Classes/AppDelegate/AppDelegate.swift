@@ -33,76 +33,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 关闭Realm中任何与同步相关的调试信息，以保持控制器清爽
         SyncManager.shared.logLevel = .off
         
-//        // 创建Realm实例
-//        let realm = try! Realm()
-//        
-//        // 检查realm是否为空，如果是，则直接return
-//        guard realm.isEmpty else { return }
-//        
-//        // 创建测试数据(将数据写入Realm数据库)
-//        try! realm.write {
-//            
-//            // 将数据添加到Realm中
-//            realm.add(ToDoItem("Buy Milk"))
-//            realm.add(ToDoItem("Finish Book"))
-//            realm.add(ToDoItem("Buy Fruit"))
-//        }
+        // 如果指定路径的文件不存在
+        if !RealmLocation.plain.fileExists && !RealmLocation.encrypted.fileExists {
+
+            // 将指定URL位置的文件复制到新的位置
+            try! FileManager.default.copyItem(at: RealmLocation.bundle.realmUrl, to: RealmLocation.plain.realmUrl)
+        }
     }
 
 }
 
 /// 用于列举Realm所有可能的存储路径
-enum ToDoRealmLocation {
-    
+enum RealmLocation {
+
     // MARK: - 枚举成员列表
-    
+
     /// Bundle路径
     case bundle
-    
+
     /// 普通未加密的路径
     case plain
-    
+
     /// 已加密的路径
     case encrypted
-    
+
     // MARK: - 枚举属性列表
-    
+
     /// 返回文件的URL路径
-    var fileURL: URL {
+    var realmUrl: URL {
         do {
             switch self {
-                
+
             // 返回文件在Bundle中的路径
             case .bundle:
-                return try LocalizedPath.inBundle("Bundle.realm")
-                
+                return try LocalizedPath.inBundle("bundled.realm")
+
             // 返回普通未加密的路径
             case .plain:
                 return try LocalizedPath.inDocuments("myToDo.realm")
-                
+
             // 返回已经加密的路径
             case .encrypted:
                 return try LocalizedPath.inDocuments("myToDoEnc.realm")
             }
         } catch let error {
-            fatalError("Failed finding expected path: \(error)")
+            fatalError("Failed finding expected path: \(error.localizedDescription)")
         }
     }
-    
+
     /// 判断该文件是否存在
     var fileExists: Bool {
-        
+
         // fileExists(atPath : )是Foundation中的一个
         // 方法，用于判断指定的文件路径是否存在
-        return FileManager.default.fileExists(atPath: filePath)
+        return FileManager.default.fileExists(atPath: realmPath)
     }
-    
+
     /// 将文件的fileURL路径转换为filePath路径
-    var filePath: String {
-        
+    var realmPath: String {
+
         // path是Foundation中的一个get属性
         // 如果URL遵守了RFC1808协议(URL常见形式)
         // 协议，那么最后会返回一个该URL的path路径
-        return fileURL.path
+        return realmUrl.path
     }
 }
