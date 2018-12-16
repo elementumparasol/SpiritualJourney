@@ -13,6 +13,8 @@ class SetupViewController: UIViewController {
     
     // MAKR: - 自定义属性
     
+    /// 用于表示是否设置密码
+    var isSetPassword = false
     
     // MARK: - 类自带的方法
     

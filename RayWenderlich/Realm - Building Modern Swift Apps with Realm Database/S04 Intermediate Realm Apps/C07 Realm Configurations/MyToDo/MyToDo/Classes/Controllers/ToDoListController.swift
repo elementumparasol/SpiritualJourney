@@ -25,7 +25,7 @@ class ToDoListController: UITableViewController {
     /// 点击导航栏左边的加密按钮进行数据加密
     @IBAction func encryptRealm() {
         
-        print("encrypt realm")
+        showSetPassword()
     }
     
     /// 点击导航栏右边的加号按钮添加新的ToDo清单
@@ -40,6 +40,7 @@ class ToDoListController: UITableViewController {
     
     // MARK: - 类自带的方法
 
+    // 当前控制器的view加载到内存中的时候调用
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +51,7 @@ class ToDoListController: UITableViewController {
         items = ToDoItem.all()
     }
     
+    // 当前控制器的view即将显示的时候调用
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -70,6 +72,7 @@ class ToDoListController: UITableViewController {
         })
     }
     
+    // 当前控制器的view即将消失的时候调用
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -96,16 +99,34 @@ class ToDoListController: UITableViewController {
         item.delete()
     }
 
+    /// 显示加密控制器
+    func showSetPassword() {
+        
+        // 根据指定的标识符加载SetupViewController控制器
+        let setupController = storyboard!.instantiateViewController(withIdentifier: "SetupViewController") as! SetupViewController
+        
+        // 设置密码
+        setupController.isSetPassword = true
+        
+        // 添加控制器转场动画
+        UIView.transition(with: view.window!, duration: 0.33, options: .transitionFlipFromRight, animations: {
+            
+            // 设置当前窗口的根控制器为setupController
+            self.view.window?.rootViewController = setupController
+        }, completion: nil)
+    }
 }
 
 
 // MARK: - UITableViewDataSource
 extension ToDoListController {
     
+    // 返回tableView中cell的行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items?.count ?? 0
     }
     
+    // 返回tableView中当前行的cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ToDoTableViewCell
@@ -127,6 +148,7 @@ extension ToDoListController {
 }
 
 
+// MARK: - UITableViewDelegate
 extension ToDoListController {
     
     // 允许对当前所选中的cell进行编辑
