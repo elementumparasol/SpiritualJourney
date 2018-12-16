@@ -11,28 +11,36 @@ import RealmSwift
 
 @objcMembers class ToDoItem: Object {
     
-    // 属性的名称
+    // MARK: - ToDoItem的属性
+    
+    // ToDoItem属性的名称
     enum PropertyName: String {
         case id, text, isCompleted
     }
     
-    /// 所创建对象的id
+    /// ToDoItem对象的id
     dynamic var id = UUID().uuidString
     
-    /// 描述文本
+    /// 用于创建ToDoItem对象时所使用的描述文本
     dynamic var text = ""
     
-    /// 用于标记ToDoList中的清单是否已完成
+    /// 用于标记当前的ToDoItem对象是否已经完成
     dynamic var isCompleted = false
     
-    // 用于返回对象的主键
+    
+    // MARK: - 重写Realm中的方法
+    
+    // 用于返回当前ToDoItem对象的主键
     override static func primaryKey() -> String? {
         return ToDoItem.PropertyName.id.rawValue
     }
     
+    
+    // MARK: - 自定义构造方法
+    
     /// 根据指定的文本内容创建ToDoItem对象
     ///
-    /// - Parameter text: 用于描述所创建的对象
+    /// - Parameter text: 用于创建ToDoItem对象时所使用的文本
     convenience init(_ text: String) {
         self.init()
         self.text = text
@@ -43,25 +51,24 @@ import RealmSwift
 // MARK: - ToDoItem常用的方法
 extension ToDoItem {
     
-    
-    /// 取出Realm数据库中所有的Realm对象
+    /// 从Realm数据库中取出所有的ToDoItem对象
     ///
     /// - Parameter realm: Realm数据库
-    /// - Returns: 返回Realm数据库中指定类型的数据
+    /// - Returns: 从Realm数据库中返回所有指定类型的对象数据
     static func all(in realm: Realm = try! Realm()) -> Results<ToDoItem> {
         
-        // 返回Realm数据库中所有指定类型的对象
-        // 并且所有的对象都按照isCompleted排序
+        // 从Realm数据库中返回所有指定类型的对象
+        // 并且将这些对象按照是否标记进行排序
         return realm.objects(ToDoItem.self)
             .sorted(byKeyPath: ToDoItem.PropertyName.isCompleted.rawValue)
     }
     
-    /// 将Realm对象添加到Realm数据库中
+    /// 创建ToDoItem对象，并且将其添加到Realm数据库中
     ///
     /// - Parameters:
-    ///   - text: 用于描述所创建的ToDoItem对象
-    ///   - realm: 用于存储数据的Realm数据库实例
-    /// - Returns: 返回已经成功创建的ToDoItem实例
+    ///   - text: 创建ToDoItem对象时的描述性文字
+    ///   - realm: Realm数据库
+    /// - Returns: 返回已经创建的ToDoItem实例
     @discardableResult
     static func add(text: String, in realm: Realm = try! Realm()) -> ToDoItem {
         let item = ToDoItem(text)
@@ -71,7 +78,7 @@ extension ToDoItem {
         return item
     }
     
-    /// 用于标记对象
+    /// 标记当前所选中的ToDoItem对象数据
     func toggleCompleted() {
         guard let realm = realm else { return }
         try! realm.write {
@@ -79,7 +86,7 @@ extension ToDoItem {
         }
     }
     
-    /// 删除对象
+    /// 从Realm数据库中删除指定的ToDoItem对象
     func delete() {
         guard let realm = realm else { return }
         try! realm.write {

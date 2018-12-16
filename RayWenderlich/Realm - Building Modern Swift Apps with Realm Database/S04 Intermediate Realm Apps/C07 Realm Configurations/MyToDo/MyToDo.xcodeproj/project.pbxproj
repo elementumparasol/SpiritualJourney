@@ -14,6 +14,10 @@
 		C548C35C21C61E1E00F4B74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C548C35B21C61E1E00F4B74C /* Assets.xcassets */; };
 		C548C35F21C61E1E00F4B74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C548C35D21C61E1E00F4B74C /* LaunchScreen.storyboard */; };
 		C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C36D21C62DE800F4B74C /* ToDoItem.swift */; };
+		C548C37221C6336300F4B74C /* LocalizedPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37121C6336300F4B74C /* LocalizedPath.swift */; };
+		C548C37521C6442700F4B74C /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */; };
+		C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37621C65A9500F4B74C /* UserInputAlert.swift */; };
+		C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37821C6698600F4B74C /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		C548C35E21C61E1E00F4B74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C548C36021C61E1E00F4B74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C548C36D21C62DE800F4B74C /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		C548C37121C6336300F4B74C /* LocalizedPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedPath.swift; sourceTree = "<group>"; };
+		C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		C548C37621C65A9500F4B74C /* UserInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputAlert.swift; sourceTree = "<group>"; };
+		C548C37821C6698600F4B74C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +99,10 @@
 				C548C36721C61E4200F4B74C /* AppDelegate */,
 				C548C36921C61E6700F4B74C /* Assets */,
 				C548C36821C61E5500F4B74C /* Controllers */,
+				C548C37321C643F300F4B74C /* Views */,
 				C548C36A21C61EAC00F4B74C /* Entities */,
 				C548C36B21C61EB400F4B74C /* Extensions */,
-				C548C36C21C61EBD00F4B74C /* Functions */,
+				C548C36C21C61EBD00F4B74C /* SupportingFiles */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -136,15 +145,26 @@
 		C548C36B21C61EB400F4B74C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C548C37821C6698600F4B74C /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C548C36C21C61EBD00F4B74C /* Functions */ = {
+		C548C36C21C61EBD00F4B74C /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C548C37121C6336300F4B74C /* LocalizedPath.swift */,
+				C548C37621C65A9500F4B74C /* UserInputAlert.swift */,
 			);
-			path = Functions;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		C548C37321C643F300F4B74C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C548C37421C6442700F4B74C /* ToDoTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +178,7 @@
 				C548C34D21C61E1A00F4B74C /* Sources */,
 				C548C34E21C61E1A00F4B74C /* Frameworks */,
 				C548C34F21C61E1A00F4B74C /* Resources */,
-				7F68D057612C81C782A123F0 /* [CP] Embed Pods Frameworks */,
+				F422CB11983BCB654B05BBDB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,7 +258,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F68D057612C81C782A123F0 /* [CP] Embed Pods Frameworks */ = {
+		F422CB11983BCB654B05BBDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -270,8 +290,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C548C35721C61E1A00F4B74C /* ToDoListController.swift in Sources */,
+				C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */,
 				C548C35521C61E1A00F4B74C /* AppDelegate.swift in Sources */,
+				C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */,
+				C548C37221C6336300F4B74C /* LocalizedPath.swift in Sources */,
 				C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */,
+				C548C37521C6442700F4B74C /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

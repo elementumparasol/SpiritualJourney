@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="gO2-AR-nvH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="gO2-AR-nvH" customClass="ToDoTableViewCell" customModule="MyToDo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gO2-AR-nvH" id="CH2-pJ-Wu3">
@@ -41,6 +41,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="nw4-94-vXo"/>
                                                     </constraints>
                                                     <state key="normal" title="⏺"/>
+                                                    <connections>
+                                                        <action selector="toggleCompleted" destination="gO2-AR-nvH" eventType="touchUpInside" id="LfA-7j-aiT"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -51,6 +54,10 @@
                                         <constraint firstItem="413-Cw-VFt" firstAttribute="centerY" secondItem="CH2-pJ-Wu3" secondAttribute="centerY" id="sv4-47-lTI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="itemButton" destination="gPm-b2-OxR" id="1dP-Dp-4E6"/>
+                                    <outlet property="itemLabel" destination="5Pn-H1-DUe" id="Hcv-K1-94x"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -61,9 +68,15 @@
                     <navigationItem key="navigationItem" title="My ToDo" id="aN3-pd-Cae">
                         <barButtonItem key="leftBarButtonItem" title="Encrypt" id="8bE-yZ-OLl">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="encryptRealm" destination="Dk3-7u-LEH" id="T13-9s-pDP"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LI3-uT-qQq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addItem" destination="Dk3-7u-LEH" id="X5g-ak-auk"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
