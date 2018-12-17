@@ -20,6 +20,7 @@
 		C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37821C6698600F4B74C /* UITableView+Extensions.swift */; };
 		C548C37C21C67BCD00F4B74C /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C37B21C67BCD00F4B74C /* SetupViewController.swift */; };
 		C548C38121C6B75E00F4B74C /* bundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = C548C38021C6B75E00F4B74C /* bundled.realm */; };
+		C548C38321C7930000F4B74C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548C38221C7930000F4B74C /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		C548C37821C6698600F4B74C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		C548C37B21C67BCD00F4B74C /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C548C38021C6B75E00F4B74C /* bundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = bundled.realm; sourceTree = "<group>"; };
+		C548C38221C7930000F4B74C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		C548C38621C7952700F4B74C /* Bridging+Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging+Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				C548C37821C6698600F4B74C /* UITableView+Extensions.swift */,
+				C548C38221C7930000F4B74C /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -161,6 +165,7 @@
 			children = (
 				C548C37121C6336300F4B74C /* LocalizedPath.swift */,
 				C548C37621C65A9500F4B74C /* UserInputAlert.swift */,
+				C548C38621C7952700F4B74C /* Bridging+Header.h */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				C548C37921C6698600F4B74C /* UITableView+Extensions.swift in Sources */,
 				C548C35521C61E1A00F4B74C /* AppDelegate.swift in Sources */,
 				C548C37721C65A9500F4B74C /* UserInputAlert.swift in Sources */,
+				C548C38321C7930000F4B74C /* String+Extensions.swift in Sources */,
 				C548C37C21C67BCD00F4B74C /* SetupViewController.swift in Sources */,
 				C548C37221C6336300F4B74C /* LocalizedPath.swift in Sources */,
 				C548C36E21C62DE800F4B74C /* ToDoItem.swift in Sources */,
@@ -459,6 +465,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.imemyself.MyToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyToDo/Classes/SupportingFiles/Bridging+Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -478,6 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.imemyself.MyToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyToDo/Classes/SupportingFiles/Bridging+Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
